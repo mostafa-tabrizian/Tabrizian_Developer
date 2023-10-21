@@ -2,9 +2,9 @@ import Image from 'next/image'
 
 const Resume = () => {
    return (
-      <div className='mx-auto grid h-screen max-w-screen-lg  items-center justify-center'>
+      <div id='resume' className='mx-auto grid h-screen max-w-screen-lg  items-center justify-center'>
          <div>
-            <h2 className='Audiowide mb-10 text-center'>Resume</h2>
+            <h2 className='bg-gradient-to-br from-violet-200 to-indigo-600 Audiowide bg-clip-text text-transparent w-fit mx-auto mb-10 text-center'>Resume</h2>
             <div className='grid grid-cols-3 gap-x-5 gap-y-10'>
                <div className=''>
                   <Image

@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const Contact = () => {
    return (
-      <div className='max-w-sreen-lg mx-auto grid h-screen items-center justify-center'>
+      <div id='contact' className='max-w-sreen-lg mx-auto grid h-screen items-center justify-center'>
          <div className='justify-center grid'>
             <div
                className='grid items-center justify-center rounded-3xl bg-violet-200 mx-auto'
@@ -17,7 +17,7 @@ const Contact = () => {
                />
             </div>
             <h2 className='verdna text-4xl font-bold mt-5'>
-               Scan To Become <span className='text-violet-400 Audiowide'>Perfect</span>
+               Scan To Become <span className='bg-gradient-to-br from-violet-200 to-indigo-600 Audiowide bg-clip-text text-transparent'>Perfect</span>
             </h2>
          </div>
       </div>

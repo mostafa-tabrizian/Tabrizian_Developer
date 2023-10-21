@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 const About = () => {
    return (
-      <div className='mx-auto grid h-screen max-w-screen-xl -translate-y-14 grid-cols-2 items-center gap-60'>
+      <div id='about' className='mx-auto grid h-screen max-w-screen-xl -translate-y-14 grid-cols-2 items-center gap-60'>
          <div className='space-y-10'>
             <div className='space-y-5'>
-               <h2 className='Audiowide text-sky-300'>Our Vision</h2>
+               <h2 className='w-fit bg-gradient-to-br from-sky-200 to-indigo-400 Audiowide bg-clip-text text-transparent'>Our Vision</h2>
                <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo ullam quos natus
                   culpa officiis eaque illo. Delectus minus sit porro vitae eaque aliquid, quam
@@ -13,7 +13,7 @@ const About = () => {
                </p>
             </div>
             <div className='space-y-5'>
-               <h2 className='Audiowide text-sky-300'>Our Mission</h2>
+               <h2 className='w-fit bg-gradient-to-br from-sky-200 to-indigo-400 Audiowide bg-clip-text text-transparent'>Our Mission</h2>
                <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo ullam quos natus
                   culpa officiis eaque illo. Delectus minus sit porro vitae eaque aliquid, quam

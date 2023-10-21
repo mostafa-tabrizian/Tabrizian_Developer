@@ -2,9 +2,11 @@ import Image from 'next/image'
 
 const Technologies = () => {
    return (
-      <div className='mx-auto grid h-screen max-w-screen-lg items-center justify-center'>
+      <div id='technologies' className='mx-auto grid h-screen max-w-screen-lg items-center justify-center'>
          <div>
-            <h2 className='Audiowide mb-10 text-center'>Technologies</h2>
+            <h2 className='Audiowide mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
+               Technologies
+            </h2>
             <div className='grid grid-cols-2 gap-40'>
                <div className='space-y-10'>
                   <div>

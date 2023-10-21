@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const Packages = () => {
    return (
-      <div className='relative mx-auto grid h-screen max-w-screen-lg items-center justify-center'>
+      <div id='packages' className='relative mx-auto grid h-screen max-w-screen-lg items-center justify-center'>
          <div className='grid grid-cols-3 gap-10'>
             <div className='relative block w-72 rounded-3xl bg-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-700 before:p-2'>
                <div className='space-y-5'>
@@ -11,8 +11,8 @@ const Packages = () => {
                      width={56}
                      height={114}
                      alt='diamond'
-                     className='absolute -top-16 right-10 mix-blend-screen'
-                     style={{ filter: 'drop-shadow(0px 5px 10px #255123)' }}
+                     className='absolute -top-16 animate-wave right-10 mix-blend-screen'
+                     style={{ filter: 'drop-shadow(0px 5px 10px #255123)', animationDuration: '3s', }}
                   />
                   <div className='relative z-10'>
                      <h3 className='verdana'>Standard</h3>
@@ -68,8 +68,8 @@ const Packages = () => {
                      width={56}
                      height={114}
                      alt='diamond'
-                     className='absolute -top-16 right-10 mix-blend-screen'
-                     style={{ filter: 'drop-shadow(0px 5px 6px #527feb)' }}
+                     className='absolute -top-16 animate-wave right-10 mix-blend-screen'
+                     style={{ filter: 'drop-shadow(0px 5px 6px #527feb)', animationDuration: '3s', }}
                   />
                   <div>
                      <h3 className='verdana'>Standard</h3>
@@ -124,8 +124,8 @@ const Packages = () => {
                      width={56}
                      height={114}
                      alt='diamond'
-                     className='absolute -top-16 right-10 mix-blend-screen'
-                     style={{ filter: 'drop-shadow(0px 5px 15px #9a6023)' }}
+                     className='absolute -top-16 animate-wave right-10 mix-blend-screen'
+                     style={{ filter: 'drop-shadow(0px 5px 15px #9a6023)', animationDuration: '3s', }}
                   />
                   <div>
                      <h3 className='verdana'>Standard</h3>

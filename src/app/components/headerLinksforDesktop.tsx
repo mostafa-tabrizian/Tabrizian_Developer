@@ -22,8 +22,8 @@ const HeaderLinksforDesktop = () => {
             <div className='text-gray-700'>
                <Link href='/'>
                   <div className='relative flex'>
-                     <span className='Audiowide cursor-pointer py-1 text-base tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
-                        HOME
+                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                        Home
                      </span>
                   </div>
                </Link>
@@ -34,8 +34,8 @@ const HeaderLinksforDesktop = () => {
             <div className='text-gray-700'>
                <Link href='/category/all?type=all&name=تمامی+طرح+ها'>
                   <div className='relative flex'>
-                     <span className='Audiowide cursor-pointer py-1 text-base tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
-                        PROJECTS
+                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                        Projects
                      </span>
                   </div>
                </Link>
@@ -45,8 +45,8 @@ const HeaderLinksforDesktop = () => {
          <li className='block'>
             <div className='text-gray-700'>
                <button onClick={(e) => setCategories(e.currentTarget)} className='relative flex'>
-                  <span className='Audiowide cursor-pointer py-1 text-base tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
-                     CATEGORY
+                  <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                     Category
                   </span>
                </button>
 
@@ -62,7 +62,7 @@ const HeaderLinksforDesktop = () => {
                   <ul className='space-y-4 p-3'>
                      <li className='flex items-center'>
                         <Link
-                           id='category'
+                           id='Category'
                            className='flex items-center'
                            href='/category/slug?type=category&name=name'
                         >
@@ -80,8 +80,8 @@ const HeaderLinksforDesktop = () => {
                   onClick={(e) => setContactUsOptions(e.currentTarget)}
                   className='relative flex'
                >
-                  <span className='Audiowide cursor-pointer py-1 text-base tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
-                     CONTACT
+                  <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                     Contact
                   </span>
                </button>
 
@@ -146,8 +146,8 @@ const HeaderLinksforDesktop = () => {
             <div className='text-gray-700'>
                <a id='about_us' href='#about-us'>
                   <div className='relative flex'>
-                     <span className='Audiowide cursor-pointer py-1 text-base tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
-                        ABOUT ME
+                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                        About Me
                      </span>
                   </div>
                </a>

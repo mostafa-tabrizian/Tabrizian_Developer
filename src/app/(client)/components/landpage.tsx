@@ -1,8 +1,10 @@
 import Header from '@/app/components/header'
+import Link from 'next/link'
 
 const Landpage = () => {
    return (
       <div
+         id='landpage'
          className='h-screen w-screen'
          style={{
             // eslint-disable-next-line quotes
@@ -23,9 +25,25 @@ const Landpage = () => {
                <h2 className='-ml-6 border-l-8 border-sky-900 pl-5'>
                   Only the survival thing to become professional <br /> Only who try SAMRT not hard
                </h2>
-               <button className='rounded-lg border px-20 py-2'>
-                  <span className='verdana text-sm tracking-widest'>LET&apos;S GO</span>
-               </button>
+               <Link
+                  href='/#about'
+                  className='animate-wave grid w-full justify-center'
+                  style={{ animationDuration: '1s' }}
+               >
+                  <svg
+                     className='h-10 w-10 text-sky-700'
+                     fill='none'
+                     viewBox='0 0 24 24'
+                     stroke='currentColor'
+                  >
+                     <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth='2'
+                        d='M19 9l-7 7-7-7'
+                     />
+                  </svg>
+               </Link>
             </div>
          </div>
 
