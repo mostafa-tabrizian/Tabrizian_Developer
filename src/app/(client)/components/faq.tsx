@@ -40,6 +40,8 @@ const FAQ = () => {
    return (
       <div className='mx-auto grid h-screen max-w-screen-lg items-center text-center'>
          <div className='mx-5 space-y-4'>
+            <h2 className='Audiowide mb-10 text-center'>FAQ</h2>
+
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'

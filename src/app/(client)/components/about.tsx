@@ -37,7 +37,7 @@ const About = () => {
                src='/aboutMongo.jpg'
                width={133}
                height={134}
-               alt='about tailwind'
+               alt='about mongo'
                className='animate-wave absolute -right-16 -top-8 border-2 border-green-400'
                style={{
                   animationDuration: '3.5s',
@@ -79,13 +79,13 @@ const About = () => {
             />
 
             <Image
-               src='/aboutTailwind.jpg'
+               src='/techTypescript.jpg'
                width={105}
                height={105}
                alt='about tailwind'
-               className='animate-wave absolute -bottom-40 right-1/2 border-2 border-sky-400 bg-white p-2'
+               className='animate-wave absolute -bottom-40 right-1/2 border-2 border-sky-400'
                style={{
-                  borderRadius: '33px',
+                  borderRadius: '30px',
                   boxShadow: '0px 4px 63px -14px #16BECB',
                   animationDuration: '2s',
                }}

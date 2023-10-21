@@ -61,7 +61,7 @@ const Packages = () => {
                   <span className='verdana text-base'>Get This Right Now</span>
                </button>
             </div>
-            <div className='relative block w-72 rounded-3xl bg-gradient-to-b from-indigo-950 to-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-400 before:p-2'>
+            <div className='relative block -top-5 w-72 rounded-3xl bg-gradient-to-b from-indigo-950 to-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-400 before:p-2'>
                <div className='space-y-5'>
                   <Image
                      src='/tier3.png'

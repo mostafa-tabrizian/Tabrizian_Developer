@@ -4,8 +4,6 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import Menu from '@mui/material/Menu'
-import hyphen from '@/lib/hyphen'
-import { ICategory } from '@/models/category'
 
 const HeaderLinksforDesktop = () => {
    const [categories, setCategories] = useState<null | HTMLElement>(null)
