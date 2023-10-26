@@ -36,12 +36,12 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
                return (
                   <Link
                      target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/asadi_projects/projects/${value}`}
+                     href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
                   >
                      {value ? (
                         <Image
                            className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/asadi_projects/projects/${value}`}
+                           src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
                            alt={String(value)}
                            height={50}
                            width={50}
@@ -61,12 +61,12 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
                return (
                   <Link
                      target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/asadi_projects/projects/${value}`}
+                     href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
                   >
                      {value ? (
                         <Image
                            className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/asadi_projects/projects/${value}`}
+                           src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
                            alt={String(value)}
                            height={50}
                            width={50}

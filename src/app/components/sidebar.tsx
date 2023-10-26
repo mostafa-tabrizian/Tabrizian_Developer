@@ -70,16 +70,16 @@ const Sidebar = () => {
                      </button>
                      <div>
                         <Link aria-label='صفحه اصلی' href='/' className='flex'>
-                           <Image
+                           {/* <Image
                               className='aspect-auto object-contain mix-blend-multiply'
                               src={
-                                 'https://tabrizian.storage.iran.liara.space/tabrizian_codes/logo/logo.jpg'
+                                 '#'
                               }
                               alt='لوگو مصطفی تبریزیان'
                               width={77}
                               height={100}
                               quality={100}
-                           />
+                           /> */}
                         </Link>
                      </div>
                   </div>

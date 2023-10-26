@@ -1,430 +1,405 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import dynamic from 'next/dynamic'
 import NextImage from 'next/image'
-import { toast } from 'react-toastify'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { memo, useMemo, useState } from 'react'
 
-import Button from '@mui/material/Button'
-import dynamic from 'next/dynamic'
+import FrontImageInput from './frontImageInput'
+import GalleryInput from './galleryInput'
+
 const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
+const Button = dynamic(() => import('@mui/material/Button'), { ssr: false })
+const ImageDelete = dynamic(() => import('./imageDelete'), { ssr: false })
 
-import ImageDelete from './imageDelete'
-import filesSizeValidation from '@/lib/filesSizeValidation'
-import filesTypeValidation from '@/lib/filesTypeValidation'
-import imageUploadHandler from '@/lib/imageUploadHandler'
-import deleteFromS3Bucket from '@/lib/deleteFromS3Bucket'
-import { IProject } from '@/models/project'
+const ImageInput = memo(
+   ({
+      project,
+   }: {
+      project: {
+         _id: string
+         gallery: string[]
+         frontSrc: string
+         backSrc: string
+         width: number
+         height: number
+      }
+   }) => {
+      const [frontPreview, setFrontPreview] = useState<FileList | null>(null)
+      const [backPreview, setBackPreview] = useState<FileList | null>(null)
+      const [galleryPreview, setGalleryPreview] = useState<FileList | null>(null)
+      const [frontImageDimention, setFrontImageDimention] = useState([0, 0])
+      const [backImageDimention, setBackImageDimention] = useState([0, 0])
+      const [loading, setLoading] = useState(false)
 
-const ImageInput = ({ project }: { project: IProject }) => {
-   const [frontPreview, setFrontPreview] = useState<FileList | null>(null)
-   const [backPreview, setBackPreview] = useState<FileList | null>(null)
-   const [galleryPreview, setGalleryPreview] = useState<FileList | null>(null)
-   const [imageDimention, setImageDimention] = useState([0, 0])
-   const [loading, setLoading] = useState(false)
+      const projectMemo = useMemo(() => project, [project])
 
-   const frontPrevMemo = useMemo(() => {
-      return frontPreview && Object.values(frontPreview)
-   }, [frontPreview])
+      const frontPrevMemo = useMemo(() => {
+         return frontPreview && Object.values(frontPreview)
+      }, [frontPreview])
 
-   const backPrevMemo = useMemo(() => {
-      return backPreview && Object.values(backPreview)
-   }, [backPreview])
+      const backPrevMemo = useMemo(() => {
+         return backPreview && Object.values(backPreview)
+      }, [backPreview])
 
-   const galleryPrevMemo = useMemo(() => {
-      return galleryPreview && Object.values(galleryPreview)
-   }, [galleryPreview])
+      const galleryPrevMemo = useMemo(() => {
+         return galleryPreview && Object.values(galleryPreview)
+      }, [galleryPreview])
 
-   const router = useRouter()
+      const router = useRouter()
 
-   const createDbData = async (type: string, imageKey: string, imageName: string) => {
-      const payload = {
-         type,
-         imageKey,
-         imageDimention,
-         _id: project._id,
+      const createDbData = async (type: string, imageKey: string, imageName: string) => {
+         const payload = {
+            type,
+            imageKey,
+            imageDimention: type == 'front' ? frontImageDimention : backImageDimention,
+            _id: projectMemo._id,
+         }
+
+         try {
+            const res = await fetch('/api/--admin--/project/image/db', {
+               method: 'POST',
+               body: JSON.stringify(payload),
+            })
+
+            if (!res.ok) throw new Error()
+
+            const resData = await res.json()
+            if (resData.message) throw new Error(resData.message)
+
+            return res
+         } catch (err) {
+            const toast = await import('react-toastify').then((mod) => mod.toast)
+
+            if (String(err).includes('please upload front project first')) {
+               toast.warning('ابتدا تصویر جلو طرح را آپلود کنید')
+               console.warn(err)
+            } else if (String(err).includes('dimention not equal to front project')) {
+               toast.warning('ابعاد تصویر جلو طرح و پشت طرح یکسان نمی‌باشد')
+               console.warn(err)
+            } else {
+               toast.error(`در آپلود تصویر ${imageName} به دیتابیس خطایی رخ داد!`)
+               console.error(err)
+            }
+            return false
+         }
       }
 
-      try {
-         const res = await fetch('/api/--admin--/project/image/db', {
-            method: 'POST',
-            body: JSON.stringify(payload),
-         })
-
-         if (!res.ok) throw new Error()
-
+      const successUpload = async (type: string, name: string) => {
          if (type == 'front') setFrontPreview(null)
          else if (type == 'back') setBackPreview(null)
          else if (type == 'gallery') setGalleryPreview(null)
 
-         toast.success(`تصویر ${imageName} با موفقیت آپلود شد.`)
-
          fetch('/api/--admin--/revalidate?path=/')
-         fetch('/api/--admin--/revalidate?path=/category/[query]')
+         fetch('/api/--admin--/revalidate?path=/search/[query]')
+
+         const toast = await import('react-toastify').then((mod) => mod.toast)
+         toast.success(`تصویر ${name} با موفقیت آپلود شد.`)
 
          router.refresh()
-      } catch (err) {
-         toast.error(`در آپلود تصویر ${imageName} به دیتابیس خطایی رخ داد!`)
-         console.error(err)
-
-         await deleteLeftOvers(imageKey)
-      }
-   }
-
-   const deleteLeftOvers = async (imageKey: string) => {
-      try {
-         await deleteFromS3Bucket(imageKey, 'projects')
-      } catch (err) {
-         console.error('deleteLeftOvers', err)
-      }
-   }
-
-   const onSubmit = async () => {
-      if (!frontPrevMemo && !backPrevMemo && !galleryPrevMemo) {
-         return toast.warning('هیچ تصویری برای آپلود انتخاب نشده است!')
-      }
-      if (!project._id) {
-         return toast.error('در تعیین طرح خطایی رخ داده است!')
       }
 
-      toast.info('در حال آپلود و ثبت اطلاعات تصویر...')
-      setLoading(true)
+      const onSubmit = async () => {
+         const toast = await import('react-toastify').then((mod) => mod.toast)
 
-      try {
-         for (const imageData of [
-            { project: frontPrevMemo, type: 'front' },
-            { project: backPrevMemo, type: 'back' },
-            { project: galleryPrevMemo, type: 'gallery' },
-         ]) {
-            if (!imageData.project) continue
-
-            for (const image of imageData.project) {
-               const res = await imageUploadHandler(image, 'projects')
-
-               if (res) await createDbData(imageData.type, res.imageKey, res.imageName)
-               else throw new Error('imageUploadHandler')
-            }
+         if (!frontPrevMemo && !backPrevMemo && !galleryPrevMemo) {
+            return toast.warning('هیچ تصویری برای آپلود انتخاب نشده است!')
          }
-         return
-      } catch (error) {
-         return
-      } finally {
-         setLoading(false)
-      }
-   }
+         if (!projectMemo._id) {
+            return toast.error('در تعیین طرح خطایی رخ داده است!')
+         }
 
-   const onFileSelected = (files: FileList | null, type: string) => {
-      if (!files) return
+         toast.info('در حال آپلود و ثبت اطلاعات تصویر...')
+         setLoading(true)
 
-      const filesList: File[] = Object.values(files)
+         try {
+            for (const imageData of [
+               { project: frontPrevMemo, type: 'front' },
+               { project: backPrevMemo, type: 'back' },
+               { project: galleryPrevMemo, type: 'gallery' },
+            ]) {
+               if (!imageData.project) continue
 
-      const typeCheckRes = filesTypeValidation(filesList)
-      if (!typeCheckRes) return
+               for (const image of imageData.project) {
+                  // first
+                  const imageName = image.name.replace(' ', '-')
 
-      const sizeCheckRes = filesSizeValidation(filesList)
-      if (!sizeCheckRes) return
+                  // presign
+                  const createS3Presign = await import('@/lib/createS3Presign').then(
+                     (mod) => mod.default,
+                  )
+                  const s3SignedUrl = await createS3Presign(imageName, 'projects')
+                  if (!s3SignedUrl) return
 
-      if (type == 'front') {
-         setFrontPreview(files)
-         for (const imageFile of filesList) {
-            // calculate and set image dimention
-            const reader = new FileReader()
+                  // middle
+                  const { imageKey, uploadUrl } = await s3SignedUrl.json()
 
-            reader.onload = (e) => {
-               const img = new Image()
-               // @ts-ignore
-               img.src = e.target.result as string
+                  // db
+                  const createDataResult = await createDbData(imageData.type, imageKey, imageName)
+                  if (!createDataResult) return
 
-               img.onload = () => {
-                  if (type == 'front') setImageDimention([img.width, img.height])
+                  // put
+                  const putInS3Bucket = await import('@/lib/PutInS3Bucket').then(
+                     (mod) => mod.default,
+                  )
+                  const fileUploadResult = await putInS3Bucket(uploadUrl, image)
+
+                  if (!fileUploadResult) {
+                     const uploadErrorDeleteData = await import('./uploadErrorDeleteData').then(
+                        (mod) => mod.default,
+                     )
+                     return await uploadErrorDeleteData(imageData.type, imageKey, projectMemo._id)
+                  }
+
+                  successUpload(imageData.type, image.name)
                }
             }
-
-            reader.readAsDataURL(imageFile)
+         } catch (err) {
+            toast.error(
+               'در آپلود تصویر خطایی رخ داد. (اگر از VPN استفاده می‌کنید لطفا ابتدا آن را خاموش کنید)',
+            )
+            console.error(err)
+         } finally {
+            setLoading(false)
          }
-      } else if (type == 'back') setBackPreview(files)
-      else if (type == 'gallery') setGalleryPreview(files)
-   }
+      }
 
-   const dragOverHandler = (event: React.DragEvent<HTMLDivElement>) => event.preventDefault()
+      const dimentionCalculate = (file: File, type: string) => {
+         const reader = new FileReader()
 
-   const dropHandlerproject = (event: React.DragEvent<HTMLDivElement>, type: string) => {
-      event.preventDefault()
-      const files = event.dataTransfer.files
+         reader.onload = (e) => {
+            const img = new Image()
+            // @ts-ignore
+            img.src = e.target.result as string
 
-      if (!files) return toast.warning('در دریافت فایل ها خطایی رخ داد')
-      else if (files.length !== 1 && type !== 'gallery')
-         return toast.warning(
-            'تعداد تصاویر انتخاب شده بیشتر از یک عدد می‌باشد. تصویر طرح می‌بایست یک عدد باشد',
+            img.onload = () => {
+               const dimention = [img.width, img.height]
+               if (type == 'front') setFrontImageDimention(dimention)
+               else if (type == 'back') setBackImageDimention(dimention)
+            }
+         }
+
+         reader.readAsDataURL(file)
+      }
+
+      const onFileSelected = async (files: FileList | null, type: string) => {
+         if (!files) return
+
+         const filesList: File[] = Object.values(files)
+
+         const filesTypeValidation = await import('@/lib/filesTypeValidation').then(
+            (mod) => mod.default,
          )
+         const typeCheckRes = filesTypeValidation(filesList)
+         if (!typeCheckRes) return
 
-      onFileSelected(files, type)
-   }
+         const filesSizeValidation = await import('@/lib/filesSizeValidation').then(
+            (mod) => mod.default,
+         )
+         const sizeCheckRes = filesSizeValidation(filesList)
+         if (!sizeCheckRes) return
 
-   return (
-      <div className='space-y-4 text-right'>
-         {frontPrevMemo?.length ? (
-            <div>
-               <span className='yekan text-slate-400'>پیش نمایش تصویر جلو برای آپلود</span>
+         dimentionCalculate(filesList[0], type)
 
-               {frontPrevMemo.map((imageData: File) => {
-                  return (
-                     <NextImage
-                        key={imageData.name}
-                        className='rounded-xl object-contain'
-                        src={URL.createObjectURL(imageData)}
-                        alt={imageData.name}
-                        width='250'
-                        height='250'
-                        quality={100}
-                        loading='lazy'
-                     />
-                  )
-               })}
-            </div>
-         ) : (
-            ''
-         )}
+         if (type == 'front') {
+            setFrontPreview(files)
+         } else if (type == 'back') {
+            setBackPreview(files)
+         } else if (type == 'gallery') setGalleryPreview(files)
+      }
 
-         {backPrevMemo?.length ? (
-            <div>
-               <span className='yekan text-slate-400'>پیش نمایش تصویر پشت برای آپلود</span>
+      const dragOverHandler = (event: React.DragEvent<HTMLDivElement>) => event.preventDefault()
 
-               {backPrevMemo.map((imageData: File) => {
-                  return (
-                     <NextImage
-                        key={imageData.name}
-                        className='rounded-xl object-contain'
-                        src={URL.createObjectURL(imageData)}
-                        alt={imageData.name}
-                        width='250'
-                        height='250'
-                        quality={100}
-                        loading='lazy'
-                     />
-                  )
-               })}
-            </div>
-         ) : (
-            ''
-         )}
+      const dropHandlerDesign = async (event: React.DragEvent<HTMLDivElement>, type: string) => {
+         event.preventDefault()
+         const files = event.dataTransfer.files
+         const toast = await import('react-toastify').then((mod) => mod.toast)
 
-         {galleryPrevMemo?.length ? (
-            <div>
-               <span className='yekan text-slate-400'>پیش نمایش تصاویر گالری برای آپلود</span>
-               <div className='space-y-3'>
-                  {galleryPrevMemo.map((imageData: File) => {
-                     return (
-                        <NextImage
-                           key={imageData.name}
-                           className='rounded-xl object-contain'
-                           src={URL.createObjectURL(imageData)}
-                           alt={imageData.name}
-                           width='250'
-                           height='250'
-                           quality={100}
-                           loading='lazy'
-                        />
-                     )
-                  })}
-               </div>
-            </div>
-         ) : (
-            ''
-         )}
+         if (!files) return toast.warning('در دریافت فایل ها خطایی رخ داد')
+         else if (files.length !== 1 && type !== 'gallery') {
+            return toast.warning(
+               'تعداد تصاویر انتخاب شده بیشتر از یک عدد می‌باشد. تصویر طرح می‌بایست یک عدد باشد',
+            )
+         }
 
-         <div className='space-y-6'>
-            {project.frontSrc ? (
-               <div>
-                  <span className='yekan text-slate-400'>تصویر جلو طرح</span>
+         onFileSelected(files, type)
+      }
 
-                  <div className='relative'>
-                     <Link
-                        target='_blank'
-                        href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${project.frontSrc}`}
-                     >
-                        <div className='mx-auto flex justify-center'>
-                           <NextImage
-                              className='rounded-lg p-1'
-                              src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${project.frontSrc}`}
-                              alt={project._id}
-                              width={project.width}
-                              height={project.height}
-                              loading='lazy'
-                           />
-                        </div>
-                     </Link>
+      return (
+         <div className='space-y-4 text-right'>
+            <FrontImageInput
+               project={{
+                  frontSrc: projectMemo.frontSrc,
+                  _id: projectMemo._id,
+                  width: projectMemo.width,
+                  height: projectMemo.height,
+               }}
+               frontPrevMemo={frontPrevMemo}
+               dragOverHandler={dragOverHandler}
+               dropHandlerDesign={dropHandlerDesign}
+               onFileSelected={onFileSelected}
+               loading={loading}
+            />
 
-                     <ImageDelete type='front' project={project._id} imageKey={project.frontSrc} />
-                  </div>
-               </div>
-            ) : (
-               <div
-                  onDrop={(e) => dropHandlerproject(e, 'front')}
-                  onDragOver={dragOverHandler}
-                  className='w-full rounded-lg border-2 border-slate-200 bg-slate-100 text-sm'
-               >
-                  <Button component='label' sx={{ width: '100%', padding: '.5rem' }}>
-                     <span className='yekan text-sm'>انتخاب جلو طرح</span>
-                     <input
-                        hidden
-                        accept='image/*'
-                        type='file'
-                        name='frontPreview'
-                        onChange={(e) => onFileSelected(e?.target?.files, 'front')}
-                        disabled={loading}
-                     />
-                  </Button>
-               </div>
-            )}
-         </div>
+            <hr />
 
-         <div className='space-y-3'>
-            {project.backSrc ? (
-               <div>
-                  <span className='yekan text-slate-400'>تصویر پشت طرح</span>
+            <div className='space-y-3'>
+               {projectMemo.backSrc ? (
+                  <div>
+                     <span className='yekan text-slate-400'>تصویر پشت طرح</span>
 
-                  <div className='relative'>
-                     <Link
-                        target='_blank'
-                        href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${project.backSrc}`}
-                     >
-                        <div className='mx-auto flex justify-center'>
-                           <NextImage
-                              className='rounded-lg p-1'
-                              src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${project.backSrc}`}
-                              alt={project._id}
-                              width={project.width}
-                              height={project.height}
-                              loading='lazy'
-                           />
-                        </div>
-                     </Link>
-
-                     <ImageDelete type='back' project={project._id} imageKey={project.backSrc} />
-                  </div>
-               </div>
-            ) : (
-               <div
-                  onDrop={(e) => dropHandlerproject(e, 'back')}
-                  onDragOver={dragOverHandler}
-                  className='w-full rounded-lg border-2 border-slate-200 bg-slate-100 text-sm'
-               >
-                  <Button component='label' sx={{ width: '100%', padding: '.5rem' }}>
-                     <span className='yekan text-sm'>انتخاب پشت طرح</span>
-                     <input
-                        hidden
-                        accept='image/*'
-                        type='file'
-                        name='backPreview'
-                        onChange={(e) => onFileSelected(e?.target?.files, 'back')}
-                        disabled={loading}
-                     />
-                  </Button>
-               </div>
-            )}
-
-            <div>
-               <span className='yekan text-slate-400'>گالری طرح</span>
-               {project.gallery.map((image: string, idx: number) => {
-                  return (
-                     <div key={idx} className='relative'>
+                     <div className='relative'>
                         <Link
                            target='_blank'
-                           href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${image}`}
+                           href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${projectMemo.backSrc}`}
                         >
                            <div className='mx-auto flex justify-center'>
                               <NextImage
                                  className='rounded-lg p-1'
-                                 src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${image}`}
-                                 alt={project._id}
-                                 width={project.width}
-                                 height={project.height}
+                                 src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${projectMemo.backSrc}`}
+                                 alt={projectMemo._id}
+                                 width={projectMemo.width}
+                                 height={projectMemo.height}
                                  loading='lazy'
                               />
                            </div>
                         </Link>
 
-                        <ImageDelete type='gallery' project={project._id} imageKey={image} />
+                        <ImageDelete
+                           type='back'
+                           project={projectMemo._id}
+                           imageKey={projectMemo.backSrc}
+                        />
                      </div>
-                  )
-               })}
-            </div>
-
-            <div
-               onDrop={(e) => dropHandlerproject(e, 'gallery')}
-               onDragOver={dragOverHandler}
-               className='w-full rounded-lg border-2 border-slate-200 bg-slate-100 text-sm'
-            >
-               <Button component='label' sx={{ width: '100%', padding: '.5rem' }}>
-                  <span className='yekan text-sm'>انتخاب تصاویر</span>
-                  <input
-                     hidden
-                     accept='image/*'
-                     type='file'
-                     name='galleryPreview'
-                     multiple
-                     onChange={(e) => onFileSelected(e?.target?.files, 'gallery')}
-                     disabled={loading}
-                  />
-               </Button>
-            </div>
-
-            <div className='flex items-center justify-center rounded-lg border-2 border-slate-200 bg-slate-100'>
-               {loading ? (
-                  <div className='p-1.5'>
-                     <CircularProgress color='success' size={20} />
                   </div>
                ) : (
-                  <button
-                     className='flex gap-5'
-                     disabled={loading}
-                     onClick={() => onSubmit()}
-                     type='button'
-                  >
-                     <svg
-                        className='h-5 w-5'
-                        width='24'
-                        height='24'
-                        viewBox='0 0 24 24'
-                        strokeWidth='2'
-                        stroke='currentColor'
-                        fill='none'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
+                  <>
+                     {backPrevMemo?.length ? (
+                        <div>
+                           <span className='yekan text-slate-400'>
+                              پیش نمایش تصویر پشت برای آپلود
+                           </span>
+
+                           {backPrevMemo.map((imageData: File) => {
+                              return (
+                                 <NextImage
+                                    key={imageData.name}
+                                    className='rounded-xl object-contain'
+                                    src={URL.createObjectURL(imageData)}
+                                    alt={imageData.name}
+                                    width='250'
+                                    height='250'
+                                    quality={100}
+                                    loading='lazy'
+                                 />
+                              )
+                           })}
+                        </div>
+                     ) : (
+                        ''
+                     )}
+
+                     <div
+                        onDrop={(e) => dropHandlerDesign(e, 'back')}
+                        onDragOver={dragOverHandler}
+                        className='w-full rounded-lg border-2 border-slate-200 bg-slate-100 text-sm'
                      >
-                        {' '}
-                        <path stroke='none' d='M0 0h24v24H0z' />{' '}
-                        <path d='M7 18a4.6 4.4 0 0 1 0 -9h0a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1' />{' '}
-                        <polyline points='9 15 12 12 15 15' />{' '}
-                        <line x1='12' y1='12' x2='12' y2='21' />
-                     </svg>
-                     <span className='yekan text-sm'>آپلود تصاویر</span>
-                  </button>
+                        <Button
+                           type='button'
+                           // @ts-ignore
+                           component='label'
+                           sx={{ width: '100%', padding: '.5rem' }}
+                        >
+                           <span className='yekan text-sm'>انتخاب پشت طرح</span>
+                           <input
+                              hidden
+                              accept='image/*'
+                              type='file'
+                              name='backPreview'
+                              onChange={(e) => onFileSelected(e?.target?.files, 'back')}
+                              disabled={loading}
+                           />
+                        </Button>
+                     </div>
+                  </>
                )}
-            </div>
 
-            <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-               <span className='yekan text-xs text-green-600/70'>
-                  تصویر کم حجم تر برابر با <br /> امکان ذخیره سازی تصاویر بیشتر
-               </span>
-            </div>
+               <hr />
 
-            <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-               <span className='yekan text-xs text-green-600/70'>
-                  حجم ایده آل تا ۱۵۰ کیلوبایت می‌باشد
-               </span>
-            </div>
+               <GalleryInput
+                  project={{
+                     gallery: projectMemo.gallery,
+                     _id: projectMemo._id,
+                     width: projectMemo.width,
+                     height: projectMemo.height,
+                  }}
+                  galleryPrevMemo={galleryPrevMemo}
+                  dragOverHandler={dragOverHandler}
+                  dropHandlerDesign={dropHandlerDesign}
+                  onFileSelected={onFileSelected}
+                  loading={loading}
+               />
 
-            <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-               <span className='yekan text-xs text-green-600/70'>
-                  حجم عکس تاثیر قابل توجهی بر کاربر نمی‌گذارد
-               </span>
+               <hr />
+
+               <div className='flex items-center justify-center rounded-lg border-2 border-slate-200 bg-slate-100'>
+                  {loading ? (
+                     <div className='p-1.5'>
+                        <CircularProgress color='success' size={20} />
+                     </div>
+                  ) : (
+                     <button
+                        className='flex gap-5'
+                        disabled={loading}
+                        onClick={() => onSubmit()}
+                        type='button'
+                     >
+                        <svg
+                           className='h-5 w-5'
+                           width='24'
+                           height='24'
+                           viewBox='0 0 24 24'
+                           strokeWidth='2'
+                           stroke='currentColor'
+                           fill='none'
+                           strokeLinecap='round'
+                           strokeLinejoin='round'
+                        >
+                           {' '}
+                           <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                           <path d='M7 18a4.6 4.4 0 0 1 0 -9h0a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1' />{' '}
+                           <polyline points='9 15 12 12 15 15' />{' '}
+                           <line x1='12' y1='12' x2='12' y2='21' />
+                        </svg>
+                        <span className='yekan text-sm'>آپلود تصاویر</span>
+                     </button>
+                  )}
+               </div>
+
+               <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
+                  <span className='yekan text-xs text-green-600/70'>
+                     تصویر کم حجم تر برابر با <br /> امکان ذخیره سازی تصاویر بیشتر
+                  </span>
+               </div>
+
+               <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
+                  <span className='yekan text-xs text-green-600/70'>
+                     حجم ایده آل تا ۱۵۰ کیلوبایت می‌باشد
+                  </span>
+               </div>
+
+               <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
+                  <span className='yekan text-xs text-green-600/70'>
+                     حجم عکس تاثیر قابل توجهی بر کاربر نمی‌گذارد
+                  </span>
+               </div>
             </div>
          </div>
-      </div>
-   )
-}
+      )
+   },
+)
+
+ImageInput.displayName = 'ImageInput'
 
 export default ImageInput

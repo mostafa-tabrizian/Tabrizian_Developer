@@ -126,15 +126,15 @@ async function Home() {
 
          <About />
 
-         <FAQ />
-
-         <Packages />
-
-         <Contact />
+         <Technologies />
 
          <Resume />
 
-         <Technologies />
+         <Packages />
+
+         <FAQ />
+
+         <Contact />
 
          {/* <SocialMedia /> */}
       </>

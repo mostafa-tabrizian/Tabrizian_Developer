@@ -2,23 +2,76 @@ import Image from 'next/image'
 
 const About = () => {
    return (
-      <div id='about' className='mx-auto grid h-screen max-w-screen-xl -translate-y-14 grid-cols-2 items-center gap-60'>
+      <div
+         id='about'
+         className='mx-auto grid h-screen max-w-screen-xl -translate-y-14 grid-cols-2 items-center gap-60'
+      >
          <div className='space-y-10'>
             <div className='space-y-5'>
-               <h2 className='w-fit bg-gradient-to-br from-sky-200 to-indigo-400 Audiowide bg-clip-text text-transparent'>Our Vision</h2>
-               <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo ullam quos natus
-                  culpa officiis eaque illo. Delectus minus sit porro vitae eaque aliquid, quam
-                  molestias aspernatur alias impedit accusamus nam?
-               </p>
-            </div>
-            <div className='space-y-5'>
-               <h2 className='w-fit bg-gradient-to-br from-sky-200 to-indigo-400 Audiowide bg-clip-text text-transparent'>Our Mission</h2>
-               <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo ullam quos natus
-                  culpa officiis eaque illo. Delectus minus sit porro vitae eaque aliquid, quam
-                  molestias aspernatur alias impedit accusamus nam?
-               </p>
+               <div className='space-y-3'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                     Hello there ! <span style={{ color: 'initial' }}>🖐🏻</span>
+                  </h2>
+                  <p className='verdana'>
+                     I am <span className='text-indigo-400'>Mustafa</span>, 22, a{' '}
+                     <span className='text-indigo-400'>full-stack web developer</span> with a true
+                     passion for crafting high-performance websites. <br /> <br />
+                  </p>
+               </div>
+
+               <div className='space-y-3'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                     What I Use
+                  </h2>
+                  <p className='verdana'>
+                     I use cutting-edge technologies such as{' '}
+                     <span className='text-indigo-400'>Next.js, React, and TypeScript</span> to
+                     ensure that you and your users have a{' '}
+                     <span className='text-indigo-400'>seamless and enjoyable experience</span>.
+                  </p>
+               </div>
+
+               <div className='space-y-3'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                     My Aim
+                  </h2>
+                  <p className='verdana'>
+                     My ultimate aim is to{' '}
+                     <span className='text-indigo-400'>surpass your expectations</span> and help you{' '}
+                     <span className='text-indigo-400'>achieve your goals</span>. <br />
+                     I have successfully completed numerous projects, including creating stunning
+                     online stores and various platforms, and I always strive to deliver exceptional
+                     outcomes. <br />
+                  </p>
+               </div>
+
+               <div className='space-y-3'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                     Me & You
+                  </h2>
+                  <p className='verdana'>
+                     When you choose me as your developer, you can rest assured that you will{' '}
+                     <span className='text-indigo-400'>receive nothing but the best.</span> <br />
+                     I prioritize speed and responsiveness, resulting in an optimum overall
+                     experience for your users. <br />I also listen attentively to your feedback,
+                     providing regular updates throughout the project to ensure that we{' '}
+                     <span className='text-indigo-400'>achieve your vision</span> and complete the
+                     project successfully. <br />
+                  </p>
+               </div>
+
+               <div className='space-y-3'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                     What You Waiting?
+                  </h2>
+                  <p className='verdana'>
+                     Let&apos;s collaborate to{' '}
+                     <span className='text-indigo-400'>bring your brilliant ideas to life</span> and
+                     embark on a journey of creativity and inspiration! <br />I am excited to hear
+                     from you and see where our <span className='text-indigo-400'>partnership</span>{' '}
+                     can take us.
+                  </p>
+               </div>
             </div>
          </div>
          <div className='relative'>

@@ -10,15 +10,15 @@ const Header = () => {
             <LinksForDesktop />
 
             <Link aria-label='صفحه اصلی' href='/' className='col-span-1 flex justify-end'>
-               <Image
+               {/* <Image
                   className='object-contain'
-                  src={'https://tabrizian.storage.iran.liara.space/tabrizian_codes/logo/logo.jpg'}
+                  src={'#'}
                   alt='لوگو مصطفی تبریزیان'
                   width={77}
                   height={52}
                   quality={100}
                   loading='lazy'
-               />
+               /> */}
             </Link>
 
             <Sidebar />
