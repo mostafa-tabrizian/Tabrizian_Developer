@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import { ToastContainer } from 'react-toastify'
 
-import Footer from '../components/footer'
+import Header from '@/app/components/header'
+import Footer from '@/app/components/footer'
 
 export const metadata: Metadata = {
    title: 'مصطفی تبریزیان',
@@ -24,6 +25,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             pauseOnHover
             theme='light'
          />
+
+         <Header />
 
          <main>{children}</main>
 

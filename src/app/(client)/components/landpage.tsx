@@ -1,4 +1,3 @@
-import Header from '@/app/components/header'
 import Link from 'next/link'
 
 const Landpage = () => {
@@ -12,8 +11,6 @@ const Landpage = () => {
             backgroundSize: 'cover',
          }}
       >
-         <Header />
-
          <div className='mx-auto grid h-full max-w-screen-lg items-center'>
             <div className='space-y-10'>
                <h1

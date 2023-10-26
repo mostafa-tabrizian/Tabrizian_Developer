@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Sidebar from './sidebar'
-import Image from 'next/image'
+// import Image from 'next/image'
 import LinksForDesktop from './headerLinksforDesktop'
 
 const Header = () => {
    return (
-      <header className='z-20 w-full bg-transparent'>
-         <div className='mx-auto flex items-center justify-between md:grid md:max-w-screen-2xl md:grid-cols-8'>
+      <header className='z-20 w-full absolute top-0 left-0 mt-5'>
+         <div className='mx-auto flex items-center justify-between md:grid md:max-w-screen-xl md:grid-cols-8'>
             <LinksForDesktop />
 
             <Link aria-label='صفحه اصلی' href='/' className='col-span-1 flex justify-end'>
