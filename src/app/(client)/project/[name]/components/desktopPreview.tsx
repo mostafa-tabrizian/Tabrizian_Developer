@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const MobilePreview = () => {
    return (
-      <div className='relative'>
+      <div className='relative mx-5'>
          <div className=''>
             <Image
                src='/resume1.jpg'
@@ -16,10 +16,7 @@ const MobilePreview = () => {
                }}
             />
          </div>
-         <span
-            className='absolute top-0 left-0 -z-10 -translate-x-4 -translate-y-4 rounded-xl border-4 border-violet-300'
-            style={{ width: '734px', height: '426px' }}
-         ></span>
+         <span className='absolute left-0 top-0 -z-10 h-[93%] w-[93%] -translate-x-2 -translate-y-2 rounded-xl border-2 border-violet-300 md:-translate-x-4 md:-translate-y-4 md:border-4'></span>
       </div>
    )
 }

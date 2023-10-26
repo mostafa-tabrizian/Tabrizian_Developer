@@ -17,7 +17,7 @@ const HeaderLinksforDesktop = () => {
    }, [])
 
    return (
-      <ul className='hidden items-center justify-center space-x-10 text-gray-700 md:col-span-4 md:flex'>
+      <ul className='hidden items-center justify-center space-x-10 text-gray-700 lg:col-span-4 lg:flex'>
          <li className='block'>
             <div className='text-gray-700'>
                <Link href='/'>

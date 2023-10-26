@@ -6,7 +6,7 @@ import LinksForDesktop from './headerLinksforDesktop'
 const Header = () => {
    return (
       <header className='z-20 w-full absolute top-0 left-0 mt-5'>
-         <div className='mx-auto flex items-center justify-between md:grid md:max-w-screen-xl md:grid-cols-8'>
+         <div className='mx-auto flex items-center justify-between lg:grid lg:max-w-screen-xl lg:grid-cols-8'>
             <LinksForDesktop />
 
             <Link aria-label='صفحه اصلی' href='/' className='col-span-1 flex justify-end'>
@@ -28,13 +28,13 @@ const Header = () => {
             aria-label='ایتا'
             id='eitaa'
             href='https://eitaa.com/aliasadi_graphics'
-            className='bg-gradient-to-t from-sky-400 to-sky-200 pr-1 md:pr-2 py-1 md:py-2 flex items-center gap-2 border-2 border-black rounded-lg md:rounded-xl pl-9 md:pl-12 fixed bottom-16 md:bottom-[4.3rem] shadow-lg shadow-sky-300 left-5 z-10'
+            className='bg-gradient-to-t from-sky-400 to-sky-200 pr-1 lg:pr-2 py-1 lg:py-2 flex items-center gap-2 border-2 border-black rounded-lg lg:rounded-xl pl-9 lg:pl-12 fixed bottom-16 lg:bottom-[4.3rem] shadow-lg shadow-sky-300 left-5 z-10'
             title='ایتا با پشتیبانی'
             target='_blank'
             rel='noreferrer'
          >
             <svg
-               className='h-6 w-6 md:h-8 md:w-8 text-black absolute left-1 top-.5'
+               className='h-6 w-6 lg:h-8 lg:w-8 text-black absolute left-1 top-.5'
                viewBox='0 0 24 24'
                fill='none'
                stroke='currentColor'
@@ -52,13 +52,13 @@ const Header = () => {
             aria-label='تلگرام'
             id='telegram'
             href='https://t.me/aliasadi_graphics'
-            className='bg-gradient-to-t from-sky-500 to-sky-200 pr-1 md:pr-2 py-1 md:py-2 flex items-center gap-2 border-2 border-black rounded-lg md:rounded-xl pl-9 md:pl-12 fixed bottom-5 shadow-lg shadow-sky-300 left-5 z-10'
+            className='bg-gradient-to-t from-sky-500 to-sky-200 pr-1 lg:pr-2 py-1 lg:py-2 flex items-center gap-2 border-2 border-black rounded-lg lg:rounded-xl pl-9 lg:pl-12 fixed bottom-5 shadow-lg shadow-sky-300 left-5 z-10'
             title='تلگرام با پشتیبانی'
             target='_blank'
             rel='noreferrer'
          >
             <svg
-               className='h-8 w-8 md:h-10 md:w-10 absolute left-0 -top-1'
+               className='h-8 w-8 lg:h-10 lg:w-10 absolute left-0 -top-1'
                viewBox='0 0 45 45'
                fill='none'
                xmlns='http://www.w3.org/2000/svg'
