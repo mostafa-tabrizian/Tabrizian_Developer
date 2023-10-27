@@ -43,7 +43,7 @@
 }
 
 .MuiPopover-paper {
-   border-radius: 15px !important;
+   border-radius: 10px !important;
 }
 
 .MuiFormControlLabel-label,
@@ -104,4 +104,10 @@
    font-family: YekanBakhRegular, sans-serif;
    font-size: 0.8rem;
    color: rgb(43, 45, 83);
+}
+
+.MuiMenu-paper {
+   background-color: #2d364b;
+   box-shadow: rgb(47, 43, 116) 0px 0px 5px;
+   color: white;
 }
