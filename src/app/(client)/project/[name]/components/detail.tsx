@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Detail = () => {
    return (
-      <div className='space-y-5 order-2 lg:order-1 mt-20 lg:mt-0 mx-5 lg:mx-0'>
+      <div className='order-2 mx-5 mt-20 space-y-5 lg:order-1 lg:mx-0 lg:mt-0'>
          <div>
             <h1>Personal Design Gallery Website</h1>
             <Link href='#' target='_blank'>
