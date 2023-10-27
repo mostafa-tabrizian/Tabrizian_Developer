@@ -15,7 +15,7 @@ export const generateMetadata = async ({ params: { name } }: { params: { name: s
    }
 }
 
-const ProjectDetail = () => {
+const ProjectDetail = ({ params: { name, lang } }: { params: { name: string; lang: string } }) => {
    return (
       <>
          <Spotlight />
