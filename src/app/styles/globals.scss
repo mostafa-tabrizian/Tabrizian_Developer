@@ -213,8 +213,8 @@ strong {
    border: 2px solid red;
 }
 
-.animate-spin-slower {
-   animation: spin 3s linear infinite;
+.animate-spin-slow {
+   animation: spin 9s linear infinite;
 }
 
 @keyframes spin {
@@ -227,10 +227,10 @@ strong {
 }
 
 .animate-wave {
-   animation: spin ease-in-out infinite alternate-reverse;
+   animation: wave ease-in-out infinite alternate-reverse;
 }
 
-@keyframes spin {
+@keyframes wave {
    from {
       transform: translateY(5px);
    }

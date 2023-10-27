@@ -5,7 +5,7 @@ const MobileBorderSVG = () => {
       <svg
          xmlns='http://www.w3.org/2000/svg'
          viewBox='0 0 304 559'
-         className='absolute left-0 top-0 -z-10 h-[302px] w-[147.43px] -translate-y-6 translate-x-1 rotate-[1.6deg] lg:translate-x-1 lg:-translate-y-7 lg:h-[352.41px] lg:w-[172px] xl:h-[559px] xl:w-[304px] xl:-translate-x-2 xl:-translate-y-4'
+         className='absolute left-0 top-0 -z-10 h-[302px] w-[147.43px] -translate-y-6 translate-x-1 rotate-[1.6deg] animate-pulse lg:h-[352.41px] lg:w-[172px] lg:-translate-y-7 lg:translate-x-1 xl:h-[559px] xl:w-[304px] xl:-translate-x-2 xl:-translate-y-4'
          fill='none'
       >
          <path
@@ -19,7 +19,20 @@ const MobileBorderSVG = () => {
 
 const CircleSVG = () => {
    return (
-      <span className='absolute -z-10 h-[280px] w-[280px] translate-x-10 translate-y-10 rounded-full border-2 border-violet-300 lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'></span>
+      <>
+         <span className='absolute -z-10 h-[280px] w-[280px] translate-x-10 translate-y-10 rounded-full border-2 border-violet-300 lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
+            <div className='animate-spin-slow absolute -z-10 flex h-[280px] w-[280px] justify-center rounded-full lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
+               <span
+                  className='h-10 w-10 translate-x-24 rounded-full bg-indigo-400'
+                  style={{
+                     boxShadow: '3px -3px 10px black, inset 3px -3px 5px #2b054799',
+                     background:
+                        'radial-gradient(circle at 100px 100px, rgb(183 92 255), rgb(112 141 255))',
+                  }}
+               ></span>
+            </div>
+         </span>
+      </>
    )
 }
 
