@@ -25,23 +25,27 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             header: 'ID',
             cell: (info) => {
                const value = info.getValue() as string
-               return <span>{value.slice(-4)}</span>
+               return (
+                  <Link href={`/--admin--/projects/${value}`}>
+                     <span className='text-sm text-slate-700 underline'>{value.slice(-4)}</span>
+                  </Link>
+               )
             },
          },
          {
-            accessorKey: 'mobile1stPreview',
+            accessorKey: 'mobile1stImage',
             header: 'Mobile Pre 1st',
             cell: (info) => {
                const value = info.getValue()
                return (
                   <Link
                      target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
+                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
                   >
                      {value ? (
                         <Image
                            className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
+                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
                            alt={String(value)}
                            height={50}
                            width={50}
@@ -54,19 +58,19 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             },
          },
          {
-            accessorKey: 'mobile2ndPreview',
+            accessorKey: 'mobile2ndImage',
             header: 'Mobile Pre 2st',
             cell: (info) => {
                const value = info.getValue()
                return (
                   <Link
                      target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
+                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
                   >
                      {value ? (
                         <Image
                            className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
+                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
                            alt={String(value)}
                            height={50}
                            width={50}
@@ -79,19 +83,19 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             },
          },
          {
-            accessorKey: 'desktopPreview',
+            accessorKey: 'desktopImage',
             header: 'Desktop Pre',
             cell: (info) => {
                const value = info.getValue()
                return (
                   <Link
                      target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
+                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
                   >
                      {value ? (
                         <Image
                            className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
+                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
                            alt={String(value)}
                            height={50}
                            width={50}
@@ -148,15 +152,20 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             },
          },
          {
-            accessorKey: 'name',
-            header: 'Name',
+            accessorKey: 'titleEn',
+            header: 'Title En',
             cell: (info) => {
                const value = info.getValue() as string
-               return (
-                  <Link href={`/--admin--/projects/${value.replaceAll(' ', '-')}`}>
-                     <span className='text-sm text-slate-500'>{value}</span>
-                  </Link>
-               )
+               return <span className='text-sm text-slate-500'>{value}</span>
+            },
+         },
+
+         {
+            accessorKey: 'titleFa',
+            header: 'Title Fa',
+            cell: (info) => {
+               const value = info.getValue() as string
+               return <span className='text-sm text-slate-500'>{value}</span>
             },
          },
          {

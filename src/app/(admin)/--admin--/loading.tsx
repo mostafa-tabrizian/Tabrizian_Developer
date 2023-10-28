@@ -2,7 +2,7 @@ const LoadingAdmin = () => {
    return (
       <div className='mx-auto grid h-screen items-center justify-center'>
          <svg
-            className='animate-spin-slow h-32 w-32 text-sky-400'
+            className='animate-spin-slow h-32 w-32 text-indigo-400'
             viewBox='0 0 24 24'
             fill='none'
             stroke='currentColor'

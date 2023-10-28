@@ -20,28 +20,30 @@ const ImageInput = memo(
       project: {
          _id: string
          gallery: string[]
-         frontSrc: string
-         backSrc: string
-         width: number
-         height: number
+         mobile1stImage: string
+         mobile2ndImage: string
+         desktopImage: string
       }
    }) => {
-      const [frontPreview, setFrontPreview] = useState<FileList | null>(null)
-      const [backPreview, setBackPreview] = useState<FileList | null>(null)
+      const [mobile1stImagePreview, setMobile1stImagePreview] = useState<FileList | null>(null)
+      const [mobile2stImagePreview, setMobile2ndImagePreview] = useState<FileList | null>(null)
+      const [desktopImagePreview, setDesktopImagePreview] = useState<FileList | null>(null)
       const [galleryPreview, setGalleryPreview] = useState<FileList | null>(null)
-      const [frontImageDimention, setFrontImageDimention] = useState([0, 0])
-      const [backImageDimention, setBackImageDimention] = useState([0, 0])
       const [loading, setLoading] = useState(false)
 
       const projectMemo = useMemo(() => project, [project])
 
-      const frontPrevMemo = useMemo(() => {
-         return frontPreview && Object.values(frontPreview)
-      }, [frontPreview])
+      const mobile1stPrevMemo = useMemo(() => {
+         return mobile1stImagePreview && Object.values(mobile1stImagePreview)
+      }, [mobile1stImagePreview])
 
-      const backPrevMemo = useMemo(() => {
-         return backPreview && Object.values(backPreview)
-      }, [backPreview])
+      const mobile2ndPrevMemo = useMemo(() => {
+         return mobile2stImagePreview && Object.values(mobile2stImagePreview)
+      }, [mobile2stImagePreview])
+
+      const desktopPrevMemo = useMemo(() => {
+         return desktopImagePreview && Object.values(desktopImagePreview)
+      }, [desktopImagePreview])
 
       const galleryPrevMemo = useMemo(() => {
          return galleryPreview && Object.values(galleryPreview)
@@ -53,7 +55,6 @@ const ImageInput = memo(
          const payload = {
             type,
             imageKey,
-            imageDimention: type == 'front' ? frontImageDimention : backImageDimention,
             _id: projectMemo._id,
          }
 
@@ -73,13 +74,10 @@ const ImageInput = memo(
             const toast = await import('react-toastify').then((mod) => mod.toast)
 
             if (String(err).includes('please upload front project first')) {
-               toast.warning('ابتدا تصویر جلو طرح را آپلود کنید')
-               console.warn(err)
-            } else if (String(err).includes('dimention not equal to front project')) {
-               toast.warning('ابعاد تصویر جلو طرح و پشت طرح یکسان نمی‌باشد')
+               toast.warning('First Upload Mobile 1st Image')
                console.warn(err)
             } else {
-               toast.error(`در آپلود تصویر ${imageName} به دیتابیس خطایی رخ داد!`)
+               toast.error(`There Was An Error In Uploading ${imageName} To The Database!`)
                console.error(err)
             }
             return false
@@ -87,15 +85,16 @@ const ImageInput = memo(
       }
 
       const successUpload = async (type: string, name: string) => {
-         if (type == 'front') setFrontPreview(null)
-         else if (type == 'back') setBackPreview(null)
+         if (type == 'mobile1st') setMobile1stImagePreview(null)
+         else if (type == 'mobile2nd') setMobile2ndImagePreview(null)
+         else if (type == 'desktop') setDesktopImagePreview(null)
          else if (type == 'gallery') setGalleryPreview(null)
 
          fetch('/api/--admin--/revalidate?path=/')
          fetch('/api/--admin--/revalidate?path=/search/[query]')
 
          const toast = await import('react-toastify').then((mod) => mod.toast)
-         toast.success(`تصویر ${name} با موفقیت آپلود شد.`)
+         toast.success(`Image ${name} has been uploaded successfully.`)
 
          router.refresh()
       }
@@ -103,20 +102,21 @@ const ImageInput = memo(
       const onSubmit = async () => {
          const toast = await import('react-toastify').then((mod) => mod.toast)
 
-         if (!frontPrevMemo && !backPrevMemo && !galleryPrevMemo) {
-            return toast.warning('هیچ تصویری برای آپلود انتخاب نشده است!')
+         if (!mobile1stPrevMemo && !mobile2ndPrevMemo && !desktopPrevMemo && !galleryPrevMemo) {
+            return toast.warning('No image selected for upload!')
          }
          if (!projectMemo._id) {
-            return toast.error('در تعیین طرح خطایی رخ داده است!')
+            return toast.error('An error has occurred in determining the project!')
          }
 
-         toast.info('در حال آپلود و ثبت اطلاعات تصویر...')
+         toast.info('Uploading and submitting image data...')
          setLoading(true)
 
          try {
             for (const imageData of [
-               { project: frontPrevMemo, type: 'front' },
-               { project: backPrevMemo, type: 'back' },
+               { project: mobile1stPrevMemo, type: 'mobile1st' },
+               { project: mobile2ndPrevMemo, type: 'mobile2nd' },
+               { project: desktopPrevMemo, type: 'desktop' },
                { project: galleryPrevMemo, type: 'gallery' },
             ]) {
                if (!imageData.project) continue
@@ -157,30 +157,12 @@ const ImageInput = memo(
             }
          } catch (err) {
             toast.error(
-               'در آپلود تصویر خطایی رخ داد. (اگر از VPN استفاده می‌کنید لطفا ابتدا آن را خاموش کنید)',
+               'An error occurred while uploading the images. (If you are using a VPN, please turn it off first)',
             )
             console.error(err)
          } finally {
             setLoading(false)
          }
-      }
-
-      const dimentionCalculate = (file: File, type: string) => {
-         const reader = new FileReader()
-
-         reader.onload = (e) => {
-            const img = new Image()
-            // @ts-ignore
-            img.src = e.target.result as string
-
-            img.onload = () => {
-               const dimention = [img.width, img.height]
-               if (type == 'front') setFrontImageDimention(dimention)
-               else if (type == 'back') setBackImageDimention(dimention)
-            }
-         }
-
-         reader.readAsDataURL(file)
       }
 
       const onFileSelected = async (files: FileList | null, type: string) => {
@@ -200,12 +182,12 @@ const ImageInput = memo(
          const sizeCheckRes = filesSizeValidation(filesList)
          if (!sizeCheckRes) return
 
-         dimentionCalculate(filesList[0], type)
-
-         if (type == 'front') {
-            setFrontPreview(files)
-         } else if (type == 'back') {
-            setBackPreview(files)
+         if (type == 'mobile1st') {
+            setMobile1stImagePreview(files)
+         } else if (type == 'mobile2nd') {
+            setMobile2ndImagePreview(files)
+         } else if (type == 'desktop') {
+            setDesktopImagePreview(files)
          } else if (type == 'gallery') setGalleryPreview(files)
       }
 
@@ -216,26 +198,22 @@ const ImageInput = memo(
          const files = event.dataTransfer.files
          const toast = await import('react-toastify').then((mod) => mod.toast)
 
-         if (!files) return toast.warning('در دریافت فایل ها خطایی رخ داد')
+         if (!files) return toast.warning('An error occurred while receiving the files')
          else if (files.length !== 1 && type !== 'gallery') {
-            return toast.warning(
-               'تعداد تصاویر انتخاب شده بیشتر از یک عدد می‌باشد. تصویر طرح می‌بایست یک عدد باشد',
-            )
+            return toast.warning('Selected files are more than 1 image')
          }
 
          onFileSelected(files, type)
       }
 
       return (
-         <div className='space-y-4 text-right'>
+         <div className='space-y-4 '>
             <FrontImageInput
                project={{
-                  frontSrc: projectMemo.frontSrc,
+                  mobile1stImage: projectMemo.mobile1stImage,
                   _id: projectMemo._id,
-                  width: projectMemo.width,
-                  height: projectMemo.height,
                }}
-               frontPrevMemo={frontPrevMemo}
+               mobile1stPrevMemo={mobile1stPrevMemo}
                dragOverHandler={dragOverHandler}
                dropHandlerDesign={dropHandlerDesign}
                onFileSelected={onFileSelected}
@@ -245,43 +223,43 @@ const ImageInput = memo(
             <hr />
 
             <div className='space-y-3'>
-               {projectMemo.backSrc ? (
+               {projectMemo.mobile2ndImage ? (
                   <div>
-                     <span className='verdana text-slate-400'>تصویر پشت طرح</span>
+                     <span className='verdana text-slate-400'>Mobile 2nd Image</span>
 
                      <div className='relative'>
                         <Link
                            target='_blank'
-                           href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${projectMemo.backSrc}`}
+                           href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${projectMemo.mobile2ndImage}`}
                         >
                            <div className='mx-auto flex justify-center'>
                               <NextImage
                                  className='rounded-lg p-1'
-                                 src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${projectMemo.backSrc}`}
+                                 src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${projectMemo.mobile2ndImage}`}
                                  alt={projectMemo._id}
-                                 width={projectMemo.width}
-                                 height={projectMemo.height}
+                                 width={600}
+                                 height={900}
                                  loading='lazy'
                               />
                            </div>
                         </Link>
 
                         <ImageDelete
-                           type='back'
+                           type='mobile2nd'
                            project={projectMemo._id}
-                           imageKey={projectMemo.backSrc}
+                           imageKey={projectMemo.mobile2ndImage}
                         />
                      </div>
                   </div>
                ) : (
                   <>
-                     {backPrevMemo?.length ? (
+                     {mobile2ndPrevMemo?.length ? (
                         <div>
                            <span className='verdana text-slate-400'>
-                              پیش نمایش تصویر پشت برای آپلود
+                              Mobile 2nd Image (Preview)
                            </span>
 
-                           {backPrevMemo.map((imageData: File) => {
+                           {mobile2ndPrevMemo.map((imageData: File) => {
                               return (
                                  <NextImage
                                     key={imageData.name}
@@ -301,9 +279,9 @@ const ImageInput = memo(
                      )}
 
                      <div
-                        onDrop={(e) => dropHandlerDesign(e, 'back')}
+                        onDrop={(e) => dropHandlerDesign(e, 'mobile2nd')}
                         onDragOver={dragOverHandler}
-                        className='w-full rounded-lg border-2 border-slate-200 bg-slate-100 text-sm'
+                        className='w-full rounded-lg border-2 border-slate-200 bg-slate-100'
                      >
                         <Button
                            type='button'
@@ -311,13 +289,13 @@ const ImageInput = memo(
                            component='label'
                            sx={{ width: '100%', padding: '.5rem' }}
                         >
-                           <span className='verdana text-sm'>انتخاب پشت طرح</span>
+                           <span className='verdana text-sm'>Choose Mobile 2nd Image</span>
                            <input
                               hidden
                               accept='image/*'
                               type='file'
-                              name='backPreview'
-                              onChange={(e) => onFileSelected(e?.target?.files, 'back')}
+                              name='mobile2stImagePreview'
+                              onChange={(e) => onFileSelected(e?.target?.files, 'mobile2nd')}
                               disabled={loading}
                            />
                         </Button>
@@ -331,8 +309,6 @@ const ImageInput = memo(
                   project={{
                      gallery: projectMemo.gallery,
                      _id: projectMemo._id,
-                     width: projectMemo.width,
-                     height: projectMemo.height,
                   }}
                   galleryPrevMemo={galleryPrevMemo}
                   dragOverHandler={dragOverHandler}
@@ -350,7 +326,7 @@ const ImageInput = memo(
                      </div>
                   ) : (
                      <button
-                        className='flex gap-5'
+                        className='flex gap-5 py-2 text-blue-500'
                         disabled={loading}
                         onClick={() => onSubmit()}
                         type='button'
@@ -372,27 +348,9 @@ const ImageInput = memo(
                            <polyline points='9 15 12 12 15 15' />{' '}
                            <line x1='12' y1='12' x2='12' y2='21' />
                         </svg>
-                        <span className='verdana text-sm'>آپلود تصاویر</span>
+                        <span className='verdana text-sm'>Upload Images</span>
                      </button>
                   )}
-               </div>
-
-               <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-                  <span className='verdana text-xs text-green-600/70'>
-                     تصویر کم حجم تر برابر با <br /> امکان ذخیره سازی تصاویر بیشتر
-                  </span>
-               </div>
-
-               <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-                  <span className='verdana text-xs text-green-600/70'>
-                     حجم ایده آل تا ۱۵۰ کیلوبایت می‌باشد
-                  </span>
-               </div>
-
-               <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-                  <span className='verdana text-xs text-green-600/70'>
-                     حجم عکس تاثیر قابل توجهی بر کاربر نمی‌گذارد
-                  </span>
                </div>
             </div>
          </div>

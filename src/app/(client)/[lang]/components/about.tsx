@@ -9,7 +9,7 @@ const About = () => {
          <div className='space-y-10'>
             <div className='space-y-5'>
                <div className='space-y-3'>
-                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
                      Hello there ! <span style={{ color: 'initial' }}>🖐🏻</span>
                   </h2>
                   <p className='verdana'>
@@ -20,7 +20,7 @@ const About = () => {
                </div>
 
                <div className='space-y-3'>
-                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
                      What I Use
                   </h2>
                   <p className='verdana'>
@@ -32,7 +32,7 @@ const About = () => {
                </div>
 
                <div className='space-y-3'>
-                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
                      My Aim
                   </h2>
                   <p className='verdana'>
@@ -46,7 +46,7 @@ const About = () => {
                </div>
 
                <div className='space-y-3'>
-                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
                      Me & You
                   </h2>
                   <p className='verdana'>
@@ -61,7 +61,7 @@ const About = () => {
                </div>
 
                <div className='space-y-3'>
-                  <h2 className='Audiowide w-fit bg-gradient-to-br from-sky-200 to-indigo-400 bg-clip-text text-transparent'>
+                  <h2 className='Audiowide w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
                      What You Waiting?
                   </h2>
                   <p className='verdana'>
@@ -123,7 +123,7 @@ const About = () => {
                width={131}
                height={137}
                alt='about react'
-               className='animate-wave absolute -bottom-14 right-6 border-2 border-sky-400 bg-gradient-to-t from-black to-blue-900 p-2'
+               className='animate-wave absolute -bottom-14 right-6 border-2 border-indigo-400 bg-gradient-to-t from-black to-blue-900 p-2'
                style={{
                   borderRadius: '33px',
                   boxShadow: '0px 4px 63px -14px #74DFFC',
@@ -136,7 +136,7 @@ const About = () => {
                width={105}
                height={105}
                alt='about tailwind'
-               className='animate-wave absolute -bottom-40 right-1/2 border-2 border-sky-400'
+               className='animate-wave absolute -bottom-40 right-1/2 border-2 border-indigo-400'
                style={{
                   borderRadius: '30px',
                   boxShadow: '0px 4px 63px -14px #16BECB',

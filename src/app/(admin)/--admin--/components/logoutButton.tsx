@@ -21,7 +21,7 @@ const LogoutButton = () => {
             </div>
          ) : (
             <button disabled={loading} onClick={handleLogout}>
-               <div className='flex items-center justify-end space-x-3'>
+               <div className='flex items-center  space-x-3'>
                   <svg
                      className='h-7 w-7 text-rose-600'
                      width='24'

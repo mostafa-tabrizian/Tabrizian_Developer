@@ -1,21 +1,21 @@
 .MuiFormLabel-root,
 .MuiMenuItem-root,
 .MuiAutocomplete-option {
-   font-family: YekanBakhRegular, sans-serif !important;
+   font-family: Verdana, sans-serif !important;
 }
 
 .MuiInputBase-root {
    font-size: 0.9rem;
-   font-family: YekanBakhRegular, sans-serif !important;
+   font-family: Verdana, sans-serif !important;
 }
 
 .MuiTooltip-tooltip {
-   font-family: YekanBakhRegular, sans-serif !important;
+   font-family: Verdana, sans-serif !important;
    background: rgb(44, 47, 79);
 }
 
 .MuiButton-contained {
-   font-family: YekanBakhRegular, sans-serif !important;
+   font-family: Verdana, sans-serif !important;
    background: #0084ff !important;
    font-weight: 600 !important;
    box-shadow: 0 5px 10px #708dff9c !important;
@@ -26,7 +26,7 @@
 }
 
 .MuiButton-outlined {
-   font-family: YekanBakhRegular, sans-serif !important;
+   font-family: Verdana, sans-serif !important;
    border: 2px solid #708dff9c;
    font-weight: 600 !important;
 
@@ -48,7 +48,7 @@
 
 .MuiFormControlLabel-label,
 .MuiSlider-markLabel {
-   font-family: YekanBakhRegular, sans-serif !important;
+   font-family: Verdana, sans-serif !important;
    font-size: 14px;
    color: rgb(100 116 139);
 }
@@ -101,7 +101,7 @@
 .MuiDataGrid-columnHeaderTitle,
 .MuiDataGrid-cellContent,
 .MuiDataGrid-cell--withRenderer {
-   font-family: YekanBakhRegular, sans-serif;
+   font-family: Verdana, sans-serif;
    font-size: 0.8rem;
    color: rgb(43, 45, 83);
 }
@@ -110,4 +110,8 @@
    background-color: #2d364b;
    box-shadow: rgb(47, 43, 116) 0px 0px 5px;
    color: white;
+}
+
+.MuiBreadcrumbs-separator {
+   color: rgb(13, 71, 125);
 }

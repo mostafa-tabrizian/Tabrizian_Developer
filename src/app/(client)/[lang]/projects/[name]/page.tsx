@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import Detail from './components/detail'
 import MobilePreview from './components/mobilePreview'
-const DesktopPreview = dynamic(() => import('./components/desktopPreview'), { ssr: false })
+const desktopImage = dynamic(() => import('./components/desktopImage'), { ssr: false })
 import PreviewControl from './components/previewControl'
 import Spotlight from './components/spotlight'
 
@@ -25,7 +25,7 @@ const ProjectDetail = ({ params: { name, lang } }: { params: { name: string; lan
 
                <div className='order-1 mt-20 grid items-center justify-center lg:order-2 lg:mt-0'>
                   <MobilePreview />
-                  {/* <DesktopPreview /> */}
+                  {/* <desktopImage /> */}
 
                   <PreviewControl />
                </div>

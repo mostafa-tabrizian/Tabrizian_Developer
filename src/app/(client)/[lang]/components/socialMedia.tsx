@@ -14,7 +14,7 @@ const SocialMedia = () => {
             >
                <div className='rounded-xl bg-gradient-to-t from-black to-black/40 p-2'>
                   <svg
-                     className='h-8 w-8 text-sky-200'
+                     className='h-8 w-8 text-indigo-200'
                      viewBox='0 0 24 24'
                      fill='none'
                      stroke='currentColor'
@@ -39,7 +39,7 @@ const SocialMedia = () => {
             >
                <div className='rounded-xl bg-gradient-to-t from-black to-black/40 p-2'>
                   <svg
-                     className='h-8 w-8 text-sky-200'
+                     className='h-8 w-8 text-indigo-200'
                      width='24'
                      height='24'
                      viewBox='0 0 24 24'
@@ -65,7 +65,7 @@ const SocialMedia = () => {
             >
                <div className='rounded-xl bg-gradient-to-t from-black to-black/40 p-2'>
                   <svg
-                     className='h-8 w-8 text-sky-200'
+                     className='h-8 w-8 text-indigo-200'
                      viewBox='0 0 24 24'
                      fill='none'
                      stroke='currentColor'

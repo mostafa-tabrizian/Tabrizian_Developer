@@ -7,7 +7,7 @@ const Button = dynamic(() => import('@mui/material/Button'), { ssr: false })
 
 const GalleryInput = memo(
    ({
-      project: { gallery, _id, width, height },
+      project: { gallery, _id },
       galleryPrevMemo,
       dragOverHandler,
       dropHandlerDesign,
@@ -17,8 +17,6 @@ const GalleryInput = memo(
       project: {
          gallery: string[]
          _id: string
-         width: number
-         height: number
       }
       galleryPrevMemo: File[] | null
       dragOverHandler: (event: React.DragEvent<HTMLDivElement>) => void
@@ -29,21 +27,25 @@ const GalleryInput = memo(
       return (
          <>
             <div>
-               {gallery.length ? <span className='verdana text-slate-400'>تصاویر گالری</span> : ''}
+               {gallery.length ? (
+                  <span className='verdana text-slate-400'>Gallery Images</span>
+               ) : (
+                  ''
+               )}
                {gallery.map((image: string, idx: number) => {
                   return (
                      <div key={idx} className='relative'>
                         <Link
                            target='_blank'
-                           href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${image}`}
+                           href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${image}`}
                         >
                            <div className='mx-auto flex justify-center'>
                               <Image
                                  className='rounded-lg p-1'
-                                 src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${image}`}
+                                 src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${image}`}
                                  alt={_id}
-                                 width={width}
-                                 height={height}
+                                 width={900}
+                                 height={600}
                                  loading='lazy'
                               />
                            </div>
@@ -57,7 +59,7 @@ const GalleryInput = memo(
 
             {galleryPrevMemo?.length ? (
                <div>
-                  <span className='verdana text-slate-400'>پیش نمایش تصاویر گالری برای آپلود</span>
+                  <span className='verdana text-slate-400'>Gallery Images (Preview)</span>
                   <div className='space-y-3'>
                      {galleryPrevMemo.map((imageData: File) => {
                         return (
@@ -86,7 +88,7 @@ const GalleryInput = memo(
             >
                {/* @ts-ignore */}
                <Button type='button' component='label' sx={{ width: '100%', padding: '.5rem' }}>
-                  <span className='verdana text-sm'>انتخاب تصاویر گالری</span>
+                  <span className='verdana text-sm'>Choose Gallery Image/s</span>
                   <input
                      hidden
                      accept='image/*'

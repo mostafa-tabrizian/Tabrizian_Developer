@@ -87,7 +87,7 @@ export const metadata = {
 //    ],
 // }
 
-async function Home({ params: { lang } }) {
+async function Home({ params: { lang } }: { params: { lang: string } }) {
    // const remaining = await limiter.removeTokens(3)
 
    // if (remaining < 0) {

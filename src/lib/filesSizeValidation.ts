@@ -16,7 +16,7 @@ const filesSizeValidation = (files: File[]) => {
 
    if (invalidFile) {
       toast.warning(
-         `سایز فایل ${invalidFile.name} برابر با ${invalidFile.size} کیلوبایت می‌باشد. حداکثر هر فایل می‌بایست 1000 کیلوبایت معادل 1 مگابایت باشد`,
+         `File size of ${invalidFile.name} is equal to ${invalidFile.size}KB, file size limit is 1000KB`,
       )
       return false
    } else return true

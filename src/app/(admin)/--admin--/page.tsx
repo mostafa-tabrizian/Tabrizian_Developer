@@ -50,7 +50,7 @@ const AdminPanel = async () => {
 
             {/* <div className='bg-white rounded-lg py-2 px-2 hover:shadow-lg hover:shadow-indigo-100 transition-all hover:border-indigo-600'>
                   <Link href='/--admin--/statistic'>
-                     <div className='flex justify-end space-x-3 items-center'>
+                     <div className='flex  space-x-3 items-center'>
                         <span className='text-base text-black'>آمار</span>
                         <svg
                            className='h-6 w-6 text-black'

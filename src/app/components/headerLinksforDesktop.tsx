@@ -20,7 +20,7 @@ const HeaderLinksforDesktop = () => {
             <div className='text-gray-700'>
                <Link href='/'>
                   <div className='relative flex'>
-                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-indigo-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
                         Home
                      </span>
                   </div>
@@ -32,7 +32,7 @@ const HeaderLinksforDesktop = () => {
             <div className='text-gray-700'>
                <Link href='/projects'>
                   <div className='relative flex'>
-                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-indigo-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
                         Projects
                      </span>
                   </div>
@@ -46,7 +46,7 @@ const HeaderLinksforDesktop = () => {
                   onClick={(e) => setContactUsOptions(e.currentTarget)}
                   className='relative flex'
                >
-                  <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                  <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-indigo-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
                      Contact
                   </span>
                </button>
@@ -112,7 +112,7 @@ const HeaderLinksforDesktop = () => {
             <div className='text-gray-700'>
                <a id='about_us' href='#about-us'>
                   <div className='relative flex'>
-                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
+                     <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-indigo-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
                         About Me
                      </span>
                   </div>

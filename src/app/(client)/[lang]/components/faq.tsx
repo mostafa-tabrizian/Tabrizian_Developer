@@ -60,7 +60,7 @@ const FAQ = () => {
                      &quot;What services do you offer as a freelance web developer?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q1 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -95,7 +95,7 @@ const FAQ = () => {
                      &quot;What technologies and programming languages are you proficient in?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q2 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -135,7 +135,7 @@ const FAQ = () => {
                      &quot;Can you provide examples of your previous work or portfolio?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q3 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -169,7 +169,7 @@ const FAQ = () => {
                      &quot;What is your development process like?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q4 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -205,7 +205,7 @@ const FAQ = () => {
                      &quot;How long does it take to complete a typical project?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q5 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -240,7 +240,7 @@ const FAQ = () => {
                      &quot;How do you handle project revisions or changes during development?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q6 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -275,7 +275,7 @@ const FAQ = () => {
                      &quot;What is your pricing structure?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q7 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -311,7 +311,7 @@ const FAQ = () => {
                      completion?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q8 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -347,7 +347,7 @@ const FAQ = () => {
                      engines?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q9 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'
@@ -382,7 +382,7 @@ const FAQ = () => {
                      &quot;How can I get in touch with you to discuss my project?&quot;
                   </span>
                   <svg
-                     className={`absolute right-0 h-5 w-5 text-sky-300 transition-transform ${
+                     className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
                         q10 ? 'rotate-45' : 'rotate-0'
                      }`}
                      fill='none'

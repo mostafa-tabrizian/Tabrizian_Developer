@@ -19,11 +19,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
-            rtl
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme='light'
+            theme='dark'
          />
 
          <Header />

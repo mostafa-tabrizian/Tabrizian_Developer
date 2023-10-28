@@ -14,8 +14,8 @@ async function getAllPages() {
 export default async function sitemap() {
    const { projectData } = await getAllPages()
 
-   const projects = projectData.map(({ name, slug, updatedAt }) => ({
-      url: `${URL}/projects/${hyphen(slug)}?name=${name}`,
+   const projects = projectData.map(({ titleEn, slug, updatedAt }) => ({
+      url: `${URL}/projects/${hyphen(slug)}?title=${titleEn}`,
       lastModified: updatedAt,
    }))
 

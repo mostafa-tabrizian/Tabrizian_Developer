@@ -4,26 +4,20 @@ import dbConnect from '@/lib/dbConnect'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 import Project from '@/models/project'
 import Detailproject from '../components/detailForm'
-import dehyphen from '@/lib/dehyphen'
 
 export const metadata = {
-   title: 'مصطفی تبریزیان | ادمین | طرح',
+   title: 'Admin Panel | Project',
 }
 
-const projectPage = async ({ params: { name } }: { params: { name: string } }) => {
-   const addingNewproject = name === 'new'
+const projectPage = async ({ params: { id } }: { params: { id: string } }) => {
+   const addingNewproject = id === 'new'
 
    try {
       let project = null
 
       if (!addingNewproject) {
          await dbConnect()
-         const projectData = await Project.aggregate([
-            { $match: { name: dehyphen(decodeURI(name)) } },
-            { $limit: 1 },
-         ])
-
-         project = projectData[0]
+         project = await Project.findById(id)
       }
 
       return (
@@ -32,25 +26,25 @@ const projectPage = async ({ params: { name } }: { params: { name: string } }) =
                {addingNewproject || project ? (
                   <>
                      <Breadcrumbs aria-label='breadcrumb'>
-                        <Link className='text-gray-400' href='/'>
-                           صفحه اصلی
+                        <Link className='text-gray-600' href='/'>
+                           Home
                         </Link>
-                        <Link className='text-gray-400' href='/--admin--'>
-                           ادمین
+                        <Link className='text-gray-600' href='/--admin--'>
+                           Admin
                         </Link>
-                        <Link className='text-gray-400' href='/--admin--/projects'>
-                           طرح ها
+                        <Link className='text-gray-600' href='/--admin--/projects'>
+                           Projects
                         </Link>
-                        <h5 className='rtl font-semibold'>
-                           {addingNewproject ? 'افزودن طرح جدید' : project.name}
+                        <h5 className='text-gray-400'>
+                           {addingNewproject ? 'Adding New Project' : project.titleEn}
                         </h5>
                      </Breadcrumbs>
 
-                     <div className='mx-auto max-w-xl'>
+                     <div className='mx-auto max-w-screen-md'>
                         <Link href='/--admin--/projects/new'>
-                           <button className='fixed bottom-10 right-5 z-10 rounded-full border-2 border-sky-500 bg-white p-3'>
+                           <button className='fixed bottom-10 right-5 z-10 rounded-full border-2 border-indigo-500 bg-white p-3'>
                               <svg
-                                 className='h-6 w-6 text-sky-500'
+                                 className='h-6 w-6 text-indigo-500'
                                  fill='none'
                                  viewBox='0 0 24 24'
                                  stroke='currentColor'
@@ -72,7 +66,7 @@ const projectPage = async ({ params: { name } }: { params: { name: string } }) =
                      </div>
                   </>
                ) : (
-                  <h1>آیتم پیدا نشد!</h1>
+                  <h1>Item Not Found!</h1>
                )}
             </div>
          </div>

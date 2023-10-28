@@ -18,17 +18,20 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: Request) {
    const {
-      name,
+      titleEn,
+      titleFa,
       active,
    }: {
-      name: string
+      titleEn: string
+      titleFa: string
       active: boolean
    } = await request.json()
 
    try {
       await dbConnect()
       const project = await Project.create({
-         name,
+         titleEn,
+         titleFa,
          gallery: [],
          active: active,
       })
@@ -42,11 +45,13 @@ export async function POST(request: Request) {
 export async function PATCH(request: Request) {
    const {
       _id,
-      name,
+      titleEn,
+      titleFa,
       active,
    }: {
       _id: string
-      name: string
+      titleEn: string
+      titleFa: string
       active: boolean
    } = await request.json()
 
@@ -57,7 +62,8 @@ export async function PATCH(request: Request) {
             _id: _id,
          },
          {
-            name,
+            titleEn,
+            titleFa,
             active: active,
          },
       )

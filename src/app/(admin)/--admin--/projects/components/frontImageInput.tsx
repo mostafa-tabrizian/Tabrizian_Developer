@@ -7,20 +7,18 @@ const Button = dynamic(() => import('@mui/material/Button'), { ssr: false })
 
 const FrontImageInput = memo(
    ({
-      project: { frontSrc, _id, width, height },
-      frontPrevMemo,
+      project: { mobile1stImage, _id },
+      mobile1stPrevMemo,
       dragOverHandler,
       dropHandlerDesign,
       onFileSelected,
       loading,
    }: {
       project: {
-         frontSrc: string
+         mobile1stImage: string
          _id: string
-         width: number
-         height: number
       }
-      frontPrevMemo: File[] | null
+      mobile1stPrevMemo: File[] | null
       dragOverHandler: (event: React.DragEvent<HTMLDivElement>) => void
       dropHandlerDesign: (event: React.DragEvent<HTMLDivElement>, type: string) => void
       onFileSelected: (files: FileList | null, type: string) => void
@@ -28,37 +26,37 @@ const FrontImageInput = memo(
    }) => {
       return (
          <div className='space-y-6'>
-            {frontSrc ? (
+            {mobile1stImage ? (
                <div>
-                  <span className='verdana text-slate-400'>تصویر جلو طرح</span>
+                  <span className='verdana text-slate-400'>Mobile 1st Image</span>
 
                   <div className='relative'>
                      <Link
                         target='_blank'
-                        href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${frontSrc}`}
+                        href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${mobile1stImage}`}
                      >
                         <div className='mx-auto flex justify-center'>
                            <Image
                               className='rounded-lg p-1'
-                              src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${frontSrc}`}
+                              src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${mobile1stImage}`}
                               alt={_id}
-                              width={width}
-                              height={height}
+                              width={600}
+                              height={900}
                               loading='lazy'
                            />
                         </div>
                      </Link>
 
-                     <ImageDelete type='front' project={_id} imageKey={frontSrc} />
+                     <ImageDelete type='mobile1st' project={_id} imageKey={mobile1stImage} />
                   </div>
                </div>
             ) : (
                <>
-                  {frontPrevMemo?.length ? (
+                  {mobile1stPrevMemo?.length ? (
                      <div>
-                        <span className='verdana text-slate-400'>پیش نمایش تصویر جلو برای آپلود</span>
+                        <span className='verdana text-slate-400'>Mobile 1st Image (Preview)</span>
 
-                        {frontPrevMemo.map((imageData: File) => {
+                        {mobile1stPrevMemo.map((imageData: File) => {
                            return (
                               <Image
                                  key={imageData.name}
@@ -78,7 +76,7 @@ const FrontImageInput = memo(
                   )}
 
                   <div
-                     onDrop={(e) => dropHandlerDesign(e, 'front')}
+                     onDrop={(e) => dropHandlerDesign(e, 'mobile1st')}
                      onDragOver={dragOverHandler}
                      className='w-full rounded-lg border-2 border-slate-200 bg-slate-100 text-sm'
                   >
@@ -88,13 +86,13 @@ const FrontImageInput = memo(
                         component='label'
                         sx={{ width: '100%', padding: '.5rem' }}
                      >
-                        <span className='verdana text-sm'>انتخاب جلو طرح</span>
+                        <span className='verdana text-sm'>Choose Mobile 1st Image</span>
                         <input
                            hidden
                            accept='image/*'
                            type='file'
                            name='frontPreview'
-                           onChange={(e) => onFileSelected(e?.target?.files, 'front')}
+                           onChange={(e) => onFileSelected(e?.target?.files, 'mobile1st')}
                            disabled={loading}
                         />
                      </Button>

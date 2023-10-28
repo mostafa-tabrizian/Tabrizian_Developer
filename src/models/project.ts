@@ -3,10 +3,10 @@ import mongoose from 'mongoose'
 export interface IProject {
    active: boolean
    _id: string
-   nameEn: string
-   nameFa: string
-   mobile1stPreview: string
-   mobile2ndPreview: string
+   titleEn: string
+   titleFa: string
+   mobile1stImage: string
+   mobile2ndImage: string
    desktopPreview: string
    gallery: [string]
    createdAt: Date
@@ -22,10 +22,10 @@ const projectSchema = new mongoose.Schema({
       type: Boolean,
       default: true,
    },
-   nameEn: String,
-   nameFa: String,
-   mobile1stPreview: String,
-   mobile2ndPreview: String,
+   titleEn: String,
+   titleFa: String,
+   mobile1stImage: String,
+   mobile2ndImage: String,
    desktopPreview: String,
    gallery: [String],
    clientEn: String,
@@ -36,6 +36,6 @@ const projectSchema = new mongoose.Schema({
 
 projectSchema.set('timestamps', true)
 
-projectSchema.index({ name: 'text' })
+projectSchema.index({ titleEn: 'text', titleFa: 'text' })
 
 export default mongoose.models.project || mongoose.model('project', projectSchema)

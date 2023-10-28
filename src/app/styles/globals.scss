@@ -59,7 +59,7 @@ body {
 a {
    text-decoration: none;
    font-size: 1.325rem;
-   font-family: YekanBakhBold, sans-serif;
+   font-family: verdana, sans-serif;
 }
 
 h1 {
@@ -75,18 +75,18 @@ h2 {
 h3 {
    font-size: 1.325rem;
    font-weight: bold;
-   font-family: YekanBakhBold, sans-serif;
+   font-family: verdana, sans-serif;
 }
 
 h4 {
    font-size: 1.325rem;
-   font-family: YekanBakhBold, sans-serif;
+   font-family: verdana, sans-serif;
 }
 
 h5 {
    font-size: 1.325rem;
    letter-spacing: -1px;
-   font-family: YekanBakhBold, sans-serif;
+   font-family: verdana, sans-serif;
 }
 
 button {
@@ -111,8 +111,10 @@ li {
 input,
 textarea {
    font-size: 0.75rem;
-   font-family: YekanBakhBold, sans-serif;
-   background: #bbd2df;
+   font-family: verdana, sans-serif !important;
+   background: #345467 !important;
+   color: white;
+   border: 0 !important;
 }
 
 label {
@@ -148,7 +150,7 @@ strong {
 }
 
 .yekanBold {
-   font-family: YekanBakhBold, sans-serif;
+   font-family: verdana, sans-serif;
 }
 
 .Audiowide {
@@ -242,7 +244,7 @@ strong {
    border-radius: 15px !important;
 
    &-body {
-      font-size: 1.325rem;
+      font-size: 1.125rem;
       font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
    }
 }

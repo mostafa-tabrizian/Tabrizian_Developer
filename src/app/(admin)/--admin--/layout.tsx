@@ -21,11 +21,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
-            rtl
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme='light'
+            theme='dark'
          />
          <main className='mx-auto mb-24 max-w-screen-lg overflow-x-hidden'>{children}</main>
       </>

@@ -192,7 +192,7 @@ const Sidebar = () => {
                                        href='https://eitaa.com/aliasadi_graphics'
                                        target='_blank'
                                     >
-                                       {/* <span className='bg-gradient-to-br from-sky-500 via-rose-500 to-yellow-500 rounded-md'> */}
+                                       {/* <span className='bg-gradient-to-br from-indigo-500 via-rose-500 to-yellow-500 rounded-md'> */}
                                        <span>
                                           <svg
                                              className='h-5 w-5 text-slate-700'
@@ -219,7 +219,7 @@ const Sidebar = () => {
                                        href='https://www.instagram.com/aliasadi_graphics'
                                        target='_blank'
                                     >
-                                       {/* <span className='bg-gradient-to-br from-sky-500 via-rose-500 to-yellow-500 rounded-md'> */}
+                                       {/* <span className='bg-gradient-to-br from-indigo-500 via-rose-500 to-yellow-500 rounded-md'> */}
                                        <span>
                                           <svg
                                              className='h-5 w-5 text-slate-700'
@@ -256,7 +256,7 @@ const Sidebar = () => {
                                        href='https://t.me/aliasadi_graphics'
                                        target='_blank'
                                     >
-                                       {/* <span className='bg-sky-500 rounded-md'> */}
+                                       {/* <span className='bg-indigo-500 rounded-md'> */}
                                        <span>
                                           <svg
                                              className='h-5 w-5 text-slate-700'

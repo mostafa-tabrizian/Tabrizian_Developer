@@ -28,11 +28,11 @@ const ImageDelete = ({
       setConfirmation(false)
 
       if (!imageKey) {
-         return toast.warning('در حذف تصویر خطایی رخ داده است!')
+         return toast.warning('An error occurred while deleting the image!')
       }
 
       if (!project) {
-         return toast.error('در تعیین طرح خطایی رخ داده است!')
+         return toast.error('Project not correctly selected!')
       }
 
       setLoading(true)
@@ -45,7 +45,7 @@ const ImageDelete = ({
          return await removeFromDb()
       } catch (error) {
          toast.error(
-            'در آپلود تصویر خطایی رخ داد. (اگر از VPN استفاده می‌کنید لطفا ابتدا آن را خاموش کنید)',
+            'An error occureed while uploading the image. If VPN is on, please turn it off',
          )
          return console.error(error)
       } finally {
@@ -68,20 +68,20 @@ const ImageDelete = ({
 
          if (!res.ok) throw new Error()
 
-         toast.success('تصویر با موفقیت حذف شد.')
+         toast.success('Image deleted successfully.')
 
          fetch('/api/--admin--/revalidate?path=/')
 
          router.refresh()
       } catch (err) {
-         toast.error('در حذف تصویر خطایی رخ داد!')
+         toast.error('An error occurred while deleting the image!')
          console.error(err)
       }
    }
 
    return (
       <>
-         <div className='absolute -left-5 top-0 flex items-center justify-end space-x-3'>
+         <div className='absolute -left-5 top-0 flex items-center  space-x-3'>
             {loading ? (
                <div className='py-2'>
                   <CircularProgress color='success' size={15} />
@@ -122,22 +122,23 @@ const ImageDelete = ({
                   <circle cx='12' cy='12' r='10' /> <line x1='15' y1='9' x2='9' y2='15' />{' '}
                   <line x1='9' y1='9' x2='15' y2='15' />
                </svg>
-               <h1>آیا مطمئن هستید؟</h1>
+               <h1>Are You Sure?</h1>
                <span className='font-semibold'>
-                  .پس از حذف هیچ راه بازگرداندی وجود ندارد <br /> آیا از حذف کردن خود مطمئن هستید؟
+                  After deleting the image, there is way for recovery <br /> Are you sure about
+                  deleting the image?
                </span>
                <div className='flex justify-around space-x-5'>
                   <button
                      onClick={() => setConfirmation(false)}
                      className='w-full rounded bg-slate-300 py-1'
                   >
-                     لغو
+                     Cancel
                   </button>
                   <button
                      onClick={handleDelete}
                      className='w-full rounded bg-rose-500 py-1 text-white'
                   >
-                     حذف
+                     Delete
                   </button>
                </div>
             </div>

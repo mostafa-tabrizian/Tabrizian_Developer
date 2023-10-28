@@ -11,30 +11,37 @@ interface BodyType {
 }
 
 export async function POST(req: Request) {
-   const { type, imageKey, imageDimention, _id }: BodyType = await req.json()
+   const { type, imageKey, _id }: BodyType = await req.json()
 
    await dbConnect()
 
    let res
 
-   if (type == 'front') {
+   if (type == 'mobile1st') {
       res = await Project.findOneAndUpdate(
          {
             _id: _id,
          },
          {
-            frontSrc: imageKey,
-            width: imageDimention[0],
-            height: imageDimention[1],
+            mobile1stImage: imageKey
          },
       ).exec()
-   } else if (type == 'back') {
+   } else if (type == 'mobile2nd') {
       res = await Project.findOneAndUpdate(
          {
             _id: _id,
          },
          {
-            backSrc: imageKey,
+            mobile2ndImage: imageKey,
+         },
+      ).exec()
+   } else if (type == 'desktop') {
+      res = await Project.findOneAndUpdate(
+         {
+            _id: _id,
+         },
+         {
+            desktopImage: imageKey,
          },
       ).exec()
    } else if (type == 'gallery') {
@@ -53,22 +60,31 @@ export async function DELETE(req: Request) {
 
    let res
 
-   if (type == 'front') {
+   if (type == 'mobile1st') {
       res = await Project.findOneAndUpdate(
          {
             _id: _id,
          },
          {
-            frontSrc: '',
+            mobile1stImage: '',
          },
       ).exec()
-   } else if (type == 'back') {
+   } else if (type == 'mobile2nd') {
       res = await Project.findOneAndUpdate(
          {
             _id: _id,
          },
          {
-            backSrc: '',
+            mobile2ndImage: '',
+         },
+      ).exec()
+   } else if (type == 'desktop') {
+      res = await Project.findOneAndUpdate(
+         {
+            _id: _id,
+         },
+         {
+            desktopImage: '',
          },
       ).exec()
    } else if (type == 'gallery') {

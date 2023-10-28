@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
    const uniqueId = Math.random().toString(36).substring(2, 7)
    const imageKey = `${uniqueId}-${imageName}`
-   const Key = `/tabriziancodes/${folder}/${imageKey}`
+   const Key = `/tabrizian_codes/${folder}/${imageKey}`
 
    const params = {
       Bucket: process.env.LIARA_BUCKET_NAME,
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 export async function DELETE(req: Request) {
    const { imageKey, folder } = await req.json()
 
-   const Key = `/tabriziancodes/${folder}/${imageKey}`
+   const Key = `pnpm${folder}/${imageKey}`
 
    const params = {
       Bucket: process.env.LIARA_BUCKET_NAME,
