@@ -15,6 +15,7 @@ export interface IProject {
    clientFa: string
    descriptionEn: string
    descriptionFa: string
+   live: string
 }
 
 const projectSchema = new mongoose.Schema({
@@ -32,6 +33,7 @@ const projectSchema = new mongoose.Schema({
    clientFa: String,
    descriptionEn: String,
    descriptionFa: String,
+   live: String
 })
 
 projectSchema.set('timestamps', true)

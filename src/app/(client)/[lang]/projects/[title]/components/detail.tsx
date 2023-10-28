@@ -3,17 +3,17 @@ import Image from 'next/image'
 
 const Detail = () => {
    return (
-      <div className='order-2 mx-5 mt-20 space-y-5 lg:order-1 lg:mx-0 lg:mt-0'>
+      <div className='order-2 mx-5 mt-20 space-y-3 lg:order-1 lg:mx-0 lg:mt-0'>
          <div>
             <h1>Personal Design Gallery Website</h1>
             <Link href='#' target='_blank'>
                <span className='text-sm'>AsadiGraphics.ir</span>
             </Link>
          </div>
-         <div className='flex gap-32 space-y-3'>
+         {/* <div className='flex gap-32 space-y-3'>
             <h2>Client:</h2>
             <p className='text-base'>Ali Asadi</p>
-         </div>
+         </div> */}
          <div className='flex gap-32 space-y-3'>
             <h2>Date:</h2>
             <p className='text-base'>12 Dec 2021</p>

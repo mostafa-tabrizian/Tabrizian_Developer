@@ -4,16 +4,20 @@ import { memo } from 'react'
 import { Formik, Form } from 'formik'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
-
 import { IProject } from '@/models/project'
-
 import { Switch } from '@mui/material'
 import dynamic from 'next/dynamic'
 const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
-
 import ImageInput from './imageInput'
 import { projectEditForm } from '@/formik/schema/validation'
 import hyphen from '@/lib/hyphen'
+import DescriptionEnInput from './descriptionEnInput'
+import DescriptionFaInput from './descriptionFaInput'
+import TitleFaInput from './titleFaInput'
+import TitleEnInput from './titleEnInput'
+import LiveInput from './liveInput'
+import ClientEnInput from './clientEnInput'
+import ClientFaInput from './clientFaInput'
 
 const DetailForm = memo(
    ({ addingNewproject, project }: { addingNewproject: boolean; project: IProject }) => {
@@ -100,8 +104,13 @@ const DetailForm = memo(
       return (
          <Formik
             initialValues={{
+               live: addingNewproject ? '' : project.live,
                titleEn: addingNewproject ? '' : project.titleEn,
                titleFa: addingNewproject ? '' : project.titleFa,
+               descriptionEn: addingNewproject ? '' : project.descriptionEn,
+               descriptionFa: addingNewproject ? '' : project.descriptionFa,
+               clientEn: addingNewproject ? '' : project.clientEn,
+               clientFa: addingNewproject ? '' : project.clientFa,
                active: addingNewproject ? true : project.active,
             }}
             validationSchema={projectEditForm}
@@ -117,61 +126,54 @@ const DetailForm = memo(
                      )}
                   </div>
                   <div className='col-span-2 space-y-5'>
-                     <div className='space-y-1'>
-                        <label htmlFor='titleEn'>
-                           <span className='text-slate-400'>Project English Title</span>
-                        </label>
-                        <input
-                           name='titleEn'
-                           onChange={(e) => setFieldValue('titleEn', e.target.value)}
-                           value={values.titleEn}
-                           className='verdana mr-3 w-full rounded-lg border-2 border-slate-200 bg-slate-100 p-2 text-sm'
-                           type='text'
-                        />
-                        <div className='flex items-center gap-2'>
-                           <svg
-                              className='h-5 w-5 text-yellow-500'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              stroke='currentColor'
-                           >
-                              <path
-                                 strokeLinecap='round'
-                                 strokeLinejoin='round'
-                                 strokeWidth='2'
-                                 d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
-                              />
-                           </svg>
-                           <p className='text-xs text-yellow-500'>
-                              Preferably, the english title of the project should not be changed
-                           </p>
-                        </div>
-                     </div>
+                     <LiveInput
+                        value={values.live}
+                        setFieldValue={setFieldValue}
+                        error={errors.live}
+                        touch={touched.live}
+                     />
 
-                     {errors.titleEn && touched.titleEn ? (
-                        <p className='text-sm text-red-500'>{errors.titleEn}</p>
-                     ) : (
-                        ''
-                     )}
+                     <TitleEnInput
+                        value={values.titleEn}
+                        setFieldValue={setFieldValue}
+                        error={errors.titleEn}
+                        touch={touched.titleEn}
+                     />
 
-                     <div className='space-y-1'>
-                        <label htmlFor='titleFa'>
-                           <span className='text-slate-400'>Project Farsi Title</span>
-                        </label>
-                        <input
-                           name='titleFa'
-                           onChange={(e) => setFieldValue('titleFa', e.target.value)}
-                           value={values.titleFa}
-                           className='verdana mr-3 w-full rounded-lg border-2 border-slate-200 bg-slate-100 p-2 text-sm'
-                           type='text'
-                        />
-                     </div>
+                     <TitleFaInput
+                        value={values.titleEn}
+                        setFieldValue={setFieldValue}
+                        error={errors.titleEn}
+                        touch={touched.titleEn}
+                     />
 
-                     {errors.titleFa && touched.titleFa ? (
-                        <p className='text-sm text-red-500'>{errors.titleFa}</p>
-                     ) : (
-                        ''
-                     )}
+                     <ClientEnInput
+                        value={values.clientEn}
+                        setFieldValue={setFieldValue}
+                        error={errors.clientEn}
+                        touch={touched.clientEn}
+                     />
+
+                     <ClientFaInput
+                        value={values.clientFa}
+                        setFieldValue={setFieldValue}
+                        error={errors.clientFa}
+                        touch={touched.clientFa}
+                     />
+
+                     <DescriptionEnInput
+                        value={values.descriptionEn}
+                        setFieldValue={setFieldValue}
+                        error={errors.descriptionEn}
+                        touch={touched.descriptionEn}
+                     />
+
+                     <DescriptionFaInput
+                        value={values.descriptionFa}
+                        setFieldValue={setFieldValue}
+                        error={errors.descriptionFa}
+                        touch={touched.descriptionFa}
+                     />
 
                      <div className='flex items-center gap-5'>
                         <span className='verdana text-slate-400'>Project Active</span>
