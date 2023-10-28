@@ -57,6 +57,13 @@ const nextConfig = {
    // disableLogger: true,
 
    // }
+   webpack: (config) => {
+      config.externals.push({
+         '@aws-sdk/signature-v4-multi-region': 'commonjs @aws-sdk/signature-v4-multi-region',
+      })
+
+      return config
+   },
 }
 
 // const sentryWebpackPluginOptions = {

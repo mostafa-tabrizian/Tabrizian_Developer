@@ -10,7 +10,6 @@ import dynamic from 'next/dynamic'
 const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
 import ImageInput from './imageInput'
 import { projectEditForm } from '@/formik/schema/validation'
-import hyphen from '@/lib/hyphen'
 import DescriptionEnInput from './descriptionEnInput'
 import DescriptionFaInput from './descriptionFaInput'
 import TitleFaInput from './titleFaInput'
@@ -18,14 +17,21 @@ import TitleEnInput from './titleEnInput'
 import LiveInput from './liveInput'
 import ClientEnInput from './clientEnInput'
 import ClientFaInput from './clientFaInput'
+import TechnologiesInput from './technologiesInput'
 
 const DetailForm = memo(
    ({ addingNewproject, project }: { addingNewproject: boolean; project: IProject }) => {
       const router = useRouter()
 
       const handleSubmit = async (values: {
+         live: string
+         technologies: string
          titleEn: string
          titleFa: string
+         descriptionEn: string
+         descriptionFa: string
+         clientEn: string
+         clientFa: string
          active: boolean
       }) => {
          try {
@@ -54,7 +60,7 @@ const DetailForm = memo(
             fetch('/api/--admin--/revalidate?path=/')
 
             if (addingNewproject) {
-               router.push(`/--admin--/projects/${hyphen(values.titleEn)}`)
+               router.push(`/--admin--/projects/${resData._id}`)
             }
          } catch (err) {
             toast.error('Connection Error. Please Try Again.')
@@ -105,6 +111,7 @@ const DetailForm = memo(
          <Formik
             initialValues={{
                live: addingNewproject ? '' : project.live,
+               technologies: addingNewproject ? '' : project.technologies,
                titleEn: addingNewproject ? '' : project.titleEn,
                titleFa: addingNewproject ? '' : project.titleFa,
                descriptionEn: addingNewproject ? '' : project.descriptionEn,
@@ -133,6 +140,13 @@ const DetailForm = memo(
                         touch={touched.live}
                      />
 
+                     <TechnologiesInput
+                        value={values.technologies}
+                        setFieldValue={setFieldValue}
+                        error={errors.technologies}
+                        touch={touched.technologies}
+                     />
+
                      <TitleEnInput
                         value={values.titleEn}
                         setFieldValue={setFieldValue}
@@ -141,10 +155,10 @@ const DetailForm = memo(
                      />
 
                      <TitleFaInput
-                        value={values.titleEn}
+                        value={values.titleFa}
                         setFieldValue={setFieldValue}
-                        error={errors.titleEn}
-                        touch={touched.titleEn}
+                        error={errors.titleFa}
+                        touch={touched.titleFa}
                      />
 
                      <ClientEnInput

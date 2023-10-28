@@ -5,7 +5,7 @@ const MobileBorderSVG = () => {
       <svg
          xmlns='http://www.w3.org/2000/svg'
          viewBox='0 0 304 559'
-         className='absolute left-0 top-0 -z-10 h-[302px] w-[147.43px] -translate-y-6 translate-x-1 rotate-[1.6deg] animate-pulse lg:h-[352.41px] lg:w-[172px] lg:-translate-y-7 lg:translate-x-1 xl:h-[559px] xl:w-[304px] xl:-translate-x-2 xl:-translate-y-4'
+         className='absolute left-0 top-0 -z-10 h-[302px] w-[147.43px] -translate-y-6 translate-x-1 rotate-[1.6deg] animate-pulse lg:h-[352.41px] lg:w-[192px] lg:-translate-y-3 lg:translate-x-0 xl:h-[559px] xl:w-[304px] xl:-translate-x-2 xl:-translate-y-4'
          fill='none'
       >
          <path
@@ -20,7 +20,7 @@ const MobileBorderSVG = () => {
 const CircleSVG = () => {
    return (
       <>
-         <span className='absolute -z-10 h-[280px] w-[280px] translate-x-10 translate-y-10 rounded-full border-2 border-violet-300 lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
+         <span className='absolute -z-10 h-[280px] w-[280px] translate-x-16 translate-y-10 rounded-full border-2 border-violet-300 lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
             <div className='animate-spin-slow absolute -z-10 flex h-[280px] w-[280px] justify-center rounded-full lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
                <span
                   className='h-10 w-10 translate-x-24 rounded-full bg-indigo-400'
@@ -36,31 +36,38 @@ const CircleSVG = () => {
    )
 }
 
-const MobilePreview = () => {
+const MobilePreview = ({
+   data: { mobile1stImage, mobile2ndImage },
+}: {
+   data: {
+      mobile1stImage: string
+      mobile2ndImage: string
+   }
+}) => {
    return (
-      <div className='flex gap-7 xl:gap-0'>
+      <div className='flex gap-7'>
          <div className='relative z-10'>
-            <div className='relative h-[301.57px] w-[136.33px] lg:h-[375.31px] lg:w-[182.46px] xl:h-[576.9px] xl:w-[280.5px]'>
+            <div className='relative aspect-[1/2] h-full w-[136.33px] lg:w-[182.46px] xl:w-[280.5px]'>
                <Image
-                  src='/resume.png'
+                  src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${mobile1stImage}`}
                   alt='#'
                   fill
-                  className='z-10 translate-x-6 -rotate-3 rounded-3xl'
+                  className='z-10 translate-x-6 -rotate-3 rounded-3xl  object-cover object-top'
                   style={{
                      boxShadow:
                         '0px 0px 26px 0px rgba(0, 0, 0, 0.78) inset, 21px 11px 42px 0px #0C0F16',
                   }}
                />
+               <MobileBorderSVG />
             </div>
-            <MobileBorderSVG />
          </div>
          <CircleSVG />
-         <div className='relative h-[301.57px] w-[136.33px] lg:h-[375.31px] lg:w-[182.46px] xl:h-[576.9px] xl:w-[280.5px]'>
+         <div className='relative aspect-[1/2] h-full w-[136.33px] lg:w-[182.46px] xl:w-[280.5px]'>
             <Image
-               src='/resume2.png'
+               src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${mobile2ndImage}`}
                alt='#'
                fill
-               className='translate-y-10 rotate-6 rounded-3xl lg:translate-y-20'
+               className='translate-y-10 rotate-6 rounded-3xl object-cover object-top lg:translate-y-20'
                style={{
                   boxShadow:
                      '0px 0px 26px 0px rgba(0, 0, 0, 0.78) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',

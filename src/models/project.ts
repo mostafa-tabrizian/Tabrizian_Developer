@@ -7,7 +7,7 @@ export interface IProject {
    titleFa: string
    mobile1stImage: string
    mobile2ndImage: string
-   desktopPreview: string
+   desktopImage: string
    gallery: [string]
    createdAt: Date
    updatedAt: Date
@@ -16,6 +16,7 @@ export interface IProject {
    descriptionEn: string
    descriptionFa: string
    live: string
+   technologies: string
 }
 
 const projectSchema = new mongoose.Schema({
@@ -27,13 +28,14 @@ const projectSchema = new mongoose.Schema({
    titleFa: String,
    mobile1stImage: String,
    mobile2ndImage: String,
-   desktopPreview: String,
+   desktopImage: String,
    gallery: [String],
    clientEn: String,
    clientFa: String,
    descriptionEn: String,
    descriptionFa: String,
-   live: String
+   live: String,
+   technologies: String
 })
 
 projectSchema.set('timestamps', true)

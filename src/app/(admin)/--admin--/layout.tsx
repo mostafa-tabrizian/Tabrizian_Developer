@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme='dark'
+            theme='light'
          />
          <main className='mx-auto mb-24 max-w-screen-lg overflow-x-hidden'>{children}</main>
       </>

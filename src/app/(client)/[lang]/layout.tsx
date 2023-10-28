@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme='dark'
+            theme='light'
          />
 
          <Header />

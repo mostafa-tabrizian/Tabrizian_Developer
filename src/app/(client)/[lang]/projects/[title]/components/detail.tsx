@@ -1,43 +1,63 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Gallery from './gallery'
 
-const Detail = () => {
+const Detail = ({
+   data: {
+      title,
+      live,
+      client,
+      description,
+      technologies,
+      mobile1stImage,
+      mobile2ndImage,
+      desktopImage,
+      gallery,
+   },
+}: {
+   data: {
+      title: string
+      live: string
+      client: string
+      description: string
+      technologies: string
+      mobile1stImage: string
+      mobile2ndImage: string
+      desktopImage: string
+      gallery: [string]
+   }
+}) => {
    return (
-      <div className='order-2 mx-5 mt-20 space-y-3 lg:order-1 lg:mx-0 lg:mt-0'>
+      <div className='order-2 mx-5 mt-20 space-y-7 lg:order-1 lg:mx-0 lg:mt-0'>
          <div>
-            <h1>Personal Design Gallery Website</h1>
+            <h1>{title}</h1>
             <Link href='#' target='_blank'>
-               <span className='text-sm'>AsadiGraphics.ir</span>
+               <span className='text-sm underline underline-offset-4 hover:text-indigo-500'>{live}</span>
             </Link>
          </div>
-         {/* <div className='flex gap-32 space-y-3'>
+         <div className='space-y-3'>
             <h2>Client:</h2>
-            <p className='text-base'>Ali Asadi</p>
-         </div> */}
-         <div className='flex gap-32 space-y-3'>
+            <p className='text-base'>{client}</p>
+         </div>
+         {/* <div className='flex gap-32 space-y-3'>
             <h2>Date:</h2>
             <p className='text-base'>12 Dec 2021</p>
-         </div>
+         </div> */}
 
          <div className='max-w-lg space-y-3'>
             <h2>Description:</h2>
-            <p className='text-sm'>
-               Figma ipsum component variant main layer. Rotate export layer effect select clip
-               flatten bold strikethrough slice. Figjam effect hand project duplicate outline pencil
-               move. Group rectangle export team prototype. Layer pen flatten shadow bold component.
-               Bold fill prototype pencil component horizontal. Boolean auto variant figma group
-               move auto. Group image draft strikethrough.
-            </p>
+            <p className='text-sm'>{description}</p>
          </div>
          <div className='space-y-3 '>
             <h2>Technologies:</h2>
-            <p className='text-base'>Next.js 13, React, TypeScript</p>
+            <p className='text-base'>{technologies}</p>
          </div>
          <div className='space-y-3'>
             <h2>Screenshorts:</h2>
             <div className='flex gap-5'>
-               <Image src='/resume1.jpg' alt='#' width={357} height={201} className='rounded-lg' />
-               <Image src='/resume.png' alt='#' width={96} height={201} className='rounded-lg' />
+               <Gallery
+                  detail={{ title }}
+                  images={[mobile1stImage, mobile2ndImage, desktopImage, ...gallery]}
+               />
             </div>
          </div>
       </div>

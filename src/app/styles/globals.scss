@@ -54,6 +54,8 @@ body {
    background: #0c0f16;
    user-select: none;
    font-family: 'Verdana', sans-serif;
+   width: 100vw;
+   overflow-x: hidden;
 }
 
 a {
@@ -168,7 +170,7 @@ strong {
 /* Hide scrollbar for IE, Edge and Firefox */
 .styled-scrollbars {
    /* Foreground, Background */
-   scrollbar-color: #60a5fa transparent;
+   scrollbar-color: #7234a2 transparent;
 
    &::-webkit-scrollbar {
       width: 3px; /* Mostly for vertical scrollbars */
@@ -177,7 +179,7 @@ strong {
 
    &::-webkit-scrollbar-thumb {
       /* Foreground */
-      background: #60a5fa;
+      background: #7234a2;
    }
 
    &::-webkit-scrollbar-track {

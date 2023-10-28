@@ -1,6 +1,6 @@
 const PreviewControl = () => {
    return (
-      <div className='relative bottom-0 right-0 top-12 sm:top-8 mx-auto my-5 flex w-full items-center justify-center gap-12 lg:top-0 xl:top-12'>
+      <div className='relative bottom-0 right-0 top-12 sm:top-8 mx-auto my-5 flex w-full items-center justify-center gap-12 lg:top-20'>
          <button>
             <svg
                className='h-10 w-10 text-white'
