@@ -135,10 +135,6 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             },
          },
          {
-            accessorKey: 'category',
-            header: 'دسته بندی',
-         },
-         {
             accessorKey: 'createdAt',
             header: 'تاریخ ایجاد',
          },

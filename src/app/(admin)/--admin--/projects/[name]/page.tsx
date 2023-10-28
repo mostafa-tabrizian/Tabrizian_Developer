@@ -3,7 +3,6 @@ import Link from 'next/link'
 import dbConnect from '@/lib/dbConnect'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 import Project from '@/models/project'
-import Category from '@/models/category'
 import Detailproject from '../components/detailForm'
 import dehyphen from '@/lib/dehyphen'
 
@@ -15,26 +14,13 @@ const projectPage = async ({ params: { name } }: { params: { name: string } }) =
    const addingNewproject = name === 'new'
 
    try {
-      await dbConnect()
-
-      const categories = await Category.find()
-
       let project = null
 
       if (!addingNewproject) {
+         await dbConnect()
          const projectData = await Project.aggregate([
             { $match: { name: dehyphen(decodeURI(name)) } },
-            {
-               $lookup: {
-                  from: 'categories',
-                  localField: 'category',
-                  foreignField: '_id',
-                  as: 'category',
-               },
-            },
-            {
-               $limit: 1,
-            },
+            { $limit: 1 },
          ])
 
          project = projectData[0]
@@ -82,7 +68,6 @@ const projectPage = async ({ params: { name } }: { params: { name: string } }) =
                         <Detailproject
                            addingNewproject={addingNewproject}
                            project={JSON.parse(JSON.stringify(project))}
-                           categories={JSON.parse(JSON.stringify(categories))}
                         />
                      </div>
                   </>

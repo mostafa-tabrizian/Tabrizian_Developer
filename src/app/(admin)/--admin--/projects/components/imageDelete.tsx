@@ -71,7 +71,6 @@ const ImageDelete = ({
          toast.success('تصویر با موفقیت حذف شد.')
 
          fetch('/api/--admin--/revalidate?path=/')
-         fetch('/api/--admin--/revalidate?path=/category/[query]')
 
          router.refresh()
       } catch (err) {

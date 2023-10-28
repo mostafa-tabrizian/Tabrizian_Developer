@@ -11,11 +11,8 @@ const Footer = () => {
                   <Link href='#'>
                      <span className='text-sm'>Home</span>
                   </Link>
-                  <Link href='#'>
+                  <Link href='/projects'>
                      <span className='text-sm'>Projects</span>
-                  </Link>
-                  <Link href='#'>
-                     <span className='text-sm'>Category</span>
                   </Link>
                   <Link href='#'>
                      <span className='text-sm'>Contact us</span>

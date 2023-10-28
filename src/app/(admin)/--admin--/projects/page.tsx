@@ -12,29 +12,15 @@ export const metadata = {
    title: 'مصطفی تبریزیان | پنل ادمین | طرح ها',
 }
 
-const getprojects = async () => {
+const getProjects = async () => {
    await dbConnect()
-   const projects = await Project.aggregate([
-      {
-         $lookup: {
-            from: 'categories',
-            localField: 'category',
-            foreignField: '_id',
-            as: 'category',
-         },
-      },
-   ])
+   const projects = await Project.find()
 
-   return projects.reverse().map((project) => {
-      return {
-         ...project,
-         category: project.category[0].name,
-      }
-   })
+   return projects.reverse()
 }
 
 const Adminprojects = async () => {
-   const projects = await getprojects()
+   const projects = await getProjects()
 
    return (
       <div className='relative mx-6 my-16 max-w-screen-lg space-y-10 md:mx-auto'>

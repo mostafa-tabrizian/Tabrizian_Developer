@@ -3,37 +3,39 @@ import mongoose from 'mongoose'
 export interface IProject {
    active: boolean
    _id: string
-   name: string
-   category: string
-   frontSrc: string
-   backSrc: string
+   nameEn: string
+   nameFa: string
+   mobile1stPreview: string
+   mobile2ndPreview: string
+   desktopPreview: string
    gallery: [string]
-   width: number
-   height: number
    createdAt: Date
    updatedAt: Date
+   clientEn: string
+   clientFa: string
+   descriptionEn: string
+   descriptionFa: string
 }
 
-const projectschema = new mongoose.Schema({
+const projectSchema = new mongoose.Schema({
    active: {
       type: Boolean,
       default: true,
    },
-   name: String,
-   category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
-      required: true,
-   },
-   frontSrc: String,
-   backSrc: String,
+   nameEn: String,
+   nameFa: String,
+   mobile1stPreview: String,
+   mobile2ndPreview: String,
+   desktopPreview: String,
    gallery: [String],
-   width: Number,
-   height: Number,
+   clientEn: String,
+   clientFa: String,
+   descriptionEn: String,
+   descriptionFa: String,
 })
 
-projectschema.set('timestamps', true)
+projectSchema.set('timestamps', true)
 
-projectschema.index({ name: 'text' })
+projectSchema.index({ name: 'text' })
 
-export default mongoose.models.project || mongoose.model('project', projectschema)
+export default mongoose.models.project || mongoose.model('project', projectSchema)

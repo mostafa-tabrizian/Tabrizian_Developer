@@ -1,22 +1,22 @@
 const LoadingHome = () => {
    return (
-      <div className='mx-6 my-16 max-w-screen-md animate-pulse space-y-4 md:mx-auto'>
-         <div className='h-80 w-full rounded bg-gray-200 md:mx-auto md:w-5/6'></div>
-
-         <div className='flex gap-5'>
-            <div className='h-20 w-full rounded bg-gray-200'></div>
-            <div className='h-20 w-full rounded bg-gray-200'></div>
-            <div className='h-20 w-full rounded bg-gray-200'></div>
-            <div className='h-20 w-full rounded bg-gray-200'></div>
-         </div>
-
-         <div className='mx-auto h-10 w-3/6 rounded bg-gray-200'></div>
-
-         <div className='grid grid-cols-2'>
-            <div className='w-45 mb-3 mr-3 h-40 rounded bg-gray-200'></div>
-            <div className='w-45 mb-3 h-40 rounded bg-gray-200'></div>
-            <div className='w-45 mr-3 h-40 rounded bg-gray-200'></div>
-            <div className='w-45 h-40 rounded bg-gray-200'></div>
+      <div className='mx-5 my-16 flex h-screen max-w-screen-xl animate-pulse items-center justify-center md:mx-auto'>
+         <div className='animate-spin'>
+            <svg
+               className='h-14 w-14 text-white'
+               width='24'
+               height='24'
+               viewBox='0 0 24 24'
+               strokeWidth='2'
+               stroke='currentColor'
+               fill='none'
+               strokeLinecap='round'
+               strokeLinejoin='round'
+            >
+               {' '}
+               <path stroke='none' d='M0 0h24v24H0z' />{' '}
+               <path d='M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828' />
+            </svg>
          </div>
       </div>
    )

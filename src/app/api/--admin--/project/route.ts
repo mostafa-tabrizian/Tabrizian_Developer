@@ -7,8 +7,8 @@ export async function GET(request: NextRequest) {
    try {
       await dbConnect()
 
-      const categoryId = request.nextUrl.searchParams.get('id')
-      const projects = await Project.find({ category: categoryId })
+      const projectId = request.nextUrl.searchParams.get('id')
+      const projects = await Project.find({ project: projectId })
 
       return NextResponse.json(projects)
    } catch (error) {
@@ -19,11 +19,9 @@ export async function GET(request: NextRequest) {
 export async function POST(request: Request) {
    const {
       name,
-      category,
       active,
    }: {
       name: string
-      category: object
       active: boolean
    } = await request.json()
 
@@ -31,7 +29,6 @@ export async function POST(request: Request) {
       await dbConnect()
       const project = await Project.create({
          name,
-         category,
          gallery: [],
          active: active,
       })
@@ -46,12 +43,10 @@ export async function PATCH(request: Request) {
    const {
       _id,
       name,
-      category,
       active,
    }: {
       _id: string
       name: string
-      category: object
       active: boolean
    } = await request.json()
 
@@ -63,7 +58,6 @@ export async function PATCH(request: Request) {
          },
          {
             name,
-            category,
             active: active,
          },
       )
@@ -88,7 +82,7 @@ export async function DELETE(req: Request) {
 
       return NextResponse.json(project)
    } catch (error) {
-      console.error('Error deleting category:', error)
+      console.error('Error deleting project:', error)
       return NextResponse.json({ status: 500, message: error })
    }
 }

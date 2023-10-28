@@ -6,7 +6,6 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
 import { IProject } from '@/models/project'
-import { ICategory } from '@/models/category'
 
 import { Switch } from '@mui/material'
 import TextField from '@mui/material/TextField'
@@ -21,16 +20,14 @@ import hyphen from '@/lib/hyphen'
 const DetailForm = memo(
    ({
       addingNewproject,
-      project,
-      categories,
+      project
    }: {
       addingNewproject: boolean
       project: IProject
-      categories: ICategory[]
    }) => {
       const router = useRouter()
 
-      const handleSubmit = async (values: { name: string; category: object; active: boolean }) => {
+      const handleSubmit = async (values: { name: string; active: boolean }) => {
          try {
             toast.info('در حال ثبت اطلاعات طرح...')
 
@@ -55,7 +52,6 @@ const DetailForm = memo(
             toast.success('اطلاعات طرح با موفقیت ثبت گردید.')
 
             fetch('/api/--admin--/revalidate?path=/')
-            fetch('/api/--admin--/revalidate?path=/category/[query]')
 
             if (addingNewproject) {
                router.push(`/--admin--/projects/${hyphen(values.name)}`)
@@ -94,7 +90,6 @@ const DetailForm = memo(
             toast.success('طرح با موفقیت حذف گردید.')
 
             fetch('/api/--admin--/revalidate?path=/')
-            fetch('/api/--admin--/revalidate?path=/category/[query]')
 
             router.push('/--admin--/projects')
          } catch (err) {
@@ -108,7 +103,6 @@ const DetailForm = memo(
             initialValues={{
                name: addingNewproject ? '' : project.name,
                // @ts-ignore
-               category: addingNewproject ? categories[0] : project.category[0],
                active: addingNewproject ? true : project.active,
             }}
             validationSchema={projectEditForm}
@@ -157,31 +151,6 @@ const DetailForm = memo(
 
                      {errors.name && touched.name ? (
                         <p className='text-sm text-red-500'>{errors.name}</p>
-                     ) : (
-                        ''
-                     )}
-
-                     <Autocomplete
-                        className='rtl'
-                        id='category'
-                        value={values.category as unknown as ICategory}
-                        options={categories}
-                        isOptionEqualToValue={(option, value) =>
-                           option === value || option._id === value._id
-                        }
-                        getOptionLabel={(option: ICategory) => option.name}
-                        onChange={(_e, value) => {
-                           if (value) {
-                              setFieldValue('category', value)
-                           }
-                        }}
-                        renderInput={(params) => <TextField {...params} label='دسته بندی' />}
-                        sx={{ width: '100%' }}
-                     />
-
-                     {errors.category && touched.category ? (
-                        // @ts-ignore
-                        <p className='text-sm text-red-500'>{errors.category}</p>
                      ) : (
                         ''
                      )}

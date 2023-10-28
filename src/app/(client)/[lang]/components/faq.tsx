@@ -53,7 +53,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ1)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -88,7 +88,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ2)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -128,7 +128,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ3)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -162,7 +162,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ4)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -198,7 +198,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ5)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -233,7 +233,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ6)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -268,7 +268,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ7)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -303,7 +303,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ8)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -339,7 +339,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ9)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
@@ -375,7 +375,7 @@ const FAQ = () => {
             <div className='relative rounded-lg bg-gradient-to-r from-purple-300/10 to-transparent px-2 py-4'>
                <button
                   className='flex w-full items-center justify-between'
-                  aria-label='categories'
+                  aria-label='faq'
                   onClick={() => collapseStatus(setQ10)}
                >
                   <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>

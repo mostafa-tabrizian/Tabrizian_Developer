@@ -6,12 +6,10 @@ import { useEffect, useState } from 'react'
 import Menu from '@mui/material/Menu'
 
 const HeaderLinksforDesktop = () => {
-   const [categories, setCategories] = useState<null | HTMLElement>(null)
    const [contactUsOptions, setContactUsOptions] = useState<null | HTMLElement>(null)
 
    useEffect(() => {
       return () => {
-         setCategories(null)
          setContactUsOptions(null)
       }
    }, [])
@@ -32,45 +30,13 @@ const HeaderLinksforDesktop = () => {
 
          <li className='block'>
             <div className='text-gray-700'>
-               <Link href='/category/all?type=all&name=تمامی+طرح+ها'>
+               <Link href='/projects'>
                   <div className='relative flex'>
                      <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
                         Projects
                      </span>
                   </div>
                </Link>
-            </div>
-         </li>
-
-         <li className='block'>
-            <div className='text-gray-700'>
-               <button onClick={(e) => setCategories(e.currentTarget)} className='relative flex'>
-                  <span className='verdana cursor-pointer py-1 text-sm tracking-widest text-sky-100 after:absolute after:bottom-0 after:left-1/2 after:mx-auto after:h-1 after:w-6 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'>
-                     Category
-                  </span>
-               </button>
-
-               <Menu
-                  id='fade-menu'
-                  MenuListProps={{
-                     'aria-labelledby': 'fade-button',
-                  }}
-                  anchorEl={categories}
-                  open={Boolean(categories)}
-                  onClose={() => setCategories(null)}
-               >
-                  <ul className='space-y-4 p-3'>
-                     <li className='flex items-center'>
-                        <Link
-                           id='Category'
-                           className='flex items-center'
-                           href='/category/slug?type=category&name=name'
-                        >
-                           <p className='px-2 text-sm font-semibold'>{'category.name'}</p>
-                        </Link>
-                     </li>
-                  </ul>
-               </Menu>
             </div>
          </li>
 

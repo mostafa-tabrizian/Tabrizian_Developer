@@ -1,4 +1,4 @@
-import Category from '@/models/category'
+import Project from '@/models/project'
 import dbConnect from '@/lib/dbConnect'
 import hyphen from '@/lib/hyphen'
 
@@ -6,16 +6,16 @@ const URL = 'https://tabriziancodes.ir'
 
 async function getAllPages() {
    await dbConnect()
-   const categoriesData = await Category.find()
+   const projectData = await Project.find()
 
-   return { categoriesData }
+   return { projectData }
 }
 
 export default async function sitemap() {
-   const { categoriesData } = await getAllPages()
+   const { projectData } = await getAllPages()
 
-   const categories = categoriesData.map(({ name, slug, updatedAt }) => ({
-      url: `${URL}/category/${hyphen(slug)}?name=${name}`,
+   const projects = projectData.map(({ name, slug, updatedAt }) => ({
+      url: `${URL}/projects/${hyphen(slug)}?name=${name}`,
       lastModified: updatedAt,
    }))
 
@@ -24,5 +24,5 @@ export default async function sitemap() {
       lastModified: new Date().toISOString(),
    }))
 
-   return [...routes, ...categories]
+   return [...routes, ...projects]
 }

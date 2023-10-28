@@ -1,16 +1,10 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const Landpage = () => {
    return (
-      <div
-         id='landpage'
-         className='h-screen w-screen'
-         style={{
-            // eslint-disable-next-line quotes
-            background: "url('/landpage.jpg') no-repeat center center",
-            backgroundSize: 'cover',
-         }}
-      >
+      <div id='landpage' className='h-screen w-screen relative'>
+         <Image src='/landpage.jpg' alt='landpage' fill className='object-cover object-center' />
          <div className='mx-auto grid h-full max-w-screen-lg items-center'>
             <div className='space-y-10'>
                <h1

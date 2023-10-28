@@ -6,12 +6,10 @@ import { useState, useEffect, memo } from 'react'
 import Collapse from '@mui/material/Collapse'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { ICategory } from '@/models/category'
 import hyphen from '@/lib/hyphen'
 
 const Sidebar = () => {
    const [sidebar, setSidebar] = useState(false)
-   const [categories, setCategories] = useState(false)
    const [contactUsOptions, setContactUsOptions] = useState(false)
 
    const pathname = usePathname()
@@ -21,7 +19,6 @@ const Sidebar = () => {
    useEffect(() => {
       return () => {
          setSidebar(false)
-         setCategories(false)
          setContactUsOptions(false)
       }
    }, [])
@@ -114,7 +111,7 @@ const Sidebar = () => {
 
                      <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-white to-transparent pr-1 text-gray-700 shadow-inner'>
-                           <Link href='/category/all?type=all&name=تمامی+طرح+ها'>
+                           <Link href='/projects'>
                               <div className='menu-item relative flex items-center'>
                                  <span className='flex cursor-pointer items-center gap-x-2 py-2 font-bold md:py-1'>
                                     <svg
@@ -135,75 +132,10 @@ const Sidebar = () => {
                                        <circle cx='12' cy='7.5' r='.5' fill='currentColor' />{' '}
                                        <circle cx='16.5' cy='10.5' r='.5' fill='currentColor' />
                                     </svg>
-                                    <span className='text-base'>نمونه طراحی ها</span>
+                                    <span className='text-base'>Projects</span>
                                  </span>
                               </div>
                            </Link>
-                        </div>
-                     </li>
-
-                     <li className='block'>
-                        <div className='rounded-lg bg-gradient-to-l from-white to-transparent pr-1 text-gray-700 shadow-inner'>
-                           <button
-                              aria-label='categories'
-                              onClick={() => setCategories((prev) => !prev)}
-                              className='w-full'
-                           >
-                              <span className='flex cursor-pointer items-center gap-x-2 py-1 font-bold '>
-                                 <svg
-                                    className='h-5 w-5'
-                                    width='24'
-                                    height='24'
-                                    viewBox='0 0 24 24'
-                                    strokeWidth='2'
-                                    stroke='currentColor'
-                                    fill='none'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                 >
-                                    {' '}
-                                    <path stroke='none' d='M0 0h24v24H0z' />{' '}
-                                    <rect x='4' y='4' width='6' height='6' rx='1' />{' '}
-                                    <rect x='14' y='4' width='6' height='6' rx='1' />{' '}
-                                    <rect x='4' y='14' width='6' height='6' rx='1' />{' '}
-                                    <rect x='14' y='14' width='6' height='6' rx='1' />
-                                 </svg>
-                                 <span className='text-base'>دسته بندی ها</span>
-                                 <svg
-                                    stroke='currentColor'
-                                    fill='none'
-                                    strokeWidth='0'
-                                    viewBox='0 0 24 24'
-                                    className={`h-4 w-4 transition duration-300 ease-in-out ${
-                                       categories ? 'rotate-90' : 'rotate-0'
-                                    }`}
-                                    height='1em'
-                                    width='1em'
-                                    xmlns='http://www.w3.org/2000/svg'
-                                 >
-                                    <path
-                                       strokeLinecap='round'
-                                       strokeLinejoin='round'
-                                       strokeWidth='2'
-                                       d='M19 9l-7 7-7-7'
-                                    ></path>
-                                 </svg>
-                              </span>
-                           </button>
-
-                           <Collapse in={categories}>
-                              <ul className='space-y-4 border-b border-white border-opacity-10 p-3 opacity-90'>
-                                 <li className='flex items-center'>
-                                    <Link
-                                       id='category'
-                                       className=' flex items-center'
-                                       href='/category/slug?type=category&name=name'
-                                    >
-                                       <p className='px-2 text-sm font-semibold'>name</p>
-                                    </Link>
-                                 </li>
-                              </ul>
-                           </Collapse>
                         </div>
                      </li>
 

@@ -1,10 +1,8 @@
 // import dbConnect from '@/lib/dbConnect'
 // import limiter from '@/lib/limiter'
-// import Category from '@/models/category'
 // import Project from '@/models/project'
 
 // import Script from 'next/script'
-// import Categories from './components/categories'
 // import Sampleprojects from './components/sampleprojects'
 // import FAQ from './components/faq'
 // import About from './components/about'
@@ -24,11 +22,6 @@ export const metadata = {
       canonical: 'https://tabriziancodes.ir',
    },
 }
-
-// const getCategories = async () => {
-//    await dbConnect()
-//    return await Category.find()
-// }
 
 // const getprojects = async () => {
 //    await dbConnect()
@@ -107,7 +100,6 @@ async function Home({ params: { lang } }) {
    // }
 
    // const projects = await getprojects()
-   // const categoriesData = await getCategories()
 
    return (
       <>
