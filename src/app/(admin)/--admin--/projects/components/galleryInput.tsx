@@ -29,7 +29,7 @@ const GalleryInput = memo(
       return (
          <>
             <div>
-               {gallery.length ? <span className='yekan text-slate-400'>تصاویر گالری</span> : ''}
+               {gallery.length ? <span className='verdana text-slate-400'>تصاویر گالری</span> : ''}
                {gallery.map((image: string, idx: number) => {
                   return (
                      <div key={idx} className='relative'>
@@ -57,7 +57,7 @@ const GalleryInput = memo(
 
             {galleryPrevMemo?.length ? (
                <div>
-                  <span className='yekan text-slate-400'>پیش نمایش تصاویر گالری برای آپلود</span>
+                  <span className='verdana text-slate-400'>پیش نمایش تصاویر گالری برای آپلود</span>
                   <div className='space-y-3'>
                      {galleryPrevMemo.map((imageData: File) => {
                         return (
@@ -86,7 +86,7 @@ const GalleryInput = memo(
             >
                {/* @ts-ignore */}
                <Button type='button' component='label' sx={{ width: '100%', padding: '.5rem' }}>
-                  <span className='yekan text-sm'>انتخاب تصاویر گالری</span>
+                  <span className='verdana text-sm'>انتخاب تصاویر گالری</span>
                   <input
                      hidden
                      accept='image/*'

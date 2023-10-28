@@ -22,15 +22,15 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
       () => [
          {
             accessorKey: '_id',
-            header: 'آیدی',
+            header: 'ID',
             cell: (info) => {
                const value = info.getValue() as string
                return <span>{value.slice(-4)}</span>
             },
          },
          {
-            accessorKey: 'frontSrc',
-            header: 'جلو',
+            accessorKey: 'mobile1stPreview',
+            header: 'Mobile Pre 1st',
             cell: (info) => {
                const value = info.getValue()
                return (
@@ -54,8 +54,33 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             },
          },
          {
-            accessorKey: 'backSrc',
-            header: 'پشت',
+            accessorKey: 'mobile2ndPreview',
+            header: 'Mobile Pre 2st',
+            cell: (info) => {
+               const value = info.getValue()
+               return (
+                  <Link
+                     target='_blank'
+                     href={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
+                  >
+                     {value ? (
+                        <Image
+                           className='rounded-md object-cover'
+                           src={`https://tabrizian.storage.iran.liara.space/tabriziancodes/projects/${value}`}
+                           alt={String(value)}
+                           height={50}
+                           width={50}
+                        />
+                     ) : (
+                        ''
+                     )}
+                  </Link>
+               )
+            },
+         },
+         {
+            accessorKey: 'desktopPreview',
+            header: 'Desktop Pre',
             cell: (info) => {
                const value = info.getValue()
                return (
@@ -80,7 +105,7 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
          },
          {
             accessorKey: 'active',
-            header: 'فعال',
+            header: 'Active',
             cell: (info) => {
                const value = info.getValue()
                return (
@@ -124,19 +149,19 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
          },
          {
             accessorKey: 'name',
-            header: 'عنوان',
+            header: 'Name',
             cell: (info) => {
                const value = info.getValue() as string
                return (
                   <Link href={`/--admin--/projects/${value.replaceAll(' ', '-')}`}>
-                     <span className='text-slate-500 text-sm'>{value}</span>
+                     <span className='text-sm text-slate-500'>{value}</span>
                   </Link>
                )
             },
          },
          {
             accessorKey: 'createdAt',
-            header: 'تاریخ ایجاد',
+            header: 'Created At',
          },
       ],
       [],
@@ -156,9 +181,9 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
    })
 
    return (
-      <div className='rtl relative overflow-x-auto'>
-         <table className='table-auto w-full text-sm text-left text-slate-500'>
-            <thead className='text-xs text-slate-700 uppercase bg-slate-50'>
+      <div className='relative overflow-x-auto'>
+         <table className='w-full table-auto text-left text-sm text-slate-500'>
+            <thead className='bg-slate-50 text-xs uppercase text-slate-700'>
                {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
                      {headerGroup.headers.map((header) => {
@@ -190,64 +215,61 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
                ))}
             </thead>
             <tbody className=''>
-               {table
-                  .getRowModel()
-                  .rows
-                  .map((row) => {
-                     return (
-                        <tr key={row.id} className='bg-white border-b border-slate-300'>
-                           {row.getVisibleCells().map((cell) => {
-                              return (
-                                 <td key={cell.id} className='px-6 py-4'>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                 </td>
-                              )
-                           })}
-                        </tr>
-                     )
-                  })}
+               {table.getRowModel().rows.map((row) => {
+                  return (
+                     <tr key={row.id} className='border-b border-slate-300 bg-white'>
+                        {row.getVisibleCells().map((cell) => {
+                           return (
+                              <td key={cell.id} className='px-6 py-4'>
+                                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                              </td>
+                           )
+                        })}
+                     </tr>
+                  )
+               })}
             </tbody>
          </table>
 
-         <div className='flex items-center gap-5 mt-5'>
+         <div className='mt-5 flex items-center gap-5'>
             <button
-               className='border rounded-lg p-1 px-2 bg-white'
-               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-               disabled={!table.getCanNextPage()}
-            >
-               رفتن به صفحه آخر
-            </button>
-            <button
-               className='border rounded-lg p-1 px-2 bg-white'
-               onClick={() => table.nextPage()}
-               disabled={!table.getCanNextPage()}
-            >
-               صفحه بعد
-            </button>
-            <button
-               className='border rounded-lg p-1 px-2 bg-white'
-               onClick={() => table.previousPage()}
-               disabled={!table.getCanPreviousPage()}
-            >
-               صفحه قبل
-            </button>
-            <button
-               className='border rounded-lg p-1 px-2 bg-white'
+               className='rounded-lg border bg-slate-800 p-1 px-2 text-sm'
                onClick={() => table.setPageIndex(0)}
                disabled={!table.getCanPreviousPage()}
             >
-               بازگشت به صفحه اول
+               First Page
+            </button>
+            <button
+               className='rounded-lg border bg-slate-800 p-1 px-2 text-sm'
+               onClick={() => table.previousPage()}
+               disabled={!table.getCanPreviousPage()}
+            >
+               Previous Page
+            </button>
+            <button
+               className='rounded-lg border bg-slate-800 p-1 px-2 text-sm'
+               onClick={() => table.nextPage()}
+               disabled={!table.getCanNextPage()}
+            >
+               Next Page
+            </button>
+            <button
+               className='rounded-lg border bg-slate-800 p-1 px-2 text-sm'
+               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+               disabled={!table.getCanNextPage()}
+            >
+               Last Page
             </button>
 
             <span className='flex items-center gap-1'>
-               <div>صفحه</div>
+               <div>Page</div>
                <strong>
-                  {table.getState().pagination.pageIndex + 1} از {table.getPageCount()}
+                  {table.getState().pagination.pageIndex + 1} / {table.getPageCount()}
                </strong>
             </span>
 
-            <span className='flex items-center gap-1'>
-               برو به صفحه‌:
+            <span className='flex items-center gap-1 bg-slate-800 text-sm'>
+               Go to:
                <input
                   type='number'
                   defaultValue={table.getState().pagination.pageIndex + 1}
@@ -255,10 +277,11 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
                      const page = e.target.value ? Number(e.target.value) - 1 : 0
                      table.setPageIndex(page)
                   }}
-                  className='border p-1 rounded w-16'
+                  className='w-16 rounded border bg-slate-800 p-1 text-sm'
                />
             </span>
             <select
+               className='bg-slate-800 text-sm'
                value={table.getState().pagination.pageSize}
                onChange={(e) => {
                   table.setPageSize(Number(e.target.value))

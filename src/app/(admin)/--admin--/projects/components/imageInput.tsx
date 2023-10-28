@@ -247,7 +247,7 @@ const ImageInput = memo(
             <div className='space-y-3'>
                {projectMemo.backSrc ? (
                   <div>
-                     <span className='yekan text-slate-400'>تصویر پشت طرح</span>
+                     <span className='verdana text-slate-400'>تصویر پشت طرح</span>
 
                      <div className='relative'>
                         <Link
@@ -277,7 +277,7 @@ const ImageInput = memo(
                   <>
                      {backPrevMemo?.length ? (
                         <div>
-                           <span className='yekan text-slate-400'>
+                           <span className='verdana text-slate-400'>
                               پیش نمایش تصویر پشت برای آپلود
                            </span>
 
@@ -311,7 +311,7 @@ const ImageInput = memo(
                            component='label'
                            sx={{ width: '100%', padding: '.5rem' }}
                         >
-                           <span className='yekan text-sm'>انتخاب پشت طرح</span>
+                           <span className='verdana text-sm'>انتخاب پشت طرح</span>
                            <input
                               hidden
                               accept='image/*'
@@ -372,25 +372,25 @@ const ImageInput = memo(
                            <polyline points='9 15 12 12 15 15' />{' '}
                            <line x1='12' y1='12' x2='12' y2='21' />
                         </svg>
-                        <span className='yekan text-sm'>آپلود تصاویر</span>
+                        <span className='verdana text-sm'>آپلود تصاویر</span>
                      </button>
                   )}
                </div>
 
                <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-                  <span className='yekan text-xs text-green-600/70'>
+                  <span className='verdana text-xs text-green-600/70'>
                      تصویر کم حجم تر برابر با <br /> امکان ذخیره سازی تصاویر بیشتر
                   </span>
                </div>
 
                <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-                  <span className='yekan text-xs text-green-600/70'>
+                  <span className='verdana text-xs text-green-600/70'>
                      حجم ایده آل تا ۱۵۰ کیلوبایت می‌باشد
                   </span>
                </div>
 
                <div className=' mt-2 rounded-lg border border-green-600/50 p-2 text-right'>
-                  <span className='yekan text-xs text-green-600/70'>
+                  <span className='verdana text-xs text-green-600/70'>
                      حجم عکس تاثیر قابل توجهی بر کاربر نمی‌گذارد
                   </span>
                </div>

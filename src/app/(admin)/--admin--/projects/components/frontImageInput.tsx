@@ -30,7 +30,7 @@ const FrontImageInput = memo(
          <div className='space-y-6'>
             {frontSrc ? (
                <div>
-                  <span className='yekan text-slate-400'>تصویر جلو طرح</span>
+                  <span className='verdana text-slate-400'>تصویر جلو طرح</span>
 
                   <div className='relative'>
                      <Link
@@ -56,7 +56,7 @@ const FrontImageInput = memo(
                <>
                   {frontPrevMemo?.length ? (
                      <div>
-                        <span className='yekan text-slate-400'>پیش نمایش تصویر جلو برای آپلود</span>
+                        <span className='verdana text-slate-400'>پیش نمایش تصویر جلو برای آپلود</span>
 
                         {frontPrevMemo.map((imageData: File) => {
                            return (
@@ -88,7 +88,7 @@ const FrontImageInput = memo(
                         component='label'
                         sx={{ width: '100%', padding: '.5rem' }}
                      >
-                        <span className='yekan text-sm'>انتخاب جلو طرح</span>
+                        <span className='verdana text-sm'>انتخاب جلو طرح</span>
                         <input
                            hidden
                            accept='image/*'

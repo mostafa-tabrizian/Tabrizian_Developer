@@ -35,8 +35,7 @@
 @font-face {
    font-family: 'Verdana';
    font-display: swap;
-   src:
-      url('/font/Verdana.woff') format('woff');
+   src: url('/font/Verdana.woff') format('woff');
 }
 
 * {
@@ -52,7 +51,7 @@ html {
 
 body {
    color: #d7e6ef;
-   background: #0C0F16;
+   background: #0c0f16;
    user-select: none;
    font-family: 'Verdana', sans-serif;
 }
@@ -92,17 +91,21 @@ h5 {
 
 button {
    font-size: 1.325rem;
-   font-family: YekanBakhRegular, sans-serif;
+   font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+
+   &:hover {
+      cursor: pointer;
+   }
 }
 
 p {
    font-size: 1rem;
-   font-family: YekanBakhRegular, sans-serif;
+   font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 
 li {
    font-size: 1.325rem;
-   font-family: YekanBakhRegular, sans-serif;
+   font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 
 input,
@@ -110,14 +113,10 @@ textarea {
    font-size: 0.75rem;
    font-family: YekanBakhBold, sans-serif;
    background: #bbd2df;
-
-   &::placeholder {
-
-   }
 }
 
 label {
-   font-family: YekanBakhRegular, sans-serif;
+   font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
    font-size: 1.325rem;
 }
 
@@ -128,11 +127,11 @@ hr {
 
 h6 {
    font-size: 0.8rem;
-   font-family: YekanBakhRegular, sans-serif;
+   font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 
 strong {
-   font-family: YekanBakhRegular, sans-serif;
+   font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
    font-weight: 600;
 }
 
@@ -144,8 +143,8 @@ strong {
    direction: ltr;
 }
 
-.yekan {
-   font-family: YekanBakhRegular, sans-serif;
+.verdana {
+   font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 
 .yekanBold {
@@ -193,7 +192,7 @@ strong {
          content: url('/toman_card.svg');
          display: block;
          margin-right: 0.2rem;
-         font-family: YekanBakhRegular, sans-serif;
+         font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
       }
    }
 
@@ -204,7 +203,7 @@ strong {
          content: url('/toman.svg');
          display: block;
          margin-right: 0.2rem;
-         font-family: YekanBakhRegular, sans-serif;
+         font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
       }
    }
 }
@@ -244,7 +243,7 @@ strong {
 
    &-body {
       font-size: 1.325rem;
-      font-family: YekanBakhRegular, sans-serif;
+      font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
    }
 }
 

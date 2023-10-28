@@ -9,7 +9,7 @@ import ProjectsTable from './components/projectsTable'
 export const revalidate = 0
 
 export const metadata = {
-   title: 'مصطفی تبریزیان | پنل ادمین | طرح ها',
+   title: 'Admin Panel | Project Table',
 }
 
 const getProjects = async () => {
@@ -26,19 +26,19 @@ const Adminprojects = async () => {
       <div className='relative mx-6 my-16 max-w-screen-lg space-y-10 md:mx-auto'>
          <>
             <Breadcrumbs aria-label='breadcrumb'>
-               <Link className='text-gray-400' href='/'>
-                  صفحه اصلی
+               <Link className='verdana text-gray-600' href='/'>
+                  Home
                </Link>
-               <Link className='text-gray-400' href='/--admin--'>
-                  ادمین
+               <Link className='verdana text-gray-600' href='/--admin--'>
+                  Admin
                </Link>
-               <h5 className='font-semibold'>طرح ها</h5>
+               <h5 className='verdana text-gray-400'>Projects</h5>
             </Breadcrumbs>
 
             <Link href='/--admin--/projects/new'>
-               <button className='fixed bottom-10 right-5 z-10 rounded-full border-2 border-sky-500 bg-white p-3'>
+               <button className='fixed bottom-10 right-5 z-10 rounded-full border-2 border-indigo-500 bg-white p-3'>
                   <svg
-                     className='h-6 w-6 text-sky-500'
+                     className='h-6 w-6 text-indigo-500'
                      fill='none'
                      viewBox='0 0 24 24'
                      stroke='currentColor'

@@ -126,7 +126,7 @@ const DetailForm = memo(
                            name='name'
                            onChange={(e) => setFieldValue('name', e.target.value)}
                            value={values.name}
-                           className='rtl yekan mr-3 w-full rounded-lg border-2 border-slate-200 bg-slate-100 p-2 text-sm'
+                           className='rtl verdana mr-3 w-full rounded-lg border-2 border-slate-200 bg-slate-100 p-2 text-sm'
                            type='text'
                         />
                         <div className='flex items-center justify-end'>
@@ -156,7 +156,7 @@ const DetailForm = memo(
                      )}
 
                      <div className='rtl flex items-center gap-5'>
-                        <span className='yekan text-slate-400'>طرح نمایش داده شود</span>
+                        <span className='verdana text-slate-400'>طرح نمایش داده شود</span>
 
                         <Switch
                            checked={values.active}
