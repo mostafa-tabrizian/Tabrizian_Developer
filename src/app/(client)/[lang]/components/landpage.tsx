@@ -1,10 +1,17 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
 const Landpage = () => {
    return (
-      <div id='landpage' className='h-screen w-screen relative'>
-         <Image src='/landpage.jpg' alt='landpage' fill className='object-cover object-center' />
+      <div id='landpage' className='relative h-screen w-screen'>
+         <Image
+            src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/landpage.jpg'
+            alt='landpage'
+            fill
+            className='object-cover object-center'
+         />
          <div className='mx-auto grid h-full max-w-screen-lg items-center'>
             <div className='space-y-10'>
                <h1
