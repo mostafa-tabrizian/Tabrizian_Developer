@@ -83,31 +83,6 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             },
          },
          {
-            accessorKey: 'desktopImage',
-            header: 'Desktop Pre',
-            cell: (info) => {
-               const value = info.getValue()
-               return (
-                  <Link
-                     target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                  >
-                     {value ? (
-                        <Image
-                           className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                           alt={String(value)}
-                           height={50}
-                           width={50}
-                        />
-                     ) : (
-                        ''
-                     )}
-                  </Link>
-               )
-            },
-         },
-         {
             accessorKey: 'active',
             header: 'Active',
             cell: (info) => {

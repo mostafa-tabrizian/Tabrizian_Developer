@@ -5,7 +5,7 @@ import LinksForDesktop from './headerLinksforDesktop'
 
 const Header = () => {
    return (
-      <header className='z-20 w-full absolute top-0 left-0 mt-5 w-screen'>
+      <header className='z-20 absolute top-0 left-0 mt-5 w-screen'>
          <div className='mx-auto flex items-center justify-between lg:grid lg:max-w-screen-xl lg:grid-cols-8'>
             <LinksForDesktop />
 

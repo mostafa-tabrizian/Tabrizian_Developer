@@ -7,7 +7,6 @@ export interface IProject {
    titleFa: string
    mobile1stImage: string
    mobile2ndImage: string
-   desktopImage: string
    gallery: [string]
    createdAt: Date
    updatedAt: Date
@@ -29,7 +28,6 @@ const projectSchema = new mongoose.Schema({
    titleFa: String,
    mobile1stImage: String,
    mobile2ndImage: String,
-   desktopImage: String,
    gallery: [String],
    clientEn: String,
    clientFa: String,

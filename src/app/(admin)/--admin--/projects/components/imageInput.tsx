@@ -23,13 +23,11 @@ const ImageInput = memo(
          gallery: string[]
          mobile1stImage: string
          mobile2ndImage: string
-         desktopImage: string
          lighthouse: string
       }
    }) => {
       const [mobile1stImagePreview, setMobile1stImagePreview] = useState<FileList | null>(null)
       const [mobile2stImagePreview, setMobile2ndImagePreview] = useState<FileList | null>(null)
-      const [desktopImagePreview, setDesktopImagePreview] = useState<FileList | null>(null)
       const [galleryPreview, setGalleryPreview] = useState<FileList | null>(null)
       const [lighthousePreview, setLighthousePreview] = useState<FileList | null>(null)
       const [loading, setLoading] = useState(false)
@@ -43,10 +41,6 @@ const ImageInput = memo(
       const mobile2ndPrevMemo = useMemo(() => {
          return mobile2stImagePreview && Object.values(mobile2stImagePreview)
       }, [mobile2stImagePreview])
-
-      const desktopPrevMemo = useMemo(() => {
-         return desktopImagePreview && Object.values(desktopImagePreview)
-      }, [desktopImagePreview])
 
       const galleryPrevMemo = useMemo(() => {
          return galleryPreview && Object.values(galleryPreview)
@@ -94,7 +88,6 @@ const ImageInput = memo(
       const successUpload = async (type: string, name: string) => {
          if (type == 'mobile1st') setMobile1stImagePreview(null)
          else if (type == 'mobile2nd') setMobile2ndImagePreview(null)
-         else if (type == 'desktop') setDesktopImagePreview(null)
          else if (type == 'gallery') setGalleryPreview(null)
          else if (type == 'lighthouse') setLighthousePreview(null)
 
@@ -112,7 +105,6 @@ const ImageInput = memo(
          if (
             !mobile1stPrevMemo &&
             !mobile2ndPrevMemo &&
-            !desktopPrevMemo &&
             !galleryPrevMemo &&
             !lighthousePrevMemo
          ) {
@@ -129,7 +121,6 @@ const ImageInput = memo(
             for (const imageData of [
                { project: mobile1stPrevMemo, type: 'mobile1st' },
                { project: mobile2ndPrevMemo, type: 'mobile2nd' },
-               { project: desktopPrevMemo, type: 'desktop' },
                { project: galleryPrevMemo, type: 'gallery' },
                { project: lighthousePrevMemo, type: 'lighthouse' },
             ]) {
@@ -200,8 +191,6 @@ const ImageInput = memo(
             setMobile1stImagePreview(files)
          } else if (type == 'mobile2nd') {
             setMobile2ndImagePreview(files)
-         } else if (type == 'desktop') {
-            setDesktopImagePreview(files)
          } else if (type == 'gallery') {
             setGalleryPreview(files)
          } else if (type == 'lighthouse') setLighthousePreview(files)

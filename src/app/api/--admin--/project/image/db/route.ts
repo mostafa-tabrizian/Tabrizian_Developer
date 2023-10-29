@@ -35,15 +35,6 @@ export async function POST(req: Request) {
             mobile2ndImage: imageKey,
          },
       ).exec()
-   } else if (type == 'desktop') {
-      res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
-         {
-            desktopImage: imageKey,
-         },
-      ).exec()
    } else if (type == 'gallery') {
       res = await Project.findOne({ _id: _id }).exec()
       res.gallery.push(imageKey)
@@ -85,15 +76,6 @@ export async function DELETE(req: Request) {
          },
          {
             mobile2ndImage: '',
-         },
-      ).exec()
-   } else if (type == 'desktop') {
-      res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
-         {
-            desktopImage: '',
          },
       ).exec()
    } else if (type == 'gallery') {

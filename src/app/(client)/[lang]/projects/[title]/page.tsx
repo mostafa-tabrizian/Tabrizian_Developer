@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic'
 import Detail from './components/detail'
-import PreviewControl from './components/previewControl'
 import Spotlight from './components/spotlight'
 import Project, { IProject } from '@/models/project'
 import dbConnect from '@/lib/dbConnect'
 import limiter from '@/lib/limiter'
 import Script from 'next/script'
+import MobilePreview from './components/mobilePreview'
 const ProjectNotFound = dynamic(() => import('./components/projectNotFound'))
 
 export const generateMetadata = async ({ params: { title } }: { params: { title: string } }) => {
@@ -79,7 +79,6 @@ const ProjectDetail = async ({
             image: [
                data.mobile1stImage,
                data.mobile2ndImage,
-               data.desktopImage,
                ...data.gallery,
             ].map(
                (src) =>
@@ -140,16 +139,17 @@ const ProjectDetail = async ({
                            technologies: data.technologies,
                            mobile1stImage: data.mobile1stImage,
                            mobile2ndImage: data.mobile2ndImage,
-                           desktopImage: data.desktopImage,
                            gallery: data.gallery,
                            lighthouse: data.lighthouse,
                         }}
                      />
 
                      <div className='order-1 mt-20 items-center justify-center md:mx-auto md:w-[30rem] lg:order-2 lg:mt-0 xl:grid xl:w-[40rem]'>
-                        <PreviewControl
-                           mobile1stImage={data.mobile1stImage}
-                           mobile2ndImage={data.mobile2ndImage}
+                        <MobilePreview
+                           data={{
+                              mobile1stImage: data.mobile1stImage,
+                              mobile2ndImage: data.mobile2ndImage,
+                           }}
                         />
                      </div>
                   </div>

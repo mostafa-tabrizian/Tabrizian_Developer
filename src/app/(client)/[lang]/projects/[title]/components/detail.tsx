@@ -10,7 +10,6 @@ const Detail = ({
       technologies,
       mobile1stImage,
       mobile2ndImage,
-      desktopImage,
       gallery,
       lighthouse,
    },
@@ -23,7 +22,6 @@ const Detail = ({
       technologies: string
       mobile1stImage: string
       mobile2ndImage: string
-      desktopImage: string
       gallery: [string]
       lighthouse: string
    }
@@ -60,7 +58,7 @@ const Detail = ({
             <div className='flex gap-5'>
                <Gallery
                   detail={{ title }}
-                  images={[mobile1stImage, mobile2ndImage, desktopImage, ...gallery]}
+                  images={[mobile1stImage, mobile2ndImage, ...gallery]}
                />
             </div>
          </div>
