@@ -58,6 +58,7 @@ const DetailForm = memo(
             toast.success('Project Data Submitted Successfully.')
 
             fetch('/api/--admin--/revalidate?path=/')
+            fetch('/api/--admin--/revalidate?path=/projects/' + values.titleEn)
 
             if (addingNewproject) {
                router.push(`/--admin--/projects/${resData._id}`)

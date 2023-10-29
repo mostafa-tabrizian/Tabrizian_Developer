@@ -24,6 +24,8 @@ const fetchData = async (title: string) => {
    }).exec()
 }
 
+export const revalidate = 7 * 24 * 60 * 60
+
 const ProjectDetail = async ({
    params: { title, lang },
 }: {

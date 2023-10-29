@@ -18,9 +18,9 @@ import Script from 'next/script'
 
 export const metadata = {
    title: 'مصطفی تبریزیان | طراحی لوگو، طراحی پوستر، طراحی بنر و طراحی کارت ویزیت',
-   description: '// ! DESCRIPTION',
+   description: '#',
    alternates: {
-      canonical: 'https://tabriziancodes.ir',
+      canonical: '#',
    },
 }
 
@@ -32,36 +32,34 @@ export const metadata = {
 const jsonLd = {
    '@context': 'https://schema.org',
    '@type': 'WebSite',
-   id: 'https://tabriziancodes.ir/#webSite',
+   id: '#',  // #webSite
    name: 'مصطفی تبریزیان',
-   url: 'https://tabriziancodes.ir',
+   url: '#',
 }
 
 const corporationJsonLd = {
    '@context': 'https://schema.org',
    '@type': 'Corporation',
-   id: '#',  // /#corporation
+   id: '#', // /#corporation
    name: 'Mostafa Tabrizian',
    alternateName: ['مصطفی تبریزیان'],
    legalName: 'Mostafa Tabrizian',
    url: '#',
    logo: '#',
    email: '',
-   sameAs: [
-      '#'
-   ],
+   sameAs: ['#'],
    founders: [
       {
          '@context': 'https://schema.org',
          '@type': 'Person',
          jobTitle: 'Chief executive officer',
          name: 'Mostafa Tabrizian',
-         sameAs: [
-            '#',
-         ],
-      }
+         sameAs: ['#'],
+      },
    ],
 }
+
+export const revalidate = 7 * 24 * 60 * 60
 
 async function Home({ params: { lang } }: { params: { lang: string } }) {
    // const remaining = await limiter.removeTokens(3)

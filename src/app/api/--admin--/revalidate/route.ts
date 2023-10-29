@@ -5,7 +5,8 @@ export async function GET(request: NextRequest) {
    const path = request.nextUrl.searchParams.get('path')
 
    if (path) {
-      revalidatePath(`/(client)${path}`, 'page')
+      revalidatePath(`/(client)/en/${path}`, 'page')
+      revalidatePath(`/(client)/fa/${path}`, 'page')
       return NextResponse.json({ revalidated: true, now: Date.now() })
    }
 
