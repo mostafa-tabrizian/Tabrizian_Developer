@@ -4,6 +4,7 @@ import PreviewControl from './components/previewControl'
 import Spotlight from './components/spotlight'
 import Project, { IProject } from '@/models/project'
 import dbConnect from '@/lib/dbConnect'
+import limiter from '@/lib/limiter'
 import Script from 'next/script'
 const ProjectNotFound = dynamic(() => import('./components/projectNotFound'))
 
@@ -31,6 +32,20 @@ const ProjectDetail = async ({
 }: {
    params: { title: string; lang: string }
 }) => {
+   const remaining = await limiter.removeTokens(1)
+
+   if (remaining < 0) {
+      return (
+         <h1 className='mx-10 my-20 max-w-screen-sm text-center md:mx-auto'>
+            Sorry, you have reached the request limit. Please wait one minute and try again.
+            {/* 
+            متاسفانه تعداد درخواست‌های شما به حداکثر مجاز رسیده است. لطفاً کمی صبر کنید و سپس دوباره
+            امتحان کنید
+ */}
+         </h1>
+      )
+   }
+
    const data: IProject = await fetchData(title)
 
    let creativeWorkJsonLd, breadcrumbJsonLd

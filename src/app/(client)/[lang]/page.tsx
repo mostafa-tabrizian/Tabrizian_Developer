@@ -1,5 +1,5 @@
 // import dbConnect from '@/lib/dbConnect'
-// import limiter from '@/lib/limiter'
+import limiter from '@/lib/limiter'
 // import Project from '@/models/project'
 
 // import Script from 'next/script'
@@ -32,7 +32,7 @@ export const metadata = {
 const jsonLd = {
    '@context': 'https://schema.org',
    '@type': 'WebSite',
-   id: '#',  // #webSite
+   id: '#', // #webSite
    name: 'مصطفی تبریزیان',
    url: '#',
 }
@@ -62,16 +62,19 @@ const corporationJsonLd = {
 export const revalidate = 7 * 24 * 60 * 60
 
 async function Home({ params: { lang } }: { params: { lang: string } }) {
-   // const remaining = await limiter.removeTokens(3)
+   const remaining = await limiter.removeTokens(1)
 
-   // if (remaining < 0) {
-   //    return (
-   //       <h1 className='text-center mx-10 md:mx-auto my-20 max-w-screen-sm'>
-   //          متاسفانه تعداد درخواست‌های شما به حداکثر مجاز رسیده است. لطفاً کمی صبر کنید و سپس دوباره
-   //          امتحان کنید
-   //       </h1>
-   //    )
-   // }
+   if (remaining < 0) {
+      return (
+         <h1 className='mx-10 my-20 max-w-screen-sm text-center md:mx-auto'>
+            Sorry, you have reached the request limit. Please wait one minute and try again.
+            {/* 
+            متاسفانه تعداد درخواست‌های شما به حداکثر مجاز رسیده است. لطفاً کمی صبر کنید و سپس دوباره
+            امتحان کنید
+ */}
+         </h1>
+      )
+   }
 
    // const projects = await getprojects()
 
