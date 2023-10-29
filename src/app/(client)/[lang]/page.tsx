@@ -14,6 +14,7 @@ import Packages from './components/packages'
 import Contact from './components/contact'
 import Resume from './components/resume'
 import Technologies from './components/technologies'
+import Script from 'next/script'
 
 export const metadata = {
    title: 'مصطفی تبریزیان | طراحی لوگو، طراحی پوستر، طراحی بنر و طراحی کارت ویزیت',
@@ -28,64 +29,39 @@ export const metadata = {
 //    return await Project.find({ active: true }).limit(14).sort({ createdAt: -1 })
 // }
 
-// const jsonLd = {
-//    '@context': 'https://schema.org',
-//    '@type': 'WebSite',
-//    id: 'https://tabriziancodes.ir/#webSite',
-//    name: 'مصطفی تبریزیان',
-//    url: 'https://tabriziancodes.ir',
-// }
+const jsonLd = {
+   '@context': 'https://schema.org',
+   '@type': 'WebSite',
+   id: 'https://tabriziancodes.ir/#webSite',
+   name: 'مصطفی تبریزیان',
+   url: 'https://tabriziancodes.ir',
+}
 
-// const corporationJsonLd = {
-//    '@context': 'https://schema.org',
-//    '@type': 'Corporation',
-//    id: 'https://tabriziancodes.ir/#corporation',
-//    name: 'مصطفی تبریزیان',
-//    alternateName: ['مصطفی تبریزیان'],
-//    legalName: 'مصطفی تبریزیان',
-//    url: 'https://tabriziancodes.ir',
-//    logo: 'https://tabriziancodes.ir/_next/image?url=%2Flogo%2Flogo.jpg&w=96&q=100',
-//    email: '',
-//    sameAs: [
-//       'https://www.instagram.com/aliasadi_graphics',
-//       'https://t.me/aliasadi_graphics',
-//       'https://eitaa.com/aliasadi_graphics',
-//    ],
-//    contactPoint: [
-//       {
-//          '@type': 'ContactPoint',
-//          telephone: '+989352601280',
-//          contactType: 'customer service',
-//          areaServed: 'IR',
-//          availableLanguage: 'Persian',
-//       },
-//    ],
-//    founders: [
-//       {
-//          '@context': 'https://schema.org',
-//          '@type': 'Person',
-//          jobTitle: 'Chief executive officer',
-//          name: 'Ali Asadi',
-//          sameAs: [
-//             'https://www.instagram.com/aliasadi_graphics',
-//             'https://t.me/aliasadi_graphics',
-//             'https://eitaa.com/aliasadi_graphics',
-//          ],
-//       },
-//       {
-//          '@context': 'https://schema.org',
-//          '@type': 'Person',
-//          image: '',
-//          jobTitle: 'Chairman',
-//          name: 'Ali Asadi',
-//          sameAs: [
-//             'https://www.instagram.com/aliasadi_graphics',
-//             'https://t.me/aliasadi_graphics',
-//             'https://eitaa.com/aliasadi_graphics',
-//          ],
-//       },
-//    ],
-// }
+const corporationJsonLd = {
+   '@context': 'https://schema.org',
+   '@type': 'Corporation',
+   id: '#',  // /#corporation
+   name: 'Mostafa Tabrizian',
+   alternateName: ['مصطفی تبریزیان'],
+   legalName: 'Mostafa Tabrizian',
+   url: '#',
+   logo: '#',
+   email: '',
+   sameAs: [
+      '#'
+   ],
+   founders: [
+      {
+         '@context': 'https://schema.org',
+         '@type': 'Person',
+         jobTitle: 'Chief executive officer',
+         name: 'Mostafa Tabrizian',
+         sameAs: [
+            '#',
+         ],
+      }
+   ],
+}
 
 async function Home({ params: { lang } }: { params: { lang: string } }) {
    // const remaining = await limiter.removeTokens(3)
@@ -103,7 +79,7 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
 
    return (
       <>
-         {/* <Script
+         <Script
             id='website-jsonld'
             type='application/ld+json'
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -112,7 +88,7 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
             id='corporation-jsonld'
             type='application/ld+json'
             dangerouslySetInnerHTML={{ __html: JSON.stringify(corporationJsonLd) }}
-         /> */}
+         />
 
          <Landpage />
 
