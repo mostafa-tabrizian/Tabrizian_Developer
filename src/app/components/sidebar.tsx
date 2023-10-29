@@ -2,11 +2,9 @@
 
 import Drawer from '@mui/material/Drawer'
 import Link from 'next/link'
-import { useState, useEffect, memo } from 'react'
+import { useState, useEffect } from 'react'
 import Collapse from '@mui/material/Collapse'
 import { usePathname } from 'next/navigation'
-import Image from 'next/image'
-import hyphen from '@/lib/hyphen'
 
 const Sidebar = () => {
    const [sidebar, setSidebar] = useState(false)

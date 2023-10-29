@@ -1,7 +1,5 @@
 import dynamic from 'next/dynamic'
 import Detail from './components/detail'
-import MobilePreview from './components/mobilePreview'
-const DesktopPreview = dynamic(() => import('./components/desktopPreview'), { ssr: false })
 import PreviewControl from './components/previewControl'
 import Spotlight from './components/spotlight'
 import Project, { IProject } from '@/models/project'
@@ -127,19 +125,15 @@ const ProjectDetail = async ({
                            mobile2ndImage: data.mobile2ndImage,
                            desktopImage: data.desktopImage,
                            gallery: data.gallery,
+                           lighthouse: data.lighthouse,
                         }}
                      />
 
-                     <div className='order-1 mt-20 grid items-center justify-center lg:order-2 lg:mt-0'>
-                        <MobilePreview
-                           data={{
-                              mobile1stImage: data.mobile1stImage,
-                              mobile2ndImage: data.mobile2ndImage,
-                           }}
+                     <div className='order-1 mt-20 items-center justify-center md:mx-auto md:w-[30rem] lg:order-2 lg:mt-0 xl:grid xl:w-[40rem]'>
+                        <PreviewControl
+                           mobile1stImage={data.mobile1stImage}
+                           mobile2ndImage={data.mobile2ndImage}
                         />
-                        {/* <DesktopPreview /> */}
-
-                        <PreviewControl />
                      </div>
                   </div>
                </div>

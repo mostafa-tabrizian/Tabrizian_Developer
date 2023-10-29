@@ -1,11 +1,10 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 const Footer = () => {
    return (
-      <footer className='bg-gradient-to-r from-indigo-900 to-indigo-950 pb-10 pt-6 mt-20 text-slate-100'>
+      <footer className='mt-20 bg-gradient-to-r from-indigo-900 to-indigo-950 pb-10 pt-6 text-slate-100'>
          <div className=' mx-auto max-w-screen-lg'>
-            <div className='mb-5 grid grid-cols-3'>
+            <div className='mb-5 flex grid-cols-3 flex-wrap lg:grid'>
                <div>logo</div>
                <div className='flex justify-between gap-5'>
                   <Link href='#'>

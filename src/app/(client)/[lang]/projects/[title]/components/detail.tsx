@@ -12,6 +12,7 @@ const Detail = ({
       mobile2ndImage,
       desktopImage,
       gallery,
+      lighthouse,
    },
 }: {
    data: {
@@ -24,6 +25,7 @@ const Detail = ({
       mobile2ndImage: string
       desktopImage: string
       gallery: [string]
+      lighthouse: string
    }
 }) => {
    return (
@@ -31,7 +33,9 @@ const Detail = ({
          <div>
             <h1>{title}</h1>
             <Link href='#' target='_blank'>
-               <span className='text-sm underline underline-offset-4 hover:text-indigo-500'>{live}</span>
+               <span className='text-sm underline underline-offset-4 hover:text-indigo-500'>
+                  {live}
+               </span>
             </Link>
          </div>
          <div className='space-y-3'>
@@ -60,6 +64,14 @@ const Detail = ({
                />
             </div>
          </div>
+         {lighthouse ? (
+            <div className='space-y-3'>
+               <h2>SEO, Performance</h2>
+               <Gallery detail={{ title }} images={[lighthouse]} />
+            </div>
+         ) : (
+            ''
+         )}
       </div>
    )
 }

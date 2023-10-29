@@ -3,7 +3,7 @@ import Link from 'next/link'
 import dbConnect from '@/lib/dbConnect'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 import Project from '@/models/project'
-import Detailproject from '../components/detailForm'
+import DetailForm from '../components/detailForm'
 
 export const metadata = {
    title: 'Admin Panel | Project',
@@ -59,7 +59,7 @@ const projectPage = async ({ params: { id } }: { params: { id: string } }) => {
                            </button>
                         </Link>
 
-                        <Detailproject
+                        <DetailForm
                            addingNewproject={addingNewproject}
                            project={JSON.parse(JSON.stringify(project))}
                         />

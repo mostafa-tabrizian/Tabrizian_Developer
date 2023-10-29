@@ -8,6 +8,7 @@ import { memo, useMemo, useState } from 'react'
 
 import FrontImageInput from './frontImageInput'
 import GalleryInput from './galleryInput'
+import LighthouseInput from './lighthouseInput'
 
 const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
 const Button = dynamic(() => import('@mui/material/Button'), { ssr: false })
@@ -23,12 +24,14 @@ const ImageInput = memo(
          mobile1stImage: string
          mobile2ndImage: string
          desktopImage: string
+         lighthouse: string
       }
    }) => {
       const [mobile1stImagePreview, setMobile1stImagePreview] = useState<FileList | null>(null)
       const [mobile2stImagePreview, setMobile2ndImagePreview] = useState<FileList | null>(null)
       const [desktopImagePreview, setDesktopImagePreview] = useState<FileList | null>(null)
       const [galleryPreview, setGalleryPreview] = useState<FileList | null>(null)
+      const [lighthousePreview, setLighthousePreview] = useState<FileList | null>(null)
       const [loading, setLoading] = useState(false)
 
       const projectMemo = useMemo(() => project, [project])
@@ -48,6 +51,10 @@ const ImageInput = memo(
       const galleryPrevMemo = useMemo(() => {
          return galleryPreview && Object.values(galleryPreview)
       }, [galleryPreview])
+
+      const lighthousePrevMemo = useMemo(() => {
+         return lighthousePreview && Object.values(lighthousePreview)
+      }, [lighthousePreview])
 
       const router = useRouter()
 
@@ -89,9 +96,9 @@ const ImageInput = memo(
          else if (type == 'mobile2nd') setMobile2ndImagePreview(null)
          else if (type == 'desktop') setDesktopImagePreview(null)
          else if (type == 'gallery') setGalleryPreview(null)
+         else if (type == 'lighthouse') setLighthousePreview(null)
 
          fetch('/api/--admin--/revalidate?path=/')
-         fetch('/api/--admin--/revalidate?path=/search/[query]')
 
          const toast = await import('react-toastify').then((mod) => mod.toast)
          toast.success(`Image ${name} has been uploaded successfully.`)
@@ -102,7 +109,13 @@ const ImageInput = memo(
       const onSubmit = async () => {
          const toast = await import('react-toastify').then((mod) => mod.toast)
 
-         if (!mobile1stPrevMemo && !mobile2ndPrevMemo && !desktopPrevMemo && !galleryPrevMemo) {
+         if (
+            !mobile1stPrevMemo &&
+            !mobile2ndPrevMemo &&
+            !desktopPrevMemo &&
+            !galleryPrevMemo &&
+            !lighthousePrevMemo
+         ) {
             return toast.warning('No image selected for upload!')
          }
          if (!projectMemo._id) {
@@ -118,6 +131,7 @@ const ImageInput = memo(
                { project: mobile2ndPrevMemo, type: 'mobile2nd' },
                { project: desktopPrevMemo, type: 'desktop' },
                { project: galleryPrevMemo, type: 'gallery' },
+               { project: lighthousePrevMemo, type: 'lighthouse' },
             ]) {
                if (!imageData.project) continue
 
@@ -188,7 +202,9 @@ const ImageInput = memo(
             setMobile2ndImagePreview(files)
          } else if (type == 'desktop') {
             setDesktopImagePreview(files)
-         } else if (type == 'gallery') setGalleryPreview(files)
+         } else if (type == 'gallery') {
+            setGalleryPreview(files)
+         } else if (type == 'lighthouse') setLighthousePreview(files)
       }
 
       const dragOverHandler = (event: React.DragEvent<HTMLDivElement>) => event.preventDefault()
@@ -311,6 +327,20 @@ const ImageInput = memo(
                      _id: projectMemo._id,
                   }}
                   galleryPrevMemo={galleryPrevMemo}
+                  dragOverHandler={dragOverHandler}
+                  dropHandlerDesign={dropHandlerDesign}
+                  onFileSelected={onFileSelected}
+                  loading={loading}
+               />
+
+               <hr />
+
+               <LighthouseInput
+                  project={{
+                     lighthouse: projectMemo.lighthouse,
+                     _id: projectMemo._id,
+                  }}
+                  lighthousePrevMemo={lighthousePrevMemo}
                   dragOverHandler={dragOverHandler}
                   dropHandlerDesign={dropHandlerDesign}
                   onFileSelected={onFileSelected}

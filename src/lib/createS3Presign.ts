@@ -14,7 +14,7 @@ const createS3Presign = async (imageName: string, folder: string) => {
 
       return res
    } catch (err) {
-      toast.error('در ایجاد لینک باکِت خطایی رخ داد. لطفا مجدد تلاش کنید.')
+      toast.error('While creating the presign an error occurred!')
       console.error(err)
       return false
    }

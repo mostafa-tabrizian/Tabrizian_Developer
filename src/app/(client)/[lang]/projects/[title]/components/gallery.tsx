@@ -40,15 +40,16 @@ const Gallery = ({ detail, images }: { detail: { title: string }; images: string
                // }
 
                return (
-                  <Image
-                     key={idx}
-                     onClick={() => setOpenLightbox(true)}
-                     src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${image}`}
-                     alt={detail.title}
-                     width={76}
-                     height={76}
-                     className='h-full w-auto max-w-full rounded-lg hover:cursor-pointer'
-                  />
+                  <div key={idx} className='h-20 w-auto'>
+                     <Image
+                        onClick={() => setOpenLightbox(true)}
+                        src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${image}`}
+                        alt={detail.title}
+                        width={200}
+                        height={100}
+                        className='h-full w-auto max-w-full rounded-lg hover:cursor-pointer'
+                     />
+                  </div>
                )
             })}
          </div>

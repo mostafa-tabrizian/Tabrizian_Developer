@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-const MobilePreview = () => {
+const DesktopPreview = () => {
    return (
-      <div className='relative mx-5'>
+      <div className='relative mx-5 lg:my-24'>
          <div className=''>
             <Image
                src='/resume1.jpg'
@@ -21,4 +21,4 @@ const MobilePreview = () => {
    )
 }
 
-export default MobilePreview
+export default DesktopPreview

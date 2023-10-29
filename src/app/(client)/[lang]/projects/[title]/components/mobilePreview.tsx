@@ -20,10 +20,10 @@ const MobileBorderSVG = () => {
 const CircleSVG = () => {
    return (
       <>
-         <span className='absolute -z-10 h-[280px] w-[280px] translate-x-16 translate-y-10 rounded-full border-2 border-violet-300 lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
+         <span className='absolute -z-10 h-[280px] w-[280px] translate-x-8 translate-y-10 rounded-full border-2 border-violet-300 lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
             <div className='animate-spin-slow absolute -z-10 flex h-[280px] w-[280px] justify-center rounded-full lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
                <span
-                  className='h-10 w-10 translate-x-24 rounded-full bg-indigo-400'
+                  className='h-10 w-10 translate-x-16 rounded-full bg-indigo-400'
                   style={{
                      boxShadow: '3px -3px 10px black, inset 3px -3px 5px #2b054799',
                      background:
@@ -45,7 +45,7 @@ const MobilePreview = ({
    }
 }) => {
    return (
-      <div className='flex gap-7'>
+      <div className='flex justify-center gap-7'>
          <div className='relative z-10'>
             <div className='relative aspect-[1/2] h-full w-[136.33px] lg:w-[182.46px] xl:w-[280.5px]'>
                <Image

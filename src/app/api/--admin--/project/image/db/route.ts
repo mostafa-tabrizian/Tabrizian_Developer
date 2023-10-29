@@ -48,6 +48,15 @@ export async function POST(req: Request) {
       res = await Project.findOne({ _id: _id }).exec()
       res.gallery.push(imageKey)
       res.save()
+   } else if (type == 'lighthouse') {
+      res = await Project.findOneAndUpdate(
+         {
+            _id: _id,
+         },
+         {
+            lighthouse: imageKey,
+         },
+      ).exec()
    }
 
    return NextResponse.json({ res })
