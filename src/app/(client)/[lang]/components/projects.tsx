@@ -1,10 +1,10 @@
 import { IProject } from '@/models/project'
 import Image from 'next/image'
 
-const Resume = ({ projects }: { projects: IProject[] }) => {
+const Projects = ({ projects }: { projects: IProject[] }) => {
    return (
       <div
-         id='resume'
+         id='projects'
          className='mx-auto grid h-screen max-w-screen-lg  items-center justify-center'
       >
          <div>
@@ -18,7 +18,7 @@ const Resume = ({ projects }: { projects: IProject[] }) => {
                         <Image
                            className='mb-5 rounded-lg'
                            src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${project.thumbnail}`}
-                           alt='resume'
+                           alt='Projects'
                            width={360}
                            height={194}
                         />
@@ -32,4 +32,4 @@ const Resume = ({ projects }: { projects: IProject[] }) => {
    )
 }
 
-export default Resume
+export default Projects

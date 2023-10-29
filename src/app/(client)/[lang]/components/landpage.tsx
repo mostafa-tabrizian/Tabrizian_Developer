@@ -15,13 +15,13 @@ const Landpage = () => {
          <div className='mx-auto grid h-full max-w-screen-lg items-center'>
             <div className='space-y-10'>
                <h1
-                  style={{ fontSize: '5rem' }}
-                  className=' relative z-0 leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-indigo-950'
+                  style={{ fontSize: '4rem' }}
+                  className=' relative z-0 leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950'
                >
-                  BECOME <br /> THE <br /> PROFESSIONAL
+                  Dive Into The <br /> Depths Of <br /> Web Development <br /> With Me
                </h1>
-               <h2 className='-ml-6 border-l-8 border-indigo-900 pl-5'>
-                  Only the survival thing to become professional <br /> Only who try SAMRT not hard
+               <h2 className='relative -ml-6 border-l-8 border-sky-900 pl-5'>
+                  Explore the World of Web Development with Me
                </h2>
                <Link
                   href='/#about'
@@ -29,7 +29,7 @@ const Landpage = () => {
                   style={{ animationDuration: '1s' }}
                >
                   <svg
-                     className='h-10 w-10 text-indigo-700'
+                     className='h-10 w-10 text-sky-700'
                      fill='none'
                      viewBox='0 0 24 24'
                      stroke='currentColor'
@@ -46,7 +46,7 @@ const Landpage = () => {
          </div>
 
          <div className='absolute left-20 top-0 grid h-full items-center'>
-            <div className='grid w-10 space-y-2 border-t-8 border-indigo-900 pt-2'>
+            <div className='grid w-10 space-y-2 border-t-8 border-sky-900 pt-2'>
                <span className='h-3 w-3 rounded-full bg-white'></span>
                <span className='h-3 w-3 rounded-full bg-white'></span>
                <span className='h-3 w-3 rounded-full bg-white'></span>

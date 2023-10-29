@@ -4,7 +4,7 @@ const About = () => {
    return (
       <div
          id='about'
-         className='mx-auto grid h-screen max-w-screen-xl -translate-y-14 grid-cols-2 items-center gap-60'
+         className='mx-auto grid min-h-screen my-20 max-w-screen-xl -translate-y-14 grid-cols-2 items-center gap-x-60'
       >
          <div className='space-y-10'>
             <div className='space-y-5'>

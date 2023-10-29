@@ -7,7 +7,7 @@ const Technologies = () => {
             <h2 className='Audiowide mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
                Technologies
             </h2>
-            <div className='grid grid-cols-2 gap-40'>
+            <div className='grid grid-cols-2 gap-x-40'>
                <div className='space-y-10'>
                   <div>
                      <span className=''>JavaScript Technologies</span>
