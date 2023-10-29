@@ -6,9 +6,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { memo, useMemo, useState } from 'react'
 
-import FrontImageInput from './frontImageInput'
+import Mobile1stImageInput from './Mobile1stImageInput'
 import GalleryInput from './galleryInput'
 import LighthouseInput from './lighthouseInput'
+import Mobile2ndImageInput from './Mobile2ndImageInput'
+import ThumbnailInput from './thumbnailInput'
 
 const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
 const Button = dynamic(() => import('@mui/material/Button'), { ssr: false })
@@ -20,12 +22,14 @@ const ImageInput = memo(
    }: {
       project: {
          _id: string
-         gallery: string[]
+         thumbnail: string
          mobile1stImage: string
          mobile2ndImage: string
+         gallery: string[]
          lighthouse: string
       }
    }) => {
+      const [thumbnailPreview, setThumbnailPreview] = useState<FileList | null>(null)
       const [mobile1stImagePreview, setMobile1stImagePreview] = useState<FileList | null>(null)
       const [mobile2stImagePreview, setMobile2ndImagePreview] = useState<FileList | null>(null)
       const [galleryPreview, setGalleryPreview] = useState<FileList | null>(null)
@@ -33,6 +37,10 @@ const ImageInput = memo(
       const [loading, setLoading] = useState(false)
 
       const projectMemo = useMemo(() => project, [project])
+
+      const thumbnailPrevMemo = useMemo(() => {
+         return thumbnailPreview && Object.values(thumbnailPreview)
+      }, [thumbnailPreview])
 
       const mobile1stPrevMemo = useMemo(() => {
          return mobile1stImagePreview && Object.values(mobile1stImagePreview)
@@ -88,6 +96,7 @@ const ImageInput = memo(
       const successUpload = async (type: string, name: string) => {
          if (type == 'mobile1st') setMobile1stImagePreview(null)
          else if (type == 'mobile2nd') setMobile2ndImagePreview(null)
+         else if (type == 'thumbnail') setThumbnailPreview(null)
          else if (type == 'gallery') setGalleryPreview(null)
          else if (type == 'lighthouse') setLighthousePreview(null)
 
@@ -103,6 +112,7 @@ const ImageInput = memo(
          const toast = await import('react-toastify').then((mod) => mod.toast)
 
          if (
+            !thumbnailPrevMemo &&
             !mobile1stPrevMemo &&
             !mobile2ndPrevMemo &&
             !galleryPrevMemo &&
@@ -119,6 +129,7 @@ const ImageInput = memo(
 
          try {
             for (const imageData of [
+               { project: thumbnailPrevMemo, type: 'thumbnail' },
                { project: mobile1stPrevMemo, type: 'mobile1st' },
                { project: mobile2ndPrevMemo, type: 'mobile2nd' },
                { project: galleryPrevMemo, type: 'gallery' },
@@ -189,6 +200,8 @@ const ImageInput = memo(
 
          if (type == 'mobile1st') {
             setMobile1stImagePreview(files)
+         } else if (type == 'thumbnail') {
+            setThumbnailPreview(files)
          } else if (type == 'mobile2nd') {
             setMobile2ndImagePreview(files)
          } else if (type == 'gallery') {
@@ -213,7 +226,21 @@ const ImageInput = memo(
 
       return (
          <div className='space-y-4 '>
-            <FrontImageInput
+            <ThumbnailInput
+               project={{
+                  thumbnail: projectMemo.thumbnail,
+                  _id: projectMemo._id,
+               }}
+               thumbnailPrevMemo={thumbnailPrevMemo}
+               dragOverHandler={dragOverHandler}
+               dropHandlerDesign={dropHandlerDesign}
+               onFileSelected={onFileSelected}
+               loading={loading}
+            />
+
+            <hr />
+
+            <Mobile1stImageInput
                project={{
                   mobile1stImage: projectMemo.mobile1stImage,
                   _id: projectMemo._id,
@@ -227,150 +254,80 @@ const ImageInput = memo(
 
             <hr />
 
-            <div className='space-y-3'>
-               {projectMemo.mobile2ndImage ? (
-                  <div>
-                     <span className='verdana text-slate-400'>Mobile 2nd Image</span>
+            <Mobile2ndImageInput
+               project={{
+                  mobile2ndImage: projectMemo.mobile2ndImage,
+                  _id: projectMemo._id,
+               }}
+               mobile2ndPrevMemo={mobile2ndPrevMemo}
+               dragOverHandler={dragOverHandler}
+               dropHandlerDesign={dropHandlerDesign}
+               onFileSelected={onFileSelected}
+               loading={loading}
+            />
 
-                     <div className='relative'>
-                        <Link
-                           target='_blank'
-                           href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${projectMemo.mobile2ndImage}`}
-                        >
-                           <div className='mx-auto flex justify-center'>
-                              <NextImage
-                                 className='rounded-lg p-1'
-                                 src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${projectMemo.mobile2ndImage}`}
-                                 alt={projectMemo._id}
-                                 width={600}
-                                 height={900}
-                                 loading='lazy'
-                              />
-                           </div>
-                        </Link>
+            <hr />
 
-                        <ImageDelete
-                           type='mobile2nd'
-                           project={projectMemo._id}
-                           imageKey={projectMemo.mobile2ndImage}
-                        />
-                     </div>
+            <GalleryInput
+               project={{
+                  gallery: projectMemo.gallery,
+                  _id: projectMemo._id,
+               }}
+               galleryPrevMemo={galleryPrevMemo}
+               dragOverHandler={dragOverHandler}
+               dropHandlerDesign={dropHandlerDesign}
+               onFileSelected={onFileSelected}
+               loading={loading}
+            />
+
+            <hr />
+
+            <LighthouseInput
+               project={{
+                  lighthouse: projectMemo.lighthouse,
+                  _id: projectMemo._id,
+               }}
+               lighthousePrevMemo={lighthousePrevMemo}
+               dragOverHandler={dragOverHandler}
+               dropHandlerDesign={dropHandlerDesign}
+               onFileSelected={onFileSelected}
+               loading={loading}
+            />
+
+            <hr />
+
+            <div className='flex items-center justify-center rounded-lg border-2 border-slate-200 bg-slate-100'>
+               {loading ? (
+                  <div className='p-1.5'>
+                     <CircularProgress color='success' size={20} />
                   </div>
                ) : (
-                  <>
-                     {mobile2ndPrevMemo?.length ? (
-                        <div>
-                           <span className='verdana text-slate-400'>
-                              Mobile 2nd Image (Preview)
-                           </span>
-
-                           {mobile2ndPrevMemo.map((imageData: File) => {
-                              return (
-                                 <NextImage
-                                    key={imageData.name}
-                                    className='rounded-xl object-contain'
-                                    src={URL.createObjectURL(imageData)}
-                                    alt={imageData.name}
-                                    width='250'
-                                    height='250'
-                                    quality={100}
-                                    loading='lazy'
-                                 />
-                              )
-                           })}
-                        </div>
-                     ) : (
-                        ''
-                     )}
-
-                     <div
-                        onDrop={(e) => dropHandlerDesign(e, 'mobile2nd')}
-                        onDragOver={dragOverHandler}
-                        className='w-full rounded-lg border-2 border-slate-200 bg-slate-100'
+                  <button
+                     className='flex gap-5 py-2 text-blue-500'
+                     disabled={loading}
+                     onClick={() => onSubmit()}
+                     type='button'
+                  >
+                     <svg
+                        className='h-5 w-5'
+                        width='24'
+                        height='24'
+                        viewBox='0 0 24 24'
+                        strokeWidth='2'
+                        stroke='currentColor'
+                        fill='none'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
                      >
-                        <Button
-                           type='button'
-                           // @ts-ignore
-                           component='label'
-                           sx={{ width: '100%', padding: '.5rem' }}
-                        >
-                           <span className='verdana text-sm'>Choose Mobile 2nd Image</span>
-                           <input
-                              hidden
-                              accept='image/*'
-                              type='file'
-                              name='mobile2stImagePreview'
-                              onChange={(e) => onFileSelected(e?.target?.files, 'mobile2nd')}
-                              disabled={loading}
-                           />
-                        </Button>
-                     </div>
-                  </>
+                        {' '}
+                        <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                        <path d='M7 18a4.6 4.4 0 0 1 0 -9h0a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1' />{' '}
+                        <polyline points='9 15 12 12 15 15' />{' '}
+                        <line x1='12' y1='12' x2='12' y2='21' />
+                     </svg>
+                     <span className='verdana text-sm'>Upload Images</span>
+                  </button>
                )}
-
-               <hr />
-
-               <GalleryInput
-                  project={{
-                     gallery: projectMemo.gallery,
-                     _id: projectMemo._id,
-                  }}
-                  galleryPrevMemo={galleryPrevMemo}
-                  dragOverHandler={dragOverHandler}
-                  dropHandlerDesign={dropHandlerDesign}
-                  onFileSelected={onFileSelected}
-                  loading={loading}
-               />
-
-               <hr />
-
-               <LighthouseInput
-                  project={{
-                     lighthouse: projectMemo.lighthouse,
-                     _id: projectMemo._id,
-                  }}
-                  lighthousePrevMemo={lighthousePrevMemo}
-                  dragOverHandler={dragOverHandler}
-                  dropHandlerDesign={dropHandlerDesign}
-                  onFileSelected={onFileSelected}
-                  loading={loading}
-               />
-
-               <hr />
-
-               <div className='flex items-center justify-center rounded-lg border-2 border-slate-200 bg-slate-100'>
-                  {loading ? (
-                     <div className='p-1.5'>
-                        <CircularProgress color='success' size={20} />
-                     </div>
-                  ) : (
-                     <button
-                        className='flex gap-5 py-2 text-blue-500'
-                        disabled={loading}
-                        onClick={() => onSubmit()}
-                        type='button'
-                     >
-                        <svg
-                           className='h-5 w-5'
-                           width='24'
-                           height='24'
-                           viewBox='0 0 24 24'
-                           strokeWidth='2'
-                           stroke='currentColor'
-                           fill='none'
-                           strokeLinecap='round'
-                           strokeLinejoin='round'
-                        >
-                           {' '}
-                           <path stroke='none' d='M0 0h24v24H0z' />{' '}
-                           <path d='M7 18a4.6 4.4 0 0 1 0 -9h0a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1' />{' '}
-                           <polyline points='9 15 12 12 15 15' />{' '}
-                           <line x1='12' y1='12' x2='12' y2='21' />
-                        </svg>
-                        <span className='verdana text-sm'>Upload Images</span>
-                     </button>
-                  )}
-               </div>
             </div>
          </div>
       )

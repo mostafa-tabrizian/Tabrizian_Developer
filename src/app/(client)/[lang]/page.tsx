@@ -1,20 +1,16 @@
-// import dbConnect from '@/lib/dbConnect'
+import dbConnect from '@/lib/dbConnect'
 import limiter from '@/lib/limiter'
-// import Project from '@/models/project'
+import Project from '@/models/project'
 
-// import Script from 'next/script'
-// import Sampleprojects from './components/sampleprojects'
-// import FAQ from './components/faq'
-// import About from './components/about'
+import Script from 'next/script'
 import SocialMedia from './components/socialMedia'
 import Landpage from './components/landpage'
 import About from './components/about'
 import FAQ from './components/faq'
 import Packages from './components/packages'
 import Contact from './components/contact'
-import Resume from './components/resume'
+import Projects from './components/projects'
 import Technologies from './components/technologies'
-import Script from 'next/script'
 
 export const metadata = {
    title: 'مصطفی تبریزیان | طراحی لوگو، طراحی پوستر، طراحی بنر و طراحی کارت ویزیت',
@@ -24,10 +20,10 @@ export const metadata = {
    },
 }
 
-// const getprojects = async () => {
-//    await dbConnect()
-//    return await Project.find({ active: true }).limit(14).sort({ createdAt: -1 })
-// }
+const fetchProjects = async () => {
+   await dbConnect()
+   return await Project.find({ active: true }).sort({ createdAt: -1 })
+}
 
 const jsonLd = {
    '@context': 'https://schema.org',
@@ -76,7 +72,7 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
       )
    }
 
-   // const projects = await getprojects()
+   const projects = await fetchProjects()
 
    return (
       <>
@@ -97,7 +93,7 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
 
          <Technologies />
 
-         <Resume />
+         <Projects projects={JSON.parse(JSON.stringify(projects))} />
 
          <Packages />
 

@@ -33,6 +33,31 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             },
          },
          {
+            accessorKey: 'thumbnail',
+            header: 'Thumbnail',
+            cell: (info) => {
+               const value = info.getValue()
+               return (
+                  <Link
+                     target='_blank'
+                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
+                  >
+                     {value ? (
+                        <Image
+                           className='rounded-md object-cover'
+                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
+                           alt={String(value)}
+                           height={50}
+                           width={50}
+                        />
+                     ) : (
+                        ''
+                     )}
+                  </Link>
+               )
+            },
+         },
+         {
             accessorKey: 'mobile1stImage',
             header: 'Mobile Pre 1st',
             cell: (info) => {
@@ -74,6 +99,32 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
                            alt={String(value)}
                            height={50}
                            width={50}
+                        />
+                     ) : (
+                        ''
+                     )}
+                  </Link>
+               )
+            },
+         },
+         
+         {
+            accessorKey: 'lighthouse',
+            header: 'Lighthouse',
+            cell: (info) => {
+               const value = info.getValue()
+               return (
+                  <Link
+                     target='_blank'
+                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
+                  >
+                     {value ? (
+                        <Image
+                           className='rounded-md object-cover'
+                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
+                           alt={String(value)}
+                           height={100}
+                           width={200}
                         />
                      ) : (
                         ''

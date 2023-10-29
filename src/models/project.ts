@@ -17,6 +17,7 @@ export interface IProject {
    live: string
    technologies: string
    lighthouse: string
+   thumbnail: string
 }
 
 const projectSchema = new mongoose.Schema({
@@ -35,7 +36,8 @@ const projectSchema = new mongoose.Schema({
    descriptionFa: String,
    live: String,
    technologies: String,
-   lighthouse: String
+   lighthouse: String,
+   thumbnail: String
 })
 
 projectSchema.set('timestamps', true)

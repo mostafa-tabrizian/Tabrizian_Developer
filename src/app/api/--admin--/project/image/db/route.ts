@@ -48,6 +48,15 @@ export async function POST(req: Request) {
             lighthouse: imageKey,
          },
       ).exec()
+   } else if (type == 'thumbnail') {
+      res = await Project.findOneAndUpdate(
+         {
+            _id: _id,
+         },
+         {
+            thumbnail: imageKey,
+         },
+      ).exec()
    }
 
    return NextResponse.json({ res })
@@ -76,6 +85,15 @@ export async function DELETE(req: Request) {
          },
          {
             mobile2ndImage: '',
+         },
+      ).exec()
+   } else if (type == 'thumbnail') {
+      res = await Project.findOneAndUpdate(
+         {
+            _id: _id,
+         },
+         {
+            thumbnail: '',
          },
       ).exec()
    } else if (type == 'gallery') {

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { memo } from 'react'
 const Button = dynamic(() => import('@mui/material/Button'), { ssr: false })
 
-const FrontImageInput = memo(
+const Mobile1stImageInput = memo(
    ({
       project: { mobile1stImage, _id },
       mobile1stPrevMemo,
@@ -104,6 +104,6 @@ const FrontImageInput = memo(
    },
 )
 
-FrontImageInput.displayName = 'FrontImageInput'
+Mobile1stImageInput.displayName = 'Mobile1stImageInput'
 
-export default FrontImageInput
+export default Mobile1stImageInput

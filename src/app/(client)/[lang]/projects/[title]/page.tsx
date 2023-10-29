@@ -21,6 +21,7 @@ export const generateMetadata = async ({ params: { title } }: { params: { title:
 const fetchData = async (title: string) => {
    await dbConnect()
    return await Project.findOne({
+      active: true,
       titleEn: title,
    }).exec()
 }
