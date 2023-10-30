@@ -1,7 +1,8 @@
+import langDecider from '@/lib/langDecider'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Contact = () => {
+const Contact = ({ lang }: { lang: string }) => {
    return (
       <div
          id='contact'
@@ -20,13 +21,27 @@ const Contact = () => {
                   alt='qr code'
                />
             </div>
-            <h2 className='verdna mt-5 text-4xl font-bold'>
-               Scan To Become{' '}
-               <span className='Audiowide bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-transparent'>
-                  Perfect
-               </span>
-            </h2>
-            <span>or</span>
+            {langDecider(
+               lang,
+               <>
+                  <h2 className='verdna mt-5 text-4xl font-bold'>
+                     Scan To Become{' '}
+                     <span className='Audiowide bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-transparent'>
+                        Perfect
+                     </span>
+                  </h2>
+                  <span>or</span>
+               </>,
+               <>
+                  <h2 className='yekanBold mt-5 text-4xl font-bold'>
+                     یک اسکن تا{' '}
+                     <span className='yekanBold bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-transparent'>
+                        بهترین شدن
+                     </span>
+                  </h2>
+                  <span className='yekanBold'>یا</span>
+               </>,
+            )}
             <div className='mx-auto flex'>
                <Link href='#' className='px-5 text-white transition-colors hover:text-violet-300'>
                   <svg

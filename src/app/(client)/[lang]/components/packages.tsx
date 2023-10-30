@@ -1,12 +1,13 @@
+import langDecider from '@/lib/langDecider'
 import Image from 'next/image'
 
-const Packages = () => {
+const Packages = ({ lang }: { lang: string }) => {
    return (
       <div
          id='packages'
          className='relative mx-auto grid h-screen max-w-screen-lg items-center justify-center'
       >
-         <div className='grid grid-cols-3 gap-10'>
+         <div className={`${langDecider(lang, '', 'rtl')} grid grid-cols-3 gap-10`}>
             <div className='relative block rounded-3xl bg-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-700 before:p-2'>
                <div className='space-y-5'>
                   <Image
@@ -14,14 +15,22 @@ const Packages = () => {
                      width={56}
                      height={114}
                      alt='diamond'
-                     className='animate-wave absolute -top-16 right-10 mix-blend-screen'
+                     className={`animate-wave absolute -top-16 ${langDecider(
+                        lang,
+                        'right-10',
+                        'left-10',
+                     )} mix-blend-screen`}
                      style={{
                         filter: 'drop-shadow(0px 5px 10px #255123)',
                         animationDuration: '3s',
                      }}
                   />
                   <div className='relative z-10'>
-                     <h3 className='verdana'>Startup</h3>
+                     {langDecider(
+                        lang,
+                        <h3 className='verdana'>Startup</h3>,
+                        <h3 className='yekanBold'>استارآپ</h3>,
+                     )}
                   </div>
                   <div className='space-y-3'>
                      <div className='flex gap-2'>
@@ -38,8 +47,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Basic Customization</span>{' '}
-                        {/* سفارشی سازی طراحی پایه */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>Basic Customization</span>,
+                           <span className='yekan z-10 text-sm'>سفارشی سازی طراحی پایه</span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -56,8 +68,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>2 Month Support</span>{' '}
-                        {/* پشتیبانی رایگان ۲ ماه */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>2 Month Support</span>,
+                           <span className='yekan z-10 text-sm'>پشتیبانی رایگان ۲ ماه</span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -74,8 +89,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Split Payment in 2</span>{' '}
-                        {/* پرداخت در ۲ مرحله */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>Split Payment in 2</span>,
+                           <span className='yekan z-10 text-sm'>پرداخت در ۲ مرحله</span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -92,8 +110,13 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Delivery Time (Business Days)</span>
-                        {/* 14 days | زمان تحویل (روز کاری): ۱۴ روز */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>Delivery Time (Business Days)</span>,
+                           <span className='yekan z-10 text-sm'>
+                              زمان تحویل (روز کاری): ۱۴ روز{' '}
+                           </span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -110,7 +133,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Basic SEO</span> {/* سئو پایه */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>Basic SEO</span>,
+                           <span className='yekan z-10 text-sm'>سئو پایه</span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -127,13 +154,24 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Basic Content Management System (CMS)</span>
-                        {/* پنل مدیریت محتوا CMS پایه */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>
+                              Basic Content Management System (CMS)
+                           </span>,
+                           <span className='yekan z-10 text-sm'>پنل مدیریت محتوا CMS پایه</span>,
+                        )}
                      </div>
                   </div>
                </div>
                <button className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'>
-                  <span className='verdana text-base'>Get This Right Now</span>
+                  {langDecider(
+                     lang,
+                     <span className='verdana text-base'>Get This Right Now</span>,
+                     <span className='yekan flex items-center justify-center text-base'>
+                        همین الان شروع کن
+                     </span>,
+                  )}
                </button>
             </div>
             <div className='relative -top-5 block rounded-3xl bg-gradient-to-b from-indigo-950 to-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-400 before:p-2'>
@@ -143,11 +181,19 @@ const Packages = () => {
                      width={56}
                      height={114}
                      alt='diamond'
-                     className='animate-wave absolute -top-16 right-10 mix-blend-screen'
+                     className={`animate-wave absolute -top-16 ${langDecider(
+                        lang,
+                        'right-10',
+                        'left-10',
+                     )} mix-blend-screen`}
                      style={{ filter: 'drop-shadow(0px 5px 6px #527feb)', animationDuration: '3s' }}
                   />
                   <div>
-                     <h3 className='verdana'>Advanced</h3>
+                     {langDecider(
+                        lang,
+                        <h3 className='verdana'>Advanced</h3>,
+                        <h3 className='yekanBold'>پیشرفته</h3>,
+                     )}
                   </div>
                   <div className='space-y-3'>
                      <div className='flex gap-2'>
@@ -164,8 +210,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Advanced Customization</span>{' '}
-                        {/* سفارشی سازی طراحی پیشرفته */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>Advanced Customization</span>,
+                           <span className='yekan z-10 text-sm'>سفارشی سازی طراحی پیشرفته</span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -182,8 +231,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>6 Months of Free Support</span>{' '}
-                        {/* ۶ ماه پشتیبانی رایگان */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>6 Months of Free Support</span>,
+                           <span className='yekan z-10 text-sm'>۶ ماه پشتیبانی رایگان</span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -200,8 +252,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Split Payment in 3</span>{' '}
-                        {/* پرداخت در ۳ مرحله */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>Split Payment in 3</span>,
+                           <span className='yekan z-10 text-sm'>پرداخت در ۳ مرحله</span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -218,8 +273,15 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Delivery Time (Business Days): 20 days</span>{' '}
-                        {/* زمان تحویل (روز کاری): ۲۰ روز */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>
+                              Delivery Time (Business Days): 20 days
+                           </span>,
+                           <span className='yekan z-10 text-sm'>
+                              زمان تحویل (روز کاری): ۲۰ روز
+                           </span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -236,8 +298,13 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Advanced SEO & Google Analytics</span>{' '}
-                        {/* سئو پیشرفته و پنل آمار (گوگل) */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>Advanced SEO & Google Analytics</span>,
+                           <span className='yekan z-10 text-sm'>
+                              سئو پیشرفته و پنل آمار (گوگل)
+                           </span>,
+                        )}
                      </div>
 
                      <div className='flex gap-2'>
@@ -254,13 +321,24 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Advanced Content Management System (CMS)</span>{' '}
-                        {/* پنل مدیریت محتوا CMS پیشرفته */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>
+                              Advanced Content Management System (CMS)
+                           </span>,
+                           <span className='yekan z-10 text-sm'>پنل مدیریت محتوا CMS پیشرفته</span>,
+                        )}
                      </div>
                   </div>
                </div>
                <button className='mb-4 mt-20 w-full rounded-full border-2 border-white bg-violet-500 px-6 py-2'>
-                  <span className='verdana text-base'>Get This Right Now</span>
+                  {langDecider(
+                     lang,
+                     <span className='verdana text-base'>Get This Right Now</span>,
+                     <span className='yekan flex items-center justify-center text-base'>
+                        همین الان شروع کن
+                     </span>,
+                  )}
                </button>
             </div>
             <div className='relative block rounded-3xl bg-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-700 before:p-4'>
@@ -270,7 +348,11 @@ const Packages = () => {
                      width={56}
                      height={114}
                      alt='diamond'
-                     className='animate-wave absolute -top-16 right-10 mix-blend-screen'
+                     className={`animate-wave absolute -top-16 ${langDecider(
+                        lang,
+                        'right-10',
+                        'left-10',
+                     )} mix-blend-screen`}
                      style={{
                         filter: 'drop-shadow(0px 5px 15px #9a6023)',
                         animationDuration: '3s',
@@ -295,7 +377,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Full Customization</span> {/* طراحی اختصاصی */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>Full Customizatio</span>,
+                           <span className='yekan z-10 text-sm'>طراحی اختصاصی</span>,
+                        )}
                      </div>
                      <div className='flex gap-2'>
                         <svg
@@ -311,8 +397,13 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>12 Months of Free Support </span>{' '}
-                        {/* ۱۲ ماه پشتیبانی فوری + تماس تلفنی */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>12 Months of Free Support</span>,
+                           <span className='yekan z-10 text-sm'>
+                              ۱۲ ماه پشتیبانی فوری + تماس تلفنی
+                           </span>,
+                        )}
                      </div>
                      <div className='flex gap-2'>
                         <svg
@@ -328,8 +419,11 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'> Split Payment in 4 </span>{' '}
-                        {/* پرداخت در ۴ مرحله */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'> Split Payment in 4</span>,
+                           <span className='yekan z-10 text-sm'>پرداخت در ۴ مرحله</span>,
+                        )}
                      </div>
                      <div className='flex gap-2'>
                         <svg
@@ -345,8 +439,15 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>Delivery Time (Business Days): 30 days</span>{' '}
-                        {/* زمان تحویل (روز کاری): ۳۰ روز */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>
+                              Delivery Time (Business Days): 30 day
+                           </span>,
+                           <span className='yekan z-10 text-sm'>
+                              زمان تحویل (روز کاری): ۳۰ روز
+                           </span>,
+                        )}
                      </div>
                      <div className='flex gap-2'>
                         <svg
@@ -362,10 +463,15 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'>
-                           Advanced SEO & Google Analytics + SEO Consulting
-                        </span>{' '}
-                        {/* سئو پیشرفته و پنل آمار و مشاوره سئو (گوگل) */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>
+                              Advanced SEO & Google Analytics + SEO Consulting
+                           </span>,
+                           <span className='yekan z-10 text-sm'>
+                              سئو پیشرفته و پنل آمار و مشاوره سئو (گوگل)
+                           </span>,
+                        )}
                      </div>
                      <div className='flex gap-2'>
                         <svg
@@ -381,13 +487,26 @@ const Packages = () => {
                               d='M5 13l4 4L19 7'
                            />
                         </svg>
-                        <span className='text-sm z-10'> Custom Content Management System (CMS)</span>{' '}
-                        {/* پنل مدیریت محتوا CMS اختصاصی */}
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'>
+                              Custom Content Management System (CMS)
+                           </span>,
+                           <span className='yekan z-10 text-sm'>
+                              پنل مدیریت محتوا CMS اختصاصی{' '}
+                           </span>,
+                        )}
                      </div>
                   </div>
                </div>
                <button className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'>
-                  <span className='verdana text-base'>Get This Right Now</span>
+                  {langDecider(
+                     lang,
+                     <span className='verdana text-base'>Get This Right Now</span>,
+                     <span className='yekan flex items-center justify-center text-base'>
+                        همین الان شروع کن
+                     </span>,
+                  )}
                </button>
             </div>
          </div>

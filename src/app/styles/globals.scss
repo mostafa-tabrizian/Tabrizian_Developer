@@ -38,6 +38,22 @@
    src: url('/font/Verdana.woff') format('woff');
 }
 
+@font-face {
+   font-family: 'Yekan';
+   font-display: swap;
+   src:
+      url('/font/YekanRegular.woff2') format('woff2'),
+      url('/font/YekanRegular.woff') format('woff');
+}
+
+@font-face {
+   font-family: 'YekanBold';
+   font-display: swap;
+   src:
+      url('/font/YekanBold.woff2') format('woff2'),
+      url('/font/YekanBold.woff') format('woff');
+}
+
 * {
    box-sizing: border-box;
    padding: 0;
@@ -151,8 +167,12 @@ strong {
    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 
+.yekan {
+   font-family: Yekan, sans-serif;
+}
+
 .yekanBold {
-   font-family: verdana, sans-serif;
+   font-family: YekanBold, sans-serif;
 }
 
 .Audiowide {

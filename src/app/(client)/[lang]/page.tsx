@@ -87,19 +87,19 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(corporationJsonLd) }}
          />
 
-         <Landpage />
+         <Landpage lang={lang} />
 
-         <About />
+         <About lang={lang} />
 
-         <Technologies />
+         <Technologies lang={lang} />
 
          <Projects projects={JSON.parse(JSON.stringify(projects))} />
 
-         <Packages />
+         <Packages lang={lang} />
 
-         <FAQ />
+         <FAQ lang={lang} />
 
-         <Contact />
+         <Contact lang={lang} />
 
          {/* <SocialMedia /> */}
       </>

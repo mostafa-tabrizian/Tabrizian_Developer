@@ -6,9 +6,14 @@ import dbConnect from '@/lib/dbConnect'
 import limiter from '@/lib/limiter'
 import Script from 'next/script'
 import MobilePreview from './components/mobilePreview'
+import langDecider from '@/lib/langDecider'
 const ProjectNotFound = dynamic(() => import('./components/projectNotFound'))
 
-export const generateMetadata = async ({ params: { title } }: { params: { title: string } }) => {
+export const generateMetadata = async ({
+   params: { title, lang },
+}: {
+   params: { title: string; lang: string }
+}) => {
    return {
       title: '#',
       description: '#',
@@ -37,13 +42,18 @@ const ProjectDetail = async ({
 
    if (remaining < 0) {
       return (
-         <h1 className='mx-10 my-20 max-w-screen-sm text-center md:mx-auto'>
-            Sorry, you have reached the request limit. Please wait one minute and try again.
-            {/* 
-            متاسفانه تعداد درخواست‌های شما به حداکثر مجاز رسیده است. لطفاً کمی صبر کنید و سپس دوباره
-            امتحان کنید
- */}
-         </h1>
+         <>
+            {langDecider(
+               lang,
+               <h1 className='mx-10 my-20 max-w-screen-sm text-center md:mx-auto'>
+                  Sorry, you have reached the request limit. Please wait one minute and try again.
+               </h1>,
+               <h1 className='yekanBold mx-10 my-20 max-w-screen-sm text-center md:mx-auto'>
+                  متاسفانه تعداد درخواست‌های شما به حداکثر مجاز رسیده است. لطفاً کمی صبر کنید و سپس
+                  دوباره امتحان کنید
+               </h1>,
+            )}
+         </>
       )
    }
 
@@ -51,20 +61,16 @@ const ProjectDetail = async ({
 
    let creativeWorkJsonLd, breadcrumbJsonLd
 
-   const langDecider = (en: string, fa: string) => {
-      return lang == 'en' ? en : fa
-   }
-
    if (data) {
       creativeWorkJsonLd = {
          '@context': 'http://schema.org',
          '@type': 'CreativeWork',
-         name: langDecider(data.titleEn, data.titleFa),
-         description: langDecider(data.descriptionEn, data.descriptionFa),
+         name: langDecider(lang, data.titleEn, data.titleFa),
+         description: langDecider(lang, data.descriptionEn, data.descriptionFa),
          image: `https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${data.mobile1stImage}`,
          creator: {
             '@type': 'Person',
-            name: langDecider('Mostafa Tabrizian', 'مصطفی تبریزیان'),
+            name: langDecider(lang, 'Mostafa Tabrizian', 'مصطفی تبریزیان'),
          },
          url: '#', // /projects/${data.titleEn}
          dateCreated: data.createdAt,
@@ -73,15 +79,12 @@ const ProjectDetail = async ({
          mainEntity: {
             '@type': 'ImageGallery',
             name: langDecider(
+               lang,
                `${data.titleEn} project gallery`,
                `${data.titleFa} گالری تصاویر پروژه`,
             ),
             description: data.descriptionEn,
-            image: [
-               data.mobile1stImage,
-               data.mobile2ndImage,
-               ...data.gallery,
-            ].map(
+            image: [data.mobile1stImage, data.mobile2ndImage, ...data.gallery].map(
                (src) =>
                   `https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${src}`,
             ),
@@ -95,13 +98,17 @@ const ProjectDetail = async ({
             {
                '@type': 'ListItem',
                position: 1,
-               name: langDecider('#', '#'),
+               name: langDecider(lang, '#', '#'),
                item: {
                   '@type': 'Corporation',
                   '@id': '#', // https://asadigraphics.ir/#corporation
                },
             },
-            { '@type': 'ListItem', position: 2, name: langDecider(data.titleEn, data.titleFa) },
+            {
+               '@type': 'ListItem',
+               position: 2,
+               name: langDecider(lang, data.titleEn, data.titleFa),
+            },
          ],
       }
    }
@@ -128,15 +135,28 @@ const ProjectDetail = async ({
 
          {data ? (
             <>
-               <Spotlight />
+               <div className={`${langDecider(lang, '', '-scale-x-100')}`}>
+                  <Spotlight />
+               </div>
                <div className='grid items-center justify-center lg:mx-10 lg:h-screen lg:pt-20 xl:pt-0'>
-                  <div className='grid lg:grid-cols-2 lg:gap-20 xl:gap-8'>
+                  <div
+                     className={`grid lg:grid-cols-2 lg:gap-20 xl:gap-8 ${langDecider(
+                        lang,
+                        '',
+                        'rtl',
+                     )}`}
+                  >
                      <Detail
+                        lang={lang}
                         data={{
-                           title: data.titleEn,
+                           title: langDecider(lang, data.titleEn, data.titleFa) as string,
                            live: data.live,
-                           client: data.clientEn,
-                           description: data.descriptionEn,
+                           client: langDecider(lang, data.clientEn, data.clientFa) as string,
+                           description: langDecider(
+                              lang,
+                              data.descriptionEn,
+                              data.descriptionFa,
+                           ) as string,
                            technologies: data.technologies,
                            mobile1stImage: data.mobile1stImage,
                            mobile2ndImage: data.mobile2ndImage,
@@ -145,7 +165,7 @@ const ProjectDetail = async ({
                         }}
                      />
 
-                     <div className='order-1 mt-20 items-center justify-center md:mx-auto md:w-[30rem] lg:order-2 lg:mt-0 xl:grid xl:w-[40rem]'>
+                     <div className='ltr order-1 mt-20 items-center justify-center md:mx-auto md:w-[30rem] lg:order-2 lg:mt-0 xl:grid xl:w-[40rem]'>
                         <MobilePreview
                            data={{
                               mobile1stImage: data.mobile1stImage,
@@ -157,7 +177,7 @@ const ProjectDetail = async ({
                </div>
             </>
          ) : (
-            <ProjectNotFound />
+            <ProjectNotFound lang={lang} />
          )}
       </>
    )
