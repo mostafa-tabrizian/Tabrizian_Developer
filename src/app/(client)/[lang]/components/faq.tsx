@@ -56,8 +56,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ1)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;What services do you offer as a freelance web developer?&quot;
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;What <span className='text-indigo-300 mx-2'>services</span> do you offer as a freelance web developer?&quot;
                   </span>
                   <svg
                      className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
@@ -77,10 +77,10 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q1}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     As a freelance web developer, I offer a wide range of services including
-                     website design and development, frontend and backend development, mobile web
-                     app development, e-commerce solutions, custom software development, and more.
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     As a freelance web developer, I offer website design and development, frontend
+                     and backend development, mobile web app development, e-commerce solutions, and
+                     custom software development services based on React/Next.js technology
                   </p>
                </Collapse>
             </div>
@@ -91,8 +91,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ2)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;What technologies and programming languages are you proficient in?&quot;
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;What <span className='text-indigo-300 mx-2'>technologies</span> and programming languages are you proficient in?&quot;
                   </span>
                   <svg
                      className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
@@ -112,11 +112,11 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q2}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
                      These are{' '}
                      <Link
                         href='/#technologies'
-                        className=' text-indigo-300 underline decoration-wavy'
+                        className=' text-base text-indigo-300 underline decoration-wavy decoration-1 underline-offset-4'
                      >
                         technologies that I specialize
                      </Link>{' '}
@@ -131,8 +131,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ3)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;Can you provide examples of your previous work or portfolio?&quot;
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;Can you provide <span className='text-indigo-300 mx-2'>examples</span> of your previous work or portfolio?&quot;
                   </span>
                   <svg
                      className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
@@ -152,9 +152,15 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q3}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     Yes, you can explore my portfolio to see examples of my previous projects and
-                     get a better idea of my skills and expertise.
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     Sure, you can explore my portfolio to see{' '}
+                     <Link
+                        href='/#projects'
+                        className=' text-base text-indigo-300 underline decoration-wavy decoration-1 underline-offset-4'
+                     >
+                        examples of my previous projects
+                     </Link>{' '}
+                     and get a better idea of my skills and expertiss.
                   </p>
                </Collapse>
             </div>
@@ -165,8 +171,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ4)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;What is your development process like?&quot;
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;What is your development <span className='text-indigo-300 mx-2'>process</span> like?&quot;
                   </span>
                   <svg
                      className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
@@ -186,11 +192,10 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q4}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     My development process includes understanding your project requirements,
-                     creating a detailed project plan, design and development, rigorous testing, and
-                     final deployment. I follow agile methodologies to ensure the project runs
-                     smoothly.
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     My development process involves understanding project requirements, creating a
+                     detailed plan, design and development, rigorous testing, SEO optimization, and
+                     deployment. I follow agile methodologies to ensure smooth project management.
                   </p>
                </Collapse>
             </div>
@@ -201,8 +206,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ5)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;How long does it take to complete a typical project?&quot;
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;How <span className='text-indigo-300 mx-2'>long</span> does it take to complete a typical project?&quot;
                   </span>
                   <svg
                      className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
@@ -222,9 +227,9 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q5}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     The project timeline varies depending on the complexity and scope. I&apos;ll
-                     provide you with a project timeline and milestones during our initial
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     The timeline for the project will depend on its complexity and scope. I will
+                     provide you with a detailed project timeline and milestones during our initial
                      discussions.
                   </p>
                </Collapse>
@@ -236,8 +241,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ6)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;How do you handle project revisions or changes during development?&quot;
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;How do you handle project <span className='text-indigo-300 mx-2'>revisions or changes</span> during development?&quot;
                   </span>
                   <svg
                      className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
@@ -257,10 +262,13 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q6}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     I&apos;m open to making revisions and changes during the development process.
-                     We&apos;ll discuss any changes, and I&apos;ll provide you with an updated
-                     timeline and cost if applicable.
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     I am willing to make revisions and changes during the development process for
+                     up to 3 requests. This means that you can ask me to change anything three times
+                     without incurring any additional cost. However, after the third request, there
+                     will be a cost associated with any further changes. We will discuss any changes
+                     you would like to make, and I will provide you with an updated timeline and
+                     cost estimate if applicable.
                   </p>
                </Collapse>
             </div>
@@ -271,8 +279,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ7)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;What is your pricing structure?&quot;
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;What is your <span className='text-indigo-300 mx-2'>pricing</span> structure?&quot;
                   </span>
                   <svg
                      className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
@@ -292,10 +300,10 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q7}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     My pricing structure is flexible and depends on the scope and complexity of the
-                     project. We&apos;ll discuss your budget and project requirements during our
-                     initial consultation.
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     During our initial consultation, we&apos;ll discuss your project requirements
+                     and budget to determine a flexible pricing structure that aligns with the scope
+                     and complexity of the project.
                   </p>
                </Collapse>
             </div>
@@ -306,8 +314,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ8)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;How do you handle ongoing support and maintenance after project
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;How do you handle ongoing <span className='text-indigo-300 mx-2'>support</span> and maintenance after project
                      completion?&quot;
                   </span>
                   <svg
@@ -328,10 +336,11 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q8}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     I offer ongoing support and maintenance services to ensure your website or
-                     application continues to run smoothly. We can discuss a support plan that suits
-                     your needs.
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     Based on the package you order, I am happy to provide free project support for
+                     up to 12 months. I offer ongoing maintenance and support services that ensure
+                     the smooth running of your website or application. We can work together to
+                     create a support plan that best suits your needs.
                   </p>
                </Collapse>
             </div>
@@ -342,8 +351,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ9)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;Do you provide SEO services or optimize websites for search
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;Do you provide <span className='text-indigo-300 mx-2'>SEO</span> services or optimize websites for search
                      engines?&quot;
                   </span>
                   <svg
@@ -364,10 +373,10 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q9}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     Yes, I offer SEO optimization services to improve your website&apos;s
-                     visibility in search engines, increase organic traffic, and enhance your online
-                     presence.
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     Yes, I provide SEO consultation and technical SEO optimization services to
+                     improve your website&apos;s visibility in search engines, increase organic
+                     traffic, and enhance your online presence
                   </p>
                </Collapse>
             </div>
@@ -378,8 +387,8 @@ const FAQ = () => {
                   aria-label='faq'
                   onClick={() => collapseStatus(setQ10)}
                >
-                  <span className='verdana ml-8 mr-5 flex w-full text-left text-base text-slate-100'>
-                     &quot;How can I get in touch with you to discuss my project?&quot;
+                  <span className='verdana mx-5 flex w-full text-left text-base text-slate-100'>
+                     &quot;How can I <span className='text-indigo-300 mx-2'>get in touch</span> with you to discuss my project?&quot;
                   </span>
                   <svg
                      className={`absolute right-0 h-5 w-5 text-indigo-300 transition-transform ${
@@ -399,9 +408,22 @@ const FAQ = () => {
                </button>
 
                <Collapse unmountOnExit in={q10}>
-                  <p className='mx-5 text-left text-base text-slate-400'>
-                     You can easily get in touch with me through the contact form on my website or
-                     by sending me an email. I&apos;ll respond promptly to schedule a consultation.
+                  <p className='mx-5 mt-4 text-left text-base text-slate-400'>
+                     You can reach me through{' '}
+                     <Link
+                        href='/#contact'
+                        className=' text-base text-indigo-300 underline decoration-wavy decoration-1 underline-offset-4'
+                     >
+                        these social media platform
+                     </Link>{' '}
+                     or by{' '}
+                     <a
+                        href='mailto:tabrizian.codes@gmail.com'
+                        className='text-base text-indigo-300 underline decoration-wavy decoration-1 underline-offset-4'
+                     >
+                        email
+                     </a>
+                     . I&apos;ll promptly respond to schedule a consultation.
                   </p>
                </Collapse>
             </div>

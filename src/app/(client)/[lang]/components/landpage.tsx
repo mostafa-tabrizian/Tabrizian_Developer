@@ -18,7 +18,7 @@ const Landpage = () => {
                   style={{ fontSize: '4rem' }}
                   className=' relative z-0 leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950'
                >
-                  Dive Into The <br /> Depths Of <br /> Web Development <br /> With Me
+                  Dive Deep For The <br /> Treasure That <br /> You Seek
                </h1>
                <h2 className='relative -ml-6 border-l-8 border-sky-900 pl-5'>
                   Explore the World of Web Development with Me
