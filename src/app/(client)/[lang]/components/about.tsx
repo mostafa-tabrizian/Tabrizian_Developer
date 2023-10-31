@@ -5,16 +5,16 @@ const About = ({ lang }: { lang: string }) => {
    return (
       <div
          id='about'
-         className={`mx-auto my-20 grid min-h-screen max-w-screen-xl -translate-y-14 grid-cols-2 items-center gap-x-60 ${langDecider(
+         className={`mx-auto my-20 grid min-h-screen max-w-screen-xl -translate-y-14 items-center lg:grid-cols-2 lg:gap-x-20 xl:gap-x-60 ${langDecider(
             lang,
             '',
             'rtl',
          )}`}
       >
-         <div className='space-y-10'>
+         <div className='order-2 space-y-10 lg:order-1'>
             {langDecider(
                lang,
-               <div className='space-y-5'>
+               <div className='mx-7 space-y-5'>
                   <div className='grid grid-cols-3 gap-5'>
                      <div className='col-span-2 space-y-3'>
                         <h2 className='Audiowide w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
@@ -187,91 +187,88 @@ const About = ({ lang }: { lang: string }) => {
                </div>,
             )}
          </div>
-         <div className='relative'>
-            <Image
-               src='/aboutHero.jpg'
-               width={424}
-               height={530}
-               alt='about hero'
-               style={{
-                  borderRadius: '4.6rem',
-                  boxShadow: 'rgb(30 52 99) -7px -7px 20px, #403d46 5px 7px 22px',
-               }}
-            />
-
-            <Image
-               src='/aboutMongo.jpg'
-               width={133}
-               height={134}
-               alt='about mongo'
-               className={`animate-wave absolute ${langDecider(
-                  lang,
-                  '-right-16',
-                  '-left-16',
-               )} -top-8 border-2 border-green-400`}
-               style={{
-                  animationDuration: '3.5s',
-                  borderRadius: '33px',
-                  boxShadow: '0px 4px 63px -14px #00ED64',
-               }}
-            />
-
-            <div
-               style={{
-                  borderRadius: '1.88rem',
-                  boxShadow: 'black 0 4px 15px 5px',
-                  width: '262px',
-                  height: '262px',
-                  animationDuration: '3s',
-               }}
-               className={`animate-wave absolute -bottom-16 ${langDecider(
-                  lang,
-                  '-left-32',
-                  '-right-32',
-               )} grid items-center justify-center bg-gradient-to-t from-black to-gray-800`}
-            >
+         <div className='order-1 mx-10 mb-36 grid h-screen items-center justify-center md:mx-auto md:mb-0 md:w-3/4 lg:order-2'>
+            <div className='relative'>
                <Image
-                  src='/aboutNext.jpg'
-                  width={235}
-                  height={82.65}
-                  alt='about next'
-                  className='mix-blend-screen'
+                  src='/aboutHero.jpg'
+                  width={424}
+                  height={530}
+                  alt='about hero'
+                  style={{
+                     borderRadius: '4.6rem',
+                     boxShadow: 'rgb(30 52 99) -7px -7px 20px, #403d46 5px 7px 22px',
+                  }}
+               />
+
+               <Image
+                  src='/aboutMongo.jpg'
+                  width={133}
+                  height={134}
+                  alt='about mongo'
+                  className={`animate-wave absolute w-20 rounded-3xl lg:w-40 lg:rounded-[33px] ${langDecider(
+                     lang,
+                     '-right-8 lg:-right-16',
+                     '-left-16',
+                  )} -top-8 border-2 border-green-400`}
+                  style={{
+                     animationDuration: '3.5s',
+                     boxShadow: '0px 4px 63px -14px #00ED64',
+                  }}
+               />
+
+               <div
+                  style={{
+                     borderRadius: '1.88rem',
+                     boxShadow: 'black 0 4px 15px 5px',
+                     animationDuration: '3s',
+                  }}
+                  className={`animate-wave absolute -bottom-16 h-[180px] w-[180px] lg:h-[232px] lg:w-[232px] ${langDecider(
+                     lang,
+                     '-left-8 lg:-left-32',
+                     '-right-32',
+                  )} grid items-center justify-center bg-gradient-to-t from-black to-gray-800`}
+               >
+                  <Image
+                     src='/aboutNext.jpg'
+                     width={235}
+                     height={82.65}
+                     alt='about next'
+                     className='mix-blend-screen'
+                  />
+               </div>
+
+               <Image
+                  src='/aboutReact.jpg'
+                  width={131}
+                  height={137}
+                  alt='about react'
+                  className={`animate-wave absolute -bottom-14 ${langDecider(
+                     lang,
+                     'right-0',
+                     'left-6',
+                  )} h-24 w-24 rounded-3xl border-2 border-sky-400 bg-gradient-to-t from-black to-blue-900 p-2 lg:h-32 lg:w-32 lg:rounded-[33px]`}
+                  style={{
+                     boxShadow: '0px 4px 63px -14px #74DFFC',
+                     animationDuration: Math.random() * 4 + 1 + 's',
+                  }}
+               />
+
+               <Image
+                  src='/techTypescript.jpg'
+                  width={105}
+                  height={105}
+                  alt='about tailwind'
+                  className={`animate-wave absolute -bottom-40 h-20 w-20 rounded-3xl lg:h-24 lg:w-24 lg:rounded-[30px] ${langDecider(
+                     lang,
+                     'right-1/2',
+                     'left-1/2',
+                  )} border-2 border-sky-400`}
+                  style={{
+                     boxShadow: '0px 4px 63px -14px #16BECB',
+                     animationDuration: '2s',
+                  }}
                />
             </div>
-
-            <Image
-               src='/aboutReact.jpg'
-               width={131}
-               height={137}
-               alt='about react'
-               className={`animate-wave absolute -bottom-14 ${langDecider(
-                  lang,
-                  'right-6',
-                  'left-6',
-               )} border-2 border-sky-400 bg-gradient-to-t from-black to-blue-900 p-2`}
-               style={{
-                  borderRadius: '33px',
-                  boxShadow: '0px 4px 63px -14px #74DFFC',
-                  animationDuration: Math.random() * 4 + 1 + 's',
-               }}
-            />
-
-            <Image
-               src='/techTypescript.jpg'
-               width={105}
-               height={105}
-               alt='about tailwind'
-               className={`animate-wave absolute -bottom-40 ${langDecider(
-                  lang,
-                  'right-1/2',
-                  'left-1/2',
-               )} border-2 border-sky-400`}
-               style={{
-                  borderRadius: '30px',
-                  boxShadow: '0px 4px 63px -14px #16BECB',
-                  animationDuration: '2s',
-               }}
-            />
          </div>
       </div>
    )
