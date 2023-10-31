@@ -6,11 +6,17 @@ const Packages = ({ lang }: { lang: string }) => {
    return (
       <div
          id='packages'
-         className='relative mx-auto grid h-screen max-w-screen-lg items-center justify-center'
+         className='relative mx-auto grid min-h-screen mb-32 md:mb-0 max-w-screen-lg items-center justify-center'
       >
-         <div className={`${langDecider(lang, '', 'rtl')} grid grid-cols-3 gap-10`}>
+         <div
+            className={`${langDecider(
+               lang,
+               '',
+               'rtl',
+            )} mx-7 md:mx-0 lg:mx-7 grid md:gap-3 lg:gap-10 space-y-36 md:grid-cols-3 md:space-y-0`}
+         >
             <div className='relative block rounded-3xl bg-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-700 before:p-2'>
-               <div className='space-y-5'>
+               <div className='my-10 space-y-5'>
                   <Image
                      src='/tier1.png'
                      width={56}
@@ -164,28 +170,31 @@ const Packages = ({ lang }: { lang: string }) => {
                         )}
                      </div>
                   </div>
+                  <div>
+                     <div className='mt-8 text-center'>
+                        {langDecider(
+                           lang,
+                           <Link
+                              href='/en/#contact'
+                              className='relative z-10 -mb-10 rounded-full flex justify-center bg-gray-800 px-6 py-2'
+                           >
+                              <span className='verdana text-base'>Get This Right Now</span>{' '}
+                           </Link>,
+                           <Link
+                              href='/fa/#contact'
+                              className='relative z-10 -mb-10 rounded-full flex justify-center bg-gray-800 px-6 py-2'
+                           >
+                              <span className='yekan flex items-center justify-center text-base'>
+                                 همین الان شروع کن
+                              </span>
+                           </Link>,
+                        )}
+                     </div>
+                  </div>
                </div>
-               {langDecider(
-                  lang,
-                  <Link
-                     href='/en/#contact'
-                     className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'
-                  >
-                     <span className='verdana text-base'>Get This Right Now</span>{' '}
-                  </Link>,
-                  <Link
-                     href='/fa/#contact'
-                     className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'
-                  >
-                     <span className='yekan flex items-center justify-center text-base'>
-                        همین الان شروع کن
-                     </span>
-                     ,
-                  </Link>,
-               )}
             </div>
             <div className='relative -top-5 block rounded-3xl bg-gradient-to-b from-indigo-950 to-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-400 before:p-2'>
-               <div className='space-y-5'>
+               <div className='my-10 space-y-5'>
                   <Image
                      src='/tier3.png'
                      width={56}
@@ -340,28 +349,31 @@ const Packages = ({ lang }: { lang: string }) => {
                         )}
                      </div>
                   </div>
+                  <div>
+                     <div className='mt-8 text-center'>
+                        {langDecider(
+                           lang,
+                           <Link
+                              href='/en/#contact'
+                              className='-mb-10 rounded-full flex justify-center border-2 border-white bg-violet-500 px-6 py-2'
+                           >
+                              <span className='verdana text-base'>Get This Right Now</span>{' '}
+                           </Link>,
+                           <Link
+                              href='/fa/#contact'
+                              className='-mb-10 rounded-full flex justify-center border-2 border-white bg-violet-500 px-6 py-2'
+                           >
+                              <span className='yekan flex items-center justify-center text-base'>
+                                 همین الان شروع کن
+                              </span>
+                           </Link>,
+                        )}
+                     </div>
+                  </div>
                </div>
-               {langDecider(
-                  lang,
-                  <Link
-                     href='/en/#contact'
-                     className='mb-4 mt-20 w-full rounded-full border-2 border-white bg-violet-500 px-6 py-2'
-                  >
-                     <span className='verdana text-base'>Get This Right Now</span>{' '}
-                  </Link>,
-                  <Link
-                     href='/fa/#contact'
-                     className='mb-4 mt-20 w-full rounded-full border-2 border-white bg-violet-500 px-6 py-2'
-                  >
-                     <span className='yekan flex items-center justify-center text-base'>
-                        همین الان شروع کن
-                     </span>
-                     ,
-                  </Link>,
-               )}
             </div>
             <div className='relative block rounded-3xl bg-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-700 before:p-4'>
-               <div className='space-y-5'>
+               <div className='my-10 space-y-5'>
                   <Image
                      src='/tier2.png'
                      width={56}
@@ -517,25 +529,28 @@ const Packages = ({ lang }: { lang: string }) => {
                         )}
                      </div>
                   </div>
+                  <div>
+                     <div className='mt-8 text-center'>
+                        {langDecider(
+                           lang,
+                           <Link
+                              href='/en/#contact'
+                              className='relative z-10 -mb-10 rounded-full flex justify-center bg-gray-800 px-6 py-2'
+                           >
+                              <span className='verdana text-base'>Get This Right Now</span>{' '}
+                           </Link>,
+                           <Link
+                              href='/fa/#contact'
+                              className='relative z-10 -mb-10 rounded-full flex justify-center bg-gray-800 px-6 py-2'
+                           >
+                              <span className='yekan flex items-center justify-center text-base'>
+                                 همین الان شروع کن
+                              </span>
+                           </Link>,
+                        )}
+                     </div>
+                  </div>
                </div>
-               {langDecider(
-                  lang,
-                  <Link
-                     href='/en/#contact'
-                     className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'
-                  >
-                     <span className='verdana text-base'>Get This Right Now</span>{' '}
-                  </Link>,
-                  <Link
-                     href='/fa/#contact'
-                     className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'
-                  >
-                     <span className='yekan flex items-center justify-center text-base'>
-                        همین الان شروع کن
-                     </span>
-                     ,
-                  </Link>,
-               )}
             </div>
          </div>
          <span
