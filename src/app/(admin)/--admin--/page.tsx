@@ -4,7 +4,7 @@ import Breadcrumbs from '@mui/material/Breadcrumbs'
 import LogoutButton from './components/logoutButton'
 
 export const metadata = {
-   title: 'مصطفی تبریزیان | پنل ادمین',
+   title: 'Admin Panel',
 }
 
 export const revalidate = 0

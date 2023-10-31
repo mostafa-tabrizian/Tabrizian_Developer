@@ -5,11 +5,11 @@ import Image from 'next/image'
 const HeaderLinksforDesktop = ({ lang }: { lang: string }) => {
    return (
       <>
-         <div className='fixed right-0 top-0 flex gap-3 mr-10'>
+         <div className='fixed right-0 top-0 mr-10 flex gap-3'>
             <Link href='/fa' className='h-8 w-8'>
                <Image
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/iran.png'
-                  alt='#'
+                  alt='Farsi language'
                   width={32}
                   height={32}
                />
@@ -17,7 +17,7 @@ const HeaderLinksforDesktop = ({ lang }: { lang: string }) => {
             <Link href='/en' className='h-8 w-8'>
                <Image
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/uk.png'
-                  alt='#'
+                  alt='English language'
                   width={32}
                   height={32}
                />

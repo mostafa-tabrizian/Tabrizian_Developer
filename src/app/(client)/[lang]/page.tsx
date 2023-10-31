@@ -12,8 +12,9 @@ import Projects from './components/projects'
 import Technologies from './components/technologies'
 
 export const metadata = {
-   title: 'مصطفی تبریزیان | طراحی لوگو، طراحی پوستر، طراحی بنر و طراحی کارت ویزیت',
-   description: '#',
+   title: 'مصطفی تبریزیان | توسعه دهنده وب React/Next.js',
+   description:
+      'سلام، من تبریزیانم، یک توسعه دهنده وب فول استک با یک اشتیاق بالا برای ساخت وب سایت هایی با عملکرد بالا با تکنولوژی React/Next.js. هدف نهایی من فراتر از انتظارات شما عمل کردن و تحویل هیچ چیز جزء بهترین. با هم میتونیم ایده های درخشانتان را زنده کنیم.',
    alternates: {
       canonical: '#',
    },
@@ -28,20 +29,20 @@ const jsonLd = {
    '@context': 'https://schema.org',
    '@type': 'WebSite',
    id: '#', // #webSite
-   name: 'مصطفی تبریزیان',
+   name: 'مصطفی تبریزیان | توسعه دهنده وب فول-استک Next.js',
    url: '#',
 }
 
 const corporationJsonLd = {
    '@context': 'https://schema.org',
    '@type': 'Corporation',
-   id: '#', // /#corporation
+   id: '#', // url/#corporation
    name: 'Mostafa Tabrizian',
    alternateName: ['مصطفی تبریزیان'],
    legalName: 'Mostafa Tabrizian',
    url: '#',
    logo: '#',
-   email: '',
+   email: 'tabrizian.codes@gmail.com',
    sameAs: ['#'],
    founders: [
       {

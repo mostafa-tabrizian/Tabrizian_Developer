@@ -50,7 +50,7 @@ const MobilePreview = ({
             <div className='relative aspect-[1/2] h-full w-[136.33px] lg:w-[182.46px] xl:w-[280.5px]'>
                <Image
                   src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${mobile1stImage}`}
-                  alt='#'
+                  alt={mobile1stImage}
                   fill
                   className='z-10 translate-x-6 -rotate-3 rounded-3xl  object-cover object-top'
                   style={{
@@ -65,7 +65,7 @@ const MobilePreview = ({
          <div className='relative aspect-[1/2] h-full w-[136.33px] lg:w-[182.46px] xl:w-[280.5px]'>
             <Image
                src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${mobile2ndImage}`}
-               alt='#'
+               alt={mobile1stImage}
                fill
                className='translate-y-10 rotate-6 rounded-3xl object-cover object-top lg:translate-y-20'
                style={{

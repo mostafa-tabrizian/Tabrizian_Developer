@@ -32,7 +32,7 @@ const About = ({ lang }: { lang: string }) => {
                         width={160}
                         height={160}
                         className='rounded-lg'
-                        alt='#'
+                        alt='Mostafa Tabrizian'
                      />
                   </div>
 
@@ -111,7 +111,7 @@ const About = ({ lang }: { lang: string }) => {
                         width={160}
                         height={160}
                         className='rounded-lg'
-                        alt='#'
+                        alt='مصطفی تبریزیان'
                      />
                   </div>
 

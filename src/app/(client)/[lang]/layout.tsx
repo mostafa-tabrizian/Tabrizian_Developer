@@ -2,11 +2,9 @@ import { Metadata } from 'next'
 import { ToastContainer } from 'react-toastify'
 
 import Header from '@/app/components/header'
-import Footer from '@/app/components/footer'
+// import Footer from '@/app/components/footer'
 
 export const metadata: Metadata = {
-   title: 'مصطفی تبریزیان',
-   description: '// ! DESCRIPTION',
    manifest: 'https://tabriziancodes.ir/site.webmanifest',
 }
 

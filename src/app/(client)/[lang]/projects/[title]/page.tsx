@@ -14,9 +14,11 @@ export const generateMetadata = async ({
 }: {
    params: { title: string; lang: string }
 }) => {
+   const data: IProject = await fetchData(title)
+
    return {
-      title: '#',
-      description: '#',
+      title: langDecider(lang, `Mostafa Tabrizian | ${title}`, `مصطفی تبریزیان | ${title}`),
+      description: langDecider(lang, data.descriptionEn, data.descriptionFa),
       alternates: {
          canonical: '#',
       },
@@ -98,7 +100,7 @@ const ProjectDetail = async ({
             {
                '@type': 'ListItem',
                position: 1,
-               name: langDecider(lang, '#', '#'),
+               name: langDecider(lang, data.titleEn, data.titleFa),
                item: {
                   '@type': 'Corporation',
                   '@id': '#', // https://asadigraphics.ir/#corporation
