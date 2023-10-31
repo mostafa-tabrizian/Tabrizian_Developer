@@ -1,6 +1,7 @@
 import langDecider from '@/lib/langDecider'
 import { IProject } from '@/models/project'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Projects = ({ projects, lang }: { projects: IProject[]; lang: string }) => {
    return (
@@ -21,7 +22,7 @@ const Projects = ({ projects, lang }: { projects: IProject[]; lang: string }) =>
             <div className={`grid gap-x-5 gap-y-10 md:grid-cols-3 ${langDecider(lang, '', 'rtl')}`}>
                {projects.map((project, idx) => {
                   return (
-                     <div key={idx} className=''>
+                     <Link href={`${lang}/projects/${project.titleEn}`} key={idx}>
                         <Image
                            className='mb-5 rounded-lg'
                            src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${project.thumbnail}`}
@@ -34,7 +35,7 @@ const Projects = ({ projects, lang }: { projects: IProject[]; lang: string }) =>
                            <span className='verdana'>{project.titleEn}</span>,
                            <span className='yekan'>{project.titleFa}</span>,
                         )}
-                     </div>
+                     </Link>
                   )
                })}
             </div>

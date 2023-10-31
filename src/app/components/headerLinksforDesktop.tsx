@@ -2,11 +2,11 @@ import langDecider from '@/lib/langDecider'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const HeaderLinksforDesktop = ({ lang }: { lang: string }) => {
+const HeaderLinksforDesktop = ({ lang, path }: { lang: string; path: string }) => {
    return (
       <>
          <div className='fixed right-0 top-0 mr-10 flex gap-3'>
-            <Link href='/fa' className='h-8 w-8'>
+            <Link href={path.replace('en', 'fa')} className='h-8 w-8'>
                <Image
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/iran.png'
                   alt='Farsi language'
@@ -14,7 +14,7 @@ const HeaderLinksforDesktop = ({ lang }: { lang: string }) => {
                   height={32}
                />
             </Link>
-            <Link href='/en' className='h-8 w-8'>
+            <Link href={path.replace('fa', 'en')} className='h-8 w-8'>
                <Image
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/uk.png'
                   alt='English language'

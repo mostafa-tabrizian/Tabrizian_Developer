@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 const Header = () => {
    const pathname = usePathname()
    const lang = pathname.split('/')[1]
-
+   
    const [enterEffect, setEnterEffect] = useState(0)
 
    useEffect(() => {
@@ -27,7 +27,7 @@ const Header = () => {
                   opacity: enterEffect,
                }}
             >
-               <LinksForDesktop lang={lang} />
+               <LinksForDesktop path={pathname} lang={lang} />
             </div>
             <Sidebar lang={lang} />
          </div>
