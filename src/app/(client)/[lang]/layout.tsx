@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import { ToastContainer } from 'react-toastify'
 
 import Header from '@/app/components/header'
-// import Footer from '@/app/components/footer'
 
 export const metadata: Metadata = {
    manifest: 'https://tabriziancodes.ir/site.webmanifest',

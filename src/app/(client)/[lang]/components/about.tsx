@@ -201,11 +201,11 @@ const About = ({ lang }: { lang: string }) => {
                />
 
                <Image
-                  src='/aboutMongo.jpg'
+                  src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/mongo.jpg'
                   width={133}
                   height={134}
                   alt='about mongo'
-                  className={`animate-wave absolute w-20 rounded-3xl lg:w-40 lg:rounded-[33px] ${langDecider(
+                  className={`animate-wave absolute w-20 rounded-3xl lg:w-40 lg:rounded-[38px] ${langDecider(
                      lang,
                      '-right-4 lg:-right-16',
                      '-left-4 lg:-left-16',
@@ -229,7 +229,7 @@ const About = ({ lang }: { lang: string }) => {
                   )} grid items-center justify-center bg-gradient-to-t from-black to-gray-800`}
                >
                   <Image
-                     src='/aboutNext.jpg'
+                     src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/next.jpg'
                      width={235}
                      height={82.65}
                      alt='about next'
@@ -238,7 +238,7 @@ const About = ({ lang }: { lang: string }) => {
                </div>
 
                <Image
-                  src='/aboutReact.jpg'
+                  src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/react.jpg'
                   width={131}
                   height={137}
                   alt='about react'
@@ -254,7 +254,7 @@ const About = ({ lang }: { lang: string }) => {
                />
 
                <Image
-                  src='/techTypescript.jpg'
+                  src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/typescript.jpg'
                   width={105}
                   height={105}
                   alt='about tailwind'

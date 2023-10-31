@@ -25,7 +25,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #5FDAFB',
                                  }}
-                                 src='/aboutReact.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/react.jpg'
                                  alt='React'
                                  width={105}
                                  height={105}
@@ -39,7 +39,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #FDFDFD',
                                  }}
-                                 src='/techNext.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/next2.jpg'
                                  alt='Next.js'
                                  width={105}
                                  height={105}
@@ -53,7 +53,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #5FDAFB',
                                  }}
-                                 src='/techTypescript.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/typescript.jpg'
                                  alt='TypeScript'
                                  width={105}
                                  height={105}
@@ -72,7 +72,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #24e1ff',
                                  }}
-                                 src='/aboutTailwind.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/tailwind.jpg'
                                  alt='tailwind'
                                  width={105}
                                  height={105}
@@ -86,7 +86,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #FEFEFE',
                                  }}
-                                 src='/techSass.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/sass.jpg'
                                  alt='sass'
                                  width={107.61}
                                  height={105}
@@ -100,7 +100,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #007FFF',
                                  }}
-                                 src='/techMui.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/mui.jpg'
                                  alt='mui'
                                  width={105}
                                  height={105}
@@ -120,7 +120,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #00ED64',
                                  }}
-                                 src='/aboutMongo.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/mongo.jpg'
                                  alt='MongoDB'
                                  width={105}
                                  height={105}
@@ -134,7 +134,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #a3d1f6',
                                  }}
-                                 src='/techMysql.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/mySql.jpg'
                                  alt='MySQL'
                                  width={105}
                                  height={105}
@@ -148,7 +148,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #2e5d8d',
                                  }}
-                                 src='/techPostgre.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/postgreSql.jpg'
                                  alt='PostqreSQL'
                                  width={105}
                                  height={105}
@@ -167,7 +167,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #ff9a05',
                                  }}
-                                 src='/techAWS.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/aws.jpg'
                                  alt='Amazon Cloud Services'
                                  width={105}
                                  height={105}
@@ -181,7 +181,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #57DFDD',
                                  }}
-                                 src='/techLiara.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/liara.jpg'
                                  alt='Liara'
                                  width={105}
                                  height={105}
@@ -256,7 +256,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #5FDAFB',
                                  }}
-                                 src='/aboutReact.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/react.jpg'
                                  alt='React'
                                  width={105}
                                  height={105}
@@ -270,7 +270,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #FDFDFD',
                                  }}
-                                 src='/techNext.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/next2.jpg'
                                  alt='Next.js'
                                  width={105}
                                  height={105}
@@ -284,7 +284,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #5FDAFB',
                                  }}
-                                 src='/techTypescript.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/typescript.jpg'
                                  alt='TypeScript'
                                  width={105}
                                  height={105}
@@ -303,7 +303,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #24e1ff',
                                  }}
-                                 src='/aboutTailwind.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/tailwind.jpg'
                                  alt='tailwind'
                                  width={105}
                                  height={105}
@@ -317,7 +317,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #FEFEFE',
                                  }}
-                                 src='/techSass.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/sass.jpg'
                                  alt='sass'
                                  width={107.61}
                                  height={105}
@@ -331,7 +331,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #007FFF',
                                  }}
-                                 src='/techMui.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/mui.jpg'
                                  alt='mui'
                                  width={105}
                                  height={105}
@@ -350,7 +350,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #00ED64',
                                  }}
-                                 src='/aboutMongo.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/mongo.jpg'
                                  alt='MongoDB'
                                  width={105}
                                  height={105}
@@ -364,7 +364,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #a3d1f6',
                                  }}
-                                 src='/techMysql.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/mySql.jpg'
                                  alt='MySQL'
                                  width={105}
                                  height={105}
@@ -378,7 +378,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #2e5d8d',
                                  }}
-                                 src='/techPostgre.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/postgreSql.jpg'
                                  alt='PostqreSQL'
                                  width={105}
                                  height={105}
@@ -397,7 +397,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #ff9a05',
                                  }}
-                                 src='/techAWS.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/aws.jpg'
                                  alt='Amazon Cloud Services'
                                  width={105}
                                  height={105}
@@ -411,7 +411,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                                     borderRadius: '1.88rem',
                                     border: '2px solid #57DFDD',
                                  }}
-                                 src='/techLiara.jpg'
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/liara.jpg'
                                  alt='Liara'
                                  width={105}
                                  height={105}

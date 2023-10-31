@@ -15,7 +15,7 @@ const Contact = ({ lang }: { lang: string }) => {
             >
                <Image
                   className='mix-blend-darken'
-                  src='/QRcode.jpg'
+                  src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/QRcode.jpg'
                   width={242}
                   height={242}
                   alt='qr code'
