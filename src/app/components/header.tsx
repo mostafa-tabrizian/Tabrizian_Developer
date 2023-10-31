@@ -3,15 +3,32 @@
 import Sidebar from './sidebar'
 import LinksForDesktop from './headerLinksforDesktop'
 import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
 const Header = () => {
    const pathname = usePathname()
    const lang = pathname.split('/')[1]
 
+   const [enterEffect, setEnterEffect] = useState(0)
+
+   useEffect(() => {
+      setEnterEffect(1)
+   }, [])
+
    return (
-      <header className='absolute left-0 top-0 z-20 mt-5 w-screen'>
-         <div className='mx-auto justify-center lg:flex'>
-            <LinksForDesktop lang={lang} />
+      <header className='fixed left-0 top-0 z-20 w-screen p-4 backdrop-blur-md'>
+         <div>
+            <div
+               className='mx-auto justify-center lg:flex'
+               style={{
+                  transitionDuration: '1.5s',
+                  transitionDelay: '3s',
+                  transform: enterEffect ? 'translateY(0px)' : 'translateY(-10px)',
+                  opacity: enterEffect,
+               }}
+            >
+               <LinksForDesktop lang={lang} />
+            </div>
             <Sidebar lang={lang} />
          </div>
       </header>

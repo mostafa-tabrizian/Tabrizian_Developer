@@ -1,5 +1,6 @@
 import langDecider from '@/lib/langDecider'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Packages = ({ lang }: { lang: string }) => {
    return (
@@ -164,15 +165,24 @@ const Packages = ({ lang }: { lang: string }) => {
                      </div>
                   </div>
                </div>
-               <button className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'>
-                  {langDecider(
-                     lang,
-                     <span className='verdana text-base'>Get This Right Now</span>,
+               {langDecider(
+                  lang,
+                  <Link
+                     href='/en/#contact'
+                     className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'
+                  >
+                     <span className='verdana text-base'>Get This Right Now</span>{' '}
+                  </Link>,
+                  <Link
+                     href='/fa/#contact'
+                     className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'
+                  >
                      <span className='yekan flex items-center justify-center text-base'>
                         همین الان شروع کن
-                     </span>,
-                  )}
-               </button>
+                     </span>
+                     ,
+                  </Link>,
+               )}
             </div>
             <div className='relative -top-5 block rounded-3xl bg-gradient-to-b from-indigo-950 to-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-400 before:p-2'>
                <div className='space-y-5'>
@@ -331,15 +341,24 @@ const Packages = ({ lang }: { lang: string }) => {
                      </div>
                   </div>
                </div>
-               <button className='mb-4 mt-20 w-full rounded-full border-2 border-white bg-violet-500 px-6 py-2'>
-                  {langDecider(
-                     lang,
-                     <span className='verdana text-base'>Get This Right Now</span>,
+               {langDecider(
+                  lang,
+                  <Link
+                     href='/en/#contact'
+                     className='mb-4 mt-20 w-full rounded-full border-2 border-white bg-violet-500 px-6 py-2'
+                  >
+                     <span className='verdana text-base'>Get This Right Now</span>{' '}
+                  </Link>,
+                  <Link
+                     href='/fa/#contact'
+                     className='mb-4 mt-20 w-full rounded-full border-2 border-white bg-violet-500 px-6 py-2'
+                  >
                      <span className='yekan flex items-center justify-center text-base'>
                         همین الان شروع کن
-                     </span>,
-                  )}
-               </button>
+                     </span>
+                     ,
+                  </Link>,
+               )}
             </div>
             <div className='relative block rounded-3xl bg-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-700 before:p-4'>
                <div className='space-y-5'>
@@ -499,15 +518,24 @@ const Packages = ({ lang }: { lang: string }) => {
                      </div>
                   </div>
                </div>
-               <button className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'>
-                  {langDecider(
-                     lang,
-                     <span className='verdana text-base'>Get This Right Now</span>,
+               {langDecider(
+                  lang,
+                  <Link
+                     href='/en/#contact'
+                     className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'
+                  >
+                     <span className='verdana text-base'>Get This Right Now</span>{' '}
+                  </Link>,
+                  <Link
+                     href='/fa/#contact'
+                     className='relative z-10 mb-4 mt-20 w-full rounded-full bg-gray-800 px-6 py-2'
+                  >
                      <span className='yekan flex items-center justify-center text-base'>
                         همین الان شروع کن
-                     </span>,
-                  )}
-               </button>
+                     </span>
+                     ,
+                  </Link>,
+               )}
             </div>
          </div>
          <span

@@ -15,15 +15,25 @@ const About = ({ lang }: { lang: string }) => {
             {langDecider(
                lang,
                <div className='space-y-5'>
-                  <div className='space-y-3'>
-                     <h2 className='Audiowide w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
-                        Hello there ! <span style={{ color: 'initial' }}>🖐🏻</span>
-                     </h2>
-                     <p className='verdana'>
-                        I am <span className='text-indigo-400'>Mustafa</span>, 22, a{' '}
-                        <span className='text-indigo-400'>full-stack web developer</span> with a
-                        true passion for crafting high-performance websites. <br /> <br />
-                     </p>
+                  <div className='grid grid-cols-3 gap-5'>
+                     <div className='col-span-2 space-y-3'>
+                        <h2 className='Audiowide w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
+                           Hello there ! <span style={{ color: 'initial' }}>🖐🏻</span>
+                        </h2>
+                        <p className='verdana'>
+                           I am <span className='text-indigo-400'>Mustafa</span>, 22, a{' '}
+                           <span className='text-indigo-400'>full-stack web developer</span> with a
+                           true passion for crafting high-performance websites. <br /> <br />
+                        </p>
+                     </div>
+
+                     <Image
+                        src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/tabrizian_.jpg'
+                        width={160}
+                        height={160}
+                        className='rounded-lg'
+                        alt='#'
+                     />
                   </div>
 
                   <div className='space-y-3'>
@@ -82,15 +92,27 @@ const About = ({ lang }: { lang: string }) => {
                   </div>
                </div>,
                <div className='space-y-5'>
-                  <div className='space-y-3'>
-                     <h2 className='yekanBold w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
-                        سلام ! <span style={{ color: 'initial' }}>🖐🏻</span>
-                     </h2>
-                     <p className='yekan text-base'>
-                        من <span className='text-indigo-400 yekanBold'>تبریزیانم</span>, ۲۲, یک{' '}
-                        <span className='text-indigo-400 yekanBold'>توسعه دهنده وب فول-استک</span> با یک
-                        اشتیاق بالا برای ساخت وب سایت/اپلیکیشن هایی با عملکرد بالا. <br /> <br />
-                     </p>
+                  <div className='grid grid-cols-3 gap-5'>
+                     <div className='col-span-2 space-y-3'>
+                        <h2 className='yekanBold w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
+                           سلام ! <span style={{ color: 'initial' }}>🖐🏻</span>
+                        </h2>
+                        <p className='yekan text-base'>
+                           من <span className='yekanBold text-indigo-400'>تبریزیانم</span>, ۲۲, یک{' '}
+                           <span className='yekanBold text-indigo-400'>
+                              توسعه دهنده وب فول-استک
+                           </span>{' '}
+                           با یک اشتیاق بالا برای ساخت وب سایت/اپلیکیشن هایی با عملکرد بالا. <br />{' '}
+                           <br />
+                        </p>
+                     </div>
+                     <Image
+                        src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/tabrizian_.jpg'
+                        width={160}
+                        height={160}
+                        className='rounded-lg'
+                        alt='#'
+                     />
                   </div>
 
                   <div className='space-y-3'>
@@ -99,9 +121,11 @@ const About = ({ lang }: { lang: string }) => {
                      </h2>
                      <p className='yekan text-base'>
                         از فناوری های پیشرفته دنیا مانند{' '}
-                        <span className='text-indigo-400 yekanBold'>Next.js, React و TypeScript</span> به
-                        اطمینان حاصل کنید که شما و کاربرانتان یک{' '}
-                        <span className='text-indigo-400 yekanBold'>
+                        <span className='yekanBold text-indigo-400'>
+                           Next.js, React و TypeScript
+                        </span>{' '}
+                        به اطمینان حاصل کنید که شما و کاربرانتان یک{' '}
+                        <span className='yekanBold text-indigo-400'>
                            تجربه ای بدون ذره ای خدشه و لذت بخش داشته باشید
                         </span>
                         .
@@ -114,9 +138,11 @@ const About = ({ lang }: { lang: string }) => {
                      </h2>
                      <p className='yekan text-base'>
                         هدف نهایی من این است که{' '}
-                        <span className='text-indigo-400 yekanBold'>فراتر از انتظارات شما عمل کنم</span> و
-                        کمکتون کنم <span className='text-indigo-400 yekanBold'>به اهدافتان برسید</span>.{' '}
-                        <br />
+                        <span className='yekanBold text-indigo-400'>
+                           فراتر از انتظارات شما عمل کنم
+                        </span>{' '}
+                        و کمکتون کنم{' '}
+                        <span className='yekanBold text-indigo-400'>به اهدافتان برسید</span>. <br />
                         من پروژه های متعددی را با موفقیت به پایان رسانده ام، از جمله فروشگاه های
                         آنلاین و پلت فرم های مختلف خیره کننده و من همیشه در تلاشم نتایج استثنایی
                         ارائه کنم. <br />
@@ -130,14 +156,16 @@ const About = ({ lang }: { lang: string }) => {
                      <p className='yekan text-base'>
                         هنگامی که من رو به عنوان توسعه دهنده وب خود انتخاب می‌کنید, میتوانید با خیال
                         راحت مطمئن باشید{' '}
-                        <span className='text-indigo-400 yekanBold'>هیچ چیز جزء بهترین دریافت نمی‌کنید.</span>{' '}
+                        <span className='yekanBold text-indigo-400'>
+                           هیچ چیز جزء بهترین دریافت نمی‌کنید.
+                        </span>{' '}
                         <br />
                         اولیت من سرعت و پاسخگویی است, که در نتیجه باعث تجربه‌ی عالی برای کاربران شما
                         می‌شود. <br />
                         با دقت به نظرات شما گوش می دهم, ارائه به‌روزرسانی‌های منظم در طول پروژه برای
                         اطمینان از اینکه ما{' '}
-                        <span className='text-indigo-400 yekanBold'>به هدف نهایی شما برسیم</span> و پروژه را
-                        با موفقیت به اتمام برسانیم. <br />
+                        <span className='yekanBold text-indigo-400'>به هدف نهایی شما برسیم</span> و
+                        پروژه را با موفقیت به اتمام برسانیم. <br />
                      </p>
                   </div>
 
@@ -147,11 +175,13 @@ const About = ({ lang }: { lang: string }) => {
                      </h2>
                      <p className='yekan text-base'>
                         بیایید با هم همکاری کنیم{' '}
-                        <span className='text-indigo-400 yekanBold'>تا ایده های درخشان خود را زنده کنید</span>{' '}
+                        <span className='yekanBold text-indigo-400'>
+                           تا ایده های درخشان خود را زنده کنید
+                        </span>{' '}
                         و سفری خلاقانه و الهام بخش را آغاز کنید! ! <br />
                         من هیجان زده ام از شما بشنویم و ببینیم .{' '}
-                        <span className='text-indigo-400 yekanBold'>همکاری</span> ما به کجا می تواند ما را
-                        ببرد
+                        <span className='yekanBold text-indigo-400'>همکاری</span> ما به کجا می تواند
+                        ما را ببرد
                      </p>
                   </div>
                </div>,
@@ -165,7 +195,7 @@ const About = ({ lang }: { lang: string }) => {
                alt='about hero'
                style={{
                   borderRadius: '4.6rem',
-                  boxShadow: 'rgb(30 52 99) -7px -7px 20px, #2e1e4b 5px 7px 22px',
+                  boxShadow: 'rgb(30 52 99) -7px -7px 20px, #403d46 5px 7px 22px',
                }}
             />
 
@@ -174,7 +204,11 @@ const About = ({ lang }: { lang: string }) => {
                width={133}
                height={134}
                alt='about mongo'
-               className='animate-wave absolute -right-16 -top-8 border-2 border-green-400'
+               className={`animate-wave absolute ${langDecider(
+                  lang,
+                  '-right-16',
+                  '-left-16',
+               )} -top-8 border-2 border-green-400`}
                style={{
                   animationDuration: '3.5s',
                   borderRadius: '33px',
@@ -190,7 +224,11 @@ const About = ({ lang }: { lang: string }) => {
                   height: '262px',
                   animationDuration: '3s',
                }}
-               className='animate-wave absolute -bottom-16 -left-32 grid items-center justify-center bg-gradient-to-t from-black to-gray-800'
+               className={`animate-wave absolute -bottom-16 ${langDecider(
+                  lang,
+                  '-left-32',
+                  '-right-32',
+               )} grid items-center justify-center bg-gradient-to-t from-black to-gray-800`}
             >
                <Image
                   src='/aboutNext.jpg'
@@ -206,7 +244,11 @@ const About = ({ lang }: { lang: string }) => {
                width={131}
                height={137}
                alt='about react'
-               className='animate-wave absolute -bottom-14 right-6 border-2 border-indigo-400 bg-gradient-to-t from-black to-blue-900 p-2'
+               className={`animate-wave absolute -bottom-14 ${langDecider(
+                  lang,
+                  'right-6',
+                  'left-6',
+               )} border-2 border-sky-400 bg-gradient-to-t from-black to-blue-900 p-2`}
                style={{
                   borderRadius: '33px',
                   boxShadow: '0px 4px 63px -14px #74DFFC',
@@ -219,7 +261,11 @@ const About = ({ lang }: { lang: string }) => {
                width={105}
                height={105}
                alt='about tailwind'
-               className='animate-wave absolute -bottom-40 right-1/2 border-2 border-indigo-400'
+               className={`animate-wave absolute -bottom-40 ${langDecider(
+                  lang,
+                  'right-1/2',
+                  'left-1/2',
+               )} border-2 border-sky-400`}
                style={{
                   borderRadius: '30px',
                   boxShadow: '0px 4px 63px -14px #16BECB',

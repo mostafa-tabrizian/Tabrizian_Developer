@@ -109,6 +109,53 @@ const Technologies = ({ lang }: { lang: string }) => {
                            </div>
                         </div>
                      </div>
+                     <div>
+                        <span>Additional</span>
+                        <div className='mt-3 flex space-x-10'>
+                           <div className='text-center'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #ff9a05',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/ga.jpg'
+                                 alt='Google Analytics'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Google Analytics</span>
+                           </div>
+                           <div className='text-center'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #4286f5',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/gtm.jpg'
+                                 alt='Google Tag Manager'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Google Tag Manager</span>
+                           </div>
+                           <div className='text-center'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #362e56',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/sentry.jpg'
+                                 alt='Sentry'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Sentry</span>
+                           </div>
+                        </div>
+                     </div>
                   </div>
                   <div className='space-y-10'>
                      <div>
@@ -195,7 +242,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                </div>
             </div>,
             <div>
-               <h2 className='yekanBold text-[1.5rem] mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
+               <h2 className='yekanBold mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-[1.5rem] text-transparent'>
                   تکنولوژی ها
                </h2>
                <div className='rtl grid grid-cols-2 gap-x-40'>
@@ -291,6 +338,53 @@ const Technologies = ({ lang }: { lang: string }) => {
                                  height={105}
                               />
                               <span className='text-xs'>Material UI / MUI</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div>
+                        <span className='yekanBold'>افزوده های دیگر</span>
+                        <div className='mt-3 flex space-x-10 space-x-reverse'>
+                           <div className='text-center'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #ff9a05',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/ga.jpg'
+                                 alt='Google Analytics'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Google Analytics</span>
+                           </div>
+                           <div className='text-center'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #4286f5',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/gtm.jpg'
+                                 alt='Google Tag Manager'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Google Tag Manager</span>
+                           </div>
+                           <div className='text-center'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #362e56',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/sentry.jpg'
+                                 alt='Sentry'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Sentry</span>
                            </div>
                         </div>
                      </div>

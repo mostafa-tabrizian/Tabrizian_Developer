@@ -3,58 +3,76 @@
 import langDecider from '@/lib/langDecider'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 const Landpage = ({ lang }: { lang: string }) => {
+   const [enterEffect, setEnterEffect] = useState(0)
+
+   useEffect(() => {
+      setEnterEffect(1)
+   }, [])
+
    return (
-      <div id='landpage' className={`${langDecider(lang, '', 'rtl')} relative h-screen w-screen`}>
-         <Image
-            src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/landpage.jpg'
-            alt='landpage'
-            fill
-            className='object-cover object-center'
-            style={{ transform: `${langDecider(lang, '', 'scaleX(-1)')}` }}
-         />
-         <div className='mx-auto grid h-full max-w-screen-lg items-center'>
-            <div className='space-y-10'>
-               {langDecider(
-                  lang,
-                  <>
-                     <h1
-                        style={{ fontSize: '4rem' }}
-                        className='relative z-0 leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950'
-                     >
-                        Dive Deep For The <br /> Treasure That <br /> You Seek
-                     </h1>
-                     <h2 className='relative -ml-6 border-l-8 border-sky-900 pl-5'>
-                        Explore the World of Web Development with Me
-                     </h2>
-                  </>,
-                  <>
-                     <h1
-                        style={{ fontSize: '4rem' }}
-                        className={`yekanBold relative z-0 leading-tight after:absolute ${langDecider(
-                           lang,
-                           'after:-left-6',
-                           'after:-right-6',
-                        )} after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950`}
-                     >
-                        اگر به دنبال گنجی <br /> به اعماق سفر کن
-                     </h1>
-                     <h2
-                        className={`yekanBold relative ${langDecider(
-                           lang,
-                           '-ml-6 border-l-8  pl-5',
-                           '-mr-6 border-r-8  pr-5',
-                        )} border-sky-900`}
-                     >
-                        دنیای توسعه وب را با من کشف کن
-                     </h2>
-                  </>,
-               )}
+      <div
+         id='landpage'
+         className={`${langDecider(lang, '', 'rtl')} relative h-screen w-screen duration-1000`}
+         style={{ opacity: enterEffect }}
+      >
+         <div>
+            <Image
+               src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/landpage.jpg'
+               alt='landpage'
+               fill
+               className='object-cover object-center duration-1000'
+               style={{ transform: `${langDecider(lang, '', 'scaleX(-1)')}` }}
+            />
+            <span className='absolute right-0 top-0 h-2/4 w-1/3 animate-pulse bg-gradient-to-bl from-sky-200 to-transparent blur-3xl'></span>
+         </div>
+         <div className='mx-auto grid h-full max-w-screen-xl items-center '>
+            <div>
+               <div
+                  style={{
+                     transitionDuration: '1.5s',
+                     transform: enterEffect ? 'translateX(0px)' : 'translateX(-70px)',
+                     opacity: enterEffect,
+                  }}
+               >
+                  {langDecider(
+                     lang,
+                     <>
+                        <h1
+                           style={{ fontSize: '4rem' }}
+                           className='relative z-0 leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950'
+                        >
+                           Dive Deep For The <br /> Treasure That <br /> You Seek
+                        </h1>
+                        <h2 className='relative -ml-6 mt-10 border-l-8 border-sky-900 pl-5'>
+                           Explore the World of Web Development with Me
+                        </h2>
+                     </>,
+                     <>
+                        <h1
+                           style={{ fontSize: '4rem' }}
+                           className='yekanBold relative z-0 leading-tight after:absolute after:-right-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950'
+                        >
+                           اگر به دنبال گنجی <br /> به اعماق سفر کن
+                        </h1>
+                        <h2 className='yekanBold relative -mr-6 mt-10 border-r-8 border-sky-900 pr-5'>
+                           دنیای توسعه وب را با من کشف کن
+                        </h2>
+                     </>,
+                  )}
+               </div>
                <Link
-                  href='/#about'
-                  className='animate-wave grid w-full justify-center'
-                  style={{ animationDuration: '1s' }}
+                  href={langDecider(lang, '/en/#about', '/fa/#about') as string}
+                  className='animate-wave relative top-32 grid w-full justify-center'
+                  style={{
+                     animationDuration: '1s',
+                     transitionDelay: '4.5s',
+                     transitionDuration: '1.5s',
+                     transform: enterEffect ? 'translateY(0px)' : 'translateY(50px)',
+                     opacity: enterEffect,
+                  }}
                >
                   <svg
                      className='h-10 w-10 text-sky-700'
@@ -79,6 +97,11 @@ const Landpage = ({ lang }: { lang: string }) => {
                'left-20',
                'right-20',
             )} top-0 grid h-full items-center`}
+            style={{
+               transitionDelay: '1.5s',
+               transitionDuration: '1.5s',
+               transform: enterEffect ? 'translateY(0px)' : 'translateY(-50px)',
+            }}
          >
             <div className='grid w-10 space-y-2 border-t-8 border-sky-900 pt-2'>
                <span className='h-3 w-3 rounded-full bg-white'></span>
