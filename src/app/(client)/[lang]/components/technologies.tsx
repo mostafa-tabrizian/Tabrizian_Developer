@@ -10,15 +10,15 @@ const Technologies = ({ lang }: { lang: string }) => {
          {langDecider(
             lang,
             <div>
-               <h2 className='Audiowide mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
+               <h2 className='Audiowide mx-auto w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
                   Technologies
                </h2>
-               <div className='grid grid-cols-2 gap-x-40'>
-                  <div className='space-y-10'>
-                     <div>
+               <div className=''>
+                  <div className='grid md:grid-cols-2 md:gap-x-20 lg:gap-x-40'>
+                     <div className='mt-16'>
                         <span className=''>JavaScript Technologies</span>
-                        <div className='mt-3 flex space-x-10'>
-                           <div className='text-center'>
+                        <div className='mt-3 flex space-x-5'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1 p-2'
                                  style={{
@@ -32,7 +32,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>React</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -46,7 +46,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Next.js</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -62,10 +62,10 @@ const Technologies = ({ lang }: { lang: string }) => {
                            </div>
                         </div>
                      </div>
-                     <div>
+                     <div className='mt-16'>
                         <span className=''>Styles & UI</span>
-                        <div className='mt-3 flex space-x-10'>
-                           <div className='text-center'>
+                        <div className='mt-3 flex space-x-5'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -79,7 +79,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Tailwind.css</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -93,7 +93,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Sass</span>
                            </div>
-                           <div>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -109,10 +109,91 @@ const Technologies = ({ lang }: { lang: string }) => {
                            </div>
                         </div>
                      </div>
-                     <div>
+
+                     <div className='mt-16'>
+                        <span className=''>Database</span>
+                        <div className='mt-3 flex space-x-5'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #00ED64',
+                                 }}
+                                 src='/aboutMongo.jpg'
+                                 alt='MongoDB'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>MongoDB</span>
+                           </div>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #a3d1f6',
+                                 }}
+                                 src='/techMysql.jpg'
+                                 alt='MySQL'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>MySQL</span>
+                           </div>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #2e5d8d',
+                                 }}
+                                 src='/techPostgre.jpg'
+                                 alt='PostqreSQL'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>PostqreSQL</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div className='mt-16'>
+                        <span className=''>Cloud Services</span>
+                        <div className='mt-3 flex space-x-5'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #ff9a05',
+                                 }}
+                                 src='/techAWS.jpg'
+                                 alt='Amazon Cloud Services'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Amazon WS</span>
+                           </div>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #57DFDD',
+                                 }}
+                                 src='/techLiara.jpg'
+                                 alt='Liara'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Liara</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div className='mt-16'>
                         <span>Additional</span>
-                        <div className='mt-3 flex space-x-10'>
-                           <div className='text-center'>
+                        <div className='mt-3 flex space-x-5'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -126,7 +207,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Google Analytics</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -140,7 +221,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Google Tag Manager</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -157,100 +238,18 @@ const Technologies = ({ lang }: { lang: string }) => {
                         </div>
                      </div>
                   </div>
-                  <div className='space-y-10'>
-                     <div>
-                        <span className=''>Database</span>
-                        <div className='mt-3 flex space-x-10'>
-                           <div className='text-center'>
-                              <Image
-                                 className='mb-1'
-                                 style={{
-                                    borderRadius: '1.88rem',
-                                    border: '2px solid #00ED64',
-                                 }}
-                                 src='/aboutMongo.jpg'
-                                 alt='MongoDB'
-                                 width={105}
-                                 height={105}
-                              />
-                              <span className='text-xs'>MongoDB</span>
-                           </div>
-                           <div className='text-center'>
-                              <Image
-                                 className='mb-1'
-                                 style={{
-                                    borderRadius: '1.88rem',
-                                    border: '2px solid #a3d1f6',
-                                 }}
-                                 src='/techMysql.jpg'
-                                 alt='MySQL'
-                                 width={105}
-                                 height={105}
-                              />
-                              <span className='text-xs'>MySQL</span>
-                           </div>
-                           <div className='text-center'>
-                              <Image
-                                 className='mb-1'
-                                 style={{
-                                    borderRadius: '1.88rem',
-                                    border: '2px solid #2e5d8d',
-                                 }}
-                                 src='/techPostgre.jpg'
-                                 alt='PostqreSQL'
-                                 width={105}
-                                 height={105}
-                              />
-                              <span className='text-xs'>PostqreSQL</span>
-                           </div>
-                        </div>
-                     </div>
-                     <div>
-                        <span className=''>Cloud Services</span>
-                        <div className='mt-3 flex space-x-10'>
-                           <div className='text-center'>
-                              <Image
-                                 className='mb-1'
-                                 style={{
-                                    borderRadius: '1.88rem',
-                                    border: '2px solid #ff9a05',
-                                 }}
-                                 src='/techAWS.jpg'
-                                 alt='Amazon Cloud Services'
-                                 width={105}
-                                 height={105}
-                              />
-                              <span className='text-xs'>Amazon WS</span>
-                           </div>
-                           <div className='text-center'>
-                              <Image
-                                 className='mb-1'
-                                 style={{
-                                    borderRadius: '1.88rem',
-                                    border: '2px solid #57DFDD',
-                                 }}
-                                 src='/techLiara.jpg'
-                                 alt='Liara'
-                                 width={105}
-                                 height={105}
-                              />
-                              <span className='text-xs'>Liara</span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
                </div>
             </div>,
             <div>
                <h2 className='yekanBold mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-[1.5rem] text-transparent'>
                   تکنولوژی ها
                </h2>
-               <div className='rtl grid grid-cols-2 gap-x-40'>
-                  <div className='space-y-10'>
+               <div className='rtl grid grid-cols-2 gap-x-40 '>
+                  <div className='space-y-16 md:space-y-10'>
                      <div>
                         <span className='yekanBold'>تکونولوژی های JavaScript</span>
-                        <div className='mt-3 flex space-x-10 space-x-reverse'>
-                           <div className='text-center'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1 p-2'
                                  style={{
@@ -264,7 +263,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>React</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -278,7 +277,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Next.js</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -296,8 +295,8 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div>
                         <span className='yekanBold'>استایل ها و رابط کاربری</span>
-                        <div className='mt-3 flex space-x-10 space-x-reverse'>
-                           <div className='text-center'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -311,7 +310,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Tailwind.css</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -325,7 +324,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Sass</span>
                            </div>
-                           <div>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -342,58 +341,9 @@ const Technologies = ({ lang }: { lang: string }) => {
                         </div>
                      </div>
                      <div>
-                        <span className='yekanBold'>افزوده های دیگر</span>
-                        <div className='mt-3 flex space-x-10 space-x-reverse'>
-                           <div className='text-center'>
-                              <Image
-                                 className='mb-1'
-                                 style={{
-                                    borderRadius: '1.88rem',
-                                    border: '2px solid #ff9a05',
-                                 }}
-                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/ga.jpg'
-                                 alt='Google Analytics'
-                                 width={105}
-                                 height={105}
-                              />
-                              <span className='text-xs'>Google Analytics</span>
-                           </div>
-                           <div className='text-center'>
-                              <Image
-                                 className='mb-1'
-                                 style={{
-                                    borderRadius: '1.88rem',
-                                    border: '2px solid #4286f5',
-                                 }}
-                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/gtm.jpg'
-                                 alt='Google Tag Manager'
-                                 width={105}
-                                 height={105}
-                              />
-                              <span className='text-xs'>Google Tag Manager</span>
-                           </div>
-                           <div className='text-center'>
-                              <Image
-                                 className='mb-1'
-                                 style={{
-                                    borderRadius: '1.88rem',
-                                    border: '2px solid #362e56',
-                                 }}
-                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/sentry.jpg'
-                                 alt='Sentry'
-                                 width={105}
-                                 height={105}
-                              />
-                              <span className='text-xs'>Sentry</span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div className='space-y-10'>
-                     <div>
                         <span className='yekanBold'>دیتابیس / پایگاه داده</span>
-                        <div className='mt-3 flex space-x-10 space-x-reverse'>
-                           <div className='text-center'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -407,7 +357,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>MongoDB</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -421,7 +371,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>MySQL</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -439,8 +389,8 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div>
                         <span className='yekanBold'>خدمات ابری</span>
-                        <div className='mt-3 flex space-x-10 space-x-reverse'>
-                           <div className='text-center'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -454,7 +404,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                               />
                               <span className='text-xs'>Amazon WS</span>
                            </div>
-                           <div className='text-center'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
                                  style={{
@@ -467,6 +417,53 @@ const Technologies = ({ lang }: { lang: string }) => {
                                  height={105}
                               />
                               <span className='text-xs'>Liara</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div>
+                        <span className='yekanBold'>افزوده های دیگر</span>
+                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #ff9a05',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/ga.jpg'
+                                 alt='Google Analytics'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Google Analytics</span>
+                           </div>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #4286f5',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/gtm.jpg'
+                                 alt='Google Tag Manager'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Google Tag Manager</span>
+                           </div>
+                           <div className='h-20 w-20 text-center md:h-24 md:w-24'>
+                              <Image
+                                 className='mb-1'
+                                 style={{
+                                    borderRadius: '1.88rem',
+                                    border: '2px solid #362e56',
+                                 }}
+                                 src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/sentry.jpg'
+                                 alt='Sentry'
+                                 width={105}
+                                 height={105}
+                              />
+                              <span className='text-xs'>Sentry</span>
                            </div>
                         </div>
                      </div>
