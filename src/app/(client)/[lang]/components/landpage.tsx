@@ -18,13 +18,17 @@ const Landpage = ({ lang }: { lang: string }) => {
          className={`${langDecider(lang, '', 'rtl')} relative h-screen w-screen duration-1000`}
          style={{ opacity: enterEffect }}
       >
-         <div>
+         <div
+            style={{
+               transform: `${langDecider(lang, '', 'scaleX(-1)')}`,
+            }}
+            className='absolute h-screen w-screen'
+         >
             <Image
                src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/landpage.jpg'
                alt='landpage'
                fill
-               className='object-cover object-center duration-1000'
-               style={{ transform: `${langDecider(lang, '', 'scaleX(-1)')}` }}
+               className='-translate-x-1/2 overflow-visible object-cover object-center duration-1000 md:translate-x-0'
             />
             <span className='absolute right-0 top-0 h-2/4 w-1/3 animate-pulse bg-gradient-to-bl from-sky-200 to-transparent blur-3xl'></span>
          </div>
@@ -39,25 +43,19 @@ const Landpage = ({ lang }: { lang: string }) => {
                >
                   {langDecider(
                      lang,
-                     <>
-                        <h1
-                           style={{ fontSize: '4rem' }}
-                           className='relative z-0 leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950'
-                        >
+                     <div className='ml-10 mr-5 lg:mx-0'>
+                        <h1 className='relative z-0 mx-auto w-fit text-3xl leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950 lg:text-[4rem] xl:ml-40'>
                            Dive Deep For The <br /> Treasure That <br /> You Seek
                         </h1>
-                        <h2 className='relative -ml-6 mt-10 border-l-8 border-sky-900 pl-5'>
+                        <h2 className='relative -ml-4 md:mx-auto mt-5 w-fit border-l-8 border-sky-900 pl-5 text-base lg:mt-10 lg:pl-5 lg:text-xl lg:ml-40'>
                            Explore the World of Web Development with Me
                         </h2>
-                     </>,
+                     </div>,
                      <>
-                        <h1
-                           style={{ fontSize: '4rem' }}
-                           className='yekanBold relative z-0 leading-tight after:absolute after:-right-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950'
-                        >
+                        <h1 className='yekanBold relative z-0 mx-auto w-fit text-3xl leading-tight after:absolute after:-right-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950 lg:text-[4rem] xl:mr-40'>
                            اگر به دنبال گنجی <br /> به اعماق سفر کن
                         </h1>
-                        <h2 className='yekanBold relative -mr-6 mt-10 border-r-8 border-sky-900 pr-5'>
+                        <h2 className='yekanBold relative mx-auto mt-5 w-fit border-r-8 border-sky-900 pr-2 text-base lg:mt-10 lg:pr-5 lg:text-xl xl:mr-36'>
                            دنیای توسعه وب را با من کشف کن
                         </h2>
                      </>,
@@ -96,7 +94,7 @@ const Landpage = ({ lang }: { lang: string }) => {
                lang,
                'left-20',
                'right-20',
-            )} top-0 grid h-full items-center`}
+            )} top-0 hidden h-full items-center lg:grid`}
             style={{
                transitionDelay: '1.5s',
                transitionDuration: '1.5s',
