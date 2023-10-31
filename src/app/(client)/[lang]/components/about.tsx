@@ -91,7 +91,7 @@ const About = ({ lang }: { lang: string }) => {
                      </p>
                   </div>
                </div>,
-               <div className='space-y-5'>
+               <div className='mx-7 space-y-5'>
                   <div className='grid grid-cols-3 gap-5'>
                      <div className='col-span-2 space-y-3'>
                         <h2 className='yekanBold w-fit bg-gradient-to-br from-indigo-200 to-indigo-400 bg-clip-text text-transparent'>
@@ -187,7 +187,7 @@ const About = ({ lang }: { lang: string }) => {
                </div>,
             )}
          </div>
-         <div className='order-1 mx-10 mb-36 grid h-screen items-center justify-center md:mx-auto md:mb-0 md:w-3/4 lg:order-2'>
+         <div className='order-1 mx-5 mb-36 grid h-screen items-center justify-center md:mx-auto md:mb-0 md:w-3/4 lg:order-2'>
             <div className='relative'>
                <Image
                   src='/aboutHero.jpg'
@@ -207,8 +207,8 @@ const About = ({ lang }: { lang: string }) => {
                   alt='about mongo'
                   className={`animate-wave absolute w-20 rounded-3xl lg:w-40 lg:rounded-[33px] ${langDecider(
                      lang,
-                     '-right-8 lg:-right-16',
-                     '-left-16',
+                     '-right-4 lg:-right-16',
+                     '-left-4 lg:-left-16',
                   )} -top-8 border-2 border-green-400`}
                   style={{
                      animationDuration: '3.5s',
@@ -222,10 +222,10 @@ const About = ({ lang }: { lang: string }) => {
                      boxShadow: 'black 0 4px 15px 5px',
                      animationDuration: '3s',
                   }}
-                  className={`animate-wave absolute -bottom-16 h-[180px] w-[180px] lg:h-[232px] lg:w-[232px] ${langDecider(
+                  className={`animate-wave absolute -bottom-16 h-[160px] w-[160px] lg:h-[232px] lg:w-[232px] ${langDecider(
                      lang,
-                     '-left-8 lg:-left-32',
-                     '-right-32',
+                     '-left-4 lg:-left-32',
+                     '-right-4 lg:-right-32',
                   )} grid items-center justify-center bg-gradient-to-t from-black to-gray-800`}
                >
                   <Image
@@ -245,7 +245,7 @@ const About = ({ lang }: { lang: string }) => {
                   className={`animate-wave absolute -bottom-14 ${langDecider(
                      lang,
                      'right-0',
-                     'left-6',
+                     'left-0',
                   )} h-24 w-24 rounded-3xl border-2 border-sky-400 bg-gradient-to-t from-black to-blue-900 p-2 lg:h-32 lg:w-32 lg:rounded-[33px]`}
                   style={{
                      boxShadow: '0px 4px 63px -14px #74DFFC',

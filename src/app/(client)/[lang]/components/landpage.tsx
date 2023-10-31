@@ -37,7 +37,7 @@ const Landpage = ({ lang }: { lang: string }) => {
                <div
                   style={{
                      transitionDuration: '1.5s',
-                     transform: enterEffect ? 'translateX(0px)' : 'translateX(-70px)',
+                     transform: enterEffect ? 'translateX(0px)' : langDecider(lang,'translateX(-70px)', 'translateX(70px)') as string,
                      opacity: enterEffect,
                   }}
                >
@@ -51,14 +51,14 @@ const Landpage = ({ lang }: { lang: string }) => {
                            Explore the World of Web Development with Me
                         </h2>
                      </div>,
-                     <>
+                     <div className='mr-10 ml-5 lg:mx-0'>
                         <h1 className='yekanBold relative z-0 mx-auto w-fit text-3xl leading-tight after:absolute after:-right-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950 lg:text-[4rem] xl:mr-40'>
                            اگر به دنبال گنجی <br /> به اعماق سفر کن
                         </h1>
                         <h2 className='yekanBold relative mx-auto mt-5 w-fit border-r-8 border-sky-900 pr-2 text-base lg:mt-10 lg:pr-5 lg:text-xl xl:mr-36'>
                            دنیای توسعه وب را با من کشف کن
                         </h2>
-                     </>,
+                     </div>,
                   )}
                </div>
                <Link

@@ -5,7 +5,7 @@ const Technologies = ({ lang }: { lang: string }) => {
    return (
       <div
          id='technologies'
-         className='mx-auto grid h-screen max-w-screen-lg items-center justify-center'
+         className='mx-auto grid min-h-screen max-w-screen-lg items-center justify-center'
       >
          {langDecider(
             lang,
@@ -13,10 +13,10 @@ const Technologies = ({ lang }: { lang: string }) => {
                <h2 className='Audiowide mx-auto w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
                   Technologies
                </h2>
-               <div className=''>
+               <div>
                   <div className='grid md:grid-cols-2 md:gap-x-20 lg:gap-x-40'>
                      <div className='mt-16'>
-                        <span className=''>JavaScript Technologies</span>
+                        <span>JavaScript Technologies</span>
                         <div className='mt-3 flex space-x-5'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
@@ -241,12 +241,12 @@ const Technologies = ({ lang }: { lang: string }) => {
                </div>
             </div>,
             <div>
-               <h2 className='yekanBold mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-[1.5rem] text-transparent'>
+               <h2 className='yekanBold mx-auto w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-[1.5rem] text-transparent'>
                   تکنولوژی ها
                </h2>
-               <div className='rtl grid grid-cols-2 gap-x-40 '>
-                  <div className='space-y-16 md:space-y-10'>
-                     <div>
+               <div>
+                  <div className='rtl grid md:grid-cols-2 md:gap-x-20 lg:gap-x-40'>
+                     <div className='mt-16'>
                         <span className='yekanBold'>تکونولوژی های JavaScript</span>
                         <div className='mt-3 flex space-x-5 space-x-reverse'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
@@ -293,7 +293,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                            </div>
                         </div>
                      </div>
-                     <div>
+                     <div className='mt-16'>
                         <span className='yekanBold'>استایل ها و رابط کاربری</span>
                         <div className='mt-3 flex space-x-5 space-x-reverse'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
@@ -340,7 +340,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                            </div>
                         </div>
                      </div>
-                     <div>
+                     <div className='mt-16'>
                         <span className='yekanBold'>دیتابیس / پایگاه داده</span>
                         <div className='mt-3 flex space-x-5 space-x-reverse'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
@@ -387,7 +387,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                            </div>
                         </div>
                      </div>
-                     <div>
+                     <div className='mt-16'>
                         <span className='yekanBold'>خدمات ابری</span>
                         <div className='mt-3 flex space-x-5 space-x-reverse'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
@@ -420,7 +420,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                            </div>
                         </div>
                      </div>
-                     <div>
+                     <div className='mt-16'>
                         <span className='yekanBold'>افزوده های دیگر</span>
                         <div className='mt-3 flex space-x-5 space-x-reverse'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>

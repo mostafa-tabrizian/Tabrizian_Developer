@@ -33,9 +33,9 @@ const Contact = ({ lang }: { lang: string }) => {
                   <span>or</span>
                </>,
                <>
-                  <h2 className='yekanBold mt-5 text-4xl font-bold'>
+                  <h2 className='yekanBold mt-5 text-2xl md:text-4xl font-bold'>
                      یک اسکن تا{' '}
-                     <span className='yekanBold bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-transparent'>
+                     <span className='yekanBold bg-gradient-to-br font-bold from-violet-200 to-indigo-600 bg-clip-text text-transparent'>
                         بهترین شدن
                      </span>
                   </h2>
@@ -43,7 +43,7 @@ const Contact = ({ lang }: { lang: string }) => {
                </>,
             )}
             <div className='mx-auto flex'>
-               <Link href='#' className='px-5 text-white transition-colors hover:text-violet-300'>
+               <Link href='#' className='p-3 mx-5 text-white transition-colors hover:text-violet-300 bg-slate-900 rounded-full'>
                   <svg
                      className='h-8 w-8'
                      width='24'
@@ -60,7 +60,7 @@ const Contact = ({ lang }: { lang: string }) => {
                      <path d='M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4' />
                   </svg>
                </Link>
-               <Link href='#' className='px-5 text-white transition-colors hover:text-violet-300'>
+               <Link href='#' className='p-3 mx-5 text-white transition-colors hover:text-violet-300 bg-slate-900 rounded-full'>
                   <svg
                      className='h-8 w-8'
                      viewBox='0 0 24 24'
@@ -75,7 +75,7 @@ const Contact = ({ lang }: { lang: string }) => {
                      <rect x='2' y='9' width='4' height='12' /> <circle cx='4' cy='4' r='2' />
                   </svg>
                </Link>
-               <Link href='#' className='px-5 text-white transition-colors hover:text-violet-300'>
+               <Link href='#' className='p-3 mx-5 text-white transition-colors hover:text-violet-300 bg-slate-900 rounded-full'>
                   <svg
                      className='h-8 w-8'
                      viewBox='0 0 24 24'
