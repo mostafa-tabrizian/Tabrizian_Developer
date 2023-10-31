@@ -3,7 +3,6 @@ import limiter from '@/lib/limiter'
 import Project from '@/models/project'
 
 import Script from 'next/script'
-import SocialMedia from './components/socialMedia'
 import Landpage from './components/landpage'
 import About from './components/about'
 import FAQ from './components/faq'
@@ -93,7 +92,7 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
 
          <Technologies lang={lang} />
 
-         <Projects projects={JSON.parse(JSON.stringify(projects))} />
+         <Projects lang={lang} projects={JSON.parse(JSON.stringify(projects))} />
 
          <Packages lang={lang} />
 

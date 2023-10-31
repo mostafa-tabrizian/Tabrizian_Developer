@@ -6,7 +6,7 @@ const Projects = ({ projects, lang }: { projects: IProject[]; lang: string }) =>
    return (
       <div
          id='projects'
-         className='mx-auto grid h-screen max-w-screen-lg  items-center justify-center'
+         className='mx-5 my-40 grid h-screen max-w-screen-lg items-center justify-center md:my-0 xl:mx-auto'
       >
          <div>
             {langDecider(
@@ -18,7 +18,7 @@ const Projects = ({ projects, lang }: { projects: IProject[]; lang: string }) =>
                   نمونه کار و پروژه ها
                </h2>,
             )}
-            <div className={`grid grid-cols-3 gap-x-5 gap-y-10 ${langDecider(lang, '', 'rtl')}`}>
+            <div className={`grid gap-x-5 gap-y-10 md:grid-cols-3 ${langDecider(lang, '', 'rtl')}`}>
                {projects.map((project, idx) => {
                   return (
                      <div key={idx} className=''>
