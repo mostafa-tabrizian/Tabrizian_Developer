@@ -4,6 +4,7 @@ import Sidebar from './sidebar'
 import LinksForDesktop from './headerLinksforDesktop'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
+import langDecider from '@/lib/langDecider'
 
 const Header = () => {
    const pathname = usePathname()
@@ -16,7 +17,7 @@ const Header = () => {
    }, [])
 
    return (
-      <header className='fixed left-0 top-0 z-20 w-screen p-4 backdrop-blur-md'>
+      <header className={`fixed ${langDecider(lang, 'text-left', 'text-right')} top-0 z-20 w-screen p-4 backdrop-blur-md`}>
          <div>
             <div
                className='mx-auto justify-center lg:flex'

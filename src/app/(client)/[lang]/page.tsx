@@ -13,11 +13,11 @@ import Technologies from './components/technologies'
 import langDecider from '@/lib/langDecider'
 
 export const metadata = {
-   title: 'مصطفی تبریزیان | توسعه دهنده وب React/Next.js',
+   title: 'مصطفی تبریزیان | وب دِوِِلوپر React/Next.js',
    description:
-      'سلام، من تبریزیانم، یک توسعه دهنده وب فول استک با یک اشتیاق بالا برای ساخت وب سایت هایی با عملکرد بالا با تکنولوژی React/Next.js. هدف نهایی من فراتر از انتظارات شما عمل کردن و تحویل هیچ چیز جزء بهترین. با هم میتونیم ایده های درخشانتان را زنده کنیم.',
+      'سلام، من تبریزیانم، یک وب دِوِِلوپر فول استک با یک اشتیاق بالا برای ساخت وب سایت هایی با عملکرد بالا با تکنولوژی React/Next.js. هدف نهایی من فراتر از انتظارات شما عمل کردن و تحویل هیچ چیز جزء بهترین. با هم میتونیم ایده های درخشانتان را زنده کنیم.',
    alternates: {
-      canonical: '#',
+      canonical: 'https://tabriziandeveloper.iran.liara.run',
    },
 }
 
@@ -48,20 +48,20 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
    const jsonLd = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      id: '#', // #webSite
-      name: 'مصطفی تبریزیان | توسعه دهنده وب فول-استک Next.js',
-      url: '#',
+      id: 'https://tabriziandeveloper.iran.liara.run/#webSite',
+      name: 'مصطفی تبریزیان | وب دِوِِلوپر فول-استک Next.js',
+      url: 'https://tabriziandeveloper.iran.liara.run',
    }
 
    const corporationJsonLd = {
       '@context': 'https://schema.org',
       '@type': 'Corporation',
-      id: '#', // url/#corporation
+      id: 'https://tabriziandeveloper.iran.liara.run/#corporation',
       name: langDecider(lang, 'Mustafa Tabrizian', 'مصطفی تبریزیان'),
       alternateName: ['مصطفی تبریزیان', 'Mustafa Tabrizian'],
       legalName: 'Mustafa Tabrizian',
-      url: '#',
-      logo: '#', // /icon.png
+      url: 'https://tabriziandeveloper.iran.liara.run/',
+      logo: 'https://tabriziandeveloper.iran.liara.run/icon.png',
       email: 'tabrizian.codes@gmail.com',
       sameAs: ['#'],
       founders: [

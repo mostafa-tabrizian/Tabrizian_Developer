@@ -23,7 +23,7 @@ const CircleSVG = () => {
          <span className='absolute z-0 h-[280px] w-[280px] translate-x-8 translate-y-10 rounded-full border-2 border-violet-300 lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
             <div className='animate-spin-slow absolute -z-10 flex h-[280px] w-[280px] justify-center rounded-full lg:h-[361px] lg:w-[361px] xl:h-[561px] xl:w-[561px]'>
                <span
-                  className='h-10 w-10 translate-x-16 -translate-y-2 rounded-full bg-indigo-400'
+                  className='h-10 w-10 -translate-y-2 translate-x-16 rounded-full bg-indigo-400'
                   style={{
                      boxShadow: '3px -3px 10px black, inset 3px -3px 5px #2b054799',
                      background:
@@ -52,6 +52,8 @@ const MobilePreview = ({
                   src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${mobile1stImage}`}
                   alt={mobile1stImage}
                   fill
+                  loading='eager'
+                  priority
                   className='z-10 translate-x-6 -rotate-3 rounded-3xl  object-cover object-top'
                   style={{
                      boxShadow:
@@ -67,6 +69,8 @@ const MobilePreview = ({
                src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${mobile2ndImage}`}
                alt={mobile1stImage}
                fill
+               loading='eager'
+               priority
                className='translate-y-10 rotate-6 rounded-3xl object-cover object-top lg:translate-y-20'
                style={{
                   boxShadow:

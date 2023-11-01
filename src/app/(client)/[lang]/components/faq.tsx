@@ -83,7 +83,7 @@ const FAQ = ({ lang }: { lang: string }) => {
                         do you offer as a freelance web developer?&quot;
                      </p>,
                      <span className='yekanBold mx-5 flex w-full text-right text-sm text-slate-100 md:text-base'>
-                        &quot; به عنوان یک فریلنسر توسعه دهنده وب چه
+                        &quot; به عنوان یک فریلنسر وب دِوِِلوپر چه
                         <span className='mx-2 contents text-indigo-300'> خدماتی</span> ارائه
                         می‌کنید؟&quot;
                      </span>,
@@ -119,7 +119,7 @@ const FAQ = ({ lang }: { lang: string }) => {
                         technology
                      </p>,
                      <p className='yekan mx-5 mt-4 text-right text-sm text-slate-400 md:text-base'>
-                        من به عنوان یک فریلنسر توسعه دهنده وب، طراحی و ساخت سایت، فرانت اند و بک اند
+                        من به عنوان یک فریلنسر وب دِوِِلوپر، طراحی و ساخت سایت، فرانت اند و بک اند
                         ارائه می دهم. توسعه اپلیکیشن وب موبایل، فروشگاه های اینترنتی و توسعه نرم
                         افزار سفارشی مبتنی بر فناوری React/Next.js
                      </p>,

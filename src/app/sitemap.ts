@@ -2,7 +2,7 @@ import Project from '@/models/project'
 import dbConnect from '@/lib/dbConnect'
 import hyphen from '@/lib/hyphen'
 
-const URL = '#'
+const URL = 'https://tabriziandeveloper.iran.liara.run'
 
 async function getAllPages() {
    await dbConnect()

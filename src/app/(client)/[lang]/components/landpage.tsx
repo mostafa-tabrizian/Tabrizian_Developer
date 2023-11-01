@@ -22,12 +22,18 @@ const Landpage = ({ lang }: { lang: string }) => {
             style={{
                transform: `${langDecider(lang, '', 'scaleX(-1)')}`,
             }}
-            className='absolute h-screen w-screen'
+            className='absolute h-screen w-full'
          >
             <Image
                src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/landpage.jpg'
                alt='landpage'
                fill
+               priority
+               loading='eager'
+               sizes='(max-width: 768px) 200vw,
+            (max-width: 1200px) 50vw,
+            33vw'
+               quality={100}
                className='-translate-x-1/2 overflow-visible object-cover object-center duration-1000 md:translate-x-0'
             />
             <span className='absolute right-0 top-0 h-2/4 w-1/3 animate-pulse bg-gradient-to-bl from-sky-200 to-transparent blur-3xl'></span>
@@ -37,7 +43,9 @@ const Landpage = ({ lang }: { lang: string }) => {
                <div
                   style={{
                      transitionDuration: '1.5s',
-                     transform: enterEffect ? 'translateX(0px)' : langDecider(lang,'translateX(-70px)', 'translateX(70px)') as string,
+                     transform: enterEffect
+                        ? 'translateX(0px)'
+                        : (langDecider(lang, 'translateX(-70px)', 'translateX(70px)') as string),
                      opacity: enterEffect,
                   }}
                >
@@ -47,11 +55,11 @@ const Landpage = ({ lang }: { lang: string }) => {
                         <h1 className='relative z-0 mx-auto w-fit text-3xl leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950 lg:text-[4rem] xl:ml-40'>
                            Dive Deep For The <br /> Treasure That <br /> You Seek
                         </h1>
-                        <h2 className='relative -ml-4 md:mx-auto mt-5 w-fit border-l-8 border-sky-900 pl-5 text-base lg:mt-10 lg:pl-5 lg:text-xl lg:ml-40'>
+                        <h2 className='relative -ml-4 mt-5 w-fit border-l-8 border-sky-900 pl-5 text-base md:mx-auto lg:ml-40 lg:mt-10 lg:pl-5 lg:text-xl'>
                            Explore the World of Web Development with Me
                         </h2>
                      </div>,
-                     <div className='mr-10 ml-5 lg:mx-0'>
+                     <div className='ml-5 mr-10 lg:mx-0'>
                         <h1 className='yekanBold relative z-0 mx-auto w-fit text-3xl leading-tight after:absolute after:-right-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950 lg:text-[4rem] xl:mr-40'>
                            اگر به دنبال گنجی <br /> به اعماق سفر کن
                         </h1>

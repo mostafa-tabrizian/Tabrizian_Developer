@@ -5,7 +5,7 @@ const Technologies = ({ lang }: { lang: string }) => {
    return (
       <div
          id='technologies'
-         className='mx-auto grid min-min-h-screen mt-60 max-w-screen-lg items-center justify-center'
+         className='min-min-h-screen mx-auto mt-60 grid max-w-screen-lg items-center justify-center'
       >
          {langDecider(
             lang,
@@ -17,7 +17,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                   <div className='grid md:grid-cols-2 md:gap-x-20 lg:gap-x-40'>
                      <div className='mt-16'>
                         <span>JavaScript Technologies</span>
-                        <div className='mt-3 flex space-x-5'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1 p-2'
@@ -64,7 +64,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span className=''>Styles & UI</span>
-                        <div className='mt-3 flex space-x-5'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -112,7 +112,7 @@ const Technologies = ({ lang }: { lang: string }) => {
 
                      <div className='mt-16'>
                         <span className=''>Database</span>
-                        <div className='mt-3 flex space-x-5'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -159,7 +159,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span className=''>Cloud Services</span>
-                        <div className='mt-3 flex space-x-5'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -192,7 +192,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span>Additional</span>
-                        <div className='mt-3 flex space-x-5'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -248,7 +248,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                   <div className='rtl grid md:grid-cols-2 md:gap-x-20 lg:gap-x-40'>
                      <div className='mt-16'>
                         <span className='yekanBold'>تکونولوژی های JavaScript</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1 p-2'
@@ -295,7 +295,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span className='yekanBold'>استایل ها و رابط کاربری</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -342,7 +342,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span className='yekanBold'>دیتابیس / پایگاه داده</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -389,7 +389,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span className='yekanBold'>خدمات ابری</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -422,7 +422,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span className='yekanBold'>افزوده های دیگر</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse'>
+                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'

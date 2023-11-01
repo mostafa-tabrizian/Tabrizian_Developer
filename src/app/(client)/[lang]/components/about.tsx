@@ -100,7 +100,7 @@ const About = ({ lang }: { lang: string }) => {
                         <p className='yekan text-base'>
                            من <span className='yekanBold text-indigo-400'>تبریزیانم</span>, ۲۲, یک{' '}
                            <span className='yekanBold text-indigo-400'>
-                              توسعه دهنده وب فول-استک
+                              وب دِوِِلوپر فول-استک
                            </span>{' '}
                            با یک اشتیاق بالا برای ساخت وب سایت/اپلیکیشن هایی با عملکرد بالا. <br />{' '}
                            <br />
@@ -154,7 +154,7 @@ const About = ({ lang }: { lang: string }) => {
                         من و شما
                      </h2>
                      <p className='yekan text-base'>
-                        هنگامی که من رو به عنوان توسعه دهنده وب خود انتخاب می‌کنید, میتوانید با خیال
+                        هنگامی که من رو به عنوان وب دِوِِلوپر خود انتخاب می‌کنید, میتوانید با خیال
                         راحت مطمئن باشید{' '}
                         <span className='yekanBold text-indigo-400'>
                            هیچ چیز جزء بهترین دریافت نمی‌کنید.
@@ -187,7 +187,7 @@ const About = ({ lang }: { lang: string }) => {
                </div>,
             )}
          </div>
-         <div className='order-1 mx-5 mb-60 grid items-center justify-center md:mx-auto md:mb-0 md:w-3/4 lg:order-2'>
+         <div className='order-1 mx-16 mb-60 grid items-center justify-center md:mx-auto md:mb-0 md:w-3/4 lg:order-2'>
             <div className='relative'>
                <Image
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/aboutHero2.jpg'

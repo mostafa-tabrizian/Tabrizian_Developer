@@ -20,7 +20,7 @@ export const generateMetadata = async ({
       title: langDecider(lang, `Mostafa Tabrizian | ${title}`, `مصطفی تبریزیان | ${title}`),
       description: langDecider(lang, data.descriptionEn, data.descriptionFa),
       alternates: {
-         canonical: '#',
+         canonical: `https://tabriziandeveloper.iran.liara.run/projects/${title}`,
       },
    }
 }
@@ -74,7 +74,7 @@ const ProjectDetail = async ({
             '@type': 'Person',
             name: langDecider(lang, 'Mostafa Tabrizian', 'مصطفی تبریزیان'),
          },
-         url: '#', // /projects/${data.titleEn}
+         url: `https://tabriziandeveloper.iran.liara.run/projects/${data.titleEn}`,
          dateCreated: data.createdAt,
          dateModified: data.updatedAt,
          license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
@@ -103,7 +103,7 @@ const ProjectDetail = async ({
                name: langDecider(lang, data.titleEn, data.titleFa),
                item: {
                   '@type': 'Corporation',
-                  '@id': '#', // https://asadigraphics.ir/#corporation
+                  '@id': 'https://tabriziandeveloper.iran.liara.run/#corporation',
                },
             },
             {

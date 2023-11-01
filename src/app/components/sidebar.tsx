@@ -20,14 +20,14 @@ const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
          <button onClick={() => setSidebar(true)} aria-label='open sidebar'>
             <svg
                xmlns='http://www.w3.org/2000/svg'
-               width='37'
-               height='29'
+               width='40'
+               height='32'
                viewBox='0 0 37 29'
                fill='none'
             >
                <path
                   d='M2 2H22.625M2 14.5H35M14.375 27H35'
-                  stroke='rgb(241 245 249)'
+                  stroke='#a098f3'
                   strokeWidth='4'
                   strokeLinecap='round'
                   strokeLinejoin='round'
@@ -42,7 +42,7 @@ const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
          >
             <div className='h-screen w-screen bg-gradient-to-bl from-slate-900 to-slate-950'>
                <div className='p-5'>
-                  <div className='flex items-center justify-between gap-20'>
+                  <div className={`flex ${langDecider(lang, '', 'flex-row-reverse')} items-center justify-between gap-20`}>
                      <button onClick={() => setSidebar(false)} aria-label='close sidebar'>
                         <svg
                            stroke='currentColor'
