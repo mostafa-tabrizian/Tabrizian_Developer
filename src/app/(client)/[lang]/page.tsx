@@ -10,6 +10,7 @@ import Packages from './components/packages'
 import Contact from './components/contact'
 import Projects from './components/projects'
 import Technologies from './components/technologies'
+import langDecider from '@/lib/langDecider'
 
 export const metadata = {
    title: 'مصطفی تبریزیان | توسعه دهنده وب React/Next.js',
@@ -23,36 +24,6 @@ export const metadata = {
 const fetchProjects = async () => {
    await dbConnect()
    return await Project.find({ active: true }).sort({ createdAt: -1 })
-}
-
-const jsonLd = {
-   '@context': 'https://schema.org',
-   '@type': 'WebSite',
-   id: '#', // #webSite
-   name: 'مصطفی تبریزیان | توسعه دهنده وب فول-استک Next.js',
-   url: '#',
-}
-
-const corporationJsonLd = {
-   '@context': 'https://schema.org',
-   '@type': 'Corporation',
-   id: '#', // url/#corporation
-   name: 'Mostafa Tabrizian',
-   alternateName: ['مصطفی تبریزیان'],
-   legalName: 'Mostafa Tabrizian',
-   url: '#',
-   logo: '#',
-   email: 'tabrizian.codes@gmail.com',
-   sameAs: ['#'],
-   founders: [
-      {
-         '@context': 'https://schema.org',
-         '@type': 'Person',
-         jobTitle: 'Chief executive officer',
-         name: 'Mostafa Tabrizian',
-         sameAs: ['#'],
-      },
-   ],
 }
 
 export const revalidate = 7 * 24 * 60 * 60
@@ -73,6 +44,36 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
    }
 
    const projects = await fetchProjects()
+
+   const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      id: '#', // #webSite
+      name: 'مصطفی تبریزیان | توسعه دهنده وب فول-استک Next.js',
+      url: '#',
+   }
+
+   const corporationJsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Corporation',
+      id: '#', // url/#corporation
+      name: langDecider(lang, 'Mustafa Tabrizian', 'مصطفی تبریزیان'),
+      alternateName: ['مصطفی تبریزیان', 'Mustafa Tabrizian'],
+      legalName: 'Mustafa Tabrizian',
+      url: '#',
+      logo: '#', // /icon.png
+      email: 'tabrizian.codes@gmail.com',
+      sameAs: ['#'],
+      founders: [
+         {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            jobTitle: 'Chief executive officer',
+            name: 'Mustafa Tabrizian',
+            sameAs: ['#'],
+         },
+      ],
+   }
 
    return (
       <>

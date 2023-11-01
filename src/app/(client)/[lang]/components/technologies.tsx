@@ -5,7 +5,7 @@ const Technologies = ({ lang }: { lang: string }) => {
    return (
       <div
          id='technologies'
-         className='mx-auto grid min-h-screen max-w-screen-lg items-center justify-center'
+         className='mx-auto grid min-min-h-screen mt-60 max-w-screen-lg items-center justify-center'
       >
          {langDecider(
             lang,

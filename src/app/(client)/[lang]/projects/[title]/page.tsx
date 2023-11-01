@@ -140,7 +140,7 @@ const ProjectDetail = async ({
                <div className={`${langDecider(lang, '', '-scale-x-100')}`}>
                   <Spotlight />
                </div>
-               <div className='grid items-center justify-center lg:mx-10 lg:h-screen lg:pt-20 xl:pt-0'>
+               <div className='grid items-center justify-center lg:mx-10 lg:min-h-screen lg:pt-20 xl:pt-0'>
                   <div
                      className={`grid lg:grid-cols-2 lg:gap-20 xl:gap-8 ${langDecider(
                         lang,

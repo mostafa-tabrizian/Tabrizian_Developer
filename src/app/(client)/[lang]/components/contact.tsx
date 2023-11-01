@@ -6,7 +6,7 @@ const Contact = ({ lang }: { lang: string }) => {
    return (
       <div
          id='contact'
-         className='max-w-sreen-lg mx-auto grid h-screen items-center justify-center'
+         className='max-w-sreen-lg mx-auto grid min-h-screen mt-60 items-center justify-center'
       >
          <div className='grid justify-center space-y-5 text-center'>
             <div

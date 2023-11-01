@@ -5,21 +5,21 @@ import Image from 'next/image'
 const HeaderLinksforDesktop = ({ lang, path }: { lang: string; path: string }) => {
    return (
       <>
-         <div className='fixed right-0 top-0 mr-10 flex gap-3'>
-            <Link href={path.replace('en', 'fa')} className='h-8 w-8'>
+         <div className='fixed right-0 top-0 mr-10 hidden gap-3 md:flex'>
+            <Link href={path.replace('en', 'fa')}>
                <Image
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/iran.png'
                   alt='Farsi language'
-                  width={32}
-                  height={32}
+                  width={28}
+                  height={28}
                />
             </Link>
-            <Link href={path.replace('fa', 'en')} className='h-8 w-8'>
+            <Link href={path.replace('fa', 'en')}>
                <Image
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/uk.png'
                   alt='English language'
-                  width={32}
-                  height={32}
+                  width={28}
+                  height={28}
                />
             </Link>
          </div>

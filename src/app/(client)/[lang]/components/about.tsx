@@ -5,7 +5,7 @@ const About = ({ lang }: { lang: string }) => {
    return (
       <div
          id='about'
-         className={`mx-auto my-20 grid min-h-screen max-w-screen-xl -translate-y-14 items-center lg:grid-cols-2 lg:gap-x-20 xl:gap-x-60 ${langDecider(
+         className={`mx-auto my-20 grid min-h-screen max-w-screen-xl items-center lg:grid-cols-2 lg:gap-x-20 xl:gap-x-60 ${langDecider(
             lang,
             '',
             'rtl',
@@ -187,10 +187,10 @@ const About = ({ lang }: { lang: string }) => {
                </div>,
             )}
          </div>
-         <div className='order-1 mx-5 mb-36 grid h-screen items-center justify-center md:mx-auto md:mb-0 md:w-3/4 lg:order-2'>
+         <div className='order-1 mx-5 mb-60 grid items-center justify-center md:mx-auto md:mb-0 md:w-3/4 lg:order-2'>
             <div className='relative'>
                <Image
-                  src='/aboutHero.jpg'
+                  src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/aboutHero2.jpg'
                   width={424}
                   height={530}
                   alt='about hero'

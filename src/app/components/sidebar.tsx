@@ -5,8 +5,9 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import langDecider from '@/lib/langDecider'
+import Image from 'next/image'
 
-const Sidebar = ({ lang }: { lang: string }) => {
+const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
    const [sidebar, setSidebar] = useState(false)
 
    const pathname = usePathname()
@@ -26,7 +27,7 @@ const Sidebar = ({ lang }: { lang: string }) => {
             >
                <path
                   d='M2 2H22.625M2 14.5H35M14.375 27H35'
-                  stroke='black'
+                  stroke='rgb(241 245 249)'
                   strokeWidth='4'
                   strokeLinecap='round'
                   strokeLinejoin='round'
@@ -61,6 +62,25 @@ const Sidebar = ({ lang }: { lang: string }) => {
                            ></path>
                         </svg>
                      </button>
+
+                     <div className='flex gap-3'>
+                        <Link href={path.replace('en', 'fa')} className='h-8 w-8'>
+                           <Image
+                              src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/iran.png'
+                              alt='Farsi language'
+                              width={32}
+                              height={32}
+                           />
+                        </Link>
+                        <Link href={path.replace('fa', 'en')} className='h-8 w-8'>
+                           <Image
+                              src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/uk.png'
+                              alt='English language'
+                              width={32}
+                              height={32}
+                           />
+                        </Link>
+                     </div>
                   </div>
 
                   <ul className='rtl mt-10 flex flex-col justify-between gap-x-8 gap-y-8 text-indigo-50'>
@@ -102,7 +122,7 @@ const Sidebar = ({ lang }: { lang: string }) => {
                               href={langDecider(lang, '/en/#projects', '/fa/#projects') as string}
                            >
                               <div className='relative flex items-center justify-center'>
-                                 <span className='flex cursor-pointer  items-center py-4 text-3xl font-bold'>
+                                 <span className='flex cursor-pointer items-center  py-4 text-center text-3xl font-bold'>
                                     {langDecider(
                                        lang,
                                        <span className='verdana'>Work Samples & Projects</span>,

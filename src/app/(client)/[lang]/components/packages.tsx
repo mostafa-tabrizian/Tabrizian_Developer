@@ -6,8 +6,17 @@ const Packages = ({ lang }: { lang: string }) => {
    return (
       <div
          id='packages'
-         className='relative mx-auto mb-32 grid min-h-screen max-w-screen-lg items-center justify-center md:mb-0'
+         className='min-min-h-screen relative mx-auto mb-32 grid max-w-screen-lg items-center justify-center md:mb-0'
       >
+         {langDecider(
+            lang,
+            <h2 className='Audiowide mx-auto mb-32 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
+               Packages
+            </h2>,
+            <h2 className='yekanBold mx-auto mb-32 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-[1.5rem] text-transparent'>
+               پکیج ها
+            </h2>,
+         )}
          <div
             className={`${langDecider(
                lang,
@@ -15,19 +24,10 @@ const Packages = ({ lang }: { lang: string }) => {
                'rtl',
             )} mx-7 grid space-y-36 md:mx-0 md:grid-cols-3 md:gap-3 md:space-y-0 lg:mx-7 lg:gap-10`}
          >
-            {langDecider(
-               lang,
-               <h2 className='Audiowide mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
-                  Packages
-               </h2>,
-               <h2 className='yekanBold mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-[1.5rem] text-transparent'>
-                  پکیج ها
-               </h2>,
-            )}
             <div className='relative block rounded-3xl bg-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-700 before:p-2'>
                <div className='my-10 space-y-5'>
                   <Image
-                     src='/tier1.png'
+                     src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/packages/green_gem.png'
                      width={56}
                      height={114}
                      alt='diamond'
@@ -35,7 +35,7 @@ const Packages = ({ lang }: { lang: string }) => {
                         lang,
                         'right-10',
                         'left-10',
-                     )} mix-blend-screen`}
+                     )}`}
                      style={{
                         filter: 'drop-shadow(0px 5px 10px #255123)',
                         animationDuration: '3s',
@@ -205,15 +205,15 @@ const Packages = ({ lang }: { lang: string }) => {
             <div className='relative -top-5 block rounded-3xl bg-gradient-to-b from-indigo-950 to-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-400 before:p-2'>
                <div className='my-10 space-y-5'>
                   <Image
-                     src='/tier3.png'
+                     src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/packages/blue_gem.png'
                      width={56}
                      height={114}
-                     alt='diamond'
+                     alt='blue gem'
                      className={`animate-wave absolute -top-16 ${langDecider(
                         lang,
                         'right-10',
                         'left-10',
-                     )} mix-blend-screen`}
+                     )}`}
                      style={{ filter: 'drop-shadow(0px 5px 6px #527feb)', animationDuration: '3s' }}
                   />
                   <div>
@@ -384,17 +384,17 @@ const Packages = ({ lang }: { lang: string }) => {
             <div className='relative block rounded-3xl bg-[#0C0F16] px-4 pt-10 before:absolute before:-left-0.5 before:-top-0.5 before:-z-10 before:h-[calc(100%+5px)] before:w-[calc(100%+5px)] before:rounded-3xl before:bg-gradient-to-b before:from-gray-700 before:p-4'>
                <div className='my-10 space-y-5'>
                   <Image
-                     src='/tier2.png'
-                     width={56}
-                     height={114}
-                     alt='diamond'
+                     src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/packages/purple_gem.png'
+                     width={80}
+                     height={123}
+                     alt='purple gem'
                      className={`animate-wave absolute -top-16 ${langDecider(
                         lang,
                         'right-10',
                         'left-10',
-                     )} mix-blend-screen`}
+                     )}`}
                      style={{
-                        filter: 'drop-shadow(0px 5px 15px #9a6023)',
+                        filter: 'drop-shadow(0px 5px 10px #9b3aad)',
                         animationDuration: '3s',
                      }}
                   />

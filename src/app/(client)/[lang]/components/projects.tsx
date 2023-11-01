@@ -7,7 +7,7 @@ const Projects = ({ projects, lang }: { projects: IProject[]; lang: string }) =>
    return (
       <div
          id='projects'
-         className='mx-5 my-40 grid h-screen max-w-screen-lg items-center justify-center md:my-0 xl:mx-auto'
+         className='mx-5 my-40 grid min-h-screen max-w-screen-lg items-center justify-center md:my-0 xl:mx-auto'
       >
          <div>
             {langDecider(

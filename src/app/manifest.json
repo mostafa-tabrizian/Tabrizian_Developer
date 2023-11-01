@@ -1,0 +1,16 @@
+{
+   "name": "Tabrizina | React/Next.js Full-Stack Web Developer",
+   "short_name": "Tabrizian | React/Next.js",
+   "description": "#",
+   "start_url": "/en",
+   "display": "standalone",
+   "background_color": "#",
+   "theme_color": "#",
+   "icons": [
+      {
+         "src": "/favicon.ico",
+         "sizes": "any",
+         "type": "image/x-icon"
+      }
+   ]
+}

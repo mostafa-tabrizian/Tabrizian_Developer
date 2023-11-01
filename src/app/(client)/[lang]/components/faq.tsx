@@ -51,7 +51,7 @@ const FAQ = ({ lang }: { lang: string }) => {
             lang,
             '',
             'rtl',
-         )} grid min-h-screen max-w-screen-md items-center text-center md:mx-auto`}
+         )} grid min-min-h-screen max-w-screen-md mt-60 items-center text-center md:mx-auto`}
       >
          <div className='mx-5 space-y-4'>
             {langDecider(

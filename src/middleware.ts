@@ -30,5 +30,5 @@ export default withAuth(function middleware(request: NextRequest) {
 })
 
 export const config = {
-   matcher: ['/((?!_next/static|_next/image|favicon.ico|font).*)'],
+   matcher: ['/((?!_next/static|_next/image|favicon.ico|font|icon.png|apple-icon.png).*)'],
 }
