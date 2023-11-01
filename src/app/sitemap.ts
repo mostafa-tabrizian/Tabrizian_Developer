@@ -2,7 +2,7 @@ import Project from '@/models/project'
 import dbConnect from '@/lib/dbConnect'
 import hyphen from '@/lib/hyphen'
 
-const URL = 'https://tabriziancodes.ir'
+const URL = '#'
 
 async function getAllPages() {
    await dbConnect()
@@ -14,8 +14,8 @@ async function getAllPages() {
 export default async function sitemap() {
    const { projectData } = await getAllPages()
 
-   const projects = projectData.map(({ titleEn, slug, updatedAt }) => ({
-      url: `${URL}/projects/${hyphen(slug)}?title=${titleEn}`,
+   const projects = projectData.map(({ titleEn, updatedAt }) => ({
+      url: `${URL}/projects/${hyphen(titleEn)}`,
       lastModified: updatedAt,
    }))
 

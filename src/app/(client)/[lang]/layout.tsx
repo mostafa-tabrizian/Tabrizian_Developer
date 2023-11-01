@@ -1,11 +1,6 @@
-import { Metadata } from 'next'
 import { ToastContainer } from 'react-toastify'
 
 import Header from '@/app/components/header'
-
-export const metadata: Metadata = {
-   manifest: 'https://tabriziancodes.ir/site.webmanifest',
-}
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
    return (
@@ -25,8 +20,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
          <Header />
 
          <main>{children}</main>
-
-         {/* <Footer /> */}
       </>
    )
 }

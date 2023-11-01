@@ -1,8 +1,6 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import NextImage from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { memo, useMemo, useState } from 'react'
 
@@ -13,8 +11,6 @@ import Mobile2ndImageInput from './Mobile2ndImageInput'
 import ThumbnailInput from './thumbnailInput'
 
 const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
-const Button = dynamic(() => import('@mui/material/Button'), { ssr: false })
-const ImageDelete = dynamic(() => import('./imageDelete'), { ssr: false })
 
 const ImageInput = memo(
    ({

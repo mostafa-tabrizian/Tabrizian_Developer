@@ -53,6 +53,34 @@ const HeaderLinksforDesktop = ({ lang, path }: { lang: string; path: string }) =
                <div className='text-gray-700'>
                   {langDecider(
                      lang,
+                     <Link href='/en'>
+                        <div className='relative flex'>
+                           <span
+                              style={{ textShadow: '0 0 5px black' }}
+                              className='verdana cursor-pointer py-1 text-sm tracking-widest text-indigo-100 after:absolute after:-bottom-1 after:left-1/2 after:mx-auto after:h-1 after:w-1/2 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'
+                           >
+                              Home
+                           </span>
+                        </div>
+                     </Link>,
+                     <Link href='/fa'>
+                        <div className='relative flex'>
+                           <span
+                              style={{ textShadow: '0 0 5px black' }}
+                              className='yekanBold cursor-pointer py-1 text-sm tracking-widest text-indigo-100 after:absolute after:-bottom-1 after:left-1/2 after:mx-auto after:h-1 after:w-1/2 after:translate-x-[-50%] after:rounded-lg after:bg-blue-500 after:opacity-0 after:transition-opacity hover:after:opacity-100'
+                           >
+                              صفحه اصلی
+                           </span>
+                        </div>
+                     </Link>,
+                  )}
+               </div>
+            </li>
+
+            <li className='block'>
+               <div className='text-gray-700'>
+                  {langDecider(
+                     lang,
                      <Link href='/en/#about'>
                         <div className='relative flex'>
                            <span
