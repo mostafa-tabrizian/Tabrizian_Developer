@@ -33,24 +33,6 @@ const HeaderLinksforDesktop = ({ lang, path }: { lang: string; path: string }) =
          >
             <li className='block'>
                <div className='text-gray-700'>
-                  <Link aria-label='logo' href='/'>
-                     <div className='relative flex'>
-                        {/* <Image
-                  className='object-contain'
-                  src={'#'}
-                  alt='لوگو مصطفی تبریزیان'
-                  width={77}
-                  height={52}
-                  quality={100}
-                  loading='lazy'
-               /> */}
-                     </div>
-                  </Link>
-               </div>
-            </li>
-
-            <li className='block'>
-               <div className='text-gray-700'>
                   {langDecider(
                      lang,
                      <Link href='/en'>

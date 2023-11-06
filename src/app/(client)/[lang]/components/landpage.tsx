@@ -31,8 +31,7 @@ const Landpage = ({ lang }: { lang: string }) => {
                priority
                loading='eager'
                sizes='(max-width: 768px) 200vw,
-            (max-width: 1200px) 50vw,
-            33vw'
+            100vw'
                quality={100}
                className='-translate-x-1/2 overflow-visible object-cover object-center duration-1000 md:translate-x-0'
             />

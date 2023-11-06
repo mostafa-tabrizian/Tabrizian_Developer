@@ -7,38 +7,46 @@ import limiter from '@/lib/limiter'
 import Script from 'next/script'
 import MobilePreview from './components/mobilePreview'
 import langDecider from '@/lib/langDecider'
+import hyphen from '@/lib/hyphen'
+import dehyphen from '@/lib/dehyphen'
 const ProjectNotFound = dynamic(() => import('./components/projectNotFound'))
 
 export const generateMetadata = async ({
-   params: { title, lang },
+   params: { _id, lang },
 }: {
-   params: { title: string; lang: string }
+   params: { _id: string; lang: string }
 }) => {
-   const data: IProject = await fetchData(title)
+   const data: IProject = await fetchData(_id)
 
-   return {
-      title: langDecider(lang, `Mostafa Tabrizian | ${title}`, `مصطفی تبریزیان | ${title}`),
-      description: langDecider(lang, data.descriptionEn, data.descriptionFa),
-      alternates: {
-         canonical: `https://tabriziandeveloper.iran.liara.run/projects/${title}`,
-      },
+   if (data) {
+      return {
+         title: langDecider(
+            lang,
+            `Mostafa Tabrizian | ${data.titleEn}`,
+            `مصطفی تبریزیان | ${data.titleFa}`,
+         ),
+         description: langDecider(lang, data.descriptionEn, data.descriptionFa),
+         alternates: {
+            canonical: `https://tabriziandeveloper.iran.liara.run/projects/${_id}`,
+         },
+      }
    }
 }
 
-const fetchData = async (title: string) => {
+const fetchData = async (_id: string) => {
    await dbConnect()
    return await Project.findOne({
       active: true,
-      titleEn: title,
+      _id,
    }).exec()
 }
 
 export const revalidate = 7 * 24 * 60 * 60
 
 const ProjectDetail = async ({
-   params: { title, lang },
+   params: { _id, lang },
 }: {
-   params: { title: string; lang: string }
+   params: { _id: string; lang: string }
 }) => {
    const remaining = await limiter.removeTokens(1)
 
@@ -59,7 +67,7 @@ const ProjectDetail = async ({
       )
    }
 
-   const data: IProject = await fetchData(title)
+   const data: IProject = await fetchData(_id)
 
    let creativeWorkJsonLd, breadcrumbJsonLd
 
@@ -74,7 +82,7 @@ const ProjectDetail = async ({
             '@type': 'Person',
             name: langDecider(lang, 'Mostafa Tabrizian', 'مصطفی تبریزیان'),
          },
-         url: `https://tabriziandeveloper.iran.liara.run/projects/${data.titleEn}`,
+         url: `https://tabriziandeveloper.iran.liara.run/projects/${hyphen(data.titleEn)}`,
          dateCreated: data.createdAt,
          dateModified: data.updatedAt,
          license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',

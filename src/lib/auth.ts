@@ -4,6 +4,8 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import User, { IUser } from '@/models/user'
 import dbConnect from './dbConnect'
 
+import GoogleProvider from 'next-auth/providers/google'
+
 interface Credential {
    username: string
    password: string
@@ -13,6 +15,11 @@ const authOptions: NextAuthOptions = {
    secret: process.env.NEXTAUTH_SECRET,
 
    providers: [
+      GoogleProvider({
+         clientId: process.env.GOOGLE_CLIENT_ID as string,
+         clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+      }),
+
       CredentialsProvider({
          name: 'Credentials',
 

@@ -63,14 +63,22 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
       url: 'https://tabriziandeveloper.iran.liara.run/',
       logo: 'https://tabriziandeveloper.iran.liara.run/icon.png',
       email: 'tabrizian.codes@gmail.com',
-      sameAs: ['#'],
+      sameAs: [
+         'https://t.me/Tabrizian_dev',
+         'https://github.com/mostafa-tabrizian',
+         'https://www.linkedin.com/in/mostafa-tabrizian',
+      ],
       founders: [
          {
             '@context': 'https://schema.org',
             '@type': 'Person',
             jobTitle: 'Chief executive officer',
             name: 'Mustafa Tabrizian',
-            sameAs: ['#'],
+            sameAs: [
+               'https://t.me/Tabrizian_dev',
+               'https://github.com/mostafa-tabrizian',
+               'https://www.linkedin.com/in/mostafa-tabrizian',
+            ],
          },
       ],
    }

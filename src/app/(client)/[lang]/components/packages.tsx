@@ -6,7 +6,7 @@ const Packages = ({ lang }: { lang: string }) => {
    return (
       <div
          id='packages'
-         className='min-min-h-screen relative mx-auto mb-32 grid max-w-screen-lg items-center justify-center md:mb-0'
+         className='min-h-screen relative mx-auto mb-32 grid max-w-screen-lg items-center justify-center md:mb-0'
       >
          {langDecider(
             lang,
