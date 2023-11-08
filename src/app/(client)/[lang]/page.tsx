@@ -17,7 +17,7 @@ export const metadata = {
    description:
       'سلام، من تبریزیانم، یک وب دِوِِلوپر فول استک با یک اشتیاق بالا برای ساخت وب سایت هایی با عملکرد بالا با تکنولوژی React/Next.js. هدف نهایی من فراتر از انتظارات شما عمل کردن و تحویل هیچ چیز جزء بهترین. با هم میتونیم ایده های درخشانتان را زنده کنیم.',
    alternates: {
-      canonical: 'https://tabriziandeveloper.iran.liara.run',
+      canonical: 'https://mostafatabrizian.ir',
    },
 }
 
@@ -48,20 +48,20 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
    const jsonLd = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      id: 'https://tabriziandeveloper.iran.liara.run/#webSite',
+      id: 'https://mostafatabrizian.ir/#webSite',
       name: 'مصطفی تبریزیان | وب دِوِِلوپر فول-استک Next.js',
-      url: 'https://tabriziandeveloper.iran.liara.run',
+      url: 'https://mostafatabrizian.ir',
    }
 
    const corporationJsonLd = {
       '@context': 'https://schema.org',
       '@type': 'Corporation',
-      id: 'https://tabriziandeveloper.iran.liara.run/#corporation',
+      id: 'https://mostafatabrizian.ir/#corporation',
       name: langDecider(lang, 'Mustafa Tabrizian', 'مصطفی تبریزیان'),
       alternateName: ['مصطفی تبریزیان', 'Mustafa Tabrizian'],
       legalName: 'Mustafa Tabrizian',
-      url: 'https://tabriziandeveloper.iran.liara.run/',
-      logo: 'https://tabriziandeveloper.iran.liara.run/icon.png',
+      url: 'https://mostafatabrizian.ir/',
+      logo: 'https://mostafatabrizian.ir/icon.png',
       email: 'tabrizian.codes@gmail.com',
       sameAs: [
          'https://t.me/Tabrizian_dev',
