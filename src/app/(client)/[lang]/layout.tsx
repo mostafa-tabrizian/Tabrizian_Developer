@@ -1,6 +1,7 @@
 import { ToastContainer } from 'react-toastify'
 
 import Header from '@/app/components/header'
+import Footer from '@/app/components/footer'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
    return (
@@ -20,6 +21,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
          <Header />
 
          <main>{children}</main>
+
+         <Footer />
       </>
    )
 }

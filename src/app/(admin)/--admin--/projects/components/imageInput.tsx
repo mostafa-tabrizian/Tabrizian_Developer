@@ -64,7 +64,7 @@ const ImageInput = memo(
          }
 
          try {
-            const res = await fetch('/api/--admin--/project/image/db', {
+            const res = await fetch('/api/--admin--/image/db', {
                method: 'POST',
                body: JSON.stringify(payload),
             })

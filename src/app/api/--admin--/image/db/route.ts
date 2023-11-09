@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 
 import Project from '@/models/project'
+import Blog from '@/models/blog'
 import dbConnect from '@/lib/dbConnect'
 
 interface BodyType {
@@ -19,40 +20,32 @@ export async function POST(req: Request) {
 
    if (type == 'mobile1st') {
       res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
+         { _id },
          {
             mobile1stImage: imageKey
          },
       ).exec()
    } else if (type == 'mobile2nd') {
       res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
+         { _id },
          {
             mobile2ndImage: imageKey,
          },
       ).exec()
    } else if (type == 'gallery') {
-      res = await Project.findOne({ _id: _id }).exec()
+      res = await Project.findOne({ _id }).exec()
       res.gallery.push(imageKey)
       res.save()
    } else if (type == 'lighthouse') {
       res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
+         { _id },
          {
             lighthouse: imageKey,
          },
       ).exec()
    } else if (type == 'thumbnail') {
       res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
+         { _id },
          {
             thumbnail: imageKey,
          },
@@ -71,36 +64,37 @@ export async function DELETE(req: Request) {
 
    if (type == 'mobile1st') {
       res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
+         { _id },
          {
             mobile1stImage: '',
          },
       ).exec()
    } else if (type == 'mobile2nd') {
       res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
+         { _id },
          {
             mobile2ndImage: '',
          },
       ).exec()
    } else if (type == 'thumbnail') {
       res = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
+         { _id },
          {
             thumbnail: '',
          },
       ).exec()
    } else if (type == 'gallery') {
-      res = await Project.findOne({ _id: _id }).exec()
+      res = await Project.findOne({ _id }).exec()
       const galleryAfterDelete = res.gallery.filter((item: string) => item !== imageKey)
       res.gallery = galleryAfterDelete
       res.save()
+   } else if (type == 'blogs/thumbnail') {
+      res = await Blog.findOneAndUpdate(
+         { _id },
+         {
+            thumbnail: '',
+         },
+      ).exec()
    }
 
    return NextResponse.json({ res })

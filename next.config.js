@@ -1,5 +1,3 @@
-
-
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -31,7 +29,10 @@ const nextConfig = {
          {
             protocol: 'https',
             hostname: 'tabrizian.storage.iran.liara.space',
-            port: '',
+         },
+         {
+            protocol: 'https',
+            hostname: 'trustseal.enamad.ir',
          },
       ],
    },

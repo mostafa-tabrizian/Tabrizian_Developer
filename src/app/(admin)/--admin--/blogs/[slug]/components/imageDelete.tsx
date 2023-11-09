@@ -11,13 +11,13 @@ const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'),
 import Dialog from '@mui/material/Dialog'
 
 const ImageDelete = ({
-   type,
+   setThumbnail,
+   blogId,
    imageKey,
-   project,
 }: {
-   type: string
-   imageKey: string
-   project: string
+   setThumbnail: React.Dispatch<React.SetStateAction<string | File | null>>
+   blogId: string
+   imageKey: string | File | null
 }) => {
    const [loading, setLoading] = useState(false)
    const [confirmation, setConfirmation] = useState(false)
@@ -31,16 +31,16 @@ const ImageDelete = ({
          return toast.warning('An error occurred while deleting the image!')
       }
 
-      if (!project) {
+      if (!blogId) {
          return toast.error('Project not correctly selected!')
       }
 
       setLoading(true)
 
       try {
-         const fileUploadResult = await deleteFromS3Bucket(imageKey, 'projects')
+         const fileDeleteResult = await deleteFromS3Bucket(imageKey as string, 'blogs/thumbnail')
 
-         if (!fileUploadResult) throw new Error('file upload to s3')
+         if (!fileDeleteResult) throw new Error('file upload to s3')
 
          return await removeFromDb()
       } catch (error) {
@@ -55,9 +55,9 @@ const ImageDelete = ({
 
    const removeFromDb = async () => {
       const payload = {
-         type,
+         type: 'blogs/thumbnail',
          imageKey,
-         _id: project,
+         _id: blogId,
       }
 
       try {
@@ -72,6 +72,7 @@ const ImageDelete = ({
 
          fetch('/api/--admin--/revalidate?path=/')
 
+         setThumbnail(null)
          router.refresh()
       } catch (err) {
          toast.error('An error occurred while deleting the image!')
@@ -81,7 +82,7 @@ const ImageDelete = ({
 
    return (
       <>
-         <div className='absolute -left-5 top-0 flex items-center  space-x-3'>
+         <div className='absolute -top-5 right-0 flex items-center space-x-3'>
             {loading ? (
                <div className='py-2'>
                   <CircularProgress color='success' size={15} />

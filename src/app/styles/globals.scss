@@ -112,15 +112,6 @@ li {
    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 
-input,
-textarea {
-   font-size: 0.75rem;
-   font-family: verdana, sans-serif !important;
-   background: #345467 !important;
-   color: white;
-   border: 0 !important;
-}
-
 label {
    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
    font-size: 1.325rem;
@@ -269,5 +260,24 @@ strong {
    }
    &__slide_image {
       border-radius: 5px;
+   }
+}
+
+.ql-editor {
+   &.ql-blank::before {
+      color: #345467 !important;
+      font-size: 1rem !important;
+   }
+
+   p, strong, em {
+      font-family: Yekan;
+   }
+
+   h1, h2, h3, h4, h5, h6 {
+      font-family: YekanBold;
+   }
+
+   code {
+      background-color: rgb(58, 58, 58) !important;
    }
 }
