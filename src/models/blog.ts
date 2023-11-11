@@ -7,7 +7,7 @@ export interface IBlog {
     title: string
     slug: string
     thumbnail: string
-    nLikes: number
+    likes: [string]
     comments: [
         {
             username: string
@@ -31,10 +31,7 @@ const blogSchema = new mongoose.Schema({
     title: String,
     slug: String,
     thumbnail: String,
-    nLikes: {
-        type: Number,
-        default: 0
-    },
+    likes: [String],
     comments: [
         {
             username: String,

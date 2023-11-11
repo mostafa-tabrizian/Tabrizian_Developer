@@ -9,6 +9,8 @@ import Script from 'next/script'
 import Spotlight from '../../projects/[_id]/components/spotlight'
 import Image from 'next/image'
 import CreatedModifiedAt from './components/createdModifiedAt'
+import Like from './components/like'
+import Comments from './components/comments'
 
 export const generateMetadata = async ({
    params: { slug, lang },
@@ -46,6 +48,12 @@ const fetchBlog = async (slug: string) => {
    }
 }
 
+const getUserIp = async () => {
+   const res = await fetch('https://api.ipify.org/?format=json')
+   const resData = await res.json()
+   return resData.ip
+}
+
 export const revalidate = 7 * 24 * 60 * 60
 
 const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; slug: string } }) => {
@@ -69,6 +77,7 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
    }
 
    const blog: IBlog = await fetchBlog(slug)
+   const userIp = await getUserIp()
 
    let breadcrumbJsonLd, creativeWorkJsonLd
 
@@ -149,7 +158,7 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
                <div className={`${langDecider(blog.lang, '', '-scale-x-100')}`}>
                   <Spotlight />
                </div>
-               <div className='relative z-10 mx-5 lg:mx-auto min-h-screen max-w-screen-md text-center lg:pt-32'>
+               <div className='relative z-10 mx-5 min-h-screen max-w-screen-md text-center lg:mx-auto pt-32'>
                   <h1 className={`yekanBold text-right ${langDecider(blog.lang, '', 'rtl')}`}>
                      {blog.title}
                   </h1>
@@ -192,6 +201,11 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
                      className='ql-editor mt-10 text-left'
                      dangerouslySetInnerHTML={{ __html: blog.text }}
                   />
+
+                  <div className='fixed bottom-7 left-1/2 flex -translate-x-1/2 gap-5 rounded-full bg-white px-5 py-2'>
+                     <Comments />
+                     <Like userIp={userIp} blogId={String(blog._id)} likes={blog.likes} lang={lang} />
+                  </div>
                </div>
             </div>
          ) : (

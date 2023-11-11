@@ -30,7 +30,8 @@ export async function POST(request: Request) {
             thumbnail,
             authorId,
             text,
-            comments: []
+            comments: [],
+            likes: []
         })
 
         return NextResponse.json(blog)
