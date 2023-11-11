@@ -19,6 +19,7 @@ export interface IBlog {
     text: string
     createdAt: Date
     updatedAt: Date
+    modifiedAt: Date
 }
 
 const blogSchema = new mongoose.Schema({
@@ -42,7 +43,8 @@ const blogSchema = new mongoose.Schema({
         },
     ],
     authorId: String,
-    text: String
+    text: String,
+    modifiedAt: Date
 })
 
 blogSchema.set('timestamps', true)

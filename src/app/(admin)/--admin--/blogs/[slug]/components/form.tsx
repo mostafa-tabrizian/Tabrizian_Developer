@@ -107,7 +107,7 @@ const Form = ({
 
          const imageKey = await uploadFiles(thumbnail as File, fileName, 'thumbnail')
 
-         const slugReady = slug.trim().replaceAll(' ', '-')
+         const slugReady = slug.trim().replaceAll(' ', '-').toLocaleLowerCase()
 
          const payload = {
             active,
@@ -208,7 +208,7 @@ const Form = ({
             setThumbnail(imageKey)
          }
 
-         const slugReady = slug.trim().replaceAll(' ', '-')
+         const slugReady = slug.trim().replaceAll(' ', '-').toLocaleLowerCase()
 
          fetch('/api/--admin--/revalidate?path=/')
          fetch('/api/--admin--/revalidate?path=/blog/' + slugReady)

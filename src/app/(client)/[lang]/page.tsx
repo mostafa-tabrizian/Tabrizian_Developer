@@ -1,6 +1,7 @@
 import dbConnect from '@/lib/dbConnect'
 import limiter from '@/lib/limiter'
 import Project from '@/models/project'
+import Blog from '@/models/blog'
 
 import Script from 'next/script'
 import Landpage from './components/landpage'
@@ -11,19 +12,27 @@ import Contact from './components/contact'
 import Projects from './components/projects'
 import Technologies from './components/technologies'
 import langDecider from '@/lib/langDecider'
+import Blogs from './components/blogs'
 
 export const metadata = {
    title: 'مصطفی تبریزیان | وب دِوِِلوپر React/Next.js',
    description:
       'سلام، من تبریزیانم، یک وب دِوِِلوپر فول استک با یک اشتیاق بالا برای ساخت وب سایت هایی با عملکرد بالا با تکنولوژی React/Next.js. هدف نهایی من فراتر از انتظارات شما عمل کردن و تحویل هیچ چیز جزء بهترین. با هم میتونیم ایده های درخشانتان را زنده کنیم.',
    alternates: {
-      canonical: 'https://mostafatabrizian.ir',
+      canonical: '/',
+      languages: {
+         'en-US': '/en',
+         'fa-IR': '/fa',
+      },
    },
 }
 
-const fetchProjects = async () => {
+const fetchData = async (lang: string) => {
    await dbConnect()
-   return await Project.find({ active: true }).sort({ createdAt: -1 })
+   const projects = await Project.find({ active: true }).sort({ createdAt: -1 })
+   const blogs = await Blog.find({ active: true, lang }).sort({ createdAt: -1 })
+
+   return { projects, blogs }
 }
 
 export const revalidate = 7 * 24 * 60 * 60
@@ -34,16 +43,16 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
    if (remaining < 0) {
       return (
          <h1 className='mx-10 my-20 max-w-screen-sm text-center md:mx-auto'>
-            Sorry, you have reached the request limit. Please wait one minute and try again.
-            {/* 
-            متاسفانه تعداد درخواست‌های شما به حداکثر مجاز رسیده است. لطفاً کمی صبر کنید و سپس دوباره
-            امتحان کنید
- */}
+            {langDecider(
+               lang,
+               'Sorry, you have reached the request limit. Please wait one minute and try again.',
+               'متاسفانه تعداد درخواست‌های شما به حداکثر مجاز رسیده است. لطفاً کمی صبر کنید و سپس دوباره امتحان کنید',
+            )}
          </h1>
       )
    }
 
-   const projects = await fetchProjects()
+   const { projects, blogs } = await fetchData(lang)
 
    const jsonLd = {
       '@context': 'https://schema.org',
@@ -57,9 +66,9 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
       '@context': 'https://schema.org',
       '@type': 'Corporation',
       id: 'https://mostafatabrizian.ir/#corporation',
-      name: langDecider(lang, 'Mustafa Tabrizian', 'مصطفی تبریزیان'),
-      alternateName: ['مصطفی تبریزیان', 'Mustafa Tabrizian'],
-      legalName: 'Mustafa Tabrizian',
+      name: langDecider(lang, 'Mostafa Tabrizian', 'مصطفی تبریزیان'),
+      alternateName: ['مصطفی تبریزیان', 'Mostafa Tabrizian'],
+      legalName: 'Mostafa Tabrizian',
       url: 'https://mostafatabrizian.ir/',
       logo: 'https://mostafatabrizian.ir/icon.png',
       email: 'tabrizian.codes@gmail.com',
@@ -73,7 +82,7 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
             '@context': 'https://schema.org',
             '@type': 'Person',
             jobTitle: 'Chief executive officer',
-            name: 'Mustafa Tabrizian',
+            name: 'Mostafa Tabrizian',
             sameAs: [
                'https://t.me/Tabrizian_dev',
                'https://github.com/mostafa-tabrizian',
@@ -103,6 +112,8 @@ async function Home({ params: { lang } }: { params: { lang: string } }) {
          <Technologies lang={lang} />
 
          <Projects lang={lang} projects={JSON.parse(JSON.stringify(projects))} />
+
+         {blogs.length ? <Blogs lang={lang} blogs={JSON.parse(JSON.stringify(blogs))} /> : ''}
 
          <Packages lang={lang} />
 

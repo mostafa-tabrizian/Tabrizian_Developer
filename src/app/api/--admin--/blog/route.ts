@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 
 import dbConnect from '@/lib/dbConnect'
 import Blog from '@/models/blog'
+import nowDate from '@/lib/nowDate'
 
 export async function POST(request: Request) {
     const {
@@ -66,7 +67,8 @@ export async function PATCH(request: Request) {
             active,
             lang,
             title,
-            text
+            text,
+            modifiedAt: nowDate()
         }
 
         // @ts-ignore

@@ -27,7 +27,11 @@ export const generateMetadata = async ({
          ),
          description: langDecider(lang, data.descriptionEn, data.descriptionFa),
          alternates: {
-            canonical: `https://mostafatabrizian.ir/projects/${_id}`,
+            canonical: `/en/projects/${_id}`,
+            languages: {
+               'en-US': `/en/projects/${_id}`,
+               'fa-IR': `/fa/projects/${_id}`,
+            },
          },
       }
    }
@@ -108,10 +112,10 @@ const ProjectDetail = async ({
             {
                '@type': 'ListItem',
                position: 1,
-               name: langDecider(lang, data.titleEn, data.titleFa),
+               name: langDecider(lang, 'home', 'صفحه اصلی'),
                item: {
                   '@type': 'Corporation',
-                  '@id': 'https://mostafatabrizian.ir/#corporation',
+                  '@id': 'https://mostafatabrizian.ir/#projects',
                },
             },
             {

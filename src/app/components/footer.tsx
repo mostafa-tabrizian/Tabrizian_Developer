@@ -46,7 +46,7 @@ const Footer = () => {
             {langDecider(
                lang,
                <p className='verdana mt-1 text-center text-xs text-slate-500'>
-                  © All rights of this website are reserved for Mustafa Tabrizian
+                  © All rights of this website are reserved for Mostafa Tabrizian
                </p>,
                <p className='yekan mt-1 text-center text-xs text-slate-500'>
                   © تمامی حقوق این وب سایت برای مصطفی تبریزیان محفوظ است

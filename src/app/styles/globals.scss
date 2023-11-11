@@ -62,7 +62,7 @@ body {
 
 a {
    text-decoration: none;
-   font-size: 1.325rem;
+   font-size: 1rem;
    font-family: verdana, sans-serif;
 }
 
@@ -89,7 +89,6 @@ h4 {
 
 h5 {
    font-size: 1.325rem;
-   letter-spacing: -1px;
    font-family: verdana, sans-serif;
 }
 
@@ -108,7 +107,7 @@ p {
 }
 
 li {
-   font-size: 1.325rem;
+   font-size: 1rem;
    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
 }
 
@@ -269,15 +268,36 @@ strong {
       font-size: 1rem !important;
    }
 
-   p, strong, em {
+   p,
+   strong,
+   em,
+   li,
+   a {
       font-family: Yekan;
    }
 
-   h1, h2, h3, h4, h5, h6 {
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6 {
       font-family: YekanBold;
    }
 
    code {
-      background-color: rgb(58, 58, 58) !important;
+      padding: 0.4rem;
+      background-color: rgb(24 28 60) !important;
+      border-radius: 7px;
+   }
+
+   a {
+      text-decoration: wavy underline rgb(115, 132, 255) !important;
+      text-underline-offset: 2px;
+      transition: all 0.1s ease-in-out;
+
+      &:hover {
+         color: rgb(115, 132, 255) !important;
+      }
    }
 }
