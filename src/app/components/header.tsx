@@ -17,7 +17,7 @@ const Header = () => {
    }, [])
 
    return (
-      <header className={`fixed ${langDecider(lang, 'text-left', 'text-right')} top-0 z-20 w-screen p-4 backdrop-blur-md`}>
+      <header className={`fixed ${langDecider(lang, 'text-left', 'text-right')} top-0 z-20 right-0 w-auto md:w-screen p-2 md:p-4 backdrop-blur-2xl md:backdrop-blur-md`}>
          <div>
             <div
                className='mx-auto justify-center lg:flex'
