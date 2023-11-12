@@ -191,8 +191,13 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
                         <h5 className='yekanBold text-base'>
                            {langDecider(blog.lang, 'Mostafa tabrizian', 'مصطفی تبریزیان')}
                         </h5>
-                        {/* Read in 5 minutes */}
-                        <h5 className='yekan text-sm text-slate-400'>خواندن در ۵ دقیقه</h5>
+                        <h5 className='yekan text-sm text-slate-400'>
+                           {langDecider(
+                              blog.lang,
+                              `Read in ${blog.readTime} minutes`,
+                              `خواندن در ${blog.readTime.toLocaleString('fa')} دقیقه`,
+                           )}
+                        </h5>
                      </div>
                      <CreatedModifiedAt createdAt={blog.createdAt} modifiedAt={blog.modifiedAt} />
                   </div>

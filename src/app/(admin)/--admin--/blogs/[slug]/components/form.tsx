@@ -29,6 +29,7 @@ const Form = ({
    const [title, setTitle] = useState(newBlog ? '' : blog.title)
    const [slug, setSlug] = useState(newBlog ? '' : slugQuery)
    const [thumbnailPreview, setThumbnailPreview] = useState<FileList | null>(null)
+   const [readTime, setReadTime] = useState(newBlog ? 0 : blog.readTime)
 
    const router = useRouter()
 
@@ -115,6 +116,7 @@ const Form = ({
             title,
             slug: slugReady,
             thumbnail: imageKey,
+            readTime,
             authorId,
             // @ts-ignore
             text: quillRef.current.value,
@@ -174,12 +176,10 @@ const Form = ({
             // @ts-ignore
             text: quillRef.current.value,
             thumbnail: null,
+            readTime,
          }
 
          let imageKey
-
-         console.log('typeof thumbnail', typeof thumbnail);
-         
 
          if (typeof thumbnail == 'object') {
             const fileName = (thumbnail as File).name
@@ -313,6 +313,18 @@ const Form = ({
             />
 
             <div className='flex items-center justify-between'>
+               <span className='yekan text-base text-slate-400'>Read Time (Min):</span>
+               <input
+                  type='number'
+                  name='readTime'
+                  value={readTime}
+                  onChange={(e) => setReadTime(parseInt(e.target.value))}
+                  id='readTime'
+                  className='w-16 rounded bg-slate-700 pl-5 text-slate-200'
+               />
+            </div>
+
+            <div className='flex items-center justify-between'>
                <span className='yekan text-base text-slate-400'>Active:</span>
 
                <Switch
@@ -323,6 +335,7 @@ const Form = ({
                   onChange={() => setActive((prev) => !prev)}
                />
             </div>
+
             <LangInput loading={loading} lang={lang} setLang={setLang} />
             <button
                disabled={loading}

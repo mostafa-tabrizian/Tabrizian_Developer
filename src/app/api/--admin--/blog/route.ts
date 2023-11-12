@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 
 import dbConnect from '@/lib/dbConnect'
 import Blog from '@/models/blog'
-import nowDate from '@/lib/nowDate'
 
 export async function POST(request: Request) {
     const {
@@ -10,6 +9,7 @@ export async function POST(request: Request) {
         lang,
         title,
         thumbnail,
+        readTime,
         authorId,
         text
     }: {
@@ -17,6 +17,7 @@ export async function POST(request: Request) {
         lang: ['fa', 'en'],
         title: string,
         thumbnail: string,
+        readTime: number,
         authorId: string,
         text: string
     } = await request.json()
@@ -28,6 +29,7 @@ export async function POST(request: Request) {
             lang,
             title,
             thumbnail,
+            readTime,
             authorId,
             text,
             comments: [],
@@ -53,7 +55,8 @@ export async function PATCH(request: Request) {
         lang,
         title,
         text,
-        thumbnail
+        thumbnail,
+        readTime
     }: {
         slug: string
         active: boolean
@@ -61,6 +64,7 @@ export async function PATCH(request: Request) {
         title: string
         text: string
         thumbnail: string | null
+        readTime: number
     } = await request.json()
 
     try {
@@ -69,7 +73,8 @@ export async function PATCH(request: Request) {
             lang,
             title,
             text,
-            modifiedAt: nowDate()
+            readTime,
+            modifiedAt: new Date()
         }
 
         // @ts-ignore

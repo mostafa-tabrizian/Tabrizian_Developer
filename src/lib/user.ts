@@ -1,7 +1,6 @@
 import { getServerSession } from 'next-auth'
 import User from '@/models/user'
 import dbConnect from '@/lib/dbConnect'
-import nowDate from '@/lib/nowDate'
 
 import authOptions from './auth'
 
@@ -15,7 +14,7 @@ const UserDetail = async () => {
       username: session.username,
    }).exec()
 
-   user.lastVisit = nowDate()
+   user.lastVisit = new Date()
    user.save()
 
    // eslint-disable-next-line @typescript-eslint/no-unused-vars
