@@ -79,37 +79,29 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
    const blog: IBlog = await fetchBlog(slug)
    const userIP = await getUserIp()
 
-   let breadcrumbJsonLd, creativeWorkJsonLd
+   let breadcrumbJsonLd, blogPostJsonLd
 
    if (blog) {
-      //   creativeWorkJsonLd = {
-      //      '@context': 'http://schema.org',
-      //      '@type': 'CreativeWork',
-      //      name: langDecider(blog.lang, blog.titleEn, blog.titleFa),
-      //      description: langDecider(blog.lang, blog.descriptionEn, blog.descriptionFa),
-      //      image: `https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${blog.mobile1stImage}`,
-      //      creator: {
-      //         '@type': 'Person',
-      //         name: langDecider(blog.lang, 'Mostafa Tabrizian', 'مصطفی تبریزیان'),
-      //      },
-      //      url: `https://mostafatabrizian.ir/projects/${hyphen(blog.titleEn)}`,
-      //      dateCreated: blog.createdAt,
-      //      dateModified: blog.updatedAt,
-      //      license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
-      //      mainEntity: {
-      //         '@type': 'ImageGallery',
-      //         name: langDecider(
-      //            lang,
-      //            `${blog.titleEn} project gallery`,
-      //            `${blog.titleFa} گالری تصاویر پروژه`,
-      //         ),
-      //         description: blog.descriptionEn,
-      //         image: [blog.mobile1stImage, blog.mobile2ndImage, ...blog.gallery].map(
-      //            (src) =>
-      //               `https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${src}`,
-      //         ),
-      //      },
-      //   }
+      blogPostJsonLd = {
+         '@context': 'http://schema.org',
+         '@type': 'BlogPosting',
+         image: `https://tabrizian.storage.iran.liara.space/tabrizian_codes/blogs/thumbnail/${blog.thumbnail}`,
+         url: `https://mostafatabrizian.ir/${lang}/blog/${blog.slug}`,
+         headline: blog.title,
+         dateCreated: blog.createdAt,
+         datePublished: blog.createdAt,
+         dateModified: blog.modifiedAt,
+         inLanguage: blog.lang,
+         author: {
+            '@type': 'Person',
+            name: 'مصطفی تبریزیان',
+            url: 'https://mostafatabrizian.ir',
+         },
+         // keywords: ['keyword1', 'keyword2', 'keyword3', 'keyword4'],
+         // genre: ['SEO', 'JSON-LD'],
+         articleSection: 'Uncategorized posts',
+         articleBody: blog.text,
+      }
 
       breadcrumbJsonLd = {
          '@context': 'https://schema.org',
@@ -143,11 +135,11 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
                   dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
                />
 
-               {/* <Script
-                  id='creativeWork-jsonld'
+               <Script
+                  id='blogPosting-jsonld'
                   type='application/ld+json'
-                  dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkJsonLd) }}
-               /> */}
+                  dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostJsonLd) }}
+               />
             </>
          ) : (
             ''
