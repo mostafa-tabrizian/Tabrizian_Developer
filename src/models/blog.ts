@@ -10,8 +10,19 @@ export interface IBlog {
     likes: [string]
     comments: [
         {
+            _id: string
+            userIP: string
             username: string
             body: string
+            replys: [
+                {
+                    _id: string
+                    userIP: string
+                    username: string
+                    body: string
+                    createdAt: Date
+                }
+            ]
             createdAt: Date
         }
     ]
@@ -34,8 +45,29 @@ const blogSchema = new mongoose.Schema({
     likes: [String],
     comments: [
         {
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                index: true,
+                required: true,
+                auto: true
+            },
+            userIP: String,
             username: String,
             body: String,
+            replys: [
+                {
+                    _id: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        index: true,
+                        required: true,
+                        auto: true
+                    },
+                    userIP: String,
+                    username: String,
+                    body: String,
+                    createdAt: Date
+                }
+            ],
             createdAt: Date
         },
     ],

@@ -13,10 +13,10 @@ const Blogs = ({ blogs, lang }: { blogs: IBlog[]; lang: string }) => {
             {langDecider(
                lang,
                <h2 className='Audiowide mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-transparent'>
-                  Blog
+                  Blogs
                </h2>,
                <h2 className='yekanBold mx-auto mb-10 w-fit bg-gradient-to-br from-violet-200 to-indigo-600 bg-clip-text text-center text-[1.5rem] text-transparent'>
-                  بلاگ
+                  بلاگ ها
                </h2>,
             )}
             <div className={`grid gap-x-5 gap-y-10 md:grid-cols-3 ${langDecider(lang, '', 'rtl')}`}>
@@ -32,8 +32,8 @@ const Blogs = ({ blogs, lang }: { blogs: IBlog[]; lang: string }) => {
                         />
                         {langDecider(
                            lang,
-                           <h3 className='text-base verdana'>{blog.title}</h3>,
-                           <h3 className='text-base yekan'>{blog.title}</h3>,
+                           <h3 className='verdana text-base'>{blog.title}</h3>,
+                           <h3 className='yekan text-base'>{blog.title}</h3>,
                         )}
                      </Link>
                   )

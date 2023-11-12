@@ -12,3 +12,14 @@ export const projectEditForm = yup.object().shape({
       .required('Enter Title of The Project')
       .matches(/^[^-]*$/, { message: 'Char - is Not Allowed' }),
 })
+
+export const comment = yup.object().shape({
+   username: yup
+      .string()
+      .min(3, 'حداقل کارکتر های نام کاربری باید ۳ تا باشه')
+      .required('لطفا نام کاربریتون رو وارد کنید'),
+   body: yup
+      .string()
+      .min(3, 'حداقل کارکتر های دیدگاهتون باید ۳ تا باشه')
+      .required('لطفا دیدگاهتون رو وارد کنید'),
+})

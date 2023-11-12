@@ -42,7 +42,13 @@ const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
          >
             <div className='h-screen w-screen bg-gradient-to-bl from-slate-900 to-slate-950'>
                <div className='p-5'>
-                  <div className={`flex ${langDecider(lang, '', 'flex-row-reverse')} items-center justify-between gap-20`}>
+                  <div
+                     className={`flex ${langDecider(
+                        lang,
+                        '',
+                        'flex-row-reverse',
+                     )} items-center justify-between gap-20`}
+                  >
                      <button onClick={() => setSidebar(false)} aria-label='close sidebar'>
                         <svg
                            stroke='currentColor'
@@ -127,6 +133,22 @@ const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
                                        lang,
                                        <span className='verdana'>Work Samples & Projects</span>,
                                        <span className='yekanBold'>نمونه کار و پروژه ها</span>,
+                                    )}
+                                 </span>
+                              </div>
+                           </Link>
+                        </div>
+                     </li>
+
+                     <li className='block'>
+                        <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
+                           <Link href={langDecider(lang, '/en/#blogs', '/fa/#blogs') as string}>
+                              <div className='relative flex items-center justify-center'>
+                                 <span className='flex cursor-pointer items-center  py-4 text-center text-3xl font-bold'>
+                                    {langDecider(
+                                       lang,
+                                       <span className='verdana'>Blogs</span>,
+                                       <span className='yekanBold'>بلاگ ها</span>,
                                     )}
                                  </span>
                               </div>

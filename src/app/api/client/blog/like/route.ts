@@ -4,9 +4,9 @@ import Blog, { IBlog } from '@/models/blog'
 import dbConnect from '@/lib/dbConnect'
 
 export async function POST(req: Request) {
-   const { blogId, userIp } = (await req.json()) as {
+   const { blogId, userIP } = (await req.json()) as {
       blogId: string
-      userIp: string
+      userIP: string
    }
 
    await dbConnect()
@@ -14,13 +14,13 @@ export async function POST(req: Request) {
 
    if (!blog) return NextResponse.json({ status: 404 })
 
-      if (blog.likes.includes(userIp)) {
-         const index = blog.likes.indexOf(userIp)
+      if (blog.likes.includes(userIP)) {
+         const index = blog.likes.indexOf(userIP)
          blog.likes.splice(index, 1)
          //   @ts-ignore
          blog.save()
       } else {
-         blog.likes.push(userIp)
+         blog.likes.push(userIP)
          //   @ts-ignore
          blog.save()
       }

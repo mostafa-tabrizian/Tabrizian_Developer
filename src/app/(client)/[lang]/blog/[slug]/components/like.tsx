@@ -6,12 +6,12 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 const Like = ({
-   userIp,
+   userIP,
    blogId,
    likes,
    lang,
 }: {
-   userIp: string
+   userIP: string
    blogId: string
    likes: [string]
    lang: string
@@ -21,18 +21,18 @@ const Like = ({
    const [loading, setLoading] = useState(false)
 
    const [userLiked, setUserLiked] = useState(
-      likes.length && userIp.length && likes.includes(userIp),
+      likes.length && userIP.length && likes.includes(userIP),
    )
 
    const onClick = async () => {
       try {
-         if (!userIp.length) throw new Error('Couldnt get the ip!')
+         if (!userIP.length) throw new Error('Couldnt get the ip!')
 
          setLoading(true)
 
          const res = await fetch('/api/client/blog/like', {
             method: 'POST',
-            body: JSON.stringify({ blogId, userIp }),
+            body: JSON.stringify({ blogId, userIP }),
          })
 
          if (!res.ok) throw new Error()

@@ -10,7 +10,7 @@ import Spotlight from '../../projects/[_id]/components/spotlight'
 import Image from 'next/image'
 import CreatedModifiedAt from './components/createdModifiedAt'
 import Like from './components/like'
-import Comments from './components/comments'
+import Comments from './components/comments/drawerButton'
 
 export const generateMetadata = async ({
    params: { slug, lang },
@@ -77,7 +77,7 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
    }
 
    const blog: IBlog = await fetchBlog(slug)
-   const userIp = await getUserIp()
+   const userIP = await getUserIp()
 
    let breadcrumbJsonLd, creativeWorkJsonLd
 
@@ -158,7 +158,7 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
                <div className={`${langDecider(blog.lang, '', '-scale-x-100')}`}>
                   <Spotlight />
                </div>
-               <div className='relative z-10 mx-5 min-h-screen max-w-screen-md text-center lg:mx-auto pt-32'>
+               <div className='relative z-10 mx-5 min-h-screen max-w-screen-md pt-32 text-center lg:mx-auto'>
                   <h1 className={`yekanBold text-right ${langDecider(blog.lang, '', 'rtl')}`}>
                      {blog.title}
                   </h1>
@@ -203,8 +203,18 @@ const BlogPage = async ({ params: { lang, slug } }: { params: { lang: string; sl
                   />
 
                   <div className='fixed bottom-7 left-1/2 flex -translate-x-1/2 gap-5 rounded-full bg-white px-5 py-2'>
-                     <Comments />
-                     <Like userIp={userIp} blogId={String(blog._id)} likes={blog.likes} lang={lang} />
+                     <Comments
+                        userIP={userIP}
+                        blogId={String(blog._id)}
+                        comments={JSON.parse(JSON.stringify(blog.comments.reverse()))}
+                        lang={lang}
+                     />
+                     <Like
+                        userIP={userIP}
+                        blogId={String(blog._id)}
+                        likes={blog.likes}
+                        lang={lang}
+                     />
                   </div>
                </div>
             </div>
