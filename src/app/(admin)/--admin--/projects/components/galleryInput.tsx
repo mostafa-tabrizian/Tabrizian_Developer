@@ -84,7 +84,7 @@ const GalleryInput = memo(
             <div
                onDrop={(e) => dropHandlerDesign(e, 'gallery')}
                onDragOver={dragOverHandler}
-               className='w-full rounded-lg border-2 border-slate-200 bg-slate-100 text-sm'
+               className='w-full rounded-lg border-2 border-slate-600 bg-slate-800 text-sm'
             >
                {/* @ts-ignore */}
                <Button type='button' component='label' sx={{ width: '100%', padding: '.5rem' }}>

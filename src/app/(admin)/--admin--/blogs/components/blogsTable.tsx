@@ -25,7 +25,7 @@ const BlogsTable = ({ blogs }: { blogs: IBlog[] }) => {
             header: 'ID',
             cell: (info) => {
                const value = info.getValue() as string
-               return <span className='text-sm text-slate-700 underline'>{value.slice(-4)}</span>
+               return <span className='text-sm text-slate-300 underline'>{value.slice(-4)}</span>
             },
          },
          {
@@ -141,7 +141,7 @@ const BlogsTable = ({ blogs }: { blogs: IBlog[] }) => {
    return (
       <div className='relative overflow-x-auto'>
          <table className='w-full table-auto text-left text-sm text-slate-500'>
-            <thead className='bg-slate-50 text-xs uppercase text-slate-700'>
+            <thead className='bg-slate-50 text-xs uppercase text-slate-300'>
                {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
                      {headerGroup.headers.map((header) => {

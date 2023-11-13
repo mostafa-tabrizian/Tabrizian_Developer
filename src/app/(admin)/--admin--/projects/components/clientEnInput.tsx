@@ -34,7 +34,7 @@ const ClientEnInput = memo(
                   name='clientEn'
                   onChange={(e) => setFieldValue('clientEn', e.target.value)}
                   value={value}
-                  className='verdana mr-3 w-full rounded-lg border-2 border-slate-200 bg-slate-100 p-2 text-sm'
+                  className='verdana mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-sm'
                   type='text'
                />
             </div>

@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 
 import {
    ColumnDef,
@@ -12,10 +11,10 @@ import {
    useReactTable,
    getPaginationRowModel,
 } from '@tanstack/react-table'
-import { IProject } from '@/models/project'
+import { IPayment } from '@/models/payment'
 import { useMemo, useState } from 'react'
 
-const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
+const PaymentsTable = ({ payments }: { payments: IPayment[] }) => {
    const [sorting, setSorting] = useState<SortingState>([])
 
    const columns = useMemo<ColumnDef<unknown>[]>(
@@ -26,116 +25,15 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             cell: (info) => {
                const value = info.getValue() as string
                return (
-                  <Link href={`/--admin--/projects/${value}`}>
+                  <Link href={`/--admin--/payments/${value}`}>
                      <span className='text-sm text-slate-300 underline'>{value.slice(-4)}</span>
                   </Link>
                )
             },
          },
          {
-            accessorKey: 'thumbnail',
-            header: 'Thumbnail',
-            cell: (info) => {
-               const value = info.getValue()
-               return (
-                  <Link
-                     target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                  >
-                     {value ? (
-                        <Image
-                           className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                           alt={String(value)}
-                           height={50}
-                           width={50}
-                        />
-                     ) : (
-                        ''
-                     )}
-                  </Link>
-               )
-            },
-         },
-         {
-            accessorKey: 'mobile1stImage',
-            header: 'Mobile Pre 1st',
-            cell: (info) => {
-               const value = info.getValue()
-               return (
-                  <Link
-                     target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                  >
-                     {value ? (
-                        <Image
-                           className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                           alt={String(value)}
-                           height={50}
-                           width={50}
-                        />
-                     ) : (
-                        ''
-                     )}
-                  </Link>
-               )
-            },
-         },
-         {
-            accessorKey: 'mobile2ndImage',
-            header: 'Mobile Pre 2st',
-            cell: (info) => {
-               const value = info.getValue()
-               return (
-                  <Link
-                     target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                  >
-                     {value ? (
-                        <Image
-                           className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                           alt={String(value)}
-                           height={50}
-                           width={50}
-                        />
-                     ) : (
-                        ''
-                     )}
-                  </Link>
-               )
-            },
-         },
-         
-         {
-            accessorKey: 'lighthouse',
-            header: 'Lighthouse',
-            cell: (info) => {
-               const value = info.getValue()
-               return (
-                  <Link
-                     target='_blank'
-                     href={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                  >
-                     {value ? (
-                        <Image
-                           className='rounded-md object-cover'
-                           src={`https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${value}`}
-                           alt={String(value)}
-                           height={100}
-                           width={200}
-                        />
-                     ) : (
-                        ''
-                     )}
-                  </Link>
-               )
-            },
-         },
-         {
-            accessorKey: 'active',
-            header: 'Active',
+            accessorKey: 'paid',
+            header: 'Paid',
             cell: (info) => {
                const value = info.getValue()
                return (
@@ -178,20 +76,23 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
             },
          },
          {
-            accessorKey: 'titleEn',
-            header: 'Title En',
+            accessorKey: 'amount',
+            header: 'Amount',
             cell: (info) => {
                const value = info.getValue() as string
-               return <span className='text-sm text-slate-500'>{value}</span>
+               return (
+                  <span className='yekan rtl text-sm text-slate-500'>
+                     {parseInt(value).toLocaleString('fa')}
+                  </span>
+               )
             },
          },
-
          {
-            accessorKey: 'titleFa',
-            header: 'Title Fa',
+            accessorKey: 'payerName',
+            header: 'Payer Name',
             cell: (info) => {
                const value = info.getValue() as string
-               return <span className='text-sm text-slate-500'>{value}</span>
+               return <span className='yekan text-sm text-slate-500'>{value}</span>
             },
          },
          {
@@ -203,7 +104,7 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
    )
 
    const table = useReactTable({
-      data: projects,
+      data: payments,
       columns,
       state: {
          sorting,
@@ -333,4 +234,4 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
    )
 }
 
-export default ProjectsTable
+export default PaymentsTable

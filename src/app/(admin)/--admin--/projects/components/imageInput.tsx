@@ -292,7 +292,7 @@ const ImageInput = memo(
 
             <hr />
 
-            <div className='flex items-center justify-center rounded-lg border-2 border-slate-200 bg-slate-100'>
+            <div className='flex items-center justify-center rounded-lg border-2 border-slate-600 bg-slate-800'>
                {loading ? (
                   <div className='p-1.5'>
                      <CircularProgress color='success' size={20} />

@@ -78,7 +78,7 @@ const LighthouseInput = memo(
                   <div
                      onDrop={(e) => dropHandlerDesign(e, 'lighthouse')}
                      onDragOver={dragOverHandler}
-                     className='w-full rounded-lg border-2 border-slate-200 bg-slate-100 text-sm'
+                     className='w-full rounded-lg border-2 border-slate-600 bg-slate-800 text-sm'
                   >
                      <Button
                         type='button'

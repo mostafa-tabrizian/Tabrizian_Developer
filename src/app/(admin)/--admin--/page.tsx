@@ -69,28 +69,31 @@ const AdminPanel = async () => {
                </Link>
             </div>
 
-            {/* <div className='bg-white rounded-lg py-2 px-2 hover:shadow-lg hover:shadow-indigo-100 transition-all hover:border-indigo-600'>
-                  <Link href='/--admin--/statistic'>
-                     <div className='flex  space-x-3 items-center'>
-                        <span className='text-base text-black'>آمار</span>
-                        <svg
-                           className='h-6 w-6 text-black'
-                           width='24'
-                           height='24'
-                           viewBox='0 0 24 24'
-                           strokeWidth='2'
-                           stroke='currentColor'
-                           fill='none'
-                           strokeLinecap='round'
-                           strokeLinejoin='round'
-                        >
-                           <path stroke='none' d='M0 0h24v24H0z' />
-                           <line x1='4' y1='19' x2='20' y2='19' />
-                           <polyline points='4 15 8 9 12 11 16 6 20 10' />
-                        </svg>
-                     </div>
-                  </Link>
-               </div> */}
+            <div className='rounded-lg bg-white px-2 py-2 transition-all hover:border-indigo-600 hover:shadow-lg hover:shadow-indigo-100'>
+               <Link href='/--admin--/payments'>
+                  <div className='flex items-center space-x-3'>
+                     <svg
+                        className='h-6 w-6 text-indigo-900'
+                        width='24'
+                        height='24'
+                        viewBox='0 0 24 24'
+                        strokeWidth='2'
+                        stroke='currentColor'
+                        fill='none'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                     >
+                        {' '}
+                        <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                        <rect x='3' y='5' width='18' height='14' rx='3' />{' '}
+                        <line x1='3' y1='10' x2='21' y2='10' />{' '}
+                        <line x1='7' y1='15' x2='7.01' y2='15' />{' '}
+                        <line x1='11' y1='15' x2='13' y2='15' />
+                     </svg>
+                     <span className='verdana text-base text-indigo-900'>Payment</span>
+                  </div>
+               </Link>
+            </div>
 
             <LogoutButton />
          </div>

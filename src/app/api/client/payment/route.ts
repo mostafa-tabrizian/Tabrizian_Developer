@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
+import Payment, { IPayment } from '@/models/payment';
 
 // @ts-ignore
 export async function POST(req) {
-
 
     const reqBody = await req.formData();
     const reqData: {
@@ -26,6 +26,12 @@ export async function POST(req) {
 
     const successPayment = reqData['cardnumber'] && reqData['cardhashpan']
 
+    if (!successPayment) return NextResponse.redirect(`${process.env.API_URL}/fa/payment/fail`)
+
+    const paymentData: IPayment | null = await Payment.findById(reqData.clientrefid)
+
+    if (!paymentData) return NextResponse.redirect(`${process.env.API_URL}/fa/payment/fail`)
+
     const verifyPayment = async () => {
         const res = await fetch('https://api.payping.ir/v2/pay/verify', {
             method: 'POST',
@@ -35,7 +41,7 @@ export async function POST(req) {
             },
             body: JSON.stringify({
                 'refId': reqData.refid,
-                'amount': (reqData.clientrefid as string).split('-')[1]
+                'amount': paymentData.amount
             })
         })
 
@@ -45,8 +51,11 @@ export async function POST(req) {
 
     const verifyRes = await verifyPayment()
 
-    if (successPayment && verifyRes) {
-        // save in db with clientRefId
+    if (verifyRes) {
+        paymentData['cardNumber'] = reqData.cardnumber as string
+        paymentData['paid'] = true
+        // @ts-ignore
+        paymentData.save()
         return NextResponse.redirect(`${process.env.API_URL}/fa/payment/success`)
     } else {
         return NextResponse.redirect(`${process.env.API_URL}/fa/payment/fail`)

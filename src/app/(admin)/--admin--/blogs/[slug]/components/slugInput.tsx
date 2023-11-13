@@ -20,7 +20,7 @@ const SlugInput = memo(
                name='slug'
                onChange={(e) => setSlug(e.target.value)}
                value={slug}
-               className='yekan rtl w-full rounded-lg border-2 border-sky-700 bg-inherit p-2 text-base placeholder:text-slate-700'
+               className='yekan rtl w-full rounded-lg border-2 border-sky-700 bg-inherit p-2 text-base placeholder:text-slate-300'
                type='text'
                placeholder='slug-for-this-blog'
             />

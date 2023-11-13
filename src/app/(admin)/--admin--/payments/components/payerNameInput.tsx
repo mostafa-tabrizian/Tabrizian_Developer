@@ -1,24 +1,22 @@
 import { FormikErrors } from 'formik'
 import { memo } from 'react'
 
-const TechnologiesInput = memo(
+const PayerNameInput = memo(
    ({
+      addingNewPayment,
       value,
       setFieldValue,
       error,
       touch,
    }: {
+      addingNewPayment: boolean
       value: string
       setFieldValue: (
          field: string,
          value: unknown,
          shouldValidate?: boolean | undefined,
       ) => Promise<void | FormikErrors<{
-         titleEn: string
-         titleFa: string
-         descriptionEn: string
-         descriptionFa: string
-         active: boolean
+         payerName: string
       }>>
 
       error: string | undefined
@@ -27,14 +25,15 @@ const TechnologiesInput = memo(
       return (
          <>
             <div className='space-y-1'>
-               <label htmlFor='technologies'>
-                  <span className='text-slate-400'>Technologies</span>
+               <label htmlFor='payerName'>
+                  <span className='text-slate-400'>Payer Name</span>
                </label>
                <input
-                  name='technologies'
-                  onChange={(e) => setFieldValue('technologies', e.target.value)}
+                  name='payerName'
+                  onChange={(e) => setFieldValue('payerName', e.target.value)}
                   value={value}
-                  className='verdana mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-sm'
+                  readOnly={!addingNewPayment}
+                  className='yekan rtl mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-base text-slate-300 outline-none'
                   type='text'
                />
             </div>
@@ -45,6 +44,6 @@ const TechnologiesInput = memo(
    },
 )
 
-TechnologiesInput.displayName = 'TechnologiesInput'
+PayerNameInput.displayName = 'PayerNameInput'
 
-export default TechnologiesInput
+export default PayerNameInput

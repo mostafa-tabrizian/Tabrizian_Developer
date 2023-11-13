@@ -78,7 +78,7 @@ const Mobile2ndImageInput = memo(
                   <div
                      onDrop={(e) => dropHandlerDesign(e, 'mobile2nd')}
                      onDragOver={dragOverHandler}
-                     className='w-full rounded-lg border-2 border-slate-200 bg-slate-100'
+                     className='w-full rounded-lg border-2 border-slate-600 bg-slate-800'
                   >
                      <Button
                         type='button'
