@@ -2,7 +2,7 @@ import Spotlight from '../../projects/[_id]/components/spotlight'
 
 export const metadata = {
    title: 'مصطفی تبریزیان | نتیجه پرداخت ',
-   description: 'صفحه نتیجه پرداخت به مصطفی تبریزیان',
+   description: 'صفحه نتیجه پرداخت به مصطفی تبریزیان'
 }
 
 async function Payment() {

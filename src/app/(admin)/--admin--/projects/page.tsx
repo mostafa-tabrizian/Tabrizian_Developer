@@ -9,7 +9,7 @@ import ProjectsTable from './components/projectsTable'
 export const revalidate = 0
 
 export const metadata = {
-   title: 'Admin Panel | Project Table',
+   title: 'Admin Panel | Project Table'
 }
 
 const getProjects = async () => {

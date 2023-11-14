@@ -9,7 +9,7 @@ import Comments from './components/comments'
 export const revalidate = 0
 
 export const metadata = {
-   title: 'Admin Panel | Comments',
+   title: 'Admin Panel | Comments'
 }
 
 const getBlogs = async () => {

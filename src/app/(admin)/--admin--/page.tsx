@@ -4,7 +4,7 @@ import Breadcrumbs from '@mui/material/Breadcrumbs'
 import LogoutButton from './components/logoutButton'
 
 export const metadata = {
-   title: 'Admin Panel',
+   title: 'Admin Panel'
 }
 
 export const revalidate = 0

@@ -9,7 +9,7 @@ import BlogsTable from './components/blogsTable'
 export const revalidate = 0
 
 export const metadata = {
-   title: 'Admin Panel | Blog Table',
+   title: 'Admin Panel | Blog Table'
 }
 
 const getBlogs = async () => {
