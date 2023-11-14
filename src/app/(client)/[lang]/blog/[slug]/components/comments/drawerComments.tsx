@@ -72,6 +72,7 @@ const DrawerComments = ({
          setPanel(false)
          resetForm()
          toast.success('💜 ممنونم که کامنت گذاشتید')
+         toast.success('بعد از تایید نهایی، کامنت به نمایش گذاشته میشود')
          router.refresh()
       } catch (err) {
          toast.error('در ثبت کامنت خطایی رخ داد!')
