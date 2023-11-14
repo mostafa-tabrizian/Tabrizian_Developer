@@ -21,9 +21,11 @@ export interface IBlog {
                     userIP: string
                     username: string
                     body: string
+                    approval: string,
                     createdAt: Date
                 }
             ]
+            approval: string,
             createdAt: Date
         }
     ]
@@ -56,6 +58,10 @@ const blogSchema = new mongoose.Schema({
             userIP: String,
             username: String,
             body: String,
+            approval: {
+                type: String,
+                default: 'pending'
+            },
             replys: [
                 {
                     _id: {
@@ -67,6 +73,10 @@ const blogSchema = new mongoose.Schema({
                     userIP: String,
                     username: String,
                     body: String,
+                    approval: {
+                        type: String,
+                        default: 'pending'
+                    },
                     createdAt: Date
                 }
             ],
