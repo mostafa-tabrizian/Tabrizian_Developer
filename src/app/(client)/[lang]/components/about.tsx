@@ -98,10 +98,8 @@ const About = ({ lang }: { lang: string }) => {
                            سلام ! <span style={{ color: 'initial' }}>🖐🏻</span>
                         </h2>
                         <p className='yekan text-base'>
-                           من <span className='yekanBold text-indigo-400'>تبریزیانم</span>, ۲۲, یک{' '}
-                           <span className='yekanBold text-indigo-400'>
-                              وب دِوِِلوپر فول-استک
-                           </span>{' '}
+                           من <span className='yekanBold text-indigo-400'>تبریزیانم</span>, ۲۳, یک{' '}
+                           <span className='yekanBold text-indigo-400'>وب دِوِلوپر فول استک</span>{' '}
                            با یک اشتیاق بالا برای ساخت وب سایت/اپلیکیشن هایی با عملکرد بالا. <br />{' '}
                            <br />
                         </p>
