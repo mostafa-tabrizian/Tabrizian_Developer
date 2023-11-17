@@ -19,8 +19,7 @@ export async function POST(request: Request) {
         const payment = await Payment.create({
             payerName,
             description,
-            amount,
-            cardNumber: '',
+            amount
         })
 
         return NextResponse.json(payment)

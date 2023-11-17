@@ -16,8 +16,14 @@ const PaymentSchema = new mongoose.Schema({
    payerName: String,
    description: String,
    amount: Number,
-   cardNumber: String,
-   refId: String,
+   cardNumber: {
+      type: String,
+      default: ''
+   },
+   refId: {
+      type: String,
+      default: ''
+   },
    paid: {
       type: Boolean,
       default: false

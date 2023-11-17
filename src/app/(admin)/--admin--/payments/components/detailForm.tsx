@@ -127,6 +127,20 @@ const DetailForm = memo(
 
                            <div className='space-y-1'>
                               <label htmlFor='cardNumber'>
+                                 <span className='text-slate-400'>Reference Id (شماره رهگیری)</span>
+                              </label>
+                              <input
+                                 name='cardNumber'
+                                 readOnly
+                                 disabled
+                                 value={payment.refId || 'Refrence id is not available'}
+                                 className='mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-sm'
+                                 type='text'
+                              />
+                           </div>
+
+                           <div className='space-y-1'>
+                              <label htmlFor='cardNumber'>
                                  <span className='text-slate-400'>Payment Date</span>
                               </label>
                               <input
