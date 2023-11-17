@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { toast } from 'react-toastify'
 import Spotlight from '../../projects/[_id]/components/spotlight'
 import Payment from '@/models/payment'
@@ -28,8 +29,37 @@ const paypingCodeRequest = async (payerIdentity: string, payerName: string, amou
 
       return resData.code
    } catch (err) {
-      toast.error('در ایجاد درگاه پرداخت خطایی رخ داد. لطفا مجدد تلاش کنید.')
-      return console.error('Payment Error: ', err)
+      toast.error('در ایجاد درگاه پرداخت پی‌پینگ خطایی رخ داد. لطفا مجدد تلاش کنید.')
+      return console.error('PayPing Error: ', err)
+   }
+}
+
+const zarinpalAuthorityRequest = async (paymentId: string, description: string, amount: string) => {
+   try {
+      const res = await fetch('https://api.zarinpal.com/pg/v4/payment/request.json', {
+         method: 'POST',
+         headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+            merchant_id: process.env.ZARINPAL_MERCHANT_ID,
+            amount,
+            currency: 'IRT',
+            callback_url: `${process.env.API_URL}/api/client/payment?Amount=${amount}&PaymentId=${paymentId}`,
+            description,
+            metadata: {
+               order_id: String(paymentId),
+            },
+         }),
+      })
+
+      const resData = await res.json()
+
+      return resData.data.authority
+   } catch (err) {
+      toast.error('در ایجاد درگاه پرداخت زرین‌پال خطایی رخ داد. لطفا مجدد تلاش کنید.')
+      return console.error('Zarinpal Error: ', err)
    }
 }
 
@@ -52,6 +82,12 @@ async function PaymentPage({ params: { _id } }: { params: { _id: string } }) {
       paymentData.amount,
    )
 
+   const zarinpalAuthority = await zarinpalAuthorityRequest(
+      paymentData._id,
+      paymentData.description,
+      paymentData.amount,
+   )
+
    return (
       <div>
          <Spotlight />
@@ -71,10 +107,16 @@ async function PaymentPage({ params: { _id } }: { params: { _id: string } }) {
                      {parseInt(paymentData.amount).toLocaleString('fa')} تومان می‌باشد
                   </p>
                   <a
+                     href={`https://www.zarinpal.com/pg/StartPay/${zarinpalAuthority}`}
+                     className='yekanBold mx-auto mt-10 flex h-[300px] w-[300px] items-center justify-center rounded-2xl border-2 border-indigo-500 bg-white py-2 text-2xl text-indigo-500'
+                  >
+                     پرداخت با زرین‌پال
+                  </a>
+                  <a
                      href={`https://api.payping.ir/v2/pay/gotoipg/${paypingCode}`}
                      className='yekanBold mx-auto mt-10 flex h-[300px] w-[300px] items-center justify-center rounded-2xl border-2 border-indigo-500 bg-white py-2 text-2xl text-indigo-500'
                   >
-                     پرداخت
+                     پرداخت با پی‌پینگ
                   </a>
                </>
             )}

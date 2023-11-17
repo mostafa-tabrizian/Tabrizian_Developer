@@ -6,6 +6,7 @@ export interface IPayment {
    description: string
    amount: number
    cardNumber: string
+   refId: string
    paid: boolean
    createdAt: Date
    updatedAt: Date
@@ -16,6 +17,7 @@ const PaymentSchema = new mongoose.Schema({
    description: String,
    amount: Number,
    cardNumber: String,
+   refId: String,
    paid: {
       type: Boolean,
       default: false
