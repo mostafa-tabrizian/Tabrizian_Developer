@@ -37,15 +37,6 @@ const nextConfig = {
       ],
    },
    output: 'standalone',
-
-   // }
-   webpack: (config) => {
-      config.externals.push({
-         '@aws-sdk/signature-v4-multi-region': 'commonjs @aws-sdk/signature-v4-multi-region',
-      })
-
-      return config
-   },
 }
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
