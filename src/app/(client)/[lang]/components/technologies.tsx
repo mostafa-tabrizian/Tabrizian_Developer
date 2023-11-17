@@ -17,7 +17,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                   <div className='grid md:grid-cols-2 md:gap-x-20 lg:gap-x-40'>
                      <div className='mt-16'>
                         <span>JavaScript Technologies</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1 p-2'
@@ -64,7 +64,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span className=''>Styles & UI</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -112,7 +112,7 @@ const Technologies = ({ lang }: { lang: string }) => {
 
                      <div className='mt-16'>
                         <span className=''>Database</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -159,7 +159,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span className=''>Cloud Services</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
@@ -192,7 +192,7 @@ const Technologies = ({ lang }: { lang: string }) => {
                      </div>
                      <div className='mt-16'>
                         <span>Additional</span>
-                        <div className='mt-3 flex space-x-5 space-x-reverse md:space-x-10'>
+                        <div className='mt-3 flex space-x-5 md:space-x-10'>
                            <div className='h-20 w-20 text-center md:h-24 md:w-24'>
                               <Image
                                  className='mb-1'
