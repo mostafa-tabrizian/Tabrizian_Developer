@@ -107,7 +107,7 @@ const ProjectsTable = ({ projects }: { projects: IProject[] }) => {
                )
             },
          },
-         
+
          {
             accessorKey: 'lighthouse',
             header: 'Lighthouse',

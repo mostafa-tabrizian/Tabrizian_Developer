@@ -9,6 +9,7 @@ import GalleryInput from './galleryInput'
 import LighthouseInput from './lighthouseInput'
 import Mobile2ndImageInput from './Mobile2ndImageInput'
 import ThumbnailInput from './thumbnailInput'
+import axios from 'axios'
 
 const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
 
@@ -31,6 +32,7 @@ const ImageInput = memo(
       const [galleryPreview, setGalleryPreview] = useState<FileList | null>(null)
       const [lighthousePreview, setLighthousePreview] = useState<FileList | null>(null)
       const [loading, setLoading] = useState(false)
+      const [uploadingProgress, setUploadingProgress] = useState(0)
 
       const projectMemo = useMemo(() => project, [project])
 
@@ -137,32 +139,26 @@ const ImageInput = memo(
                   // first
                   const imageName = image.name.replace(' ', '-')
 
-                  // presign
-                  const createS3Presign = await import('@/lib/createS3Presign').then(
-                     (mod) => mod.default,
-                  )
-                  const s3SignedUrl = await createS3Presign(imageName, 'projects')
-                  if (!s3SignedUrl) return
+                  const data = new FormData()
+                  data.append('image', image)
+                  data.append('folder', 'projects')
+                  data.append('imageName', imageName)
 
-                  // middle
-                  const { imageKey, uploadUrl } = await s3SignedUrl.json()
+                  const res = await axios.request({
+                     method: 'post',
+                     url: '/api/--admin--/image/s3',
+                     data,
+                     onUploadProgress: (p) => {
+                        const progressPercent = (p.loaded * 100) / (p.total as number)
+                        setUploadingProgress(progressPercent)
+                     },
+                  })
+
+                  const imageKey = res.data['imageKey']
 
                   // db
                   const createDataResult = await createDbData(imageData.type, imageKey, imageName)
                   if (!createDataResult) return
-
-                  // put
-                  const putInS3Bucket = await import('@/lib/PutInS3Bucket').then(
-                     (mod) => mod.default,
-                  )
-                  const fileUploadResult = await putInS3Bucket(uploadUrl, image)
-
-                  if (!fileUploadResult) {
-                     const uploadErrorDeleteData = await import('./uploadErrorDeleteData').then(
-                        (mod) => mod.default,
-                     )
-                     return await uploadErrorDeleteData(imageData.type, imageKey, projectMemo._id)
-                  }
 
                   successUpload(imageData.type, image.name)
                }
@@ -222,6 +218,8 @@ const ImageInput = memo(
 
       return (
          <div className='space-y-4 '>
+            {uploadingProgress ? `${uploadingProgress}%` : ''}
+
             <ThumbnailInput
                project={{
                   thumbnail: projectMemo.thumbnail,
@@ -233,9 +231,7 @@ const ImageInput = memo(
                onFileSelected={onFileSelected}
                loading={loading}
             />
-
             <hr />
-
             <Mobile1stImageInput
                project={{
                   mobile1stImage: projectMemo.mobile1stImage,
@@ -247,9 +243,7 @@ const ImageInput = memo(
                onFileSelected={onFileSelected}
                loading={loading}
             />
-
             <hr />
-
             <Mobile2ndImageInput
                project={{
                   mobile2ndImage: projectMemo.mobile2ndImage,
@@ -261,9 +255,7 @@ const ImageInput = memo(
                onFileSelected={onFileSelected}
                loading={loading}
             />
-
             <hr />
-
             <GalleryInput
                project={{
                   gallery: projectMemo.gallery,
@@ -275,9 +267,7 @@ const ImageInput = memo(
                onFileSelected={onFileSelected}
                loading={loading}
             />
-
             <hr />
-
             <LighthouseInput
                project={{
                   lighthouse: projectMemo.lighthouse,
@@ -289,9 +279,7 @@ const ImageInput = memo(
                onFileSelected={onFileSelected}
                loading={loading}
             />
-
             <hr />
-
             <div className='flex items-center justify-center rounded-lg border-2 border-slate-600 bg-slate-800'>
                {loading ? (
                   <div className='p-1.5'>
