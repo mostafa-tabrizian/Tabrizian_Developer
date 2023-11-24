@@ -5,15 +5,31 @@ import { Formik, Form } from 'formik'
 import { useRouter } from 'next/navigation'
 import { IPayment } from '@/models/payment'
 import DescriptionInput from './descriptionInput'
-import PayerNameInput from './payerNameInput'
+import ClientInput from './clientInput'
 import AmountInput from './amountInput'
+import { IClient } from '@/models/client'
 
 const DetailForm = memo(
-   ({ addingNewPayment, payment }: { addingNewPayment: boolean; payment: IPayment }) => {
+   ({
+      addingNewPayment,
+      payment,
+      clients,
+   }: {
+      addingNewPayment: boolean
+      payment: IPayment
+      clients: IClient[]
+   }) => {
       const router = useRouter()
 
+      const paymentClient = () => {
+         if (addingNewPayment) null
+
+         const client = clients.find((client) => client._id == payment.client)
+         return client?._id
+      }
+
       const handleSubmit = async (values: {
-         payerName: string
+         client: string
          description: string
          amount: number
       }) => {
@@ -61,7 +77,7 @@ const DetailForm = memo(
       return (
          <Formik
             initialValues={{
-               payerName: addingNewPayment ? '' : payment.payerName,
+               client: addingNewPayment ? '' : (paymentClient() as string),
                description: addingNewPayment ? '' : payment.description,
                amount: addingNewPayment ? 0 : payment.amount,
             }}
@@ -70,25 +86,13 @@ const DetailForm = memo(
             {({ values, setFieldValue, isSubmitting, errors, touched }) => (
                <Form className='mt-6 grid grid-cols-3 gap-5 '>
                   <div className='col-span-2 space-y-5'>
-                     {addingNewPayment ? (
-                        ''
-                     ) : (
-                        <div className='space-y-1'>
-                           <label htmlFor='payerName'>
-                              <span className='text-slate-400'>ID</span>
-                           </label>
-                           <p className='yekan rtl mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-base text-slate-300 outline-none'>
-                              {payment._id}
-                           </p>
-                        </div>
-                     )}
-
-                     <PayerNameInput
+                     <ClientInput
+                        clients={JSON.parse(JSON.stringify(clients))}
                         addingNewPayment={addingNewPayment}
-                        value={values.payerName}
+                        value={values.client}
                         setFieldValue={setFieldValue}
-                        error={errors.payerName}
-                        touch={touched.payerName}
+                        error={errors.client}
+                        touch={touched.client}
                      />
 
                      <DescriptionInput
@@ -119,7 +123,7 @@ const DetailForm = memo(
                                  name='cardNumber'
                                  readOnly
                                  disabled
-                                 value={payment.cardNumber || 'Card number is not available'}
+                                 value={payment.cardNumber || 'Card number is not available yet'}
                                  className='mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-sm'
                                  type='text'
                               />
@@ -133,7 +137,7 @@ const DetailForm = memo(
                                  name='cardNumber'
                                  readOnly
                                  disabled
-                                 value={payment.refId || 'Refrence id is not available'}
+                                 value={payment.refId || 'Refrence id is not available yet'}
                                  className='mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-sm'
                                  type='text'
                               />
@@ -147,7 +151,7 @@ const DetailForm = memo(
                                  name='cardNumber'
                                  readOnly
                                  disabled
-                                 value={String(payment.updatedAt) || 'Pay date is not available'}
+                                 value={String(payment.updatedAt) || 'Pay date is not available yet'}
                                  className='mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-sm'
                                  type='text'
                               />

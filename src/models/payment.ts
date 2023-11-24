@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 export interface IPayment {
    _id: string
-   payerName: string
+   client: string
    description: string
    amount: number
    cardNumber: string
@@ -13,7 +13,7 @@ export interface IPayment {
 }
 
 const PaymentSchema = new mongoose.Schema({
-   payerName: String,
+   client: String,
    description: String,
    amount: Number,
    cardNumber: {

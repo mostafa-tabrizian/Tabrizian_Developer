@@ -2,25 +2,22 @@ import Link from 'next/link'
 
 import dbConnect from '@/lib/dbConnect'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
-import Payment from '@/models/payment'
 import Client from '@/models/client'
 import DetailForm from '../components/detailForm'
 
 export const metadata = {
-   title: 'Admin Panel | Payment',
+   title: 'Admin Panel | Client',
 }
 
-const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
-   const addingNewPayment = id === 'new'
+const clientPage = async ({ params: { id } }: { params: { id: string } }) => {
+   const addingNewClient = id === 'new'
 
-   const clients = await Client.find()
-
-   let payment = null
+   let client = null
 
    try {
-      if (!addingNewPayment) {
+      if (!addingNewClient) {
          await dbConnect()
-         payment = await Payment.findById(id)
+         client = await Client.findById(id)
       }
    } catch (error) {
       console.error('Error fetching data:', error)
@@ -30,7 +27,7 @@ const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
    return (
       <div className='relative mx-6 my-16'>
          <div className='mx-6 my-16 max-w-screen-xl space-y-10 md:mx-auto'>
-            {addingNewPayment || payment ? (
+            {addingNewClient || client ? (
                <>
                   <Breadcrumbs aria-label='breadcrumb'>
                      <Link className='text-gray-600' href='/'>
@@ -39,16 +36,16 @@ const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
                      <Link className='text-gray-600' href='/--admin--'>
                         Admin
                      </Link>
-                     <Link className='text-gray-600' href='/--admin--/payments'>
-                        Payments
+                     <Link className='text-gray-600' href='/--admin--/clients'>
+                        Clients
                      </Link>
                      <h5 className='text-gray-400'>
-                        {addingNewPayment ? 'Adding New Payment' : String(payment._id)}
+                        {addingNewClient ? 'Adding New Client' : String(client._id)}
                      </h5>
                   </Breadcrumbs>
 
                   <div className='mx-auto max-w-screen-md'>
-                     <Link href='/--admin--/payments/new'>
+                     <Link href='/--admin--/clients/new'>
                         <button className='fixed bottom-10 right-5 z-10 rounded-full border-2 border-indigo-500 bg-white p-3'>
                            <svg
                               className='h-6 w-6 text-indigo-500'
@@ -67,9 +64,8 @@ const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
                      </Link>
 
                      <DetailForm
-                        addingNewPayment={addingNewPayment}
-                        payment={JSON.parse(JSON.stringify(payment))}
-                        clients={JSON.parse(JSON.stringify(clients))}
+                        addingNewClient={addingNewClient}
+                        client={JSON.parse(JSON.stringify(client))}
                      />
                   </div>
                </>
@@ -81,4 +77,4 @@ const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
    )
 }
 
-export default paymentPage
+export default clientPage
