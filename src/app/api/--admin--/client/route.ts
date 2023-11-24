@@ -6,6 +6,8 @@ import Client from '@/models/client'
 export async function POST(request: Request) {
     const {
         name,
+        price,
+        domain,
         mobileNumber,
         email,
         telegramId,
@@ -14,6 +16,8 @@ export async function POST(request: Request) {
         paymentMonth
     }: {
         name: string
+        price: number
+        domain: string
         mobileNumber: string
         email: string
         telegramId: string
@@ -26,6 +30,8 @@ export async function POST(request: Request) {
         await dbConnect()
         const client = await Client.create({
             name,
+            price,
+            domain,
             mobileNumber,
             email,
             telegramId,

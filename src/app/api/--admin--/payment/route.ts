@@ -5,11 +5,11 @@ import Payment from '@/models/payment'
 
 export async function POST(request: Request) {
     const {
-        payerName,
+        client,
         description,
         amount
     }: {
-        payerName: string
+        client: string
         description: string
         amount: number
     } = await request.json()
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     try {
         await dbConnect()
         const payment = await Payment.create({
-            payerName,
+            client,
             description,
             amount
         })

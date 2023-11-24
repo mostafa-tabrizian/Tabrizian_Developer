@@ -13,6 +13,7 @@ export const metadata = {
 const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
    const addingNewPayment = id === 'new'
 
+   await dbConnect()
    const clients = await Client.find()
 
    let payment = null

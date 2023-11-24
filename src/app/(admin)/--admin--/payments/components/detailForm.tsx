@@ -35,6 +35,9 @@ const DetailForm = memo(
       }) => {
          const toast = await import('react-toastify').then((mod) => mod.toast)
 
+         if (!values.client.length || !values.description.length || values.amount == 0)
+            return toast.warning('fill the form first')
+
          try {
             toast.info('Submitting Data...')
 
@@ -151,7 +154,9 @@ const DetailForm = memo(
                                  name='cardNumber'
                                  readOnly
                                  disabled
-                                 value={String(payment.updatedAt) || 'Pay date is not available yet'}
+                                 value={
+                                    String(payment.updatedAt) || 'Pay date is not available yet'
+                                 }
                                  className='mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-sm'
                                  type='text'
                               />

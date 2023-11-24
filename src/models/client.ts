@@ -3,6 +3,8 @@ import mongoose from 'mongoose'
 export interface IClient {
    _id: string
    name: string
+   price: number
+   domain: string
    mobileNumber: string
    email: string
    telegramId: string
@@ -14,10 +16,24 @@ export interface IClient {
 }
 
 const PaymentSchema = new mongoose.Schema({
-   name: String,
-   mobileNumber: String,
-   email: String,
-   telegramId: String,
+   name: {
+      type: String,
+      require
+   },
+   price: Number,
+   domain: String,
+   mobileNumber: {
+      type: String,
+      default: ''
+   },
+   email: {
+      type: String,
+      default: ''
+   },
+   telegramId: {
+      type: String,
+      default: ''
+   },
    active: Boolean,
    paymentDate: { month: Number, day: Number },
    lastPayment: Date

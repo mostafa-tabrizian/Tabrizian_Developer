@@ -8,32 +8,6 @@ export const metadata = {
    description: 'صفحه پرداخت به مصطفی تبریزیان',
 }
 
-const paypingCodeRequest = async (payerIdentity: string, payerName: string, amount: string) => {
-   try {
-      const res = await fetch('https://api.payping.ir/v2/pay', {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.PAYPING_TOKEN}`,
-         },
-         body: JSON.stringify({
-            amount,
-            payerIdentity,
-            payerName,
-            returnUrl: `${process.env.API_URL}/api/client/payment`,
-            clientRefId: payerIdentity,
-         }),
-      })
-
-      const resData = await res.json()
-
-      return resData.code
-   } catch (err) {
-      toast.error('در ایجاد درگاه پرداخت پی‌پینگ خطایی رخ داد. لطفا مجدد تلاش کنید.')
-      return console.error('PayPing Error: ', err)
-   }
-}
-
 const zarinpalAuthorityRequest = async (paymentId: string, description: string, amount: string) => {
    try {
       const res = await fetch('https://api.zarinpal.com/pg/v4/payment/request.json', {
@@ -76,12 +50,6 @@ const getPaymentData = async (_id: string) => {
 async function PaymentPage({ params: { _id } }: { params: { _id: string } }) {
    const paymentData = await getPaymentData(_id)
 
-   const paypingCode = await paypingCodeRequest(
-      paymentData._id,
-      paymentData.payerName,
-      paymentData.amount,
-   )
-
    const zarinpalAuthority = await zarinpalAuthorityRequest(
       paymentData._id,
       paymentData.description,
@@ -110,13 +78,7 @@ async function PaymentPage({ params: { _id } }: { params: { _id: string } }) {
                      href={`https://www.zarinpal.com/pg/StartPay/${zarinpalAuthority}`}
                      className='yekanBold mx-auto mt-10 flex h-[300px] w-[300px] items-center justify-center rounded-2xl border-2 border-indigo-500 bg-white py-2 text-2xl text-indigo-500'
                   >
-                     پرداخت با زرین‌پال
-                  </a>
-                  <a
-                     href={`https://api.payping.ir/v2/pay/gotoipg/${paypingCode}`}
-                     className='yekanBold mx-auto mt-10 flex h-[300px] w-[300px] items-center justify-center rounded-2xl border-2 border-indigo-500 bg-white py-2 text-2xl text-indigo-500'
-                  >
-                     پرداخت با پی‌پینگ
+                     پرداخت
                   </a>
                </>
             )}

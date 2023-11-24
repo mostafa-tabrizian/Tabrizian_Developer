@@ -10,6 +10,9 @@ import EmailInput from './emailInput'
 import TelegramIdInput from './telegramId'
 import ActiveInput from './activeInput'
 import PaymentDateInput from './paymentDateInput'
+import PriceInput from './priceInput'
+import DomainInput from './domainInput'
+import PushNotification from './pushNotification'
 
 const DetailForm = memo(
    ({ addingNewClient, client }: { addingNewClient: boolean; client: IClient }) => {
@@ -17,6 +20,8 @@ const DetailForm = memo(
 
       const handleSubmit = async (values: {
          name: string
+         price: number
+         domain: string
          mobileNumber: string
          email: string
          telegramId: string
@@ -57,6 +62,8 @@ const DetailForm = memo(
          <Formik
             initialValues={{
                name: addingNewClient ? '' : client.name,
+               price: addingNewClient ? 0 : client.price,
+               domain: addingNewClient ? '' : client.domain,
                mobileNumber: addingNewClient ? '' : client.mobileNumber,
                email: addingNewClient ? '' : client.email,
                telegramId: addingNewClient ? '' : client.telegramId,
@@ -74,6 +81,18 @@ const DetailForm = memo(
                         setFieldValue={setFieldValue}
                         error={errors.name}
                         touch={touched.name}
+                     />
+                     <PriceInput
+                        value={values.price}
+                        setFieldValue={setFieldValue}
+                        error={errors.price}
+                        touch={touched.price}
+                     />
+                     <DomainInput
+                        value={values.domain}
+                        setFieldValue={setFieldValue}
+                        error={errors.domain}
+                        touch={touched.domain}
                      />
                      <MobileNumberInput
                         value={values.mobileNumber}
@@ -132,6 +151,12 @@ const DetailForm = memo(
                            'Submit'
                         )}
                      </button>
+
+                     {client ? (
+                        <PushNotification client={JSON.parse(JSON.stringify(client))} />
+                     ) : (
+                        ''
+                     )}
                   </div>
                </Form>
             )}

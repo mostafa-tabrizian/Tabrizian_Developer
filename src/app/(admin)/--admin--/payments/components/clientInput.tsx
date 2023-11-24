@@ -40,6 +40,9 @@ const ClientInput = memo(
                      setFieldValue('client', e.target.value)
                   }}
                >
+                  <option defaultChecked value=''>
+                     ---
+                  </option>
                   {clients.map((client) => {
                      return (
                         <option key={client._id} value={client._id}>
