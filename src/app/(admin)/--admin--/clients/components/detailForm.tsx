@@ -34,10 +34,10 @@ const DetailForm = memo(
          try {
             toast.info('Submitting Data...')
 
-            const payload = { ...values }
+            const payload = { _id: client?._id, ...values }
 
             const res = await fetch('/api/--admin--/client', {
-               method: 'POST',
+               method: addingNewClient ? 'POST' : 'PATCH',
                body: JSON.stringify(payload),
             })
 

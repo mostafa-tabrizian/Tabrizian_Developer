@@ -88,9 +88,7 @@ export async function PATCH(request: Request) {
    try {
       await dbConnect()
       const project = await Project.findOneAndUpdate(
-         {
-            _id: _id,
-         },
+         { _id },
          {
             live,
             technologies,

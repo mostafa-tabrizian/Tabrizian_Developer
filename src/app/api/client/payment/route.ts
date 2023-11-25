@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({ authority: resData.data.authority })
     } catch (err) {
-        console.log('err Zarinpal: ', err)
+        console.error('err Zarinpal: ', err)
         return NextResponse.json(false)
     }
 }
