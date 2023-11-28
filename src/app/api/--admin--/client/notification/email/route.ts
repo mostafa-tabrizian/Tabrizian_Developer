@@ -44,7 +44,7 @@ export async function POST(req: Request) {
                      text-decoration: underline;
                      color: #5258ff;
                   "
-                  href='https://mostafatabrizian.ir/fa/client/${clientId}'
+                  href='https://mostafatabrizian.ir/fa/payment/client/${clientId}'
                >
                   کلیک کنید
                </a>

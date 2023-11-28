@@ -7,8 +7,11 @@ const sendTelegram = async (telegramId: string, name: string, domain: string, cl
         chat_id: telegramId,
         text: `سلام ${name} عزیز. امیدوارم که حالتون خوب باشه.
         اعتبار سایت ${domain} رو به اتمام هستش. لطفا جهت تمدید از لینک زیر اقدام کنید:
-        https://mostafatabrizian.ir/fa/client/${clientId}`,
+        https://mostafatabrizian.ir/fa/payment/client/${clientId}`,
     }
+
+    console.log('send telegram api payload', payload);
+
 
     const res = await axios.post(`https://api.telegram.org/${process.env.TELEGRAM_TOKEN}/sendMessage`, {
         ...payload
@@ -17,7 +20,6 @@ const sendTelegram = async (telegramId: string, name: string, domain: string, cl
     console.log('`https://api`', `https://api.telegram.org/${process.env.TELEGRAM_TOKEN}/sendMessage`);
 
     console.log('res', res);
-
 
     return res
 }

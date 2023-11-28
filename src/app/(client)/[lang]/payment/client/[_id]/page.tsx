@@ -1,5 +1,5 @@
 import dbConnect from '@/lib/dbConnect'
-import Spotlight from '../../projects/[_id]/components/spotlight'
+import Spotlight from '../../../projects/[_id]/components/spotlight'
 import Client from '@/models/client'
 import MonthInput from './comonents/monthInput'
 
