@@ -6,8 +6,6 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 import { IProject } from '@/models/project'
 import { Switch } from '@mui/material'
-import dynamic from 'next/dynamic'
-const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
 import ImageInput from './imageInput'
 import { projectEditForm } from '@/formik/schema/validation'
 import DescriptionEnInput from './descriptionEnInput'
@@ -206,7 +204,25 @@ const DetailForm = memo(
                         disabled={isSubmitting}
                         className='w-full rounded-lg border-2 border-green-600 py-2 text-base hover:shadow-md hover:shadow-green-600/40'
                      >
-                        {isSubmitting ? <CircularProgress color='success' size={25} /> : 'Save'}
+                        {isSubmitting ? (
+                           <svg
+                              className='mx-auto h-6 w-6 animate-spin text-green-600'
+                              width='24'
+                              height='24'
+                              viewBox='0 0 24 24'
+                              strokeWidth='2'
+                              stroke='currentColor'
+                              fill='none'
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                           >
+                              {' '}
+                              <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                              <path d='M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828' />
+                           </svg>
+                        ) : (
+                           'Save'
+                        )}
                      </button>
 
                      {addingNewproject ? (
@@ -218,7 +234,25 @@ const DetailForm = memo(
                            onClick={handleDeleteproject}
                            className='w-full rounded-lg border-2 border-rose-300 py-2 text-base hover:shadow-md hover:shadow-rose-300/40'
                         >
-                           {isSubmitting ? <CircularProgress color='error' size={25} /> : 'Delete'}
+                           {isSubmitting ? (
+                              <svg
+                                 className='mx-auto h-6 w-6 animate-spin text-rose-300'
+                                 width='24'
+                                 height='24'
+                                 viewBox='0 0 24 24'
+                                 strokeWidth='2'
+                                 stroke='currentColor'
+                                 fill='none'
+                                 strokeLinecap='round'
+                                 strokeLinejoin='round'
+                              >
+                                 {' '}
+                                 <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                                 <path d='M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828' />
+                              </svg>
+                           ) : (
+                              'Delete'
+                           )}
                         </button>
                      )}
                   </div>

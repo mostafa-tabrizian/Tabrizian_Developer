@@ -1,14 +1,10 @@
 'use client'
 
+import deleteFromS3Bucket from '@/lib/deleteFromS3Bucket'
+import Dialog from '@mui/material/Dialog'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { useRouter } from 'next/navigation'
-
-import deleteFromS3Bucket from '@/lib/deleteFromS3Bucket'
-
-import dynamic from 'next/dynamic'
-const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
-import Dialog from '@mui/material/Dialog'
 
 const ImageDelete = ({
    setThumbnail,
@@ -83,10 +79,22 @@ const ImageDelete = ({
    return (
       <>
          <div className='absolute -top-5 right-0 flex items-center space-x-3'>
-            {loading ? (
-               <div className='py-2'>
-                  <CircularProgress color='success' size={15} />
-               </div>
+            {!loading ? (
+               <svg
+                  className='mx-auto h-5 w-5 animate-spin text-slate-300'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  strokeWidth='2'
+                  stroke='currentColor'
+                  fill='none'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+               >
+                  {' '}
+                  <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                  <path d='M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828' />
+               </svg>
             ) : (
                <button type='button' onClick={() => setConfirmation(true)}>
                   <svg

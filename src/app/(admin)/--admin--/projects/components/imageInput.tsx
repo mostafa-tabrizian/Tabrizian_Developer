@@ -1,17 +1,13 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { memo, useMemo, useState } from 'react'
-
 import Mobile1stImageInput from './Mobile1stImageInput'
+import Mobile2ndImageInput from './Mobile2ndImageInput'
 import GalleryInput from './galleryInput'
 import LighthouseInput from './lighthouseInput'
-import Mobile2ndImageInput from './Mobile2ndImageInput'
 import ThumbnailInput from './thumbnailInput'
-import axios from 'axios'
-
-const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
 
 const ImageInput = memo(
    ({
@@ -282,8 +278,22 @@ const ImageInput = memo(
             <hr />
             <div className='flex items-center justify-center rounded-lg border-2 border-slate-600 bg-slate-800'>
                {loading ? (
-                  <div className='p-1.5'>
-                     <CircularProgress color='success' size={20} />
+                  <div className='py-1.5'>
+                     <svg
+                        className='mx-auto h-6 w-6 animate-spin text-blue-500'
+                        width='24'
+                        height='24'
+                        viewBox='0 0 24 24'
+                        strokeWidth='2'
+                        stroke='currentColor'
+                        fill='none'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                     >
+                        {' '}
+                        <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                        <path d='M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828' />
+                     </svg>
                   </div>
                ) : (
                   <button

@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 import { signOut } from 'next-auth/react'
-import dynamic from 'next/dynamic'
-const CircularProgress = dynamic(() => import('@mui/material/CircularProgress'), { ssr: false })
 
 const LogoutButton = () => {
    const [loading, setLoading] = useState(false)
@@ -16,8 +14,22 @@ const LogoutButton = () => {
    return (
       <div className='rounded-lg bg-white px-2 py-2 transition-all hover:cursor-pointer hover:border-rose-600 hover:shadow-lg hover:shadow-rose-100'>
          {loading ? (
-            <div className='mx-auto flex py-3'>
-               <CircularProgress className='text-rose-600' color='inherit' size={24} />
+            <div className='mx-auto flex py-2'>
+               <svg
+                  className='mx-auto h-6 w-6 animate-spin text-red-600'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  strokeWidth='2'
+                  stroke='currentColor'
+                  fill='none'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+               >
+                  {' '}
+                  <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                  <path d='M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828' />
+               </svg>
             </div>
          ) : (
             <button disabled={loading} onClick={handleLogout}>
