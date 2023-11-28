@@ -32,16 +32,6 @@ alt="enamad">`
                   height={77}
                />
             </div>
-
-            <span id='PPTrust'>
-               <Script
-                  src='https://statics.payping.ir/trust-v3.js'
-                  // @ts-ignore
-                  theme='light'
-                  size='md'
-                  strategy='afterInteractive'
-               ></Script>
-            </span>
          </div>
 
          {langDecider(

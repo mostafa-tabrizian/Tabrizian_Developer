@@ -2,6 +2,24 @@ import axios from 'axios';
 import { NextResponse } from 'next/server'
 
 const sendTelegram = async (telegramId: string, name: string, domain: string, clientId: string) => {
+
+    // const tunnelAgent = tunnel.httpsOverHttp({
+    //     proxy: {
+    //         host: '46.4.96.137',
+    //         port: 8080,
+    //     },
+    // });
+
+    // const proxyConfig = {
+    //     host: '138.197.148.215',
+    //     port: 80, // Replace with the actual port
+        // auth: {
+        //     username: 'your-username',
+        //     password: 'your-password',
+        // },
+    // };
+
+
     const payload = {
         // eslint-disable-next-line camelcase
         chat_id: telegramId,
@@ -10,11 +28,13 @@ const sendTelegram = async (telegramId: string, name: string, domain: string, cl
         https://mostafatabrizian.ir/fa/payment/client/${clientId}`,
     }
 
-    console.log('send telegram api payload', payload);
-
+    console.log('send telegram api telegramId', telegramId);
 
     const res = await axios.post(`https://api.telegram.org/${process.env.TELEGRAM_TOKEN}/sendMessage`, {
         ...payload
+    }, {
+        // httpsAgent: tunnelAgent,
+        // proxy: proxyConfig
     })
 
     console.log('`https://api`', `https://api.telegram.org/${process.env.TELEGRAM_TOKEN}/sendMessage`);
@@ -24,7 +44,7 @@ const sendTelegram = async (telegramId: string, name: string, domain: string, cl
     return res
 }
 
-export async function POST(req: Request) {
+export async function POST(req: Request,) {
     try {
         const { telegramId, name, domain, clientId } = (await req.json()) as {
             telegramId: string

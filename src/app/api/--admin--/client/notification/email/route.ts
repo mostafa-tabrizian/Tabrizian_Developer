@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { createTransport } from 'nodemailer'
 
 export async function POST(req: Request) {
     try {
@@ -18,7 +18,8 @@ export async function POST(req: Request) {
         } = process.env
 
 
-        const transporter = nodemailer.createTransport({
+        const transporter = createTransport({
+            // @ts-ignore
             host: MAIL_HOST,
             port: MAIL_PORT,
             tls: true,

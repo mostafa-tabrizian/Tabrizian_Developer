@@ -17,9 +17,7 @@ const BlogNotFound = ({ lang }: { lang: string }) => {
                   <div>
                      <span className='absolute -top-[14rem] right-0 -z-10 h-[40rem] w-[40rem] bg-gradient-radial from-indigo-800 via-transparent to-transparent'></span>
 
-                     <p className='text-[1.4rem] font-semibold md:text-[2rem]'>
-                        Blog Not Found!
-                     </p>
+                     <p className='text-[1.4rem] font-semibold md:text-[2rem]'>Blog Not Found!</p>
 
                      <p className='text-lg'>
                         It seems like the page you&apos;re looking for doesn&apos;t exist or the URL
