@@ -2,20 +2,28 @@ import mongoose from 'mongoose'
 
 export interface IPayment {
    _id: string
-   payerName: string
+   client: string
    description: string
    amount: number
    cardNumber: string
+   refId: string
    paid: boolean
    createdAt: Date
    updatedAt: Date
 }
 
 const PaymentSchema = new mongoose.Schema({
-   payerName: String,
+   client: String,
    description: String,
    amount: Number,
-   cardNumber: String,
+   cardNumber: {
+      type: String,
+      default: ''
+   },
+   refId: {
+      type: String,
+      default: ''
+   },
    paid: {
       type: Boolean,
       default: false

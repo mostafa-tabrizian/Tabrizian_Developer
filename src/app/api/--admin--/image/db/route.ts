@@ -83,6 +83,13 @@ export async function DELETE(req: Request) {
             thumbnail: '',
          },
       ).exec()
+   } else if (type == 'lighthouse') {
+      res = await Project.findOneAndUpdate(
+         { _id },
+         {
+            lighthouse: '',
+         },
+      ).exec()
    } else if (type == 'gallery') {
       res = await Project.findOne({ _id }).exec()
       const galleryAfterDelete = res.gallery.filter((item: string) => item !== imageKey)

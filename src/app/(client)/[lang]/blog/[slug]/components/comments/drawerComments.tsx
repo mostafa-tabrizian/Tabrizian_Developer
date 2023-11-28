@@ -40,7 +40,7 @@ const DrawerComments = ({
       { resetForm },
    ) => {
       try {
-         if (!executeRecaptcha) return console.log('!executeRecaptcha')
+         if (!executeRecaptcha) return console.error('!executeRecaptcha')
 
          const gReCaptchaToken = await executeRecaptcha('commentFormSubmit').then(
             (gReCaptchaToken: string) => gReCaptchaToken,
@@ -94,7 +94,7 @@ const DrawerComments = ({
 
    return (
       <Drawer anchor='bottom' open={panel} onClose={toggleDrawer()}>
-         <div className='z-20 mx-auto max-w-screen-sm overflow-y-scroll bg-[#0c0f16] pb-5 transition-all styled-scrollbars md:h-[80vh] md:rounded-xl'>
+         <div className='styled-scrollbars z-20 mx-auto max-w-screen-sm overflow-y-scroll bg-[#0c0f16] pb-5 transition-all md:h-[80vh] md:rounded-xl'>
             <div className='rtl m-6'>
                <div className='mb-10 flex items-center justify-between'>
                   <div className='flex items-center gap-3'>

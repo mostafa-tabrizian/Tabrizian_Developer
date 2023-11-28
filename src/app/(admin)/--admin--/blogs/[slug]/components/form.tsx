@@ -1,14 +1,13 @@
 'use client'
 
 import { IBlog } from '@/models/blog'
-
 import Switch from '@mui/material/Switch'
+import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useMemo, useRef, useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { toast } from 'react-toastify'
-
 import LangInput from './langInput'
 import SlugInput from './slugInput'
 import ThumbnailInput from './thumbnailInput'
@@ -23,6 +22,7 @@ const Form = ({
    const blog = blogData
 
    const [loading, setLoading] = useState(false)
+   const [uploadingProgress, setUploadingProgress] = useState(0)
    const [thumbnail, setThumbnail] = useState<string | File | null>(newBlog ? null : blog.thumbnail)
    const [active, setActive] = useState(newBlog ? false : blog.active)
    const [lang, setLang] = useState(newBlog ? 'fa' : blog.lang)
@@ -62,18 +62,24 @@ const Form = ({
    const uploadFiles = async (image: File, filename: string, type: string) => {
       const imageName = filename.replace(' ', '-')
 
-      const createS3Presign = await import('@/lib/createS3Presign').then((mod) => mod.default)
-      const s3SignedUrl = await createS3Presign(imageName, `blogs/${type}`)
-      if (!s3SignedUrl) return toast.error('While creating s3Presign an error occurred!')
+      const data = new FormData()
+      data.append('image', image)
+      data.append('folder', `blogs/${type}`)
+      data.append('imageName', imageName)
 
-      const { imageKey, uploadUrl } = await s3SignedUrl.json()
+      const res = await axios.request({
+         method: 'post',
+         url: '/api/--admin--/image/s3',
+         data,
+         onUploadProgress: (p) => {
+            const progressPercent = (p.loaded * 100) / (p.total as number)
+            setUploadingProgress(progressPercent)
+         },
+      })
 
-      const putInS3Bucket = await import('@/lib/PutInS3Bucket').then((mod) => mod.default)
-      const putInS3Res = await putInS3Bucket(uploadUrl, image)
+      setUploadingProgress(0)
 
-      if (!putInS3Res) return toast.error('While putInS3Bucket an error occurred!')
-
-      return imageKey
+      return res.data['imageKey']
    }
 
    const insertInEditor = (imageKey: string) => {
@@ -300,9 +306,7 @@ const Form = ({
 
          <div className='space-y-5'>
             <TitleInput title={title} setTitle={setTitle} />
-
             <SlugInput slug={slug} setSlug={setSlug} newBlog={newBlog} />
-
             <ThumbnailInput
                loading={loading}
                blogId={blog._id}
@@ -311,7 +315,7 @@ const Form = ({
                thumbnailPreview={thumbnailPreview}
                setThumbnailPreview={setThumbnailPreview}
             />
-
+            {uploadingProgress}%
             <div className='flex items-center justify-between'>
                <span className='yekan text-base text-slate-400'>Read Time (Min):</span>
                <input
@@ -323,7 +327,6 @@ const Form = ({
                   className='w-16 rounded bg-slate-700 pl-5 text-slate-200'
                />
             </div>
-
             <div className='flex items-center justify-between'>
                <span className='yekan text-base text-slate-400'>Active:</span>
 
@@ -335,7 +338,6 @@ const Form = ({
                   onChange={() => setActive((prev) => !prev)}
                />
             </div>
-
             <LangInput loading={loading} lang={lang} setLang={setLang} />
             <button
                disabled={loading}
@@ -362,7 +364,6 @@ const Form = ({
                   <>{newBlog ? 'Publish' : 'Save Edit'}</>
                )}
             </button>
-
             {newBlog ? (
                ''
             ) : (

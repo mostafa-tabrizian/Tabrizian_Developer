@@ -21,7 +21,7 @@ const About = ({ lang }: { lang: string }) => {
                            Hello there ! <span style={{ color: 'initial' }}>🖐🏻</span>
                         </h2>
                         <p className='verdana'>
-                           I am <span className='text-indigo-400'>Mostafa</span>, 22, a{' '}
+                           I am <span className='text-indigo-400'>Mostafa</span>, 23, a{' '}
                            <span className='text-indigo-400'>full-stack web developer</span> with a
                            true passion for crafting high-performance websites. <br /> <br />
                         </p>
@@ -98,10 +98,8 @@ const About = ({ lang }: { lang: string }) => {
                            سلام ! <span style={{ color: 'initial' }}>🖐🏻</span>
                         </h2>
                         <p className='yekan text-base'>
-                           من <span className='yekanBold text-indigo-400'>تبریزیانم</span>, ۲۲, یک{' '}
-                           <span className='yekanBold text-indigo-400'>
-                              وب دِوِِلوپر فول-استک
-                           </span>{' '}
+                           من <span className='yekanBold text-indigo-400'>تبریزیانم</span>, ۲۳, یک{' '}
+                           <span className='yekanBold text-indigo-400'>وب دِوِلوپر فول استک</span>{' '}
                            با یک اشتیاق بالا برای ساخت وب سایت/اپلیکیشن هایی با عملکرد بالا. <br />{' '}
                            <br />
                         </p>

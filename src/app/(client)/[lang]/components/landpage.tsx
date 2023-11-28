@@ -52,18 +52,18 @@ const Landpage = ({ lang }: { lang: string }) => {
                      lang,
                      <div className='ml-10 mr-5 lg:mx-0'>
                         <h1 className='relative z-0 mx-auto w-fit text-3xl leading-tight after:absolute after:-left-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950 lg:text-[4rem] xl:ml-40'>
-                           Dive Deep For The <br /> Treasure That <br /> You Seek
+                           Mostafa Tabrizian <br /> Fullstack Developer
                         </h1>
                         <h2 className='relative -ml-4 mt-5 w-fit border-l-8 border-sky-900 pl-5 text-base md:mx-auto lg:ml-40 lg:mt-10 lg:pl-5 lg:text-xl'>
-                           Explore the World of Web Development with Me
+                           Fullstack React/Next.js Developer
                         </h2>
                      </div>,
                      <div className='ml-5 mr-10 lg:mx-0'>
                         <h1 className='yekanBold relative z-0 mx-auto w-fit text-3xl leading-tight after:absolute after:-right-6 after:top-0 after:-z-10 after:h-full after:w-16 after:bg-sky-950 lg:text-[4rem] xl:mr-40'>
-                           اگر به دنبال گنجی <br /> به اعماق سفر کن
+                           مصطفی تبریزیان <br /> فول استک دِولوپر
                         </h1>
-                        <h2 className='yekanBold relative mx-auto mt-5 w-fit border-r-8 border-sky-900 pr-2 text-base lg:mt-10 lg:pr-5 lg:text-xl xl:mr-36'>
-                           دنیای توسعه وب را با من کشف کن
+                        <h2 className='verdana relative mx-auto mt-5 w-fit border-r-8 border-sky-900 pr-2 text-base lg:mt-10 lg:pr-5 lg:text-xl xl:mr-36'>
+                           Fullstack React/Next.js Developer
                         </h2>
                      </div>,
                   )}

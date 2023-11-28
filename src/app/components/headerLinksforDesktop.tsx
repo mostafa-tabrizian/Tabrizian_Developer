@@ -28,7 +28,7 @@ const HeaderLinksforDesktop = ({ lang, path }: { lang: string; path: string }) =
             className={`${langDecider(
                lang,
                '',
-               'rtl',
+               'rtl space-x-reverse',
             )} hidden items-center justify-center space-x-10 text-gray-700 lg:flex`}
          >
             <li className='block'>

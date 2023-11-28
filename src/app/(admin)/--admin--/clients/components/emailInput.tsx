@@ -1,0 +1,47 @@
+import { FormikErrors } from 'formik'
+import { memo } from 'react'
+
+const EmailInput = memo(
+   ({
+      value,
+      setFieldValue,
+      error,
+      touch,
+   }: {
+      value: string
+      setFieldValue: (
+         field: string,
+         value: string,
+         shouldValidate?: boolean | undefined,
+      ) => Promise<void | FormikErrors<{
+         email: string
+      }>>
+      error: string | undefined
+      touch: boolean | undefined
+   }) => {
+      return (
+         <>
+            <div className='space-y-1'>
+               <div className='flex items-center justify-between'>
+                  <label htmlFor='email'>
+                     <span className='text-slate-400'>Email</span>
+                  </label>
+               </div>
+               <input
+                  name='email'
+                  onChange={(e) => setFieldValue('email', e.target.value)}
+                  value={value}
+                  className='yekan mr-3 w-full rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-base text-slate-300 outline-none'
+                  type='email'
+               />
+            </div>
+
+            {error && touch ? <p className='text-sm text-red-500'>{error}</p> : ''}
+         </>
+      )
+   },
+)
+
+EmailInput.displayName = 'EmailInput'
+
+export default EmailInput

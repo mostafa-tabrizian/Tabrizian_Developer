@@ -47,6 +47,7 @@ const Gallery = ({ detail, images }: { detail: { title: string }; images: string
                         alt={detail.title}
                         width={200}
                         height={100}
+                        loading='lazy'
                         className='h-full w-auto max-w-full rounded-lg hover:cursor-pointer'
                      />
                   </div>

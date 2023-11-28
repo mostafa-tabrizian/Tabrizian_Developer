@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { toast } from 'react-toastify'
 import Spotlight from '../../projects/[_id]/components/spotlight'
 import Payment from '@/models/payment'
@@ -7,29 +8,32 @@ export const metadata = {
    description: 'صفحه پرداخت به مصطفی تبریزیان',
 }
 
-const paypingCodeRequest = async (payerIdentity: string, payerName: string, amount: string) => {
+const zarinpalAuthorityRequest = async (paymentId: string, description: string, amount: string) => {
    try {
-      const res = await fetch('https://api.payping.ir/v2/pay', {
+      const res = await fetch('https://api.zarinpal.com/pg/v4/payment/request.json', {
          method: 'POST',
          headers: {
+            Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.PAYPING_TOKEN}`,
          },
          body: JSON.stringify({
+            merchant_id: process.env.ZARINPAL_MERCHANT_ID,
             amount,
-            payerIdentity,
-            payerName,
-            returnUrl: `${process.env.API_URL}/api/client/payment`,
-            clientRefId: payerIdentity,
+            currency: 'IRT',
+            callback_url: `${process.env.API_URL}/api/client/payment?Amount=${amount}&PaymentId=${paymentId}`,
+            description,
+            metadata: {
+               order_id: String(paymentId),
+            },
          }),
       })
 
       const resData = await res.json()
 
-      return resData.code
+      return resData.data.authority
    } catch (err) {
-      toast.error('در ایجاد درگاه پرداخت خطایی رخ داد. لطفا مجدد تلاش کنید.')
-      return console.error('Payment Error: ', err)
+      toast.error('در ایجاد درگاه پرداخت زرین‌پال خطایی رخ داد. لطفا مجدد تلاش کنید.')
+      return console.error('Zarinpal Error: ', err)
    }
 }
 
@@ -46,9 +50,9 @@ const getPaymentData = async (_id: string) => {
 async function PaymentPage({ params: { _id } }: { params: { _id: string } }) {
    const paymentData = await getPaymentData(_id)
 
-   const paypingCode = await paypingCodeRequest(
+   const zarinpalAuthority = await zarinpalAuthorityRequest(
       paymentData._id,
-      paymentData.payerName,
+      paymentData.description,
       paymentData.amount,
    )
 
@@ -71,7 +75,7 @@ async function PaymentPage({ params: { _id } }: { params: { _id: string } }) {
                      {parseInt(paymentData.amount).toLocaleString('fa')} تومان می‌باشد
                   </p>
                   <a
-                     href={`https://api.payping.ir/v2/pay/gotoipg/${paypingCode}`}
+                     href={`https://www.zarinpal.com/pg/StartPay/${zarinpalAuthority}`}
                      className='yekanBold mx-auto mt-10 flex h-[300px] w-[300px] items-center justify-center rounded-2xl border-2 border-indigo-500 bg-white py-2 text-2xl text-indigo-500'
                   >
                      پرداخت
