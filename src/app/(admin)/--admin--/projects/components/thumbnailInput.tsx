@@ -5,6 +5,9 @@ import dynamic from 'next/dynamic'
 import { memo } from 'react'
 const Button = dynamic(() => import('@mui/material/Button'), { ssr: false })
 
+// import { downloadZip } from 'client-zip'
+// import streamSaver from 'streamsaver'
+
 const ThumbnailInput = memo(
    ({
       project: { thumbnail, _id },
@@ -24,11 +27,32 @@ const ThumbnailInput = memo(
       onFileSelected: (files: FileList | null, type: string) => void
       loading: boolean
    }) => {
+
+      // const zipDownload = async () => {
+      //    const files = [
+      //       {
+      //          name: 'test1.jpg',
+      //          input: await fetch(
+      //             `https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${thumbnail}`,
+      //          ),
+      //       },
+      //       {
+      //          name: 'test2.jpg',
+      //          input: await fetch(
+      //             `https://tabrizian.storage.iran.liara.space/tabrizian_codes/projects/${thumbnail}`,
+      //          ),
+      //       },
+      //    ]
+      //    downloadZip(files).body.pipeTo(streamSaver.createWriteStream('final_name.zip'))
+      // }
+
       return (
          <div className='space-y-6'>
             {thumbnail ? (
                <div>
                   <span className='verdana text-slate-400'>Thumbnail</span>
+
+                  {/* <button type='button' onClick={zipDownload}>download zip</button> */}
 
                   <div className='relative'>
                      <Link

@@ -9,8 +9,7 @@ export interface IClient {
    email: string
    telegramId: string
    active: boolean
-   paymentDate: { month: number, day: number }
-   lastPayment: Date
+   renewalEnd: Date
    createdAt: Date
    updatedAt: Date
 }
@@ -35,8 +34,10 @@ const PaymentSchema = new mongoose.Schema({
       default: ''
    },
    active: Boolean,
-   paymentDate: { month: Number, day: Number },
-   lastPayment: Date
+   renewalEnd: {
+      type: Date,
+      default: new Date()
+   }
 })
 
 PaymentSchema.set('timestamps', true)

@@ -23,11 +23,15 @@ const PaymentCalcPage = async ({ params: { _id } }: { params: { _id: string } })
          <div className='relative z-10 mx-5 min-h-screen max-w-screen-sm pt-32 text-center lg:mx-auto'>
             <h1 className='yekanBold text-center'>تمدید سایت</h1>
             <p className='yekan rtl'>
-               سلام {clientData.name} عزیز. لطفا برای تمدید هاست، دیتابیس و فضای ابری سایت{' '}
-               {clientData.domain} تعداد ماه های تمدید را وارد کرده و هزینه را از طریق درگاه، پرداخت
-               کنید.
+               سلام {clientData.name} عزیز. لطفا برای تمدید هاست، دیتابیس و ذخیره سازی ابری سایت{' '}
+               {clientData.domain} تعداد ماه های تمدید را وارد کرده و هزینه را از طریق درگاه بانکی
+               پرداخت کنید.
             </p>
-            <MonthInput clientName={clientData.name} clientPrice={clientData.price} />
+            <MonthInput
+               clientId={String(_id)}
+               clientName={clientData.name}
+               clientPrice={clientData.price}
+            />
          </div>
       </div>
    )

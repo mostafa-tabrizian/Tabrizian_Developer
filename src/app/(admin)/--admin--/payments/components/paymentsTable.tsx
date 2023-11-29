@@ -26,70 +26,22 @@ const PaymentsTable = ({ payments }: { payments: IPayment[] }) => {
                const value = info.getValue() as string
                return (
                   <Link href={`/--admin--/payments/${value}`}>
-                     <span className='text-sm text-slate-300 underline'>{value.slice(-4)}</span>
+                     <span className='text-sm text-slate-500 underline'>{value.slice(-4)}</span>
                   </Link>
                )
             },
          },
          {
-            accessorKey: 'paid',
-            header: 'Paid',
-            cell: (info) => {
-               const value = info.getValue()
-               return (
-                  <>
-                     {value ? (
-                        <svg
-                           className='h-5 w-5 text-green-700'
-                           width='24'
-                           height='24'
-                           viewBox='0 0 24 24'
-                           strokeWidth='2'
-                           stroke='currentColor'
-                           fill='none'
-                           strokeLinecap='round'
-                           strokeLinejoin='round'
-                        >
-                           {' '}
-                           <path stroke='none' d='M0 0h24v24H0z' /> <circle cx='12' cy='12' r='9' />{' '}
-                           <path d='M9 12l2 2l4 -4' />
-                        </svg>
-                     ) : (
-                        <svg
-                           className='h-5 w-5 text-rose-700'
-                           width='24'
-                           height='24'
-                           viewBox='0 0 24 24'
-                           strokeWidth='2'
-                           stroke='currentColor'
-                           fill='none'
-                           strokeLinecap='round'
-                           strokeLinejoin='round'
-                        >
-                           {' '}
-                           <path stroke='none' d='M0 0h24v24H0z' /> <circle cx='12' cy='12' r='9' />{' '}
-                           <path d='M10 10l4 4m0 -4l-4 4' />
-                        </svg>
-                     )}
-                  </>
-               )
-            },
-         },
-         {
-            accessorKey: 'amount',
-            header: 'Amount',
+            accessorKey: 'months',
+            header: 'Months',
             cell: (info) => {
                const value = info.getValue() as string
-               return (
-                  <span className='yekan rtl text-sm text-slate-500'>
-                     {parseInt(value).toLocaleString('fa')}
-                  </span>
-               )
+               return <span className='yekan rtl text-sm text-slate-500'>{value}</span>
             },
          },
          {
-            accessorKey: 'payerName',
-            header: 'Payer Name',
+            accessorKey: 'client',
+            header: 'Client',
             cell: (info) => {
                const value = info.getValue() as string
                return <span className='yekan text-sm text-slate-500'>{value}</span>
@@ -98,6 +50,15 @@ const PaymentsTable = ({ payments }: { payments: IPayment[] }) => {
          {
             accessorKey: 'createdAt',
             header: 'Created At',
+            cell: (info) => {
+               const value = info.getValue() as string
+               return (
+                  <span className='yekan text-sm text-slate-500'>
+                     {new Date(value).toLocaleString('fa')} <br />
+                     {new Date(value).toLocaleString()}
+                  </span>
+               )
+            },
          },
       ],
       [],
@@ -119,7 +80,7 @@ const PaymentsTable = ({ payments }: { payments: IPayment[] }) => {
    return (
       <div className='relative overflow-x-auto'>
          <table className='w-full table-auto text-left text-sm text-slate-500'>
-            <thead className='bg-slate-50 text-xs uppercase text-slate-300'>
+            <thead className='bg-slate-50 text-xs uppercase text-slate-500'>
                {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
                      {headerGroup.headers.map((header) => {

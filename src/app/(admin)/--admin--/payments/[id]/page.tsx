@@ -11,27 +11,14 @@ export const metadata = {
 }
 
 const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
-   const addingNewPayment = id === 'new'
-
    await dbConnect()
-   const clients = await Client.find()
-
-   let payment = null
-
-   try {
-      if (!addingNewPayment) {
-         await dbConnect()
-         payment = await Payment.findById(id)
-      }
-   } catch (error) {
-      console.error('Error fetching data:', error)
-      return
-   }
+   const payment = await Payment.findById(id)
+   const client = await Client.findById(payment.client)
 
    return (
       <div className='relative mx-6 my-16'>
          <div className='mx-6 my-16 max-w-screen-xl space-y-10 md:mx-auto'>
-            {addingNewPayment || payment ? (
+            {payment ? (
                <>
                   <Breadcrumbs aria-label='breadcrumb'>
                      <Link className='text-gray-600' href='/'>
@@ -43,9 +30,7 @@ const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
                      <Link className='text-gray-600' href='/--admin--/payments'>
                         Payments
                      </Link>
-                     <h5 className='text-gray-400'>
-                        {addingNewPayment ? 'Adding New Payment' : String(payment._id)}
-                     </h5>
+                     <h5 className='text-gray-400'>{String(payment._id)}</h5>
                   </Breadcrumbs>
 
                   <div className='mx-auto max-w-screen-md'>
@@ -68,9 +53,8 @@ const paymentPage = async ({ params: { id } }: { params: { id: string } }) => {
                      </Link>
 
                      <DetailForm
-                        addingNewPayment={addingNewPayment}
                         payment={JSON.parse(JSON.stringify(payment))}
-                        clients={JSON.parse(JSON.stringify(clients))}
+                        client={JSON.parse(JSON.stringify(client))}
                      />
                   </div>
                </>

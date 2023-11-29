@@ -23,9 +23,12 @@ const PriceInput = memo(
          <>
             <div className='space-y-1'>
                <div className='flex items-center justify-between'>
-                  <label htmlFor='price'>
-                     <span className='text-slate-400'>Price</span>
+                  <label htmlFor='amount'>
+                     <span className='text-slate-400'>Price Per Month</span>
                   </label>
+                  <span className='yekan rtl text-base text-slate-400'>
+                     {value.toLocaleString('fa')} تومان
+                  </span>
                </div>
                <input
                   name='price'

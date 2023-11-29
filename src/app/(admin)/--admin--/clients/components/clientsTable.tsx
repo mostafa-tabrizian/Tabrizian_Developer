@@ -26,7 +26,7 @@ const ClientsTable = ({ clients }: { clients: IClient[] }) => {
                const value = info.getValue() as string
                return (
                   <Link href={`/--admin--/clients/${value}`}>
-                     <span className='text-sm text-slate-300 underline'>{value.slice(-4)}</span>
+                     <span className='text-sm text-slate-500 underline'>{value.slice(-4)}</span>
                   </Link>
                )
             },
@@ -84,8 +84,33 @@ const ClientsTable = ({ clients }: { clients: IClient[] }) => {
             },
          },
          {
-            accessorKey: 'lastPayment',
-            header: 'Last Payment',
+            accessorKey: 'renewalEnd',
+            header: 'Renewal End',
+            cell: (info) => {
+               const value = info.getValue()
+
+               const today = new Date()
+               const sevenDays = 7 * 24 * 60 * 60 * 1000
+               const renewalEndDate = new Date(value as Date)
+               const renewalEndIn7Days = new Date(renewalEndDate.getTime() - sevenDays)
+
+               const yellowFlag = renewalEndIn7Days <= today
+               const redFlag = renewalEndDate <= today
+
+               return (
+                  <span
+                     className={`
+                        ${redFlag ? 'bg-red-500 font-bold text-white' : ''}
+                        ${yellowFlag ? 'font-bold text-yellow-500' : ''}
+                        yekan rounded-xl px-2 py-1
+                     `}
+                  >
+                     {renewalEndDate.toLocaleDateString('fa')}
+                     <br />
+                     {renewalEndDate.toLocaleDateString()}
+                  </span>
+               )
+            },
          },
       ],
       [],
@@ -107,7 +132,7 @@ const ClientsTable = ({ clients }: { clients: IClient[] }) => {
    return (
       <div className='relative overflow-x-auto'>
          <table className='w-full table-auto text-left text-sm text-slate-500'>
-            <thead className='bg-slate-50 text-xs uppercase text-slate-300'>
+            <thead className='bg-slate-50 text-xs uppercase text-slate-500'>
                {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
                      {headerGroup.headers.map((header) => {

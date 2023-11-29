@@ -9,10 +9,11 @@ import MobileNumberInput from './mobileNumberInput'
 import EmailInput from './emailInput'
 import TelegramIdInput from './telegramId'
 import ActiveInput from './activeInput'
-import PaymentDateInput from './paymentDateInput'
+import RenewalEndInput from './RenewalEndInput'
 import PriceInput from './priceInput'
 import DomainInput from './domainInput'
 import PushNotification from './pushNotification'
+import CopyPaymentLink from './copyPaymentLink'
 
 const DetailForm = memo(
    ({ addingNewClient, client }: { addingNewClient: boolean; client: IClient }) => {
@@ -26,8 +27,7 @@ const DetailForm = memo(
          email: string
          telegramId: string
          active: boolean
-         paymentDay: number
-         paymentMonth: number
+         renewalEnd: Date
       }) => {
          const toast = await import('react-toastify').then((mod) => mod.toast)
 
@@ -68,8 +68,7 @@ const DetailForm = memo(
                email: addingNewClient ? '' : client.email,
                telegramId: addingNewClient ? '' : client.telegramId,
                active: addingNewClient ? false : client.active,
-               paymentDay: addingNewClient ? 1 : client.paymentDate.day,
-               paymentMonth: addingNewClient ? 0 : client.paymentDate.month,
+               renewalEnd: addingNewClient ? new Date() : new Date(client.renewalEnd),
             }}
             onSubmit={handleSubmit}
          >
@@ -113,17 +112,13 @@ const DetailForm = memo(
                         touch={touched.telegramId}
                      />
 
+                     <RenewalEndInput value={values.renewalEnd} setFieldValue={setFieldValue} />
+
                      <ActiveInput
                         value={values.active}
                         setFieldValue={setFieldValue}
                         error={errors.active}
                         touch={touched.active}
-                     />
-
-                     <PaymentDateInput
-                        monthValue={values.paymentMonth}
-                        dayValue={values.paymentDay}
-                        setFieldValue={setFieldValue}
                      />
 
                      <button
@@ -133,7 +128,7 @@ const DetailForm = memo(
                      >
                         {isSubmitting ? (
                            <svg
-                              className='mx-auto h-6 w-6 animate-spin text-green-600'
+                           className='mx-auto h-6 w-6 animate-spin text-green-600'
                               width='24'
                               height='24'
                               viewBox='0 0 24 24'
@@ -153,7 +148,10 @@ const DetailForm = memo(
                      </button>
 
                      {client ? (
-                        <PushNotification client={JSON.parse(JSON.stringify(client))} />
+                        <>
+                           <CopyPaymentLink _id={String(client._id)} />
+                           <PushNotification client={JSON.parse(JSON.stringify(client))} />
+                        </>
                      ) : (
                         ''
                      )}

@@ -9,7 +9,7 @@ import PaymentsTable from './components/paymentsTable'
 export const revalidate = 0
 
 export const metadata = {
-   title: 'Admin Panel | Payment Table'
+   title: 'Admin Panel | Payment Table',
 }
 
 const getPayments = async () => {

@@ -12,8 +12,7 @@ export async function POST(request: Request) {
         email,
         telegramId,
         active,
-        paymentDay,
-        paymentMonth
+        renewalEnd
     }: {
         name: string
         price: number
@@ -22,8 +21,7 @@ export async function POST(request: Request) {
         email: string
         telegramId: string
         active: boolean
-        paymentDay: number
-        paymentMonth: number
+        renewalEnd: Date
     } = await request.json()
 
     try {
@@ -36,7 +34,7 @@ export async function POST(request: Request) {
             email,
             telegramId,
             active,
-            paymentDate: { month: paymentMonth, day: paymentDay }
+            renewalEnd
         })
 
         return NextResponse.json(client)
@@ -55,8 +53,7 @@ export async function PATCH(request: Request) {
         email,
         telegramId,
         active,
-        paymentDay,
-        paymentMonth
+        renewalEnd
     }: {
         _id: string
         name: string
@@ -66,8 +63,7 @@ export async function PATCH(request: Request) {
         email: string
         telegramId: string
         active: boolean
-        paymentDay: number
-        paymentMonth: number
+        renewalEnd: Date
     } = await request.json()
 
     try {
@@ -80,7 +76,7 @@ export async function PATCH(request: Request) {
             email,
             telegramId,
             active,
-            paymentDate: { month: paymentMonth, day: paymentDay }
+            renewalEnd
         })
 
         return NextResponse.json(client)

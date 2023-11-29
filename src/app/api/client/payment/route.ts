@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Payment, { IPayment } from '@/models/payment';
+import Payment from '@/models/payment';
+import Client from '@/models/client';
 
 export async function POST(request: NextRequest) {
 
-    const { clientName, monthRenewal, clientPrice } = await request.json()
+    const { clientId, clientName, monthRenewal, clientPrice } = await request.json()
 
     try {
         const amount = monthRenewal * clientPrice
@@ -20,7 +21,7 @@ export async function POST(request: NextRequest) {
                 amount,
                 currency: 'IRT',
                 // eslint-disable-next-line camelcase
-                callback_url: `${process.env.API_URL}/api/client/payment?Amount=${amount}`,
+                callback_url: `${process.env.API_URL}/api/client/payment?Client=${clientId}&Price=${clientPrice}&Months=${monthRenewal}`,
                 description: `تمدید ${clientName} به مدت ${monthRenewal.toLocaleString(
                     'fa',
                 )} ماه به قیمت ${amount.toLocaleString('fa')} تومان`,
@@ -36,20 +37,15 @@ export async function POST(request: NextRequest) {
     }
 }
 
-
 // ZARIN PALL
 export async function GET(req: NextRequest) {
     const status = req.nextUrl.searchParams.get('Status')
     const authority = req.nextUrl.searchParams.get('Authority')
-    const amount = req.nextUrl.searchParams.get('Amount')
-    const paymentId = req.nextUrl.searchParams.get('PaymentId')
+    const client = req.nextUrl.searchParams.get('Client') as string
+    const price = req.nextUrl.searchParams.get('Price') as string
+    const months = req.nextUrl.searchParams.get('Months') as string
 
     if (status == 'OK' && authority?.length == 36) {
-
-        const paymentData: IPayment | null = await Payment.findById(paymentId)
-
-        if (!paymentData) return NextResponse.redirect(`${process.env.API_URL}/fa/payment/result?Status=NOK`)
-
         const verifyPayment = async () => {
             const res = await fetch('https://api.zarinpal.com/pg/v4/payment/verify.json', {
                 method: 'POST',
@@ -59,7 +55,7 @@ export async function GET(req: NextRequest) {
                 },
                 body: JSON.stringify({
                     'merchant_id': process.env.ZARINPAL_MERCHANT_ID,
-                    amount,
+                    amount: parseInt(price) * parseInt(months),
                     authority
                 })
             })
@@ -71,14 +67,25 @@ export async function GET(req: NextRequest) {
 
         const verifyRes = await verifyPayment()
 
-
         if (verifyRes.code == 100 || verifyRes.code == 101) {  // 100=success, 101=verified successs before
-            paymentData['cardNumber'] = verifyRes.card_pan as string
-            paymentData['refId'] = verifyRes.ref_id as string
-            paymentData['paid'] = true
-            // @ts-ignore
-            paymentData.save()
-            return NextResponse.redirect(`${process.env.API_URL}/fa/payment/result?Status=OK`)
+
+            const payment = await Payment.create({
+                client,
+                price,
+                months,
+                cardNumber: verifyRes.card_pan,
+                refId: verifyRes.ref_id
+            })
+
+            const clientData = await Client.findById(client)
+
+            const currentRenewalEnd = new Date(clientData.renewalEnd).getTime()
+            const increaseMonths = parseInt(months) * 30 * 24 * 60 * 60 * 1000
+
+            clientData.renewalEnd = new Date(currentRenewalEnd + increaseMonths)
+            clientData.save()
+
+            return NextResponse.redirect(`${process.env.API_URL}/fa/payment/result?Status=OK&ID=${payment._id}&RefId=${payment.refId}&RenewalEnd=${currentRenewalEnd + increaseMonths}`)
         } else {
             return NextResponse.redirect(`${process.env.API_URL}/fa/payment/result?Status=NOK`)
         }
