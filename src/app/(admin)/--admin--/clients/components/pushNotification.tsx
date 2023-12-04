@@ -54,7 +54,7 @@ const PushNotification = ({ client }: { client: IClient }) => {
       textarea.value = `سلام ${client.name} عزیز. امیدوارم که حالتون خوب باشه.
          اعتبار سایت ${client.domain} رو به اتمام هستش. 
          لطفا جهت تمدید بر لینک زیر کلیک کنید:
-         mostafatabrizian.ir/fa/payment/client/${client._id}`
+         https://mostafatabrizian.ir/fa/payment/client/${client._id}`
       document.body.appendChild(textarea)
       textarea.select()
       document.execCommand('copy')

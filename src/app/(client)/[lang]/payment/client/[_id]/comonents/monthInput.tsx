@@ -54,27 +54,17 @@ const MonthInput = ({
 
    return (
       <div className='mt-10 flex justify-center'>
-         <div className='space-y-5'>
-            <span className='yekan rtl block text-base text-slate-400'>
-               {monthRenewal.toLocaleString('fa')} ماه به قیمت{' '}
-               {(monthRenewal * clientPrice).toLocaleString('fa')} تومان
-            </span>
-            <div className='flex gap-5'>
-               <input
-                  onChange={monthlyRenewalChangeHandle}
-                  value={monthRenewal}
-                  className='yekan rounded-lg border-2 border-slate-600 bg-slate-800 p-2 text-base text-slate-300 outline-none'
-                  type='number'
-                  min={1}
-               />
-               <button
-                  disabled={loading}
-                  onClick={handlePayment}
-                  className='yekan flex items-center text-base'
-               >
-                  {loading ? (
+         <div className=' w-52'>
+            <div className='flex items-center gap-3'>
+               <div className='mx-auto flex gap-10'>
+                  <button
+                     onClick={() => {
+                        if (monthRenewal == 1) return
+                        setMonthRenewal((prev) => prev - 1)
+                     }}
+                  >
                      <svg
-                        className='mx-auto h-6 w-14 animate-spin text-green-500'
+                        className='h-10 w-10 text-white'
                         width='24'
                         height='24'
                         viewBox='0 0 24 24'
@@ -86,28 +76,58 @@ const MonthInput = ({
                      >
                         {' '}
                         <path stroke='none' d='M0 0h24v24H0z' />{' '}
-                        <path d='M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828' />
+                        <polyline points='15 6 9 12 15 18' />
                      </svg>
-                  ) : (
-                     <>
-                        پرداخت{' '}
-                        <svg
-                           className='h-5 w-5 text-green-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M9 5l7 7-7 7'
-                           />
-                        </svg>
-                     </>
-                  )}
-               </button>
+                  </button>
+                  <h1 className='yekan'>{monthRenewal.toLocaleString('fa')}</h1>
+                  <button onClick={() => setMonthRenewal((prev) => prev + 1)}>
+                     <svg
+                        className='h-10 w-10 text-white'
+                        width='24'
+                        height='24'
+                        viewBox='0 0 24 24'
+                        strokeWidth='2'
+                        stroke='currentColor'
+                        fill='none'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                     >
+                        {' '}
+                        <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                        <polyline points='9 6 15 12 9 18' />
+                     </svg>
+                  </button>
+               </div>
             </div>
+            <span className='yekan rtl mt-10 block text-base text-slate-400'>
+               {monthRenewal.toLocaleString('fa')} ماه به قیمت{' '}
+               {(monthRenewal * clientPrice).toLocaleString('fa')} تومان
+            </span>
+            <button
+               disabled={loading}
+               onClick={handlePayment}
+               className='yekan mt-5 flex w-full items-center rounded-md border-2 border-green-400 py-2 text-base'
+            >
+               {loading ? (
+                  <svg
+                     className='mx-auto h-6 w-14 animate-spin text-green-500'
+                     width='24'
+                     height='24'
+                     viewBox='0 0 24 24'
+                     strokeWidth='2'
+                     stroke='currentColor'
+                     fill='none'
+                     strokeLinecap='round'
+                     strokeLinejoin='round'
+                  >
+                     {' '}
+                     <path stroke='none' d='M0 0h24v24H0z' />{' '}
+                     <path d='M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828' />
+                  </svg>
+               ) : (
+                  <span className='mx-auto'>پرداخت</span>
+               )}
+            </button>
          </div>
       </div>
    )
