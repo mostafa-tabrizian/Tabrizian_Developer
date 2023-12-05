@@ -14,13 +14,6 @@ const MonthInput = ({
    const [monthRenewal, setMonthRenewal] = useState(1)
    const [loading, setLoading] = useState(false)
 
-   const monthlyRenewalChangeHandle = async (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = parseInt(e.target.value)
-      if (1 <= value) {
-         setMonthRenewal(parseInt(e.target.value))
-      }
-   }
-
    const handlePayment = async () => {
       const toast = await import('react-toastify').then((mod) => mod.toast)
       toast.info('در حال انتقال به درگاه پرداخت...')
