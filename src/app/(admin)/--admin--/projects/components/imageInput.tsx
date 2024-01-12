@@ -135,22 +135,22 @@ const ImageInput = memo(
                   // first
                   const imageName = image.name.replace(' ', '-')
 
-                  const data = new FormData()
-                  data.append('image', image)
-                  data.append('folder', 'projects')
-                  data.append('imageName', imageName)
+                  const signedUrl = await axios.post('/api/--admin--/image/sign-url', {
+                     imageName,
+                     folderName: 'projects',
+                  })
 
-                  const res = await axios.request({
-                     method: 'post',
-                     url: '/api/--admin--/image/s3',
-                     data,
+                  await axios.request({
+                     method: 'put',
+                     url: signedUrl.data.url,
+                     data: image,
                      onUploadProgress: (p) => {
                         const progressPercent = (p.loaded * 100) / (p.total as number)
                         setUploadingProgress(progressPercent)
                      },
                   })
 
-                  const imageKey = res.data['imageKey']
+                  const imageKey = signedUrl.data.imageKey
 
                   // db
                   const createDataResult = await createDbData(imageData.type, imageKey, imageName)
