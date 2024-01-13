@@ -1,6 +1,5 @@
 import langDecider from '@/lib/langDecider'
 import Image from 'next/image'
-import Link from 'next/link'
 
 const Contact = ({ lang }: { lang: string }) => {
    return (

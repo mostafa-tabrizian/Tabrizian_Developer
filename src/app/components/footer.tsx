@@ -1,10 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import langDecider from '@/lib/langDecider'
-import Script from 'next/script'
 
 const Footer = () => {
    const pathname = usePathname()

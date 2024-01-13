@@ -246,6 +246,7 @@ const Form = ({
             },
          },
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    const quillEditor = useMemo(() => {
@@ -259,6 +260,7 @@ const Form = ({
             modules={quillModules}
          />
       )
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    const deleteHandle = async () => {

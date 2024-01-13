@@ -8,7 +8,6 @@ import Script from 'next/script'
 import MobilePreview from './components/mobilePreview'
 import langDecider from '@/lib/langDecider'
 import hyphen from '@/lib/hyphen'
-import dehyphen from '@/lib/dehyphen'
 const ProjectNotFound = dynamic(() => import('./components/projectNotFound'))
 
 export const generateMetadata = async ({

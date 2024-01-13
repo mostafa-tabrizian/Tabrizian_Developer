@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 import dbConnect from '@/lib/dbConnect'
-import Client from '@/models/client'
+import Client, { IClient } from '@/models/client'
 
 export async function POST(request: Request) {
     const {
@@ -13,16 +13,7 @@ export async function POST(request: Request) {
         telegramId,
         active,
         renewalEnd
-    }: {
-        name: string
-        price: number
-        domain: string
-        mobileNumber: string
-        email: string
-        telegramId: string
-        active: boolean
-        renewalEnd: Date
-    } = await request.json()
+    }: IClient = await request.json()
 
     try {
         await dbConnect()
@@ -54,17 +45,7 @@ export async function PATCH(request: Request) {
         telegramId,
         active,
         renewalEnd
-    }: {
-        _id: string
-        name: string
-        price: number
-        domain: string
-        mobileNumber: string
-        email: string
-        telegramId: string
-        active: boolean
-        renewalEnd: Date
-    } = await request.json()
+    }: IClient = await request.json()
 
     try {
         await dbConnect()
