@@ -6,8 +6,8 @@ const URL = 'https://mostafatabrizian.ir'
 
 async function getAllPages() {
    await dbConnect()
-   const projectData = await Project.find()
-   const blogData = await Blog.find()
+   const projectData = await Project.find().lean()
+   const blogData = await Blog.find().lean()
 
    return { projectData, blogData }
 }

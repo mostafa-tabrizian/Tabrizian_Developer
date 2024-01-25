@@ -2,11 +2,40 @@ import langDecider from '@/lib/langDecider'
 import Image from 'next/image'
 import Link from 'next/link'
 
+const TicIcon = () => (
+   <svg
+      className='h-5 w-5 min-w-fit text-purple-500'
+      fill='none'
+      viewBox='0 0 24 24'
+      stroke='currentColor'
+   >
+      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M5 13l4 4L19 7' />
+   </svg>
+)
+
+const XIcon = () => (
+   <svg
+      className='h-5 w-5 min-w-fit text-gray-500'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      strokeWidth='2'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+   >
+      {' '}
+      <path stroke='none' d='M0 0h24v24H0z' /> <line x1='18' y1='6' x2='6' y2='18' />{' '}
+      <line x1='6' y1='6' x2='18' y2='18' />
+   </svg>
+)
+
 const Packages = ({ lang }: { lang: string }) => {
    return (
       <div
          id='packages'
-         className='min-h-screen relative mx-auto mb-32 grid max-w-screen-lg items-center justify-center md:mb-0'
+         className='relative mx-auto mb-32 grid min-h-screen max-w-screen-lg items-center justify-center md:mb-0'
       >
          {langDecider(
             lang,
@@ -45,66 +74,30 @@ const Packages = ({ lang }: { lang: string }) => {
                      {langDecider(
                         lang,
                         <h3 className='verdana'>Startup</h3>,
-                        <h3 className='yekanBold'>استارآپ</h3>,
+                        <h3 className='yekanBold'>پلن استارآپ</h3>,
                      )}
                   </div>
                   <div className='space-y-3'>
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
-                           <span className='z-10 text-sm'>Basic Customization</span>,
-                           <span className='yekan z-10 text-sm'>سفارشی سازی طراحی پایه</span>,
+                           <span className='z-10 text-sm'>Ready-To-Go Templates</span>,
+                           <span className='yekan z-10 text-sm'>انتخاب میان قالب های آماده</span>,
                         )}
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
-                           <span className='z-10 text-sm'>2 Month Support</span>,
-                           <span className='yekan z-10 text-sm'>پشتیبانی رایگان ۲ ماه</span>,
+                           <span className='z-10 text-sm'>6 Month Support</span>,
+                           <span className='yekan z-10 text-sm'>۶ ماه پشتیبانی رایگان</span>,
                         )}
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>Split Payment in 2</span>,
@@ -113,69 +106,119 @@ const Packages = ({ lang }: { lang: string }) => {
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
-                           <span className='z-10 text-sm'>Delivery Time (Business Days)</span>,
+                           <span className='z-10 text-sm'>Delivery Time In 7 Business Days</span>,
                            <span className='yekan z-10 text-sm'>
-                              زمان تحویل (روز کاری): ۱۴ روز{' '}
+                              زمان تحویل (روز کاری): ۷ روز{' '}
                            </span>,
                         )}
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
-                           <span className='z-10 text-sm'>Basic SEO</span>,
-                           <span className='yekan z-10 text-sm'>سئو پایه</span>,
+                           <span className='z-10 text-sm'>Basic Technical SEO</span>,
+                           <span className='yekan z-10 text-sm'>سئو تکنیکال پایه</span>,
                         )}
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>
-                              Basic Content Management System (CMS)
+                              Basic Panel Of Sales and Products Statistics
                            </span>,
-                           <span className='yekan z-10 text-sm'>پنل مدیریت محتوا CMS پایه</span>,
+                           <span className='yekan z-10 text-sm'>پنل پایه آمار فروش و محصولات</span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              احراز هویت پایه از طریق حساب گوگل
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              اتصال درگاه پرداخت از ۱۱ بانک
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>سیستم تیکت و چت آنلاین</span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              تشخیص بات بودن کاربران و مسدودی آنها
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              هوش مصنوعی برای پیشنهاد محصولات مرتبط به علایق کاربران
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              پیاده سازی پنل Google Analytics برای آمار و بررسی عملکرد سایت در گوگل{' '}
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              PWA: تبدیل سایت به اپلیکیشن تحت وب موبایل
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              وصل کردن سایت به تُرب و افزودن خودکار محصولات
+                           </span>,
                         )}
                      </div>
                   </div>
@@ -220,66 +263,30 @@ const Packages = ({ lang }: { lang: string }) => {
                      {langDecider(
                         lang,
                         <h3 className='verdana'>Advanced</h3>,
-                        <h3 className='yekanBold'>پیشرفته</h3>,
+                        <h3 className='yekanBold'>پنل حرفه ای</h3>,
                      )}
                   </div>
                   <div className='space-y-3'>
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>Advanced Customization</span>,
-                           <span className='yekan z-10 text-sm'>سفارشی سازی طراحی پیشرفته</span>,
+                           <span className='yekan z-10 text-sm'>سفارشی سازی قالب های آماده</span>,
                         )}
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
-                           <span className='z-10 text-sm'>6 Months of Free Support</span>,
-                           <span className='yekan z-10 text-sm'>۶ ماه پشتیبانی رایگان</span>,
+                           <span className='z-10 text-sm'>12 Months of Free Support</span>,
+                           <span className='yekan z-10 text-sm'>۱۲ ماه پشتیبانی رایگان</span>,
                         )}
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>Split Payment in 3</span>,
@@ -288,73 +295,121 @@ const Packages = ({ lang }: { lang: string }) => {
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>
                               Delivery Time (Business Days): 20 days
                            </span>,
                            <span className='yekan z-10 text-sm'>
-                              زمان تحویل (روز کاری): ۲۰ روز
+                              زمان تحویل (روز کاری): ۱۴ روز
                            </span>,
                         )}
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>Advanced SEO & Google Analytics</span>,
-                           <span className='yekan z-10 text-sm'>
-                              سئو پیشرفته و پنل آمار (گوگل)
-                           </span>,
+                           <span className='yekan z-10 text-sm'>سئو تکنیکال پیشرفته</span>,
                         )}
                      </div>
 
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>
                               Advanced Content Management System (CMS)
                            </span>,
-                           <span className='yekan z-10 text-sm'>پنل مدیریت محتوا CMS پیشرفته</span>,
+                           <span className='yekan z-10 text-sm'>پنل آمار اختصاصی و سفارشی</span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>احراز هویت قوی از طریق پیامک</span>,
+                        )}
+                     </div>
+
+                     
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              اتصال درگاه پرداخت از ۱۱ بانک
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>سیستم تیکت و چت آنلاین</span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              تشخیص بات بودن کاربران و مسدودی آنها
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              هوش مصنوعی برای پیشنهاد محصولات مرتبط به علایق کاربران
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              پیاده سازی پنل Google Analytics برای آمار و بررسی عملکرد سایت در گوگل{' '}
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              PWA: تبدیل سایت به اپلیکیشن تحت وب موبایل
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <XIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              وصل کردن سایت به تُرب و افزودن خودکار محصولات
+                           </span>,
                         )}
                      </div>
                   </div>
@@ -404,19 +459,7 @@ const Packages = ({ lang }: { lang: string }) => {
 
                   <div className='space-y-3'>
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>Full Customizatio</span>,
@@ -424,41 +467,17 @@ const Packages = ({ lang }: { lang: string }) => {
                         )}
                      </div>
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>12 Months of Free Support</span>,
                            <span className='yekan z-10 text-sm'>
-                              ۱۲ ماه پشتیبانی فوری + تماس تلفنی
+                              ۱۸ ماه پشتیبانی فوری + تماس تلفنی
                            </span>,
                         )}
                      </div>
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'> Split Payment in 4</span>,
@@ -466,19 +485,7 @@ const Packages = ({ lang }: { lang: string }) => {
                         )}
                      </div>
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>
@@ -490,50 +497,108 @@ const Packages = ({ lang }: { lang: string }) => {
                         )}
                      </div>
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>
                               Advanced SEO & Google Analytics + SEO Consulting
                            </span>,
-                           <span className='yekan z-10 text-sm'>
-                              سئو پیشرفته و پنل آمار و مشاوره سئو (گوگل)
-                           </span>,
+                           <span className='yekan z-10 text-sm'>سئو تکنیکال پیشرفته</span>,
                         )}
                      </div>
                      <div className='flex gap-2'>
-                        <svg
-                           className='h-5 w-5 text-purple-500'
-                           fill='none'
-                           viewBox='0 0 24 24'
-                           stroke='currentColor'
-                        >
-                           <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M5 13l4 4L19 7'
-                           />
-                        </svg>
+                        <TicIcon />
                         {langDecider(
                            lang,
                            <span className='z-10 text-sm'>
                               Custom Content Management System (CMS)
                            </span>,
+                           <span className='yekan z-10 text-sm'>پنل آمار اختصاصی و سفارشی</span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>احراز هویت قوی از طریق پیامک</span>,
+                        )}
+                     </div>
+
+                     
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
                            <span className='yekan z-10 text-sm'>
-                              پنل مدیریت محتوا CMS اختصاصی{' '}
+                              اتصال درگاه پرداخت از ۱۱ بانک
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>سیستم تیکت و چت آنلاین</span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              تشخیص بات بودن کاربران و مسدودی آنها
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              هوش مصنوعی برای پیشنهاد محصولات مرتبط به علایق کاربران
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              پیاده سازی پنل Google Analytics برای آمار و بررسی عملکرد سایت در گوگل{' '}
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              PWA: تبدیل سایت به اپلیکیشن تحت وب موبایل
+                           </span>,
+                        )}
+                     </div>
+
+                     <div className='flex gap-2'>
+                        <TicIcon />
+                        {langDecider(
+                           lang,
+                           <span className='z-10 text-sm'></span>,
+                           <span className='yekan z-10 text-sm'>
+                              وصل کردن سایت به تُرب و افزودن خودکار محصولات
                            </span>,
                         )}
                      </div>
