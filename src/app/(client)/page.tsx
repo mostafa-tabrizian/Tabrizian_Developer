@@ -16,7 +16,7 @@ import Projects from './components/projects'
 import AboutProduct from './components/aboutProduct'
 import TechnologiesV2 from './components/technologies-v2'
 import SafePayment from './components/safePayment'
-import ContactAction from '@/app/components/contactAction'
+import ContactAction from '@/app/components/contact-widget'
 
 export const metadata = {
    title: 'مصطفی تبریزیان | وب دِوِِلوپر React/Next.js',

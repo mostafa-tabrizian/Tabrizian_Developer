@@ -8,13 +8,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <>
          <ToastContainer
             position='top-center'
-            autoClose={3000}
+            autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
             pauseOnFocusLoss
             draggable
             pauseOnHover
+            rtl
             theme='light'
          />
 

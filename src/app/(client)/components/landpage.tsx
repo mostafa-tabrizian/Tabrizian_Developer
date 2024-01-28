@@ -1,5 +1,6 @@
 import { CgShapeCircle } from 'react-icons/cg'
 import { FaInstagram } from 'react-icons/fa'
+import ContactForm from '@/app/components/contact-form'
 
 const Landpage = () => {
    return (
@@ -13,16 +14,9 @@ const Landpage = () => {
                کد نویسی اختصاصی وب سایت فروشگاهی و شرکتی آینده‌ی شما با قدرتمند ترین تکنولوژی ها و
                کمترین زمان ممکن
             </h2>
-            <div className='yekan mt-5 flex'>
-               <input
-                  type='text'
-                  className=' h-11 w-full rounded-r-md pr-5 text-base text-black placeholder:text-sm'
-                  placeholder=' لطفا شماره تماس خود را وارد کنید...'
-               />
-               <button className='yekan w-24 rounded-l-md bg-violet-600 px-2 text-base shadow-lg shadow-violet-900 transition-all hover:scale-105 active:bg-violet-700 md:w-40'>
-                  ثبت
-               </button>
-            </div>
+
+            <ContactForm cls='active:bg-violet-700 shadow-violet-900 bg-violet-600' />
+
             <div className='grid grid-cols-3 items-center gap-3'>
                <span className='my-5 block h-[0.03rem] bg-gray-700' />
                <span className='yekan text-center text-xs text-gray-400'>یا بهمون پیام بده</span>

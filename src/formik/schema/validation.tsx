@@ -23,3 +23,8 @@ export const comment = yup.object().shape({
       .min(3, 'حداقل کارکتر های دیدگاهتون باید ۳ تا باشه')
       .required('لطفا دیدگاهتون رو وارد کنید'),
 })
+
+const mobileAndPhoneNumberRegex = /^0\d{2,3}\d{8}|09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}$/
+export const mobileNumberValidation = yup.object().shape({
+   mobileNumber: yup.string().matches(mobileAndPhoneNumberRegex).required(),
+})

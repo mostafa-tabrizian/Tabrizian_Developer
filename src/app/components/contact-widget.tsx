@@ -1,7 +1,8 @@
 import { FaInstagram } from 'react-icons/fa'
 import WavesSvg from '@/app/icons/wavesSvg'
+import ClientContactForm from './contact-form'
 
-const ContactAction = ({ title, body }: { title: string; body: string }) => {
+const ContactWidget = ({ title, body }: { title: string; body: string }) => {
    return (
       <div className='relative z-10 my-10 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-700 to-slate-900 px-4 py-16 md:rounded-3xl md:px-16 md:py-8'>
          <div className='grid-cols-2 md:grid md:gap-x-20'>
@@ -10,17 +11,9 @@ const ContactAction = ({ title, body }: { title: string; body: string }) => {
                <p className='yekan mb-10 mt-5 text-base'>{body}</p>
             </div>
             <div className='relative z-10'>
-               <div className='yekan mb-5 flex'>
-                  <input
-                     type='text'
-                     className=' h-11 w-full rounded-r-lg pr-5 text-base text-black placeholder:text-sm'
-                     placeholder='لطفا شماره تماس خود را وارد کنید...'
-                  />
-                  <button className='yekan w-24 rounded-l-lg bg-slate-900 px-2 text-base shadow-lg shadow-slate-950/50 transition-all hover:scale-105 active:bg-slate-800 md:w-40'>
-                     ثبت
-                  </button>
-               </div>
-               <div className='relative grid grid-cols-3'>
+               <ClientContactForm cls='bg-slate-900 active:bg-slate-800 shadow-slate-950/50' />
+
+               <div className='relative mt-3 grid grid-cols-3'>
                   <a
                      target='_blank'
                      rel='noreferrer'
@@ -74,4 +67,4 @@ const ContactAction = ({ title, body }: { title: string; body: string }) => {
    )
 }
 
-export default ContactAction
+export default ContactWidget
