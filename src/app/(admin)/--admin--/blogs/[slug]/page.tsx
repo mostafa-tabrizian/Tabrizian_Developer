@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 
-import dbConnect from '@/lib/dbConnect'
-import User from '@/lib/user'
+import dbConnect from '@/utils/dbConnect'
+import User from '@/utils/user'
 import Blog from '@/models/blog'
 import Form from './components/form'
 

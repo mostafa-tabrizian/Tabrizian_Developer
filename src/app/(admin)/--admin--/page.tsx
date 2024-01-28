@@ -1,4 +1,4 @@
-import User from '@/lib/user'
+import User from '@/utils/user'
 import Link from 'next/link'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 import LogoutButton from './components/logoutButton'

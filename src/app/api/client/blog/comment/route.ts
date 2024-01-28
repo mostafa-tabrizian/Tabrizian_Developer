@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 
 import Blog, { IBlog } from '@/models/blog'
-import dbConnect from '@/lib/dbConnect'
-import RecaptchaVerify from '@/lib/recaptchaVerify'
+import dbConnect from '@/utils/dbConnect'
+import RecaptchaVerify from '@/utils/recaptchaVerify'
 
 export async function POST(req: Request) {
     const payload: {

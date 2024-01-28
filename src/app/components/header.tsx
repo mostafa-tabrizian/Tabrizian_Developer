@@ -1,15 +1,10 @@
 'use client'
 
-import Sidebar from './sidebar'
+// import Sidebar from './sidebar'
 import LinksForDesktop from './headerLinksforDesktop'
-import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import langDecider from '@/lib/langDecider'
 
 const Header = () => {
-   const pathname = usePathname()
-   const lang = pathname.split('/')[1]
-
    const [enterEffect, setEnterEffect] = useState(0)
 
    useEffect(() => {
@@ -17,20 +12,20 @@ const Header = () => {
    }, [])
 
    return (
-      <header className={`fixed ${langDecider(lang, 'text-left', 'text-right')} top-0 z-20 right-0 w-auto md:w-screen p-2 md:p-4 backdrop-blur-2xl md:backdrop-blur-md`}>
+      <header className={'fixed text-right top-0 z-20 right-0 w-auto md:w-screen p-2 md:p-4 backdrop-blur-2xl md:backdrop-blur-md'}>
          <div>
             <div
                className='mx-auto justify-center lg:flex'
                style={{
-                  transitionDuration: '1.5s',
+                  transitionDuration: '1s',
                   transitionDelay: '3s',
                   transform: enterEffect ? 'translateY(0px)' : 'translateY(-10px)',
                   opacity: enterEffect,
                }}
             >
-               <LinksForDesktop path={pathname} lang={lang} />
+               <LinksForDesktop />
             </div>
-            <Sidebar path={pathname} lang={lang} />
+            {/* <Sidebar /> */}
          </div>
       </header>
    )

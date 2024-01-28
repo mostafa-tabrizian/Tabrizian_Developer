@@ -1,14 +1,7 @@
-'use client'
-
-import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import langDecider from '@/lib/langDecider'
 
 const Footer = () => {
-   const pathname = usePathname()
-   const lang = pathname.split('/')[1]
-
-   const enamadCode = `<img src="/enamad.png" width="100" height="110"
+   const enamadCode = `<img src="https://tabrizian.storage.iran.liara.space/tabrizian_codes/enamad.png" width="130" height="140"
 onclick="window.open(&quot;https://trustseal.enamad.ir/?id=418849&Code=Eo7J2kS8W2mesIgaswFJisbkJNmApqrQ&quot;, &quot;Popup&quot;,&quot;toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30&quot;)"
 alt="enamad">`
 
@@ -22,25 +15,19 @@ alt="enamad">`
 
             <div id='zarinpal' className='ZarinpalTrust'>
                <Image
-                  src='/zarinTrust.png'
+                  src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/zarinTrust.png'
                   alt='زرین پال'
                   loading='lazy'
-                  className='object-cover mix-blend-lighten hover:cursor-pointer'
+                  className='object-cover mix-blend-lighten hover:cursor-pointer w-auto h-auto'
                   width={77}
                   height={77}
                />
             </div>
          </div>
 
-         {langDecider(
-            lang,
-            <p className='verdana mt-1 text-center text-xs text-slate-500'>
-               © All rights of this website are reserved for Mostafa Tabrizian
-            </p>,
-            <p className='yekan mt-1 text-center text-xs text-slate-500'>
-               © تمامی حقوق این وب سایت برای مصطفی تبریزیان محفوظ است
-            </p>,
-         )}
+         <p className='yekan mt-1 text-center text-xs text-slate-500'>
+            © تمامی حقوق این وب سایت برای مصطفی تبریزیان محفوظ است
+         </p>
       </footer>
    )
 }

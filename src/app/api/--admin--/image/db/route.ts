@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 import Project from '@/models/project'
 import Blog from '@/models/blog'
-import dbConnect from '@/lib/dbConnect'
+import dbConnect from '@/utils/dbConnect'
 
 interface BodyType {
    type: string

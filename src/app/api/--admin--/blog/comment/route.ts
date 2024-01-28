@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-import dbConnect from '@/lib/dbConnect'
+import dbConnect from '@/utils/dbConnect'
 import Blog, { IBlog } from '@/models/blog'
 
 export async function PATCH(request: Request) {

@@ -4,10 +4,8 @@ import Drawer from '@mui/material/Drawer'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
-import langDecider from '@/lib/langDecider'
-import Image from 'next/image'
 
-const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
+const Sidebar = () => {
    const [sidebar, setSidebar] = useState(false)
 
    const pathname = usePathname()
@@ -43,11 +41,7 @@ const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
             <div className='h-screen w-screen bg-gradient-to-bl from-slate-900 to-slate-950'>
                <div className='p-5'>
                   <div
-                     className={`flex ${langDecider(
-                        lang,
-                        '',
-                        'flex-row-reverse',
-                     )} items-center justify-between gap-20`}
+                     className={'flex flex-row-reverse items-center justify-between gap-20'}
                   >
                      <button onClick={() => setSidebar(false)} aria-label='close sidebar'>
                         <svg
@@ -69,111 +63,68 @@ const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
                         </svg>
                      </button>
 
-                     <div className='flex gap-3'>
-                        <Link href={path.replace('en', 'fa')} className='h-8 w-8'>
-                           <Image
-                              src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/iran.png'
-                              alt='Farsi language'
-                              width={32}
-                              height={32}
-                           />
-                        </Link>
-                        <Link href={path.replace('fa', 'en')} className='h-8 w-8'>
-                           <Image
-                              src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/uk.png'
-                              alt='English language'
-                              width={32}
-                              height={32}
-                           />
-                        </Link>
-                     </div>
+                     
                   </div>
 
                   <ul className='rtl mt-10 flex flex-col justify-between gap-x-8 gap-y-8 text-indigo-50'>
                      <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
-                           <Link href={langDecider(lang, '/en', '/fa') as string}>
+                           <Link href='/'>
                               <div className=' relative flex items-center justify-center'>
                                  <span className='flex cursor-pointer items-center py-4 font-bold'>
-                                    {langDecider(
-                                       lang,
-                                       <span className='verdana text-3xl'>Home</span>,
-                                       <span className='yekanBold text-3xl'>صفحه اصلی</span>,
-                                    )}
+                                    
+                                       <span className='yekanBold text-3xl'>صفحه اصلی</span>
                                  </span>
                               </div>
                            </Link>
                         </div>
                      </li>
 
-                     <li className='block'>
+                     {/* <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
-                           <Link href={langDecider(lang, '/en/#about', '/fa/#about') as string}>
+                           <Link href='/#about'>
                               <div className='relative flex items-center justify-center'>
                                  <span className='flex cursor-pointer  items-center py-4 text-3xl font-bold'>
-                                    {langDecider(
-                                       lang,
-                                       <span className='verdana'>About</span>,
-                                       <span className='yekanBold'>درباره</span>,
-                                    )}
+                                       <span className='yekanBold'>درباره</span>
                                  </span>
                               </div>
                            </Link>
                         </div>
-                     </li>
+                     </li> */}
 
                      <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
                            <Link
-                              href={langDecider(lang, '/en/#projects', '/fa/#projects') as string}
+                              href='/#projects'
                            >
                               <div className='relative flex items-center justify-center'>
                                  <span className='flex cursor-pointer items-center  py-4 text-center text-3xl font-bold'>
-                                    {langDecider(
-                                       lang,
-                                       <span className='verdana'>Work Samples & Projects</span>,
-                                       <span className='yekanBold'>نمونه کار و پروژه ها</span>,
-                                    )}
+                                       <span className='yekanBold'>نمونه کار و پروژه ها</span>
                                  </span>
                               </div>
                            </Link>
                         </div>
                      </li>
 
-                     <li className='block'>
+                     {/* <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
-                           <Link href={langDecider(lang, '/en/#blogs', '/fa/#blogs') as string}>
+                           <Link href='/#blogs'>
                               <div className='relative flex items-center justify-center'>
                                  <span className='flex cursor-pointer items-center  py-4 text-center text-3xl font-bold'>
-                                    {langDecider(
-                                       lang,
-                                       <span className='verdana'>Blogs</span>,
-                                       <span className='yekanBold'>بلاگ ها</span>,
-                                    )}
+                                       <span className='yekanBold'>بلاگ ها</span>
                                  </span>
                               </div>
                            </Link>
                         </div>
-                     </li>
+                     </li> */}
 
                      <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
                            <Link
-                              href={
-                                 langDecider(
-                                    lang,
-                                    '/en/#technologies',
-                                    '/fa/#technologies',
-                                 ) as string
-                              }
-                           >
+                              href='/#technologies'>
                               <div className='relative flex items-center justify-center'>
                                  <span className='flex cursor-pointer  items-center py-4 text-3xl font-bold'>
-                                    {langDecider(
-                                       lang,
-                                       <span className='verdana'>Technologies</span>,
-                                       <span className='yekanBold'>تکنولوژی ها</span>,
-                                    )}
+                                       <span className='yekanBold'>تکنولوژی ها</span>
                                  </span>
                               </div>
                            </Link>
@@ -183,55 +134,43 @@ const Sidebar = ({ lang, path }: { lang: string; path: string }) => {
                      <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
                            <Link
-                              href={langDecider(lang, '/en/#packages', '/fa/#packages') as string}
+                              href='/#packages'
                            >
                               <div className='relative flex items-center justify-center'>
                                  <span className='flex cursor-pointer items-center py-4 text-3xl font-bold'>
-                                    {langDecider(
-                                       lang,
-                                       <span className='verdana'>Packages</span>,
-                                       <span className='yekanBold'>پکیج ها</span>,
-                                    )}
+                                       <span className='yekanBold'>پکیج ها</span>
                                  </span>
                               </div>
                            </Link>
                         </div>
                      </li>
 
-                     <li className='block'>
+                     {/* <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
-                           <Link href={langDecider(lang, '/en/#faq', '/fa/#faq') as string}>
+                           <Link href='/#faq'>
                               <div className='relative flex items-center justify-center'>
                                  <span className='flex cursor-pointer items-center py-4 text-3xl font-bold'>
-                                    {langDecider(
-                                       lang,
-                                       <span className='verdana'>FAQ</span>,
-                                       <span className='yekanBold'>سوالات متداول</span>,
-                                    )}
+                                       <span className='yekanBold'>سوالات متداول</span>
                                  </span>
                               </div>
                            </Link>
                         </div>
-                     </li>
+                     </li> */}
 
-                     <li className='block'>
+                     {/* <li className='block'>
                         <div className='rounded-lg bg-gradient-to-l from-purple-300/10 to-transparent text-indigo-50 shadow-inner'>
                            <Link
-                              href={langDecider(lang, '/en/#contact', '/fa/#contact') as string}
+                              href='/#contact'
                               onClick={() => setSidebar(false)}
                            >
                               <div className='relative flex items-center justify-center'>
                                  <span className='flex cursor-pointer items-center py-4 text-3xl font-bold'>
-                                    {langDecider(
-                                       lang,
-                                       <span className='verdana'>Contact</span>,
-                                       <span className='yekanBold'>تماس</span>,
-                                    )}
+                                       <span className='yekanBold'>تماس</span>
                                  </span>
                               </div>
                            </Link>
                         </div>
-                     </li>
+                     </li> */}
                   </ul>
                </div>
             </div>

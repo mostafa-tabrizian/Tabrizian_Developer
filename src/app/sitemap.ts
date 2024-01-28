@@ -1,6 +1,6 @@
 import Project from '@/models/project'
 import Blog from '@/models/blog'
-import dbConnect from '@/lib/dbConnect'
+import dbConnect from '@/utils/dbConnect'
 
 const URL = 'https://mostafatabrizian.ir'
 

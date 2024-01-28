@@ -33,13 +33,13 @@ const ThumbnailInput = memo(
 
          const filesList: File[] = Object.values(files)
 
-         const filesTypeValidation = await import('@/lib/filesTypeValidation').then(
+         const filesTypeValidation = await import('@/utils/filesTypeValidation').then(
             (mod) => mod.default,
          )
          const typeCheckRes = filesTypeValidation(filesList)
          if (!typeCheckRes) return
 
-         const filesSizeValidation = await import('@/lib/filesSizeValidation').then(
+         const filesSizeValidation = await import('@/utils/filesSizeValidation').then(
             (mod) => mod.default,
          )
          const sizeCheckRes = filesSizeValidation(filesList)

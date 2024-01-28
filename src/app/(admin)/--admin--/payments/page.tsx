@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import dbConnect from '@/lib/dbConnect'
+import dbConnect from '@/utils/dbConnect'
 import Payment from '@/models/payment'
 
 import Breadcrumbs from '@mui/material/Breadcrumbs'

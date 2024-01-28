@@ -2,7 +2,7 @@
 
 import { IBlog } from '@/models/blog'
 import { useState } from 'react'
-import DateFormat from '@/lib/dateFormat'
+import DateFormat from '@/utils/dateFormat'
 import { useRouter } from 'next/navigation'
 
 const Comments = ({ blogs }: { blogs: IBlog[] }) => {

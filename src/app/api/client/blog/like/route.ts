@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 import Blog, { IBlog } from '@/models/blog'
-import dbConnect from '@/lib/dbConnect'
+import dbConnect from '@/utils/dbConnect'
 
 export async function POST(req: Request) {
    const { blogId, userIP } = (await req.json()) as {

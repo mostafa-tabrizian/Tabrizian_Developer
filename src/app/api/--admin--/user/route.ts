@@ -1,9 +1,9 @@
 import { getServerSession } from 'next-auth'
 import { NextResponse } from 'next/server'
 
-import authOptions from '@/lib/auth'
+import authOptions from '@/utils/auth'
 import User, { IUser } from '@/models/user'
-import dbConnect from '@/lib/dbConnect'
+import dbConnect from '@/utils/dbConnect'
 
 export async function GET() {
    const session: { username: string } | null = await getServerSession(authOptions)

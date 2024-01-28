@@ -1,6 +1,6 @@
 'use client'
 
-import deleteFromS3Bucket from '@/lib/deleteFromS3Bucket'
+import deleteFromS3Bucket from '@/utils/deleteFromS3Bucket'
 import Dialog from '@mui/material/Dialog'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'

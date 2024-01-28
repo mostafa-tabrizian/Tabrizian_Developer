@@ -6,15 +6,6 @@ export default withAuth(function middleware(request: NextRequest) {
    const { pathname } = request.nextUrl
 
    if (pathname.includes('--admin--')) return
-
-   const pathnameHasLocale = ['en', 'fa'].some(
-      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-   )
-
-   if (pathnameHasLocale) return
-
-   request.nextUrl.pathname = `/en${pathname}`
-   return Response.redirect(request.nextUrl)
 }, {
    callbacks: {
       authorized: ({ req, token }) => {
@@ -30,5 +21,5 @@ export default withAuth(function middleware(request: NextRequest) {
 })
 
 export const config = {
-   matcher: ['/((?!_next/static|_next/image|favicon.ico|font|icon.png|enamad.png|zarinTrust.png|apple-icon.png|sitemap.xml|api/client).*)'],
+   matcher: ['/((?!_next/static|_next/image|favicon.ico|font|icon.png|apple-icon.png|sitemap.xml|api/client).*)'],
 }
