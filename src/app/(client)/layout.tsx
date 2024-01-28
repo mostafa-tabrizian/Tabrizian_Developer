@@ -1,9 +1,12 @@
+'use client'
+
 import { ToastContainer } from 'react-toastify'
 
 import Header from '@/app/components/header'
 import Footer from '@/app/components/footer'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
    return (
       <>
          <ToastContainer
@@ -21,8 +24,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
          <Header />
 
-         <main className='rtl'>{children}</main>
-
+         <GoogleReCaptchaProvider
+            reCaptchaKey='6LfM7AspAAAAALU7pRetpF1GHJM_HjI8j6JWU34y'
+            scriptProps={{
+               async: false,
+               defer: false,
+               appendTo: 'head',
+               nonce: undefined,
+            }}
+            language='fa'
+         >
+            <main className='rtl'>{children}</main>
+         </GoogleReCaptchaProvider>
          <Footer />
       </>
    )

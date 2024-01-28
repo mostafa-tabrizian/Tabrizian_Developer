@@ -1,15 +1,18 @@
 import dbConnect from '@/utils/dbConnect'
 import { NextRequest, NextResponse } from 'next/server'
 import InterestedClient from '@/models/interested-client'
+import RecaptchaVerify from '@/utils/recaptchaVerify'
 
 export async function POST(request: NextRequest) {
 
-    const { mobileNumber } = await request.json()
+    const { mobileNumber, gReCaptchaToken } = await request.json()
 
     try {
+        const recaptchaRes = await RecaptchaVerify(gReCaptchaToken)
+        if (!recaptchaRes) return NextResponse.json({ message: 'recaptcha fail' })
+
         await dbConnect()
         const interestExist = await InterestedClient.findOne({ mobileNumber })
-
         if (interestExist) return NextResponse.json({ status: 1000 })
 
         const payload = {

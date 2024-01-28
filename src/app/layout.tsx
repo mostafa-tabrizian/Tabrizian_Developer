@@ -5,14 +5,14 @@ import '@/app/styles/mui.scss'
 import 'react-toastify/dist/ReactToastify.min.css'
 
 import { SessionProvider } from 'next-auth/react'
-import Script from 'next/script'
+// import Script from 'next/script'
 
 // import Analytics from './GTM'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
    return (
       <html lang='en'>
-         <>
+         {/* <>
             <Script id='raychat-widget' strategy='lazyOnload'>
                {`
                   window.RAYCHAT_TOKEN = "2b598694-578b-4800-bfed-87f52429b800";
@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   })();
                `}
             </Script>
-         </>
+         </> */}
 
          <body className='styled-scrollbars'>
             {/* <Analytics /> */}

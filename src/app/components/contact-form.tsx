@@ -3,33 +3,50 @@
 import axios from 'axios'
 import { Formik, Form, Field } from 'formik'
 import { mobileNumberValidation } from '@/formik/schema/validation'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 
 const ContactForm = ({ cls }: { cls: string }) => {
+   const { executeRecaptcha } = useGoogleReCaptcha()
+
    const handleSubmit = async (
       values: {
          mobileNumber: string
       },
       resetForm: () => void,
    ) => {
-      const res = await axios.post('api/client/interested-client', {
-         mobileNumber: values.mobileNumber,
-      })
-
-      const resStatus = res.data.status
-      const resMessage = res.data.message
-
       const toast = await import('react-toastify').then((mod) => mod.toast)
 
-      if (resStatus == 1) {
-         toast.success(
-            'از اعتماد شما سپاس گذاریم 🙏🏻 \n تیم پشتیبان در اولین فرصت با شما تماس خواهد گرفت.',
+      try {
+         if (!executeRecaptcha) return console.error('!executeRecaptcha')
+
+         const gReCaptchaToken = await executeRecaptcha('contactForm').then(
+            (gReCaptchaToken: string) => gReCaptchaToken,
          )
-      } else if (resStatus == 1000) {
-         toast.warn('شماره‌ی شما از قبل در سامانه ثبت شده است. به زودی با شما تماس خواهیم گرفت.')
-         resetForm()
-      } else {
-         console.error('post client number: ', resMessage)
+
+         const res = await axios.post('api/client/interested-client', {
+            mobileNumber: values.mobileNumber,
+            gReCaptchaToken,
+         })
+
+         const resStatus = res.data.status
+         const resMessage = res.data.message
+
+         if (resMessage == 'recaptcha fail') {
+            toast.error('فعالیت شما مشکوک به ربات است!')
+         } else if (resStatus == 1) {
+            toast.success(
+               'از اعتماد شما سپاس گذاریم 🙏🏻 \n تیم پشتیبان در اولین فرصت با شما تماس خواهد گرفت.',
+            )
+         } else if (resStatus == 1000) {
+            toast.warn('شماره‌ی شما از قبل در سامانه ثبت شده است. به زودی با شما تماس خواهیم گرفت.')
+            resetForm()
+         } else {
+            console.error('post client number: ', resMessage)
+            toast.error('در ثبت شماره تماس شما خطایی رخ داد. لطفا مجددا تلاش کنید.')
+         }
+      } catch (err) {
          toast.error('در ثبت شماره تماس شما خطایی رخ داد. لطفا مجددا تلاش کنید.')
+         console.error('contactForm error: ', err)
       }
    }
 

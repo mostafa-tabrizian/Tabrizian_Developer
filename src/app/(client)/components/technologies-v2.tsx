@@ -39,7 +39,7 @@ const TechnologiesV2 = () => {
                <Image
                   className='mb-1 rounded-3xl p-2 shadow-lg shadow-blue-400/30'
                   style={{
-                     border: '1px solid #5FDAFB',
+                     border: '2px solid #5FDAFB',
                   }}
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/react.jpg'
                   alt='React'
@@ -55,9 +55,9 @@ const TechnologiesV2 = () => {
                `}
             >
                <Image
-                  className='mb-1 rounded-3xl shadow-lg shadow-white/30'
+                  className='mb-1 rounded-[1.75rem] shadow-lg shadow-violet-500/30'
                   style={{
-                     border: '1px solid #FDFDFD',
+                     border: '2px solid violet',
                   }}
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/next2.jpg'
                   alt='Next.js'
@@ -73,7 +73,7 @@ const TechnologiesV2 = () => {
                `}
             >
                <Image
-                  className='mb-1 rounded-3xl border border-blue-500 shadow-lg shadow-yellow-400/30'
+                  className='mb-1 rounded-3xl border-2 border-blue-500 shadow-lg shadow-yellow-400/30'
                   src='https://tabrizian.storage.iran.liara.space/tabrizian_codes/technologies/python.jpg'
                   alt='Python'
                   width={105}
