@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.min.css'
 import { SessionProvider } from 'next-auth/react'
 // import Script from 'next/script'
 
-// import Analytics from './GTM'
+import Analytics from './GTM'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
    return (
@@ -28,8 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
          </> */}
 
          <body className='styled-scrollbars'>
-            {/* <Analytics /> */}
-
+            <Analytics />
             <SessionProvider>
                <main className='mx-auto overflow-x-hidden'>{children}</main>
             </SessionProvider>
