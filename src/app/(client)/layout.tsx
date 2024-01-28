@@ -33,8 +33,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                nonce: undefined,
             }}
             language='fa'
+            container={{
+               element: 'RecaptchaId',
+               parameters: {
+                  badge: 'bottomleft',
+                  theme: 'dark',
+               },
+            }}
          >
             <main className='rtl'>{children}</main>
+            <div id='RecaptchaId'></div>
          </GoogleReCaptchaProvider>
          <Footer />
       </>
